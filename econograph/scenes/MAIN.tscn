@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://qdn2ymj50ymd"]
+
+[ext_resource type="Script" uid="uid://b6s6qj2wlkhdh" path="res://scripts/worldclock.gd" id="1_apk53"]
+[ext_resource type="AudioStream" uid="uid://dk84bwd8fdxvl" path="res://assets/audio/Chill in the Grove remix v1.2.mp3" id="2_08hpn"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_apk53")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.152857, 0.0984095, 0.0117827, 1)
+
+[node name="Counter" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 110.0
+offset_bottom = 33.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WorldClock" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 40.0
+offset_right = 80.0
+offset_bottom = 63.0
+text = "$counter"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="MusicLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_08hpn")
+autoplay = true
+bus = &"Music"
