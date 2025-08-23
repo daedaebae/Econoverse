@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://qdn2ymj50ymd"]
+[gd_scene load_steps=4 format=3 uid="uid://qdn2ymj50ymd"]
 
 [ext_resource type="Script" uid="uid://b6s6qj2wlkhdh" path="res://scripts/worldclock.gd" id="1_apk53"]
 [ext_resource type="AudioStream" uid="uid://dk84bwd8fdxvl" path="res://assets/audio/Chill in the Grove remix v1.2.mp3" id="2_08hpn"]
+[ext_resource type="Texture2D" uid="uid://3gkx1penpm4a" path="res://assets/image/coin.png" id="3_08hpn"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -23,20 +24,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.152857, 0.0984095, 0.0117827, 1)
 
-[node name="Counter" type="Label" parent="."]
-custom_minimum_size = Vector2(100, 20)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -110.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = 33.0
-grow_horizontal = 0
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="WorldClock" type="Label" parent="."]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 1
@@ -54,3 +41,30 @@ vertical_alignment = 1
 stream = ExtResource("2_08hpn")
 autoplay = true
 bus = &"Music"
+
+[node name="CurrencyTool" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="CurrencyTool"]
+position = Vector2(25, 20)
+texture = ExtResource("3_08hpn")
+
+[node name="Counter" type="Label" parent="CurrencyTool"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -130.0
+offset_top = 10.0
+offset_right = -30.0
+offset_bottom = 33.0
+grow_horizontal = 0
+horizontal_alignment = 1
+vertical_alignment = 1
