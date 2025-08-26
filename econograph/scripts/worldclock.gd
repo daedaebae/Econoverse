@@ -1,5 +1,5 @@
 extends Node
-@onready var world_clock: Label = $WorldClock
+@onready var world_clock: Label = $TimeModule/WorldClock
 
 var counter = 0
 var eventtimer = Timer.new()
