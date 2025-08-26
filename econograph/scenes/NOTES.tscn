@@ -48,7 +48,10 @@ size_flags_horizontal = 3
 text = "8/21/25; I guess this works, still want a little note-making scene that's quick to use. There is a #TODO tag you can use within godot scripts, but I don't know how to review the todo lines. -kc
 
 8/22; Consider adding a game manager etc that enables the start/stop/fast forward of time. This would allow for control of the game state. Give the player an opportunity to read, pause and walk away, or move on to the next event more rapidly/experiment.
-Additionally, to help graphically represent this idea, can implement simple sun/moon cycle that gives the player information at a glance for how quickly time is moving.  -kc"
+Additionally, to help graphically represent this idea, can implement simple sun/moon cycle that gives the player information at a glance for how quickly time is moving.  -kc
+
+08/25; Spent some time reading on the WorldClock functions and how to build out a Player class. Ultimately made a few changes and a commit. See git log. -dm"
+
 fit_content = true
 scroll_following = true
 context_menu_enabled = true

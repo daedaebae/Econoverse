@@ -1,12 +1,12 @@
 # AI generated
 
-# Economy System for Medieval Trading Game
+## Economy System for Medieval Trading Game
 
-## Overview
+### Overview
 
 The medieval economy system is designed to simulate the complex relationships between different groups within a kingdom.
 
-## Graph Description
+### Graph Description
 
 ```mermaid
 graph LR
@@ -48,7 +48,7 @@ Finally, the Economic Incentives sub-graph highlights the incentives for tax col
  **1. Trading Commodities
  **2. Decisions affect commodties
  **3. Transaction records over time
- **4. WorldClock Counter (Eventw force movement make decisons)
+ **4. WorldClock Counter (Event will force movement to make decisons)
  **5. Wallet
  **6. Inventory
 

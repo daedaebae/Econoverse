@@ -1,23 +1,25 @@
 extends Node
-@onready var world_clock: Label = $WorldClock
 
-var counter = 0
-var eventtimer = Timer.new()
-var time = str(Time.get_time_string_from_system())
-
-# Event time to trigger events
-func _on_timer_timeout():
-	eventtimer.stop()
-	eventtimer.timeout
-	print("Oh shit what now?!?")
+#var counter = 0
+var total_time_in_secs : int = 0
+var day = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	eventtimer.start()
-	counter += 1
-	pass # Replace with function body.
+	#$TimeModule/Timer.start()
+	pass
+
+func on_timer_timeout():
+	total_time_in_secs += 1
+	var m = int(total_time_in_secs / 60.0)
+	var s = total_time_in_secs - m * 60
+	$TimeModule/WorldClock.text = '%02d:%02d' % [m, s]
+	
+	#every cyce of 60 =  1 day game time
+	if m == 60:
+		$TimeModule/Days.text = "Days"+str(day)
+		total_time_in_secs = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	world_clock.text = str(Time.get_ticks_msec()/1000)
 	pass
