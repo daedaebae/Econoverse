@@ -11,7 +11,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 
 [node name="ColorRect" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(4000, 4000)
+custom_minimum_size = Vector2(8000, 6000)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.191

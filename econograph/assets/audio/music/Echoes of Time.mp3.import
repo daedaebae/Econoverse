@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dxwfy8a7tlt24"
+path="res://.godot/imported/Echoes of Time.mp3-38ecd76270023f2bbf14bf3cb9ca3f1f.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/Echoes of Time.mp3"
+dest_files=["res://.godot/imported/Echoes of Time.mp3-38ecd76270023f2bbf14bf3cb9ca3f1f.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=7.36
+bpm=0.0
+beat_count=0
+bar_beats=4
