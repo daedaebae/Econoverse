@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://qdn2ymj50ymd"]
+[gd_scene load_steps=5 format=3 uid="uid://qdn2ymj50ymd"]
 
 [ext_resource type="Script" uid="uid://b6s6qj2wlkhdh" path="res://scripts/worldclock.gd" id="1_apk53"]
 [ext_resource type="AudioStream" uid="uid://dxwfy8a7tlt24" path="res://assets/audio/music/Echoes of Time.mp3" id="2_08hpn"]
 [ext_resource type="Texture2D" uid="uid://3gkx1penpm4a" path="res://assets/image/coin.png" id="3_08hpn"]
+[ext_resource type="Script" uid="uid://8qibux0n07d8" path="res://scripts/currency_mgmt.gd" id="3_imghw"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -17,9 +18,10 @@ script = ExtResource("1_apk53")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.152857, 0.0984095, 0.0117827, 1)
@@ -66,6 +68,7 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
+script = ExtResource("3_imghw")
 
 [node name="Coin" type="Sprite2D" parent="CurrencyModule"]
 position = Vector2(25, 20)

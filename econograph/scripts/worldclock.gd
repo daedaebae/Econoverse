@@ -20,6 +20,18 @@ func on_timer_timeout():
 		$TimeModule/Days.text = "Days"+str(day)
 		total_time_in_secs = 0
 
+
+# TODO: Tie to a button that sets game speed to normal, fast, or turbo
+# TODO: Move function to Controls module?
+func game_speed(speed):
+	match speed:
+		0:
+			$TimeModule/Timer.wait_time = 1
+		1:
+			$TimeModule/Timer.wait_time = 0.75
+		2:
+			$TimeModule/Timer.wait_time = 0.25
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

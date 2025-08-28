@@ -15,6 +15,10 @@ run/main_scene="uid://qdn2ymj50ymd"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/stretch/scale=2.5
+
 [dotnet]
 
 project/assembly_name="Econograph"
