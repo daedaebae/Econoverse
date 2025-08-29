@@ -10,10 +10,10 @@ The medieval economy system is designed to simulate the complex relationships be
 
 ![Kingdom Economy](mermaid)
 ```mermaid
-graph LR
+graph TB
     subgraph Kingdom Economy
     direction TB
-        subgraph Kingdom Economy
+        subgraph A
         direction TB
             Kingdom[Kingdom] --> |Taxation| TaxCollector[Tax Collector]
             Kingdom --> |Trade| Merchant[Mercantile Guild]

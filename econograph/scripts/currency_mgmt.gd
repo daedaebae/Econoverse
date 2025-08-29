@@ -32,10 +32,10 @@ func set_currency(amount):
 	silver = str(currency.get('silver'))
 	copper = str(currency.get('copper'))
 	
-	$Counter.text = 'g'+gold+' s'+silver+' c'+copper
+	$Counter.text = 'Gp'+gold+' Sp'+silver+' Cp'+copper
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# TODO: Set this to a variable defined by currency generating events.
-	set_currency(75555)
+	set_currency(1)
 	pass

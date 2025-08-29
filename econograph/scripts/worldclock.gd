@@ -1,7 +1,8 @@
-extends Node
+extends Control
 
-#var counter = 0
-var total_time_in_secs : int = 0
+var meridian = 'am'
+var clock_hours = 1
+var clock_mins = 0
 var day = 1
 
 # Called when the node enters the scene tree for the first time.
@@ -10,19 +11,29 @@ func _ready() -> void:
 	pass
 
 func on_timer_timeout():
-	total_time_in_secs += 1
-	var m = int(total_time_in_secs / 60.0)
-	var s = total_time_in_secs - m * 60
-	$TimeModule/WorldClock.text = '%02d:%02d' % [m, s]
+	clock_mins += 1
 	
-	#every cyce of 60 =  1 day game time
-	if m == 60:
-		$TimeModule/Days.text = "Days"+str(day)
-		total_time_in_secs = 0
-
+	# am/pm checks, day counter
+	if clock_hours == 12 && clock_mins == 60 && meridian == 'am':
+			meridian = 'pm'
+	elif clock_hours == 12 && clock_mins == 60 && meridian == 'pm':
+			meridian = 'am'
+			day += 1
+	
+	# handle minute -> hour rollover
+	if clock_mins == 60:
+		clock_mins = 0
+		clock_hours += 1
+	
+	# standard time instead of mil-time
+	if clock_hours == 13:
+		clock_hours = 1
+	
+	# set Day and Time label to regexed vars
+	$TimeModule/WorldClock.text = 'Day %d   %02d:%02d%s' % [day, clock_hours, clock_mins, meridian]
 
 # TODO: Tie to a button that sets game speed to normal, fast, or turbo
-# TODO: Move function to Controls module?
+# TODO: Move function to Game Controls module?
 func game_speed(speed):
 	match speed:
 		0:
