@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://qdn2ymj50ymd"]
+[gd_scene load_steps=7 format=3 uid="uid://qdn2ymj50ymd"]
 
 [ext_resource type="Script" uid="uid://b6s6qj2wlkhdh" path="res://scripts/worldclock.gd" id="1_apk53"]
 [ext_resource type="AudioStream" uid="uid://dxwfy8a7tlt24" path="res://assets/audio/music/Echoes of Time.mp3" id="2_08hpn"]
 [ext_resource type="Texture2D" uid="uid://3gkx1penpm4a" path="res://assets/image/coin.png" id="3_08hpn"]
 [ext_resource type="Script" uid="uid://8qibux0n07d8" path="res://scripts/currency_mgmt.gd" id="3_imghw"]
+[ext_resource type="PackedScene" uid="uid://cmix5cy8e1od7" path="res://item_slot_instance.tscn" id="4_dfr2a"]
+[ext_resource type="Resource" uid="uid://cyc3x7s70611a" path="res://resources/ItemCoin.tres" id="5_rl6xj"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -62,22 +64,41 @@ offset_bottom = 40.0
 grow_horizontal = 0
 script = ExtResource("3_imghw")
 
-[node name="Coin" type="Sprite2D" parent="CurrencyModule"]
-position = Vector2(25, 20)
-texture = ExtResource("3_08hpn")
-
-[node name="Counter" type="Label" parent="CurrencyModule"]
-custom_minimum_size = Vector2(100, 20)
+[node name="CurrencyStack" type="VBoxContainer" parent="CurrencyModule"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -130.0
-offset_top = 10.0
-offset_right = -30.0
-offset_bottom = 33.0
+offset_left = -100.0
+offset_bottom = 40.0
 grow_horizontal = 0
-horizontal_alignment = 1
+alignment = 1
+
+[node name="CoinHeader" type="HBoxContainer" parent="CurrencyModule/CurrencyStack"]
+layout_mode = 2
+alignment = 2
+
+[node name="CoinItem" parent="CurrencyModule/CurrencyStack/CoinHeader" instance=ExtResource("4_dfr2a")]
+layout_mode = 2
+item_data = ExtResource("5_rl6xj")
+
+[node name="Coin" type="Sprite2D" parent="CurrencyModule/CurrencyStack/CoinHeader"]
+visible = false
+position = Vector2(0, 12)
+texture = ExtResource("3_08hpn")
+
+[node name="break" type="Control" parent="CurrencyModule/CurrencyStack/CoinHeader"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Counter" type="Label" parent="CurrencyModule/CurrencyStack/CoinHeader"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "$$$"
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="QuestModule" type="Control" parent="."]

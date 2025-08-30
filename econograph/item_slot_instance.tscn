@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmix5cy8e1od7"]
+
+[ext_resource type="Script" uid="uid://cttqbjoyy8iy5" path="res://item_slot.gd" id="1_cuyby"]
+[ext_resource type="Script" uid="uid://dq4j684bldndn" path="res://item.gd" id="2_w88vp"]
+[ext_resource type="Texture2D" uid="uid://cfdunmnar0wdi" path="res://icon.svg" id="3_2qu4r"]
+
+[sub_resource type="Resource" id="Resource_v88ng"]
+script = ExtResource("2_w88vp")
+id = 0
+start_price = 0
+name_full = "full name"
+name_abbreviated = "abrv"
+description = "PLACEHOLDER"
+texture = ExtResource("3_2qu4r")
+rarity = 0
+metadata/_custom_type_script = "uid://dq4j684bldndn"
+
+[node name="ItemSlotInstance" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("1_cuyby")
+item_data = SubResource("Resource_v88ng")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

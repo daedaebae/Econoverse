@@ -1,8 +1,12 @@
 extends Node
 
+@onready var coin_header = $CurrencyStack/CoinHeader
+var item_coin = preload("res://resources/ItemCoin.tres")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	var coin_container = coin_header.get_children()[0] 
+	coin_container.set_item(item_coin)
 
 # Currency converter
 func convert_copper_to_currency(copper: int) -> Dictionary:
@@ -32,7 +36,7 @@ func set_currency(amount):
 	silver = str(currency.get('silver'))
 	copper = str(currency.get('copper'))
 	
-	$Counter.text = 'Gp'+gold+' Sp'+silver+' Cp'+copper
+	$CurrencyStack/CoinHeader/Counter.text = 'Gp'+gold+' Sp'+silver+' Cp'+copper
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

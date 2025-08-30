@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cyc3x7s70611a"]
+
+[ext_resource type="Script" uid="uid://dq4j684bldndn" path="res://item.gd" id="1_oxc7q"]
+[ext_resource type="Texture2D" uid="uid://3gkx1penpm4a" path="res://assets/image/coin.png" id="2_84esi"]
+
+[resource]
+script = ExtResource("1_oxc7q")
+id = 1
+start_price = 1
+name_full = "Coin"
+name_abbreviated = "coin"
+description = "The currency of the land. 
+Used to purchase valuable goods."
+texture = ExtResource("2_84esi")
+rarity = 0
+metadata/_custom_type_script = "uid://dq4j684bldndn"
