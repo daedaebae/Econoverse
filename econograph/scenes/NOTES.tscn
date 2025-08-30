@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c8fg1ulosvcar"]
 
-[ext_resource type="Texture2D" uid="uid://3gkx1penpm4a" path="res://assets/image/coin.png" id="1_8vlpi"]
+[ext_resource type="Texture2D" uid="uid://3gkx1penpm4a" path="res://assets/image/sprites/coin.png" id="1_8vlpi"]
 
 [node name="Notes" type="Control"]
 layout_mode = 3

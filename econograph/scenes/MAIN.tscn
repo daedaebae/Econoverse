@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://qdn2ymj50ymd"]
+[gd_scene load_steps=8 format=3 uid="uid://qdn2ymj50ymd"]
 
+[ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/ThemeEconographMain.tres" id="1_0xo7i"]
 [ext_resource type="Script" uid="uid://b6s6qj2wlkhdh" path="res://scripts/worldclock.gd" id="1_apk53"]
 [ext_resource type="AudioStream" uid="uid://dxwfy8a7tlt24" path="res://assets/audio/music/Echoes of Time.mp3" id="2_08hpn"]
-[ext_resource type="Texture2D" uid="uid://3gkx1penpm4a" path="res://assets/image/coin.png" id="3_08hpn"]
+[ext_resource type="Texture2D" uid="uid://cuqxnx6glh2hy" path="res://assets/image/background/190959_00002_.png" id="3_0xo7i"]
 [ext_resource type="Script" uid="uid://8qibux0n07d8" path="res://scripts/currency_mgmt.gd" id="3_imghw"]
 [ext_resource type="PackedScene" uid="uid://cmix5cy8e1od7" path="res://item_slot_instance.tscn" id="4_dfr2a"]
 [ext_resource type="Resource" uid="uid://cyc3x7s70611a" path="res://resources/ItemCoin.tres" id="5_rl6xj"]
@@ -16,9 +17,22 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_0xo7i")
 script = ExtResource("1_apk53")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="BackgroundPainting" type="TextureRect" parent="."]
+modulate = Color(0.75, 0.733125, 0.4125, 0.917647)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_0xo7i")
+expand_mode = 2
+
+[node name="BackgroundColorize" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.443137)
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -31,8 +45,6 @@ color = Color(0.152857, 0.0984095, 0.0117827, 1)
 [node name="TimeModule" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="WorldClock" type="Label" parent="TimeModule"]
 custom_minimum_size = Vector2(100, 20)
@@ -55,6 +67,8 @@ autoplay = true
 bus = &"Music"
 
 [node name="CurrencyModule" type="Control" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_direction = 2
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -66,12 +80,11 @@ script = ExtResource("3_imghw")
 
 [node name="CurrencyStack" type="VBoxContainer" parent="CurrencyModule"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -100.0
-offset_bottom = 40.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 alignment = 1
 
 [node name="CoinHeader" type="HBoxContainer" parent="CurrencyModule/CurrencyStack"]
@@ -80,12 +93,14 @@ alignment = 2
 
 [node name="CoinItem" parent="CurrencyModule/CurrencyStack/CoinHeader" instance=ExtResource("4_dfr2a")]
 layout_mode = 2
-item_data = ExtResource("5_rl6xj")
+size_flags_horizontal = 10
+tooltip_text = "Coin
+The currency of the land. 
+Used to purchase valuable goods.
 
-[node name="Coin" type="Sprite2D" parent="CurrencyModule/CurrencyStack/CoinHeader"]
-visible = false
-position = Vector2(0, 12)
-texture = ExtResource("3_08hpn")
+Value: 1
+"
+item_data = ExtResource("5_rl6xj")
 
 [node name="break" type="Control" parent="CurrencyModule/CurrencyStack/CoinHeader"]
 custom_minimum_size = Vector2(20, 0)
@@ -97,7 +112,7 @@ size_flags_vertical = 4
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
 size_flags_horizontal = 8
-text = "$$$"
+text = "Gp0 Sp0 Cp1"
 horizontal_alignment = 2
 vertical_alignment = 1
 
