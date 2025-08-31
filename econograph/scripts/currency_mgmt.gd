@@ -37,7 +37,7 @@ func set_currency(amount):
 	silver = str(currency.get('silver'))
 	copper = str(currency.get('copper'))
 	
-	$CurrencyStack/CoinHeader/Counter.text = 'Gp'+gold+' Sp'+silver+' Cp'+copper
+	$CurrencyStack/CoinHeader/Counter.text = 'Gp'+gold#+' Sp'+silver+' Cp'+copper
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
