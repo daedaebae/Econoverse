@@ -1,0 +1,58 @@
+[
+  {
+	"id": 1,
+	"start_price": 1.00,
+	"name_full": "Gold",
+	"name_abbreviated": "Gerld!",
+	"description": "The currency of the land. Used to purchase valuable goods.",
+	"texture": ""
+  },
+  {
+	"id": 2,
+	"start_price":  1.00,
+	"name_full": "Lumber",
+	"name_abbreviated": "Wood",
+	"description": "Raw, unprocessed lumber used for construction and industry.",
+	"texture": ""
+  },
+  {
+	"id": 3,
+	"start_price": 1.00,
+	"name_full": "Stone",
+	"name_abbreviated": "Rock",
+	"description": "Raw, unprocessed stone used for construction and industry.",
+	"texture": ""
+  },
+  {
+	"id": 4,
+	"start_price": 1.00,
+	"name_full": "Alcohol",
+	"name_abbreviated": "Whiskey",
+	"description": "A low viscocity solvent used as a painkiller, cleaning and sterilizing agent, and most notably, liquid courage.",
+	"texture": ""
+  },
+  {
+	"id": 5,
+	"start_price": 1.00,
+	"name_full": "Horses",
+	"name_abbreviated": "Naynays",
+	"description": "A blue crystalline solid used in medicine and other industries.",
+	"texture": ""
+  },
+	{
+	"id": 6,
+	"start_price": 1.00,
+	"name_full": "Corn",
+	"name_abbreviated": "Carn",
+	"description": "A sweet, yellow, starchy seed know for its many industrial applications and thus in some cultures, its fungibility.",
+	"texture": ""
+  },
+  {
+	"id": 7,
+	"start_price": 1.00,
+	"name_full": "Boots",
+	"name_abbreviated": "Footgloves",
+	"description": "L-shaped leather protectants for your widdle toesies. Dont' ferget to earl 'em up!",
+	"texture": ""
+  }
+]

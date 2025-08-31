@@ -1,3 +1,5 @@
+# TODO: move worldclock.gd off of main node and call it from main.gd
+
 extends Control
 
 var meridian = 'am'

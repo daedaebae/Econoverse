@@ -27,7 +27,7 @@ func convert_copper_to_currency(copper: int) -> Dictionary:
 		"copper": copper_final
 	}
 	
-# Set wallet values after converting from copper and display each as string.
+# Set coin values after converting from copper and display each as string.
 func set_currency(amount):
 	var gold = 0
 	var silver = 0
@@ -37,10 +37,10 @@ func set_currency(amount):
 	silver = str(currency.get('silver'))
 	copper = str(currency.get('copper'))
 	
-	$CurrencyStack/CoinHeader/Counter.text = 'Gp'+gold#+' Sp'+silver+' Cp'+copper
+	#$CurrencyStack/CoinHeader/Counter.text = 'Gp'+gold+' Sp'+silver+' Cp'+copper
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# TODO: Set this to a variable defined by currency generating events.
-	set_currency(1)
+	#set_currency(0)
 	pass
