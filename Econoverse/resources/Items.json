@@ -54,5 +54,27 @@
 	"name_abbreviated": "Footgloves",
 	"description": "L-shaped leather protectants for your widdle toesies. Dont' ferget to earl 'em up!",
 	"texture": ""
+  },
+    {
+	"id": 8,
+	"start_price": 1.00,
+	"name_full": "Ore",
+	"name_abbreviated": "Metal",
+	"description": "Types of raw and processed ores within the lands.",
+	"texture": ""
+  },  {
+	"id": 9,
+	"start_price": 1.00,
+	"name_full": "Textiles",
+	"name_abbreviated": "Cloth",
+	"description": "Different types of textiles used throught the land.",
+	"texture": ""
+  },  {
+	"id": 10,
+	"start_price": 1.00,
+	"name_full": "Gemstones",
+	"name_abbreviated": "Shiny-Rocks",
+	"description": "Raw and processed stones mined and sold throughout the land.",
+	"texture": ""
   }
 ]
