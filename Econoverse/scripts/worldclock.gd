@@ -7,11 +7,12 @@ var clock_hours = 1
 var clock_mins = 0
 var day = 1
 var dialogue = preload("res://scripts/dialogue.gd")
+var resource = load("res://assets/dialogue/intro.dialogue")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# TODO: move this to call_dialogue function
-	var resource = load("res://assets/dialogue/intro.dialogue")
 	var dialogue_line = await DialogueManager.get_next_dialogue_line(resource, "start")
 	DialogueManager.show_dialogue_balloon(resource, "start")
 	dialogue_line = await DialogueManager.get_next_dialogue_line(resource, dialogue_line.next_id)
