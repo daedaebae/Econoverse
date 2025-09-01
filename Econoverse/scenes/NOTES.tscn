@@ -1,0 +1,84 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8fg1ulosvcar"]
+
+[ext_resource type="Texture2D" uid="uid://3gkx1penpm4a" path="res://assets/image/sprites/coin.png" id="1_8vlpi"]
+
+[node name="Notes" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(8000, 6000)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.191
+anchor_top = -0.152
+anchor_right = 0.951
+anchor_bottom = 1.137
+offset_left = 220.032
+offset_top = 98.496
+offset_right = 56.448
+offset_bottom = -88.7761
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Whatever you want" type="Node" parent="."]
+
+[node name="Coin2" type="Sprite2D" parent="."]
+modulate = Color(0.0129662, 0.0129662, 0.0129662, 1)
+position = Vector2(544, 267)
+scale = Vector2(84.8125, 79.7363)
+texture = ExtResource("1_8vlpi")
+
+[node name="Coin" type="Sprite2D" parent="."]
+modulate = Color(0.0232228, 0.134177, 0.187575, 0.0392157)
+position = Vector2(607, 142)
+scale = Vector2(59.8828, 56.5879)
+texture = ExtResource("1_8vlpi")
+
+[node name="Coin3" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.0431373)
+position = Vector2(-247, 931)
+scale = Vector2(31.25, 31.25)
+texture = ExtResource("1_8vlpi")
+
+[node name="FlowContainer" type="FlowContainer" parent="."]
+top_level = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 58.0
+offset_right = -334.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="FlowContainer"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+text = "
+08/29; establishing reusable resource and item slot node for user interface design, swapped this view for reverse choronological! New at the top now :) - kc
+
+08/25; Spent some time reading on the WorldClock functions and how to build out a Player class. Ultimately made a few changes and a commit. See git log. -dm
+
+8/22; Consider adding a game manager etc that enables the start/stop/fast forward of time. This would allow for control of the game state. Give the player an opportunity to read, pause and walk away, or move on to the next event more rapidly/experiment.
+Additionally, to help graphically represent this idea, can implement simple sun/moon cycle that gives the player information at a glance for how quickly time is moving.  -kc
+
+8/21/25; I guess this works, still want a little note-making scene that's quick to use. There is a #TODO tag you can use within godot scripts, but I don't know how to review the todo lines. -kc
+
+08/30/25; 
+    The model and the 'nobodywho' addon files were too large to commit to github so if you want to install 'nobodywho' addon from AssetLib, 
+    download this gguf model filefrom huggingface, put it in the resources folder, then attach it to the -dm"
+scroll_following = true
+context_menu_enabled = true
+selection_enabled = true

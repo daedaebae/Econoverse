@@ -1,0 +1,174 @@
+[gd_scene load_steps=9 format=3 uid="uid://qdn2ymj50ymd"]
+
+[ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/ThemeEconographMain.tres" id="1_0xo7i"]
+[ext_resource type="Script" uid="uid://b6s6qj2wlkhdh" path="res://scripts/worldclock.gd" id="1_apk53"]
+[ext_resource type="AudioStream" uid="uid://dxwfy8a7tlt24" path="res://assets/audio/music/Echoes of Time.mp3" id="2_08hpn"]
+[ext_resource type="Texture2D" uid="uid://cuqxnx6glh2hy" path="res://assets/image/background/190959_00002_.png" id="3_0xo7i"]
+[ext_resource type="Script" uid="uid://8qibux0n07d8" path="res://scripts/currency_mgmt.gd" id="3_imghw"]
+[ext_resource type="PackedScene" uid="uid://cmix5cy8e1od7" path="res://item_slot_instance.tscn" id="4_dfr2a"]
+[ext_resource type="Resource" uid="uid://cyc3x7s70611a" path="res://resources/ItemCoin.tres" id="5_rl6xj"]
+[ext_resource type="Script" uid="uid://hrps11687k2t" path="res://scripts/dialogue.gd" id="8_ligcy"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_0xo7i")
+script = ExtResource("1_apk53")
+
+[node name="BackgroundPainting" type="TextureRect" parent="."]
+modulate = Color(0.75, 0.733125, 0.4125, 0.917647)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_0xo7i")
+expand_mode = 2
+
+[node name="BackgroundColorize" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.443137)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.00136)
+color = Color(0.152857, 0.0984095, 0.0117827, 1)
+
+[node name="TimeModule" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="WorldClock" type="Label" parent="TimeModule"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 1
+offset_left = 55.0
+offset_top = 10.0
+offset_right = 155.0
+offset_bottom = 33.0
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="TimeModule"]
+wait_time = 0.75
+autostart = true
+
+[node name="MusicLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_08hpn")
+autoplay = true
+bus = &"Music"
+
+[node name="CurrencyModule" type="Control" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+script = ExtResource("3_imghw")
+
+[node name="CurrencyStack" type="VBoxContainer" parent="CurrencyModule"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="CoinHeader" type="HBoxContainer" parent="CurrencyModule/CurrencyStack"]
+layout_mode = 2
+alignment = 2
+
+[node name="CoinItem" parent="CurrencyModule/CurrencyStack/CoinHeader" instance=ExtResource("4_dfr2a")]
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "Coin
+The currency of the land. 
+Used to purchase valuable goods.
+
+Value: 1
+"
+item_data = ExtResource("5_rl6xj")
+
+[node name="break" type="Control" parent="CurrencyModule/CurrencyStack/CoinHeader"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Counter" type="Label" parent="CurrencyModule/CurrencyStack/CoinHeader"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="QuestModule" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="DialogueModule" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="DialogueNinePatchRect" type="NinePatchRect" parent="DialogueModule"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.998066, 1)
+script = ExtResource("8_ligcy")
+
+[node name="TypeTimer" type="Timer" parent="DialogueModule/DialogueNinePatchRect"]
+wait_time = 0.4
+
+[node name="DialogueVBox" type="VBoxContainer" parent="DialogueModule/DialogueNinePatchRect"]
+visible = false
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 354.0
+
+[node name="DialogueScroll" type="RichTextLabel" parent="DialogueModule/DialogueNinePatchRect/DialogueVBox"]
+visible = false
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+bbcode_enabled = true
+text = "[color=#ff0000]Hello, merchant![/color] [wave]I see you're here to sell some good![/wave] Well,  [rainbow]best [/rainbow] get to [shake rate=20 level=10] Sellin'![/shake]"
+fit_content = true
+scroll_following = true
+
+[node name="TextIn" type="TextEdit" parent="DialogueModule/DialogueNinePatchRect/DialogueVBox"]
+visible = false
+custom_minimum_size = Vector2(800, 50)
+layout_mode = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DialogueModule/DialogueNinePatchRect"]
+scale = Vector2(1.00194, 1)
+
+[connection signal="timeout" from="TimeModule/Timer" to="." method="on_timer_timeout"]
+[connection signal="timeout" from="DialogueModule/DialogueNinePatchRect/TypeTimer" to="DialogueModule/DialogueNinePatchRect" method="_on_type_timer_timeout"]
