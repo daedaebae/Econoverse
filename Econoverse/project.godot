@@ -17,7 +17,7 @@ boot_splash/bg_color=Color(0.18, 0.08616, 0.0144, 0.941176)
 boot_splash/fullsize=false
 boot_splash/use_filter=false
 boot_splash/image="uid://3gkx1penpm4a"
-config/icon="res://icon.svg"
+config/icon="uid://3gkx1penpm4a"
 
 [autoload]
 
