@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://qdn2ymj50ymd"]
+[gd_scene load_steps=12 format=3 uid="uid://qdn2ymj50ymd"]
 
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/ThemeEconographMain.tres" id="1_0xo7i"]
 [ext_resource type="Script" uid="uid://b6s6qj2wlkhdh" path="res://scripts/worldclock.gd" id="1_apk53"]
@@ -6,8 +6,17 @@
 [ext_resource type="Texture2D" uid="uid://cuqxnx6glh2hy" path="res://assets/image/background/190959_00002_.png" id="3_0xo7i"]
 [ext_resource type="Script" uid="uid://8qibux0n07d8" path="res://scripts/currency_mgmt.gd" id="3_imghw"]
 [ext_resource type="PackedScene" uid="uid://cmix5cy8e1od7" path="res://item_slot_instance.tscn" id="4_dfr2a"]
+[ext_resource type="AudioStream" uid="uid://fo0aycia6tky" path="res://assets/audio/music/Lush Echoes.mp3" id="4_ligcy"]
 [ext_resource type="Resource" uid="uid://cyc3x7s70611a" path="res://resources/ItemCoin.tres" id="5_rl6xj"]
+[ext_resource type="AudioStream" uid="uid://dk84bwd8fdxvl" path="res://assets/audio/music/Chill in the Grove remix v1.2.mp3" id="6_jgwaj"]
 [ext_resource type="Script" uid="uid://hrps11687k2t" path="res://scripts/dialogue.gd" id="8_ligcy"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_re03l"]
+streams_count = 3
+stream_0/stream = ExtResource("4_ligcy")
+stream_0/weight = 2.0
+stream_1/stream = ExtResource("2_08hpn")
+stream_2/stream = ExtResource("6_jgwaj")
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -23,6 +32,7 @@ script = ExtResource("1_apk53")
 
 [node name="BackgroundPainting" type="TextureRect" parent="."]
 modulate = Color(0.75, 0.733125, 0.4125, 0.917647)
+z_index = -2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,6 +44,7 @@ expand_mode = 2
 
 [node name="BackgroundColorize" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0.443137)
+z_index = -1
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -64,11 +75,13 @@ wait_time = 0.75
 autostart = true
 
 [node name="MusicLoop" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_08hpn")
+stream = SubResource("AudioStreamRandomizer_re03l")
+volume_db = 2.0
 autoplay = true
 bus = &"Music"
 
 [node name="CurrencyModule" type="Control" parent="."]
+z_index = -1
 custom_minimum_size = Vector2(300, 0)
 layout_direction = 2
 layout_mode = 1
@@ -102,6 +115,7 @@ Used to purchase valuable goods.
 
 Value: 1
 "
+mouse_default_cursor_shape = 16
 item_data = ExtResource("5_rl6xj")
 
 [node name="break" type="Control" parent="CurrencyModule/CurrencyStack/CoinHeader"]
@@ -130,20 +144,17 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="DialogueModule" type="Control" parent="."]
+visible = false
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -50.0
-offset_top = -100.0
-offset_right = 50.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 
 [node name="DialogueNinePatchRect" type="NinePatchRect" parent="DialogueModule"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -179,8 +190,6 @@ theme = ExtResource("1_0xo7i")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DialogueModule/DialogueNinePatchRect"]
 scale = Vector2(1.00194, 1)
-
-[node name="Node2D" type="Node2D" parent="."]
 
 [connection signal="timeout" from="TimeModule/Timer" to="." method="on_timer_timeout"]
 [connection signal="timeout" from="DialogueModule/DialogueNinePatchRect/TypeTimer" to="DialogueModule/DialogueNinePatchRect" method="_on_type_timer_timeout"]
