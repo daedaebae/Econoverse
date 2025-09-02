@@ -1,3 +1,5 @@
+# kc 09/02/25 - Try Print to test/track within console. This way you have one truth of the values, and you don't have the overhead of ensuring the UI is set up correctly and troubleshooting that too.
+
 # TODO: Inventory class could be the parent used to generate a player/NPC's 
 #		Inventory object and then rendered by the Inventory Node. That object 
 #		contains item_slot objects that hold item objects (or we could just have

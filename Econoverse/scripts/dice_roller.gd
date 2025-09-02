@@ -1,3 +1,6 @@
+# kc -- you could have helper scripts on autoload, 
+# then any script universally should be able to call your funcs.
+
 # TODO: Consider deleting this script and just adding this function to main.
 extends Node
 
