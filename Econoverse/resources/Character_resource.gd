@@ -15,16 +15,16 @@ extends Resource
 
 # Optional: Add a method to reset the character's stats
 func reset():
-    influence = 0
-    fluency = 5
-    diplomacy = 0
-    negotiation = 0
-    #disposition = 5
+	influence = 0
+	fluency = 5
+	diplomacy = 0
+	negotiation = 0
+	#disposition = 5
 
 # TODO: Fix methods to calculate derived values
 func get_char_attr(attr) -> int:
-    attr = 0
-    return attr
+	attr = 0
+	return attr
 
 # TODO: a function to roll the character objects stats on creation.
 # func roll_stats() -> array:

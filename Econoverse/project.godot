@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Econoverse"
 run/main_scene="uid://qdn2ymj50ymd"
-config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(0.18, 0.08616, 0.0144, 0.941176)
 boot_splash/fullsize=false
 boot_splash/use_filter=false
@@ -28,8 +28,7 @@ Globals="*res://scripts/GLOBALS.gd"
 [dialogue_manager]
 
 editor/wrap_long_lines=true
-runtime/balloon_path="res://resources/Balloon.tscn"
-runtime/advanced/uses_dotnet=true
+runtime/balloon_path="res://resources/balloon.tscn"
 
 [display]
 
