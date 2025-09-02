@@ -1,8 +1,8 @@
-class_name Character extends Node2d
+class_name Character extends Node2D
 
 # Character attributes (e.g., gender, role, race)
 @export var gender: Array[String] = ["Male", "Female", "Other"]
-@export var profession: Array[String] = ["Culinary", "Miller", "Mason", "Smith", "Jewler", "Carpenter", "Tanner", "Brewer", "Stable-Master"]
+@export var profession: Array[String] = ["Baker", "Miller", "Mason", "Smith", "Jewler", "Carpenter", "Tanner", "Brewer", "Stable-Master"]
 @export var race: Array[String] = ["Human", "Dwarf", "Gnome", "Elf", "Orc", "Dragonborn"]
 
 # Exported variables for the character's stats

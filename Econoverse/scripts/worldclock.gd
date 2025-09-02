@@ -3,7 +3,7 @@
 extends Control
 
 var meridian = 'am'
-var clock_hours = 1
+var clock_hours = 5
 var clock_mins = 0
 var day = 1
 var dialogue = preload("res://scripts/dialogue.gd")

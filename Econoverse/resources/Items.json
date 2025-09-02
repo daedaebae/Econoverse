@@ -39,7 +39,7 @@
 	"description": "A blue crystalline solid used in medicine and other industries.",
 	"texture": ""
   },
-	{
+  {
 	"id": 6,
 	"start_price": 1.00,
 	"name_full": "Corn",
@@ -55,26 +55,52 @@
 	"description": "L-shaped leather protectants for your widdle toesies. Dont' ferget to earl 'em up!",
 	"texture": ""
   },
-    {
+  {
 	"id": 8,
 	"start_price": 1.00,
 	"name_full": "Ore",
 	"name_abbreviated": "Metal",
 	"description": "Types of raw and processed ores within the lands.",
 	"texture": ""
-  },  {
+  },
+  {
 	"id": 9,
 	"start_price": 1.00,
 	"name_full": "Textiles",
 	"name_abbreviated": "Cloth",
 	"description": "Different types of textiles used throught the land.",
 	"texture": ""
-  },  {
+  },
+  {
 	"id": 10,
 	"start_price": 1.00,
 	"name_full": "Gemstones",
-	"name_abbreviated": "Shiny-Rocks",
+	"name_abbreviated": "Gems",
 	"description": "Raw and processed stones mined and sold throughout the land.",
+	"texture": ""
+  },
+  {
+	"id": 11,
+	"start_price": 1.00,
+	"name_full": "Baked-goods",
+	"name_abbreviated": "Food",
+	"description": "Cooked foods and cooking ingredients sold throughout the land.",
+	"texture": ""
+  },
+  {
+	"id": 12,
+	"start_price": 1.00,
+	"name_full": "Grains",
+	"name_abbreviated": "Grain",
+	"description": "Raw and processed stones mined and sold throughout the land.",
+	"texture": ""
+  },
+  {
+	"id": 13,
+	"start_price": 1.00,
+	"name_full": "???",
+	"name_abbreviated": "???",
+	"description": "???",
 	"texture": ""
   }
 ]

@@ -170,5 +170,7 @@ layout_mode = 2
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DialogueModule/DialogueNinePatchRect"]
 scale = Vector2(1.00194, 1)
 
+[node name="Node2D" type="Node2D" parent="."]
+
 [connection signal="timeout" from="TimeModule/Timer" to="." method="on_timer_timeout"]
 [connection signal="timeout" from="DialogueModule/DialogueNinePatchRect/TypeTimer" to="DialogueModule/DialogueNinePatchRect" method="_on_type_timer_timeout"]
