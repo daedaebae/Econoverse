@@ -22,12 +22,13 @@ config/icon="res://icon.svg"
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-Main="res://scripts/main.gd"
+Main="*res://scripts/main.gd"
 Globals="*res://scripts/GLOBALS.gd"
 
 [dialogue_manager]
 
 editor/wrap_long_lines=true
+runtime/balloon_path="res://resources/Balloon.tscn"
 runtime/advanced/uses_dotnet=true
 
 [display]
