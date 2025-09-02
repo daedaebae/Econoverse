@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8fg1ulosvcar"]
+[gd_scene load_steps=5 format=3 uid="uid://c8fg1ulosvcar"]
 
 [ext_resource type="Texture2D" uid="uid://3gkx1penpm4a" path="res://assets/image/sprites/coin.png" id="1_8vlpi"]
+[ext_resource type="Texture2D" uid="uid://by6kxwvc8oyxi" path="res://assets/image/sprites/horse.png" id="2_ebccb"]
+[ext_resource type="Texture2D" uid="uid://dkt5jtxoyo0as" path="res://assets/image/sprites/boots.png" id="3_ndml6"]
+[ext_resource type="Texture2D" uid="uid://4lxiha4p2rag" path="res://assets/image/sprites/lumber.png" id="4_hn76n"]
 
 [node name="Notes" type="Control"]
 layout_mode = 3
@@ -48,28 +51,32 @@ position = Vector2(-247, 931)
 scale = Vector2(31.25, 31.25)
 texture = ExtResource("1_8vlpi")
 
-[node name="FlowContainer" type="FlowContainer" parent="."]
+[node name="FlowContainer" type="HFlowContainer" parent="."]
 top_level = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 23.0
-offset_top = 58.0
-offset_right = -334.0
+offset_top = 49.0
+offset_right = -728.0
 offset_bottom = 156.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="FlowContainer"]
-custom_minimum_size = Vector2(500, 500)
+custom_minimum_size = Vector2(500, 1500)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 2
-text = "
+bbcode_enabled = true
+text = "09/02 (late);
+	Front of mind for me: A game settings menu for display, audio, and maybe FONT choice. I'll need plenty of time to focus on the full user interface after that. 
+	Maybe Thursday is a good opportunity for us to mood board together, celebrate a little, and look forward to next steps! -kc
+
 09/01;
     I need to get the characters generated next and attempt to assign values (including coins) so we can begin work on designing and
-    testing a bartering loop.  
+    testing a bartering loop.  -dm
 
 08/30; 
     The model and the 'nobodywho' addon files were too large to commit to github so if you want to install 'nobodywho' addon from AssetLib, 
@@ -84,6 +91,23 @@ Additionally, to help graphically represent this idea, can implement simple sun/
 
 8/21/25; I guess this works, still want a little note-making scene that's quick to use. There is a #TODO tag you can use within godot scripts, but I don't know how to review the todo lines. -kc
 "
-scroll_following = true
+scroll_active = false
 context_menu_enabled = true
 selection_enabled = true
+
+[node name="Horse" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.290196)
+position = Vector2(549, 66)
+rotation = 0.293968
+scale = Vector2(6.6875, 3.09375)
+texture = ExtResource("2_ebccb")
+
+[node name="Boots" type="Sprite2D" parent="."]
+position = Vector2(-58, 539)
+texture = ExtResource("3_ndml6")
+
+[node name="Lumber" type="Sprite2D" parent="."]
+modulate = Color(0.05, 0.05, 0.05, 0.831373)
+position = Vector2(890, 360)
+scale = Vector2(23.5302, 23.5302)
+texture = ExtResource("4_hn76n")
