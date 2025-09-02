@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Econograph"
+config/name="Econoverse"
 run/main_scene="uid://qdn2ymj50ymd"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+Main="res://scripts/main.gd"
 
 [dialogue_manager]
 

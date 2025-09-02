@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://r4jwpdvgodd5"]
+
+[ext_resource type="Script" uid="uid://dunrq58boiw0e" path="res://scripts/Character.gd" id="1_qyqqv"]
+
+[node name="Characters" type="Node2D"]
+
+[node name="Baker" type="Node2D" parent="."]
+script = ExtResource("1_qyqqv")
+gender = Array[String](["Male"])
+profession = Array[String](["Baker"])
+race = Array[String](["Human"])
+influence = 5
+fluency = 5
+diplomacy = 5
+negotiation = 5
+metadata/_custom_type_script = "uid://dunrq58boiw0e"
+
+[node name="Smith" type="Node2D" parent="."]
+script = ExtResource("1_qyqqv")
+profession = Array[String](["Smith"])
+metadata/_custom_type_script = "uid://dunrq58boiw0e"
+
+[node name="Tanner" type="Node2D" parent="."]
+script = ExtResource("1_qyqqv")
+profession = Array[String](["Tanner"])
+metadata/_custom_type_script = "uid://dunrq58boiw0e"
+
+[node name="Stablemaster" type="Node2D" parent="."]
+script = ExtResource("1_qyqqv")
+profession = Array[String](["Stablemaster"])
+metadata/_custom_type_script = "uid://dunrq58boiw0e"
+
+[node name="Brewer" type="Node2D" parent="."]
+script = ExtResource("1_qyqqv")
+profession = Array[String](["Brewer"])
+metadata/_custom_type_script = "uid://dunrq58boiw0e"
+
+[node name="Mason" type="Node2D" parent="."]
+script = ExtResource("1_qyqqv")
+profession = Array[String](["Mason"])
+metadata/_custom_type_script = "uid://dunrq58boiw0e"
+
+[node name="Miller" type="Node2D" parent="."]
+script = ExtResource("1_qyqqv")
+profession = Array[String](["Miller"])
+metadata/_custom_type_script = "uid://dunrq58boiw0e"
+
+[node name="Jewler" type="Node2D" parent="."]
+script = ExtResource("1_qyqqv")
+profession = Array[String](["Jewler"])
+metadata/_custom_type_script = "uid://dunrq58boiw0e"
+
+[node name="Carpenter" type="Node2D" parent="."]
+script = ExtResource("1_qyqqv")
+profession = Array[String](["Carpenter"])
+metadata/_custom_type_script = "uid://dunrq58boiw0e"
+
+[node name="Player" type="Node2D" parent="."]
+script = ExtResource("1_qyqqv")
+metadata/_custom_type_script = "uid://dunrq58boiw0e"

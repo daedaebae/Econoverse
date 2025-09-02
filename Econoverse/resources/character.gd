@@ -1,9 +1,10 @@
-class_name Character extends Resource
+extends Resource
+#class_name Character 
 
 # Character attributes (e.g., gender, role, race)
 @export var gender: Array[String] = ["Male", "Female", "Other"]
-@export var profession: Array[String] = ["Culinary", "Miller", "Mason", "Smith", "Jewler", "Carpenter", "Tanner", "Brewer", "Stable-Master"]
-@export var race: Array[String] = ["Human", "Dwarf", "Gnome", "Elf", "Orc", "Dragonborn"]
+@export var profession: Array[String] = ["Baker", "Miller", "Mason", "Smith", "Jewler", "Carpenter", "Tanner", "Brewer", "Stable-Master"]
+@export var race: Array[String] = ["Human", "Dwarf", "Gnome", "Elf", "Orc", "Dragonborn"] #you know who asked for Dragonborn to be added here ʕ·͡ᴥ·ʔ
 
 # Exported variables for the character's stats
 @export var influence: int = 0
@@ -24,3 +25,8 @@ func reset():
 func get_char_attr(attr) -> int:
     attr = 0
     return attr
+
+# TODO: a function to roll the character objects stats on creation.
+# func roll_stats() -> array:
+#     var stats = roll_dice(4,10)
+#     pass  

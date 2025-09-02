@@ -67,6 +67,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 2
 text = "
+09/01;
+    I need to get the characters generated next and attempt to assign values (including coins) so we can begin work on designing and
+    testing a bartering loop.  
+
+08/30; 
+    The model and the 'nobodywho' addon files were too large to commit to github so if you want to install 'nobodywho' addon from AssetLib, 
+    download this gguf model filefrom huggingface, put it in the resources folder, then attach it to the -dm
+
 08/29; establishing reusable resource and item slot node for user interface design, swapped this view for reverse choronological! New at the top now :) - kc
 
 08/25; Spent some time reading on the WorldClock functions and how to build out a Player class. Ultimately made a few changes and a commit. See git log. -dm
@@ -75,10 +83,7 @@ text = "
 Additionally, to help graphically represent this idea, can implement simple sun/moon cycle that gives the player information at a glance for how quickly time is moving.  -kc
 
 8/21/25; I guess this works, still want a little note-making scene that's quick to use. There is a #TODO tag you can use within godot scripts, but I don't know how to review the todo lines. -kc
-
-08/30/25; 
-    The model and the 'nobodywho' addon files were too large to commit to github so if you want to install 'nobodywho' addon from AssetLib, 
-    download this gguf model filefrom huggingface, put it in the resources folder, then attach it to the -dm"
+"
 scroll_following = true
 context_menu_enabled = true
 selection_enabled = true
