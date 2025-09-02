@@ -16,6 +16,7 @@ class_name Inventory
 # TODO: need getters and setters?
 var _content:Array[Item]: []
 
+
 func add_item(item:Item):
 	_content.append(item)
 
@@ -24,3 +25,10 @@ func remove_item(item:Item):
 
 func get_item(item:Item):
 	return _content
+
+# # Getters and Setters
+# func set_content(new_content:Array[Item]):
+# 	_content = new_content
+
+# func get_content() -> Array[Item]:
+# 	return _content

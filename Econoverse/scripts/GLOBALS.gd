@@ -1,5 +1,10 @@
 ## kc 09/02/25 - I got rambly here -- trying to feel out the overall design! Writing this as ideation, since we're getting to a point that each system has data ready to be passed around. I'm sure I missed something. 
-
+## durf 09/02/25 - 	Love rambly, this is very useful. When we meet 09/04 need to
+##					talk more about how we can use GLOBALS. It looks like you 
+##					were planning to use it the same way I was planning to use 
+##					main.gd. I had the idea to us the Inventory class to as a
+##					blueprint to show each character's Inventory. That may not
+##					be the best way but it made sense when I wrote it ¯\_(ツ)_/¯
 
 extends Node
 

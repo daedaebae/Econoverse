@@ -146,15 +146,15 @@ grow_vertical = 0
 [node name="DialogueModule" type="Control" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 
 [node name="DialogueNinePatchRect" type="NinePatchRect" parent="DialogueModule"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -168,13 +168,11 @@ script = ExtResource("8_ligcy")
 wait_time = 0.4
 
 [node name="DialogueVBox" type="VBoxContainer" parent="DialogueModule/DialogueNinePatchRect"]
-visible = false
 layout_mode = 0
 offset_right = 800.0
 offset_bottom = 354.0
 
 [node name="DialogueScroll" type="RichTextLabel" parent="DialogueModule/DialogueNinePatchRect/DialogueVBox"]
-visible = false
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 bbcode_enabled = true
@@ -183,7 +181,6 @@ fit_content = true
 scroll_following = true
 
 [node name="TextIn" type="TextEdit" parent="DialogueModule/DialogueNinePatchRect/DialogueVBox"]
-visible = false
 custom_minimum_size = Vector2(800, 50)
 layout_mode = 2
 theme = ExtResource("1_0xo7i")

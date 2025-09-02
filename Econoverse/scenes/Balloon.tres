@@ -1,0 +1,4 @@
+[gd_resource type="Theme" format=3 uid="uid://16e04l7bvpke"]
+
+[resource]
+/colors/sepia = Color(0.505882, 0.356863, 0.0980392, 0.890196)

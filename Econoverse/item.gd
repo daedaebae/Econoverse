@@ -14,7 +14,6 @@ class_name Item
 enum Rarity { COMMON , UNCOMMON , RARE }
 @export var rarity : Rarity = Rarity.COMMON
 
-
 # Decide later if we want to classify items or not, feels broad scope to work in the logic
 ### enum ItemType { farm , clothes , ??? }
 
