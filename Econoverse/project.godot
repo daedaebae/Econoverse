@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Econoverse"
 run/main_scene="uid://qdn2ymj50ymd"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 boot_splash/bg_color=Color(0.18, 0.08616, 0.0144, 0.941176)
 boot_splash/fullsize=false
 boot_splash/use_filter=false
@@ -29,12 +29,14 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 editor/wrap_long_lines=true
 runtime/balloon_path="res://resources/balloon.tscn"
+runtime/advanced/uses_dotnet=true
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/stretch/scale=2.5
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [dotnet]
 
