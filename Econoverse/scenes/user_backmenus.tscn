@@ -1,0 +1,153 @@
+[gd_scene load_steps=3 format=3 uid="uid://14o27b0vk1yx"]
+
+[ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/ThemeEconographMain.tres" id="1_ijeyw"]
+[ext_resource type="Script" uid="uid://fskswk5chrci" path="res://scenes/menu_options.gd" id="2_f0x44"]
+
+[node name="UserBackmenus" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_f0x44")
+
+[node name="MenuPaused" type="Control" parent="."]
+process_mode = 2
+custom_minimum_size = Vector2(350, 700)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 765.0
+offset_top = 170.0
+offset_right = 1115.0
+offset_bottom = 870.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_ijeyw")
+
+[node name="ColorRect" type="ColorRect" parent="MenuPaused"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.839216)
+
+[node name="MasterStack" type="VBoxContainer" parent="MenuPaused"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UpperHBox" type="HBoxContainer" parent="MenuPaused/MasterStack"]
+layout_mode = 2
+
+[node name="LabelPaused" type="Label" parent="MenuPaused/MasterStack/UpperHBox"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 52
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="MidVBox" type="VBoxContainer" parent="MenuPaused/MasterStack"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 50
+
+[node name="break" type="Control" parent="MenuPaused/MasterStack/MidVBox"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="ButtonContinue" type="Button" parent="MenuPaused/MasterStack/MidVBox"]
+layout_mode = 2
+action_mode = 0
+text = "Continue"
+
+[node name="ButtonOptions" type="Button" parent="MenuPaused/MasterStack/MidVBox"]
+layout_mode = 2
+text = "Options"
+
+[node name="ButtonQuit" type="Button" parent="MenuPaused/MasterStack/MidVBox"]
+layout_mode = 2
+text = "Quit"
+
+[node name="MenuOptions" type="Control" parent="."]
+process_mode = 2
+visible = false
+custom_minimum_size = Vector2(350, 700)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 765.0
+offset_top = 170.0
+offset_right = 1115.0
+offset_bottom = 870.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_ijeyw")
+
+[node name="ColorRect" type="ColorRect" parent="MenuOptions"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.839216)
+
+[node name="MasterStack" type="VBoxContainer" parent="MenuOptions"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UpperHBox" type="HBoxContainer" parent="MenuOptions/MasterStack"]
+layout_mode = 2
+
+[node name="LabelPaused" type="Label" parent="MenuOptions/MasterStack/UpperHBox"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 52
+text = "Options"
+horizontal_alignment = 1
+
+[node name="MidVBox" type="VBoxContainer" parent="MenuOptions/MasterStack"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 50
+
+[node name="break" type="Control" parent="MenuOptions/MasterStack/MidVBox"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuOptions/MasterStack/MidVBox"]
+layout_mode = 2
+text = "to be implemented!"
+
+[node name="ButtonBack" type="Button" parent="MenuOptions/MasterStack/MidVBox"]
+layout_mode = 2
+text = "Back
+"
+
+[connection signal="pressed" from="MenuPaused/MasterStack/MidVBox/ButtonContinue" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="MenuPaused/MasterStack/MidVBox/ButtonOptions" to="." method="_on_button_options_pressed"]
+[connection signal="pressed" from="MenuPaused/MasterStack/MidVBox/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="MenuOptions/MasterStack/MidVBox/ButtonBack" to="." method="_on_button_back_pressed"]
