@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcriq28jpuwnj"]
+[gd_scene load_steps=5 format=3 uid="uid://b877ler4mln1n"]
 
 [ext_resource type="Script" uid="uid://5b3w40kwakl3" path="res://godot_dialogue_manager-1c259aa0ef3859c1fa865c2a746dbf292a72748a/addons/dialogue_manager/example_balloon/ExampleBalloon.cs" id="1_3r1ia"]
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/ThemeEconographMain.tres" id="2_6ukt2"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_6uh3n"]
 
 [node name="ExampleBalloon" type="CanvasLayer"]
-layer = 50
+layer = 2
 script = ExtResource("1_3r1ia")
 
 [node name="Balloon" type="Control" parent="."]
@@ -21,6 +21,7 @@ mouse_filter = 1
 theme = ExtResource("2_6ukt2")
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon"]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -35,20 +36,23 @@ grow_vertical = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="Balloon/MarginContainer"]
 clip_children = 2
+custom_minimum_size = Vector2(800, 300)
 layout_mode = 2
 mouse_filter = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/PanelContainer"]
+custom_minimum_size = Vector2(500, 200)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(1000, 250)
 layout_mode = 2
 
 [node name="CharacterLabel" type="RichTextLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
-theme_override_font_sizes/normal_font_size = 14
+theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
 text = "Character"
 fit_content = true
@@ -59,12 +63,11 @@ tab_size = 8
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/normal_font_size = 22
 text = "Dialogue..."
 
 [node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, -50)
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -83,9 +86,11 @@ response_template = NodePath("ResponseExample")
 [node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 24
 text = "Response example"
 alignment = 0
+icon_alignment = 1
+expand_icon = true
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
