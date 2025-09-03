@@ -21,9 +21,9 @@ config/icon="uid://3gkx1penpm4a"
 
 [autoload]
 
-DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Main="*res://scripts/main.gd"
 Globals="*res://scripts/GLOBALS.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [dialogue_manager]
 

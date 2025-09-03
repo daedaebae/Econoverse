@@ -15,8 +15,118 @@ var player_name : String = ""
 # func set_player_name(String):
 	# would be called with LineEdit node to handle player input and set global.player_name
 
+#var commodities : Dictionary = {
+	#au = {
+		#"id": 1,
+		#"start_price": 1.00,
+		#"name_full": "Gold",
+		#"name_abbreviated": "Au",
+		#"description": "The currency of the land. Used to purchase valuable goods.",
+		#"texture": "",
+		#"world_supply": 1000
+	#},
+	#wood = {
+		#"id": 2,
+		#"start_price":  1.00,
+		#"name_full": "Lumber",
+		#"name_abbreviated": "Wood",
+		#"description": "Raw, unprocessed lumber used for construction and industry.",
+		#"texture": "",
+		#"world_supply": 1000
+	#},
+	#stone = {
+		#"id": 3,
+		#"start_price": 1.00,
+		#"name_full": "Rock",
+		#"name_abbreviated": "Stone",
+		#"description": "Raw, unprocessed stone used for construction and industry.",
+		#"texture": "",
+		#"world_supply": 1000
+	#},
+	#whiskeh = {
+		#"id": 4,
+		#"start_price": 1.00,
+		#"name_full": "Alcohol",
+		#"name_abbreviated": "Whiskeh",
+		#"description": "A low viscocity solvent used as a painkiller, cleaning and sterilizing agent, and most notably, liquid courage.",
+		#"texture": "",
+		#"world_supply": 1000
+	#},
+	#nay = {
+		#"id": 5,
+		#"start_price": 1.00,
+		#"name_full": "Horses",
+		#"name_abbreviated": "Nay",
+		#"description": "A blue crystalline solid used in medicine and other industries.",
+		#"texture": "",
+		#"world_supply": 1000
+	#},
+	#corn = {
+		#"id": 6,
+		#"start_price": 1.00,
+		#"name_full": "Corn",
+		#"name_abbreviated": "Corn",
+		#"description": "A sweet, yellow, starchy seed know for its many industrial applications and thus in some cultures, its fungibility.",
+		#"texture": "",
+		#"world_supply": 1000
+	#},
+	#boots = {
+		#"id": 7,
+		#"start_price": 1.00,
+		#"name_full": "Boots",
+		#"name_abbreviated": "Boots",
+		#"description": "L-shaped leather protectants for your widdle toesies. Dont' ferget to earl 'em up!",
+		#"texture": "",
+		#"world_supply": 1000
+	#},
+	#ore = {
+		#"id": 8,
+		#"start_price": 1.00,
+		#"name_full": "Metals",
+		#"name_abbreviated": "Ore",
+		#"description": "Types of raw and processed ores within the lands.",
+		#"texture": "",
+		#"world_supply": 1000
+	#},
+	#cloth = {
+		#"id": 9,
+		#"start_price": 1.00,
+		#"name_full": "Textiles",
+		#"name_abbreviated": "Cloth",
+		#"description": "Different types of textiles used throught the land.",
+		#"texture": "",
+		#"world_supply": 1000
+	#},
+	#gems = {
+		#"id": 10,
+		#"start_price": 1.00,
+		#"name_full": "Gemstones",
+		#"name_abbreviated": "Gems",
+		#"description": "Raw and processed stones mined and sold throughout the land.",
+		#"texture": "",
+		#"world_supply": 1000
+	#},
+	#food = {
+		#"id": 11,
+		#"start_price": 1.00,
+		#"name_full": "Baked-goods",
+		#"name_abbreviated": "Food",
+		#"description": "Cooked foods and cooking ingredients sold throughout the land.",
+		#"texture": "",
+		#"world_supply": 1000
+	#},
+	#grain = {
+		#"id": 12,
+		#"start_price": 1.00,
+		#"name_full": "Grains",
+		#"name_abbreviated": "Grain",
+		#"description": "Raw and processed stones mined and sold throughout the land.",
+		#"texture": "",
+		#"world_supply": 1000
+	#}
+#}
 
-var player_inventory : Dictionary 
+var player_inventory : Dictionary
 # Could get/set this as needed for bartering/events. Will need functions use the global.player_currency variable. Just noticed you were working on a script separate for this, would work well separately!
 
 
