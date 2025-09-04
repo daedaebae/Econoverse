@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b877ler4mln1n"]
+[gd_scene load_steps=5 format=3 uid="uid://bcriq28jpuwnj"]
 
 [ext_resource type="Script" uid="uid://5b3w40kwakl3" path="res://godot_dialogue_manager-1c259aa0ef3859c1fa865c2a746dbf292a72748a/addons/dialogue_manager/example_balloon/ExampleBalloon.cs" id="1_3r1ia"]
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/ThemeEconographMain.tres" id="2_6ukt2"]

@@ -3,7 +3,7 @@
 	"id": 1,
 	"start_price": 1.00,
 	"name_full": "Gold",
-	"name_abbreviated": "Gerld!",
+	"name_abbreviated": "Gold",
 	"description": "The currency of the land. Used to purchase valuable goods.",
 	"texture": ""
   },
@@ -35,7 +35,7 @@
 	"id": 5,
 	"start_price": 1.00,
 	"name_full": "Horses",
-	"name_abbreviated": "Naynays",
+	"name_abbreviated": "Horses",
 	"description": "A blue crystalline solid used in medicine and other industries.",
 	"texture": ""
   },
@@ -43,7 +43,7 @@
 	"id": 6,
 	"start_price": 1.00,
 	"name_full": "Corn",
-	"name_abbreviated": "Carn",
+	"name_abbreviated": "Corn",
 	"description": "A sweet, yellow, starchy seed know for its many industrial applications and thus in some cultures, its fungibility.",
 	"texture": ""
   },
@@ -51,7 +51,7 @@
 	"id": 7,
 	"start_price": 1.00,
 	"name_full": "Boots",
-	"name_abbreviated": "Footgloves",
+	"name_abbreviated": "Boots",
 	"description": "L-shaped leather protectants for your widdle toesies. Dont' ferget to earl 'em up!",
 	"texture": ""
   },

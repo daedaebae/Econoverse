@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://qdn2ymj50ymd"]
+[gd_scene load_steps=14 format=3 uid="uid://qdn2ymj50ymd"]
 
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/ThemeEconographMain.tres" id="1_0xo7i"]
 [ext_resource type="Script" uid="uid://b6s6qj2wlkhdh" path="res://scripts/worldclock.gd" id="1_apk53"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://dk84bwd8fdxvl" path="res://assets/audio/music/Chill in the Grove remix v1.2.mp3" id="6_jgwaj"]
 [ext_resource type="Script" uid="uid://hrps11687k2t" path="res://scripts/dialogue.gd" id="8_ligcy"]
 [ext_resource type="PackedScene" uid="uid://14o27b0vk1yx" path="res://scenes/user_backmenus.tscn" id="11_aim73"]
+[ext_resource type="PackedScene" uid="uid://cdmvr0vyon0et" path="res://scenes/inventory_menu.tscn" id="12_xvofe"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_re03l"]
 streams_count = 3
@@ -204,6 +205,8 @@ layer = 100
 process_priority = -10
 z_index = 4096
 z_as_relative = false
+
+[node name="Inventory" parent="TopLayer" instance=ExtResource("12_xvofe")]
 
 [connection signal="timeout" from="TimeModule/Timer" to="." method="on_timer_timeout"]
 [connection signal="timeout" from="DialogueModule/DialogueNinePatchRect/TypeTimer" to="DialogueModule/DialogueNinePatchRect" method="_on_type_timer_timeout"]

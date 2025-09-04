@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
 
-[node name="ExampleBalloon" type="CanvasLayer"]
+[node name="ExampleBalloon2" type="CanvasLayer"]
 process_mode = 1
 layer = 2
 script = ExtResource("1_36de5")
