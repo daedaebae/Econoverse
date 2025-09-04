@@ -75,3 +75,10 @@ Finally, the Economic Incentives sub-graph highlights the incentives for tax col
 
 ## Goals
 	**1. Event times generate rewards/consequences
+
+
+## Quest Ideas
+	* Johnny Jump Up
+	* You got stones, lad!
+	* We spendin' most our lives livin in a Miller's Paradise...
+	* The blade in the riverbed
