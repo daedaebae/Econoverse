@@ -5,6 +5,7 @@ extends Resource
 @export var gender: Array[String] = ["Male", "Female", "Other"]
 @export var profession: Array[String] = ["Baker", "Miller", "Mason", "Smith", "Jewler", "Carpenter", "Tanner", "Brewer", "Stable-Master"]
 @export var race: Array[String] = ["Human", "Dwarf", "Gnome", "Elf", "Orc", "Dragonborn"] #you know who asked for Dragonborn to be added here ʕ·͡ᴥ·ʔ
+@expirt var inventory:
 
 # Exported variables for the character's stats
 @export var influence: int = 0

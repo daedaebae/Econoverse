@@ -8,7 +8,6 @@
 script = ExtResource("1_qyqqv")
 gender = Array[String](["Male"])
 profession = Array[String](["Baker"])
-race = Array[String](["Human"])
 influence = 5
 fluency = 5
 diplomacy = 5
@@ -17,26 +16,31 @@ metadata/_custom_type_script = "uid://dunrq58boiw0e"
 
 [node name="Smith" type="Node2D" parent="."]
 script = ExtResource("1_qyqqv")
+gender = Array[String](["Male"])
 profession = Array[String](["Smith"])
 metadata/_custom_type_script = "uid://dunrq58boiw0e"
 
 [node name="Tanner" type="Node2D" parent="."]
 script = ExtResource("1_qyqqv")
+gender = Array[String](["Female"])
 profession = Array[String](["Tanner"])
 metadata/_custom_type_script = "uid://dunrq58boiw0e"
 
 [node name="Stablemaster" type="Node2D" parent="."]
 script = ExtResource("1_qyqqv")
+gender = Array[String](["Female"])
 profession = Array[String](["Stablemaster"])
 metadata/_custom_type_script = "uid://dunrq58boiw0e"
 
 [node name="Brewer" type="Node2D" parent="."]
 script = ExtResource("1_qyqqv")
+gender = Array[String](["Female"])
 profession = Array[String](["Brewer"])
 metadata/_custom_type_script = "uid://dunrq58boiw0e"
 
 [node name="Mason" type="Node2D" parent="."]
 script = ExtResource("1_qyqqv")
+gender = Array[String](["Male"])
 profession = Array[String](["Mason"])
 metadata/_custom_type_script = "uid://dunrq58boiw0e"
 
@@ -52,6 +56,7 @@ metadata/_custom_type_script = "uid://dunrq58boiw0e"
 
 [node name="Carpenter" type="Node2D" parent="."]
 script = ExtResource("1_qyqqv")
+gender = Array[String](["Other"])
 profession = Array[String](["Carpenter"])
 metadata/_custom_type_script = "uid://dunrq58boiw0e"
 
