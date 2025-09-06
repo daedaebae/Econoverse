@@ -13,19 +13,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _input(event):
-	if Input.is_action_just_pressed("exit"):
-		if menu_paused.visible:
-			#TODO tween fade-out alpha for menu.
-			menu_paused.hide()
-			get_tree().paused = false
-		elif menu_options.visible:
-			#TODO tween fade-out alpha for menu.
-			menu_options.hide()
-			menu_paused.show()
-		else:
-			#TODO tween fade-in alpha for menu. 
-			menu_paused.show()
-			get_tree().paused = true
+	pass
 
 func _on_button_continue_pressed() -> void:
 	menu_paused.hide()

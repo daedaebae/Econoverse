@@ -28,14 +28,6 @@ func _ready() -> void:
 	world_map.hide()
 
 func _input(event):
-	if Input.is_action_just_pressed("Map"):
-		if world_map.visible:
-			#TODO tween fade-out alpha for menu.
-			world_map.hide()
-			get_tree().paused = false
-		else:
-			#TODO tween fade-in alpha for menu. 
-			world_map.show()
-			get_tree().paused = true
-
+	# kc 9/6/25 moved to MAIN script.
+	pass
 #endregion

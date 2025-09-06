@@ -11,10 +11,15 @@ var dialogue = preload("res://scripts/dialogue.gd")
 var currency = preload("res://scripts/currency_mgmt.gd")
 var resource = load("res://assets/dialogue/intro.dialogue")
 var states = ["start", "stop"]
-
+@export var TopLayer: CanvasLayer
+@export var menu_paused: Control
+@export var menu_options: Control
+@export var world_map: Control
+@export var commodities_menu: Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	# TODO: move all this to call_dialogue function
 	var dialogue_line = await DialogueManager.get_next_dialogue_line(resource, 
 	"start")
@@ -24,8 +29,79 @@ func _ready() -> void:
 		"res://scenes/Balloon.tscn", resource, "start"
 	)
 	#dialogue.call_dialogue()
-	pass
 
+func _input(event):
+	# kc 9/6/2025 moved all visibility scripts here to elevate and 
+	# ensure canvas layer is hidden if game isn't paused. 
+	# Additionally, these operators need to compare each other since they share 
+	# the same canvas layer and Z Index. Could solve this later, but quick and 
+	# easy to do this way.
+	#TODO kc 9/6/25 tween fade-in and out alpha for menus.
+	#TODO kc 9/6/25 designate textures or shader for menu consistency. Could set modulate funcs locally to scenes for variety. 
+	#region TopLayer Menus
+		# kc 9/6 added to ensure canvas layer is hidden if game isn't paused.
+	if get_tree().paused == false:
+		TopLayer.hide() 
+		
+	if Input.is_action_just_pressed("exit"):
+		# Enable TopLayer and pause if not already TopLayer
+		if !TopLayer.visible:
+			TopLayer.show()
+			menu_paused.show()
+			get_tree().paused = true
+		# Close pause menu if visible
+		elif menu_paused.visible:
+			menu_paused.hide()
+			TopLayer.hide()
+			get_tree().paused = false
+		# Close world map if visible
+		elif world_map.visible:
+			print("Map closed - exit key pressed")
+			world_map.hide()
+			TopLayer.hide()
+			get_tree().paused = false
+		# Close commod menu if visible
+		elif commodities_menu.visible:
+			print("Commodities closed - exit key pressed")
+			commodities_menu.hide()
+			TopLayer.hide()
+			get_tree().paused = false
+		# Go back to pause menu if options menu visible
+		elif menu_options.visible:
+			menu_options.hide()
+			menu_paused.show()
+		else:
+			TopLayer.show()
+			menu_paused.show()
+			get_tree().paused = true
+			
+	if Input.is_action_just_pressed("Map"):
+		if menu_paused.visible or menu_options.visible:
+			print("Map not shown - options or paused visible")
+			return
+		elif !TopLayer.visible:
+			TopLayer.show()
+			world_map.show()
+			get_tree().paused = true
+		elif world_map.visible:
+			world_map.hide()
+			TopLayer.hide()
+			get_tree().paused = false
+			
+	if Input.is_action_just_pressed("commods"):
+		if menu_paused.visible or menu_options.visible:
+			print("Map not shown - options or paused visible")
+			return
+		elif !TopLayer.visible:
+			TopLayer.show()
+			commodities_menu.show()
+			get_tree().paused = true
+		elif commodities_menu.visible:
+			commodities_menu.hide()
+			TopLayer.hide()
+			get_tree().paused = false
+	#endregion
+	
 func on_timer_timeout():
 	clock_mins += 1
 	

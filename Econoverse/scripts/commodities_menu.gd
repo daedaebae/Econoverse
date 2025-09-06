@@ -10,12 +10,5 @@ func _ready() -> void:
 	commodities_menu.hide()
 
 func _input(event):
-	if Input.is_action_just_pressed("commods"):
-		if commodities_menu.visible:
-			#TODO tween fade-out alpha for menu.
-			commodities_menu.hide()
-			get_tree().paused = false
-		else:
-			#TODO tween fade-in alpha for menu. 
-			commodities_menu.show()
-			get_tree().paused = true
+	#kc 9/6/25 moved to MAIN script
+	pass
