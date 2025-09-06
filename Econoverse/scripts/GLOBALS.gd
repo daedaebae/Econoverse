@@ -8,7 +8,7 @@
 
 extends Node
 
-var player_name : String = "" 
+var player_name : String = ""
 #User input to determine this. Consider randomizer with funny preset names (stretch feature).
 # var player_name_presets : String = ""
 

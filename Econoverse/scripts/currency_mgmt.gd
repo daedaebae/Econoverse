@@ -8,6 +8,7 @@ var item_coin = preload("res://resources/ItemCoin.tres")
 func _ready() -> void:
 	var coin_container = coin_header.get_children()[0] 
 	coin_container.set_item(item_coin)
+	$CurrencyStack/CoinHeader/Counter.text = str(set_currency(1000000))
 
 # Currency converter
 func convert_copper_to_currency(copper: int) -> Dictionary:
@@ -28,7 +29,7 @@ func convert_copper_to_currency(copper: int) -> Dictionary:
 	}
 	
 # Set coin values after converting from copper and display each as string.
-func set_currency(amount):
+func set_currency(amount: int) -> String:
 	var gold = 0
 	var silver = 0
 	var copper = amount
@@ -36,9 +37,11 @@ func set_currency(amount):
 	gold = str(currency.get('gold'))
 	silver = str(currency.get('silver'))
 	copper = str(currency.get('copper'))
+	return gold
+	
 	
 	#$CurrencyStack/CoinHeader/Counter.text = 'Gp'+gold+' Sp'+silver+' Cp'+copper
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# TODO: Set this to a variable defined by currency generating events.

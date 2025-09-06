@@ -1,0 +1,423 @@
+[gd_scene load_steps=10 format=3 uid="uid://c8bry8aingweb"]
+
+[ext_resource type="Script" uid="uid://dmc3rfcy6cm7n" path="res://scripts/commodities_menu.gd" id="1_c5m0e"]
+[ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/ThemeEconographMain.tres" id="2_iyma5"]
+[ext_resource type="Texture2D" uid="uid://3gkx1penpm4a" path="res://assets/image/sprites/coin.png" id="3_fxfia"]
+[ext_resource type="Texture2D" uid="uid://4lxiha4p2rag" path="res://assets/image/sprites/lumber.png" id="4_x154v"]
+[ext_resource type="Texture2D" uid="uid://crbb8cdg7etee" path="res://assets/image/sprites/stone.png" id="5_05b82"]
+[ext_resource type="Texture2D" uid="uid://h1ntsc3eevmr" path="res://assets/image/sprites/alcohol.png" id="6_ecbrb"]
+[ext_resource type="Texture2D" uid="uid://by6kxwvc8oyxi" path="res://assets/image/sprites/horse.png" id="7_at6f7"]
+[ext_resource type="Texture2D" uid="uid://bprbvkm65k0g3" path="res://assets/image/sprites/corn.png" id="8_w5s3h"]
+[ext_resource type="Texture2D" uid="uid://dkt5jtxoyo0as" path="res://assets/image/sprites/boots.png" id="9_yjfmw"]
+
+[node name="commodities_menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c5m0e")
+
+[node name="CommoditiesMenu" type="Control" parent="."]
+process_mode = 2
+custom_minimum_size = Vector2(350, 700)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -350.0
+offset_right = 175.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_iyma5")
+
+[node name="ColorRect" type="ColorRect" parent="CommoditiesMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -615.0
+offset_top = -39.0
+offset_right = 632.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.839216)
+
+[node name="MasterStack" type="VBoxContainer" parent="CommoditiesMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.75714
+anchor_top = -0.123571
+anchor_right = 2.80571
+anchor_bottom = 1.15071
+offset_top = 43.5
+offset_bottom = -43.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="UpperHBox" type="HBoxContainer" parent="CommoditiesMenu/MasterStack"]
+layout_mode = 2
+
+[node name="LabelCommod" type="Label" parent="CommoditiesMenu/MasterStack/UpperHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 52
+text = "Commodities"
+horizontal_alignment = 1
+
+[node name="break" type="Control" parent="CommoditiesMenu/MasterStack"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="CommoditiesMenu/MasterStack"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 5
+
+[node name="CommodRows" type="VBoxContainer" parent="CommoditiesMenu/MasterStack/GridContainer"]
+layout_mode = 2
+
+[node name="ButtonQuit5" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Commodity"
+
+[node name="ButtonContinue" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows"]
+layout_mode = 2
+size_flags_horizontal = 0
+action_mode = 0
+text = "Gold"
+icon = ExtResource("3_fxfia")
+
+[node name="ButtonOptions" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Wood"
+icon = ExtResource("4_x154v")
+
+[node name="ButtonQuit" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Rock"
+icon = ExtResource("5_05b82")
+
+[node name="ButtonContinue2" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows"]
+layout_mode = 2
+size_flags_horizontal = 0
+action_mode = 0
+text = "Whiskey"
+icon = ExtResource("6_ecbrb")
+
+[node name="ButtonOptions2" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Horses"
+icon = ExtResource("7_at6f7")
+
+[node name="ButtonQuit2" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Corn"
+icon = ExtResource("8_w5s3h")
+
+[node name="ButtonContinue3" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows"]
+layout_mode = 2
+size_flags_horizontal = 0
+action_mode = 0
+text = "Boots"
+icon = ExtResource("9_yjfmw")
+
+[node name="ButtonOptions3" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Metal"
+
+[node name="ButtonContinue4" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows"]
+layout_mode = 2
+size_flags_horizontal = 0
+action_mode = 0
+text = "Cloth"
+
+[node name="ButtonOptions4" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Gems"
+
+[node name="ButtonQuit4" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Grain"
+
+[node name="CommodRows3" type="VBoxContainer" parent="CommoditiesMenu/MasterStack/GridContainer"]
+layout_mode = 2
+
+[node name="ButtonQuit5" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows3"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "---"
+
+[node name="CommodRows5" type="VBoxContainer" parent="CommoditiesMenu/MasterStack/GridContainer"]
+layout_mode = 2
+
+[node name="ButtonContinue" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows5"]
+layout_mode = 2
+size_flags_horizontal = 0
+action_mode = 0
+text = "Count"
+
+[node name="ButtonOptions" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows5"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ButtonQuit" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows5"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "5"
+
+[node name="ButtonContinue2" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows5"]
+layout_mode = 2
+size_flags_horizontal = 0
+action_mode = 0
+text = "10"
+
+[node name="ButtonOptions2" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows5"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "1"
+
+[node name="ButtonQuit2" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows5"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "10"
+
+[node name="ButtonContinue3" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows5"]
+layout_mode = 2
+size_flags_horizontal = 0
+action_mode = 0
+text = "999"
+
+[node name="ButtonOptions3" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows5"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "2"
+
+[node name="ButtonQuit3" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows5"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "77"
+
+[node name="ButtonContinue4" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows5"]
+layout_mode = 2
+size_flags_horizontal = 0
+action_mode = 0
+text = "?"
+
+[node name="ButtonOptions4" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows5"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "?"
+
+[node name="ButtonQuit5" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows5"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "?"
+
+[node name="ButtonQuit4" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows5"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "?"
+
+[node name="CommodRows2" type="VBoxContainer" parent="CommoditiesMenu/MasterStack/GridContainer"]
+layout_mode = 2
+
+[node name="ButtonContinue" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows2"]
+layout_mode = 2
+size_flags_horizontal = 0
+action_mode = 0
+text = "Value (per 1)"
+
+[node name="ButtonOptions" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows2"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ButtonQuit" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows2"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "100"
+
+[node name="ButtonContinue2" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows2"]
+layout_mode = 2
+size_flags_horizontal = 0
+action_mode = 0
+text = "10"
+
+[node name="ButtonOptions2" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows2"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "1"
+
+[node name="ButtonQuit2" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows2"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "10"
+
+[node name="ButtonContinue3" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows2"]
+layout_mode = 2
+size_flags_horizontal = 0
+action_mode = 0
+text = "999"
+
+[node name="ButtonOptions3" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows2"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "2"
+
+[node name="ButtonQuit3" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows2"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "77"
+
+[node name="ButtonContinue4" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows2"]
+layout_mode = 2
+size_flags_horizontal = 0
+action_mode = 0
+text = "?"
+
+[node name="ButtonOptions4" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows2"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "?"
+
+[node name="ButtonQuit5" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows2"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "?"
+
+[node name="ButtonQuit4" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows2"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "?"
+
+[node name="CommodRows4" type="VBoxContainer" parent="CommoditiesMenu/MasterStack/GridContainer"]
+layout_mode = 2
+
+[node name="ButtonContinue" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows4"]
+layout_mode = 2
+size_flags_horizontal = 0
+action_mode = 0
+text = "Original Value"
+
+[node name="ButtonOptions" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows4"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ButtonQuit" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows4"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "1"
+
+[node name="ButtonContinue2" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows4"]
+layout_mode = 2
+size_flags_horizontal = 0
+action_mode = 0
+text = "2"
+
+[node name="ButtonOptions2" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows4"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "8"
+
+[node name="ButtonQuit2" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows4"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "10"
+
+[node name="ButtonContinue3" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows4"]
+layout_mode = 2
+size_flags_horizontal = 0
+action_mode = 0
+text = "9"
+
+[node name="ButtonOptions3" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows4"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "2"
+
+[node name="ButtonQuit3" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows4"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "77"
+
+[node name="ButtonContinue4" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows4"]
+layout_mode = 2
+size_flags_horizontal = 0
+action_mode = 0
+text = "?"
+
+[node name="ButtonOptions4" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows4"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "?"
+
+[node name="ButtonQuit5" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows4"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "?"
+
+[node name="ButtonQuit4" type="Button" parent="CommoditiesMenu/MasterStack/GridContainer/CommodRows4"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "?"
+
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows5/ButtonOptions2" to="." method="_on_button_options_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows5/ButtonQuit2" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows5/ButtonContinue3" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows5/ButtonOptions3" to="." method="_on_button_options_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows5/ButtonQuit3" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows5/ButtonContinue4" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows5/ButtonOptions4" to="." method="_on_button_options_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows5/ButtonQuit5" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows5/ButtonQuit4" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows2/ButtonContinue" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows2/ButtonOptions" to="." method="_on_button_options_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows2/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows2/ButtonContinue2" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows2/ButtonOptions2" to="." method="_on_button_options_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows2/ButtonQuit2" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows2/ButtonContinue3" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows2/ButtonOptions3" to="." method="_on_button_options_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows2/ButtonQuit3" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows2/ButtonContinue4" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows2/ButtonOptions4" to="." method="_on_button_options_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows2/ButtonQuit5" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows2/ButtonQuit4" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows4/ButtonContinue" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows4/ButtonOptions" to="." method="_on_button_options_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows4/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows4/ButtonContinue2" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows4/ButtonOptions2" to="." method="_on_button_options_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows4/ButtonQuit2" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows4/ButtonContinue3" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows4/ButtonOptions3" to="." method="_on_button_options_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows4/ButtonQuit3" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows4/ButtonContinue4" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows4/ButtonOptions4" to="." method="_on_button_options_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows4/ButtonQuit5" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="CommoditiesMenu/MasterStack/GridContainer/CommodRows4/ButtonQuit4" to="." method="_on_button_quit_pressed"]

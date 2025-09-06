@@ -8,6 +8,7 @@ var clock_mins = 0
 var day = 1
 # TODO: used in call_dialogue function
 var dialogue = preload("res://scripts/dialogue.gd")
+var currency = preload("res://scripts/currency_mgmt.gd")
 var resource = load("res://assets/dialogue/intro.dialogue")
 var states = ["start", "stop"]
 
