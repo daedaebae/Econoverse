@@ -21,38 +21,36 @@ mouse_filter = 1
 theme = ExtResource("2_6ukt2")
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon"]
-custom_minimum_size = Vector2(350, 0)
+custom_minimum_size = Vector2(200, 30)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -100.0
-offset_right = 200.0
+offset_left = -100.0
+offset_top = -40.0
+offset_right = 100.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="Balloon/MarginContainer"]
 clip_children = 2
-custom_minimum_size = Vector2(800, 300)
 layout_mode = 2
 mouse_filter = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/PanelContainer"]
-custom_minimum_size = Vector2(500, 200)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer"]
-custom_minimum_size = Vector2(1000, 250)
 layout_mode = 2
 
 [node name="CharacterLabel" type="RichTextLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
-theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/normal_font_size = 5
 bbcode_enabled = true
 text = "Character"
 fit_content = true
@@ -63,19 +61,22 @@ tab_size = 8
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 22
 text = "Dialogue..."
 
 [node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 40.0
-offset_top = -40.0
-offset_right = 240.0
-offset_bottom = 30.0
+anchors_preset = -1
+anchor_left = 0.265
+anchor_top = 0.46
+anchor_right = 0.735
+anchor_bottom = 0.54
+offset_left = 0.109993
+offset_top = 0.0999985
+offset_right = -0.110016
+offset_bottom = -0.100006
+grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 10
@@ -85,11 +86,11 @@ response_template = NodePath("ResponseExample")
 
 [node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu"]
 layout_mode = 2
+size_flags_vertical = 3
 mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 24
-text = "Response example"
+theme_override_font_sizes/font_size = 6
+text = "Response example, really long to explain something and cause the text to roll over"
 alignment = 0
-icon_alignment = 1
 expand_icon = true
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]

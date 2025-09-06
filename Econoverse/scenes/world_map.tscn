@@ -44,6 +44,7 @@ script = ExtResource("1_u82pb")
 
 [node name="WorldMap" type="Control" parent="."]
 process_mode = 2
+visible = false
 custom_minimum_size = Vector2(350, 700)
 layout_mode = 1
 anchors_preset = 8

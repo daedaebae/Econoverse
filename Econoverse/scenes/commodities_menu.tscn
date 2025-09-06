@@ -11,34 +11,27 @@
 [ext_resource type="Texture2D" uid="uid://dkt5jtxoyo0as" path="res://assets/image/sprites/boots.png" id="9_yjfmw"]
 
 [node name="commodities_menu" type="Control"]
-process_mode = 3
+process_mode = 2
+custom_minimum_size = Vector2(706, 786)
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -273.0
+offset_right = 140.0
+offset_bottom = 273.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_c5m0e")
 
 [node name="CommoditiesMenu" type="Control" parent="."]
 process_mode = 2
-custom_minimum_size = Vector2(350, 700)
+visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -175.0
-offset_top = -350.0
-offset_right = 175.0
-offset_bottom = 350.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -49,10 +42,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -615.0
-offset_top = -39.0
-offset_right = 632.0
-offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -60,16 +49,11 @@ color = Color(0, 0, 0, 0.839216)
 
 [node name="MasterStack" type="VBoxContainer" parent="CommoditiesMenu"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = -1.75714
-anchor_top = -0.123571
-anchor_right = 2.80571
-anchor_bottom = 1.15071
-offset_top = 43.5
-offset_bottom = -43.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="UpperHBox" type="HBoxContainer" parent="CommoditiesMenu/MasterStack"]
 layout_mode = 2
@@ -89,6 +73,7 @@ layout_mode = 2
 [node name="GridContainer" type="GridContainer" parent="CommoditiesMenu/MasterStack"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 columns = 5
 
 [node name="CommodRows" type="VBoxContainer" parent="CommoditiesMenu/MasterStack/GridContainer"]
