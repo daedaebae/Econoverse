@@ -10,11 +10,12 @@ Town Guard: [[You there! | Hey you! | Oh, good morning. ]] It's quite early to b
 	%2 Well aren't you just the busy bee! Remember to keep to your own space.
 	%1 I could care less, stay in your zone!
 	%1 Really? I see no goods!
-- Fight: *Unsheath your blade...[[if CheatCodes.enabled == true]]
+- Fight: *Unsheath your blade...[if CheatCodes == true]
 	=> fight
 
 Town Guard: Wait, what's your name citizen?
-- I am {Character.Player.name}.
+# TODO: figure out why Globals vars don't work. >:-(
+- I am {{Globals.player_name}}.
 - None of your business pig! => fight
 Town Guard: Good then, stay out of trouble. =>< start
 

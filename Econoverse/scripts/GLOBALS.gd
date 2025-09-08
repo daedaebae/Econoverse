@@ -8,13 +8,15 @@
 
 extends Node
 
-var player_name : String = ""
+@onready var player_name: String = ""
 #User input to determine this. Consider randomizer with funny preset names (stretch feature).
 # var player_name_presets : String = ""
 
-# func set_player_name(String):
-	# would be called with LineEdit node to handle player input and set global.player_name
-
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+	
+#region Commodities Dict
 #var commodities : Dictionary = {
 	#au = {
 		#"id": 1,
@@ -125,10 +127,10 @@ var player_name : String = ""
 		#"world_supply": 1000
 	#}
 #}
+#endregion Commodities Dict
 
 var player_inventory : Dictionary
 # Could get/set this as needed for bartering/events. Will need functions use the global.player_currency variable. Just noticed you were working on a script separate for this, would work well separately!
-
 
 var event_schedule : Dictionary = {
 	'event_id' : 0,
@@ -139,14 +141,14 @@ var event_schedule : Dictionary = {
 #  A separate event manager script could get/set the values for the event schedule. A sort of front-desk assistant to pass around requests of NPC/Player/world events. This is not a quest manager for the player, but we could separately draw down from this schedule to create it specifically for the player. 
 # If an event goes unhandled/errors for some reason, we could also capture that more locally through the event manager as well. Godot has custom error-handling, so we could specify what we're looking for in errors, and print your own custom message to nudge us in the right direction. 
 
-
 var world_supply : Dictionary
 # A finite supply of commodities could be determined. The values here are OUTSIDE of NPC/Player inventories, to be accessed mainly by NPCs and world events. Here is a great place to consider the overall game-loop, difficulty, pacing, and growth of gameplay. Maybe special events trigger when some commodities meet a certain threshold, and this is communicated to the player, then event manager kicks off a function to resupply or diminish that commodity. 
-
 
 var world_demand : Dictionary
 # Determines overall desire for each commodity. could be adjusted by ingame events or rng-based script. Here is where you can imagine the world economy fluctuate. 
 
+
+################################################################################
 
 ## kc - Is this a good place for SOME game funcs to live as well? Those could be separated out among other scripts to be called globally, but you're really getting down to preference. In my learnings, when you get more specific and make more scripts, tracking down errors is way easier. 
 

@@ -49,7 +49,7 @@ const USE_UUID_ONLY_FOR_IDS = "editor/translations/use_uuid_only_for_ids"
 
 static var SETTINGS_CONFIGURATION = {
 	WRAP_LONG_LINES: {
-		value = false,
+		value = true,
 		type = TYPE_BOOL,
 	},
 	NEW_FILE_TEMPLATE: {
@@ -115,7 +115,7 @@ static var SETTINGS_CONFIGURATION = {
 		hint = PROPERTY_HINT_FILE,
 	},
 	STATE_AUTOLOAD_SHORTCUTS: {
-		value = [],
+		value = ["Globals"],
 		type = TYPE_PACKED_STRING_ARRAY,
 		hint = PROPERTY_HINT_TYPE_STRING,
 		hint_string = "%d:" % [TYPE_STRING],

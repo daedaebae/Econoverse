@@ -1,0 +1,30 @@
+~ start
+Blacksmith: [[Welcome! | Hello there! | Yes? ]] What can I do for you?
+- Trade: I'd like to trade.
+=> trade
+- Services: What services do you offer?
+=> services
+
+~ trade
+Blacksmith: I deal in iron...
+- Ore 
+- Horseshoes
+=>
+
+~ services
+Blacksmith: I can repair your weapons and armor...for a fee!
+- Weapons: Can you repair this?
+#=> weapons
+- Armor: Can you repair this?
+#=> armor
+
+match
+when 1
+	Nathan: It is 1.
+when > 5
+	Nathan: It is less than 5 (but not 1).
+else
+	Nathan: It was something else.
+
+
+=> END!

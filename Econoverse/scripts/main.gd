@@ -16,3 +16,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+# TODO: Location State Machine
+
+#region Location State-Machine
+enum Location {
+	
+}
+#endregion

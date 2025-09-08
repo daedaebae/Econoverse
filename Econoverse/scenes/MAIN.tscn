@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://qdn2ymj50ymd"]
+[gd_scene load_steps=17 format=3 uid="uid://qdn2ymj50ymd"]
 
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/ThemeEconographMain.tres" id="1_0xo7i"]
 [ext_resource type="Script" uid="uid://b6s6qj2wlkhdh" path="res://scripts/worldclock.gd" id="1_apk53"]
@@ -20,6 +20,10 @@ stream_0/stream = ExtResource("4_ligcy")
 stream_0/weight = 2.0
 stream_1/stream = ExtResource("2_08hpn")
 stream_2/stream = ExtResource("6_jgwaj")
+
+[sub_resource type="LabelSettings" id="LabelSettings_t5wp8"]
+
+[sub_resource type="Theme" id="Theme_t5wp8"]
 
 [node name="Main" type="Control" node_paths=PackedStringArray("TopLayer", "menu_paused", "menu_options", "world_map", "commodities_menu")]
 process_mode = 3
@@ -63,7 +67,7 @@ anchor_bottom = 1.0
 offset_left = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1, 1.00136)
+scale = Vector2(0.999542, 0.992283)
 mouse_filter = 2
 color = Color(0.152857, 0.0984095, 0.0117827, 1)
 
@@ -147,7 +151,6 @@ custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
 size_flags_horizontal = 8
 text = "100"
-horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="QuestModule" type="Control" parent="."]
@@ -218,8 +221,24 @@ z_index = 4096
 z_as_relative = false
 scale = Vector2(0.25, 0.25)
 
+[node name="MenuOptions" parent="TopLayer/UserBackmenus" index="1"]
+visible = true
+
+[node name="PlayerName" type="Label" parent="TopLayer/UserBackmenus/MenuOptions/MasterStack/MidVBox" index="2"]
+layout_mode = 2
+text = "PlayerName:"
+label_settings = SubResource("LabelSettings_t5wp8")
+
+[node name="InputName" type="LineEdit" parent="TopLayer/UserBackmenus/MenuOptions/MasterStack/MidVBox" index="3"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme = SubResource("Theme_t5wp8")
+theme_override_font_sizes/font_size = 16
+placeholder_text = "Enter your name here"
+
 [node name="WorldMap" parent="TopLayer" instance=ExtResource("12_xvofe")]
 process_priority = -8
+visible = false
 z_index = 4096
 scale = Vector2(0.25, 0.25)
 
@@ -229,6 +248,7 @@ visible = true
 [node name="commodities_menu" parent="TopLayer" instance=ExtResource("13_t5wp8")]
 process_mode = 3
 process_priority = -8
+visible = false
 z_index = 4096
 custom_minimum_size = Vector2(900, 900)
 anchors_preset = 0
@@ -249,6 +269,7 @@ visible = true
 
 [connection signal="timeout" from="TimeModule/Timer" to="." method="on_timer_timeout"]
 [connection signal="timeout" from="DialogueModule/DialogueNinePatchRect/TypeTimer" to="DialogueModule/DialogueNinePatchRect" method="_on_type_timer_timeout"]
+[connection signal="text_submitted" from="TopLayer/UserBackmenus/MenuOptions/MasterStack/MidVBox/InputName" to="TopLayer/UserBackmenus" method="_on_input_name_text_submitted"]
 
 [editable path="TopLayer/UserBackmenus"]
 [editable path="TopLayer/WorldMap"]

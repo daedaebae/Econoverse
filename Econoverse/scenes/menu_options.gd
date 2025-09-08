@@ -6,12 +6,13 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#get_tree().paused = false   #this can be controlled elsewhere.
-	
 	menu_paused.hide()
 	menu_options.hide()
-
-
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
 func _input(event):
 	pass
 
@@ -19,7 +20,6 @@ func _on_button_continue_pressed() -> void:
 	menu_paused.hide()
 	get_tree().paused = false
 	
-
 func _on_button_options_pressed() -> void:
 	menu_paused.hide()
 	menu_options.show()
@@ -30,3 +30,8 @@ func _on_button_quit_pressed() -> void:
 func _on_button_back_pressed() -> void:
 	menu_options.hide()
 	menu_paused.show()
+
+func _on_input_name_text_submitted(new_text: String) -> void:
+	Globals.set("player_name", $MenuOptions/MasterStack/MidVBox/InputName.text)
+	$MenuOptions/MasterStack/MidVBox/PlayerName.text = "PlayerName: " + str(Globals.player_name)
+	$MenuOptions/MasterStack/MidVBox/InputName.text = ""
