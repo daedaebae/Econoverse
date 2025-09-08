@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://c31240n3qs570"
+path="res://.godot/imported/stablemaster.dialogue-8334a06335f135c8f1b4686b8aab4394.tres"
+
+[deps]
+
+source_file="res://assets/dialogue/stablemaster.dialogue"
+dest_files=["res://.godot/imported/stablemaster.dialogue-8334a06335f135c8f1b4686b8aab4394.tres"]
+
+[params]
+
+defaults=true
