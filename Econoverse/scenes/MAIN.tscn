@@ -225,7 +225,7 @@ scale = Vector2(0.25, 0.25)
 visible = true
 
 [node name="MenuOptions" parent="TopLayer/UserBackmenus" index="1"]
-visible = true
+visible = false
 
 [node name="PlayerName" type="Label" parent="TopLayer/UserBackmenus/MenuOptions/MasterStack/MidVBox" index="2"]
 layout_mode = 2
@@ -244,9 +244,6 @@ process_priority = -8
 z_index = 4096
 scale = Vector2(0.25, 0.25)
 
-[node name="WorldMap" parent="TopLayer/WorldMap" index="0"]
-visible = true
-
 [node name="commodities_menu" parent="TopLayer" instance=ExtResource("13_t5wp8")]
 process_mode = 3
 process_priority = -8
@@ -264,9 +261,6 @@ grow_vertical = 1
 scale = Vector2(0.25, 0.25)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-
-[node name="CommoditiesMenu" parent="TopLayer/commodities_menu" index="0"]
-visible = true
 
 [connection signal="timeout" from="TimeModule/Timer" to="." method="on_timer_timeout"]
 [connection signal="timeout" from="DialogueModule/DialogueNinePatchRect/TypeTimer" to="DialogueModule/DialogueNinePatchRect" method="_on_type_timer_timeout"]
