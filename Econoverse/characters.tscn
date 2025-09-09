@@ -40,6 +40,7 @@ visible = false
 script = ExtResource("1_qyqqv")
 gender = Array[String](["Female"])
 profession = Array[String](["Tanner"])
+race = Array[String](["Human"])
 metadata/_custom_type_script = "uid://dunrq58boiw0e"
 
 [node name="Brewer" type="Node2D" parent="."]
@@ -47,6 +48,7 @@ visible = false
 script = ExtResource("1_qyqqv")
 gender = Array[String](["Female"])
 profession = Array[String](["Brewer"])
+race = Array[String](["Human"])
 metadata/_custom_type_script = "uid://dunrq58boiw0e"
 
 [node name="Mason" type="Node2D" parent="."]
@@ -73,4 +75,5 @@ visible = false
 script = ExtResource("1_qyqqv")
 gender = Array[String](["Other"])
 profession = Array[String](["Carpenter"])
+race = Array[String](["Human"])
 metadata/_custom_type_script = "uid://dunrq58boiw0e"
