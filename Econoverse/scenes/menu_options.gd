@@ -2,6 +2,7 @@ extends Control
 
 @onready var menu_paused: Control = $MenuPaused
 @onready var menu_options: Control = $MenuOptions
+@export var resolution_option: OptionButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,3 +36,22 @@ func _on_input_name_text_submitted(new_text: String) -> void:
 	Globals.set("player_name", $MenuOptions/MasterStack/MidVBox/InputName.text)
 	$MenuOptions/MasterStack/MidVBox/PlayerName.text = "PlayerName: " + str(Globals.player_name)
 	$MenuOptions/MasterStack/MidVBox/InputName.text = ""
+
+
+func _on_option_button_resolution_item_selected(index: int) -> void:
+ #kc 9/8/25 retrieves the resolution option button metadata 
+ #and sets the resolution override. 
+	# Get the selected resolution from the item's metadata
+	var new_resolution_vector2i = resolution_option.get_item_metadata(index)
+	DisplayServer.window_set_size(new_resolution_vector2i)
+	print("DisplayServer window size changed to:" + str(new_resolution_vector2i))
+	 
+
+func _on_check_box_fullscreen_toggled(toggled_on: bool) -> void:
+	# Check if the checkbox is checked (toggled_on is true).
+	if toggled_on:
+		# Set the window to fullscreen mode.
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		# If unchecked, set the window back to windowed mode.
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
