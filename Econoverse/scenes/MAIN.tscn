@@ -14,11 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://c8bry8aingweb" path="res://scenes/commodities_menu.tscn" id="13_t5wp8"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_re03l"]
-playback_mode = 2
 streams_count = 2
 stream_0/stream = ExtResource("4_xvofe")
 stream_1/stream = ExtResource("5_t5wp8")
-stream_1/weight = 2.0
+stream_1/weight = 3.0
 
 [node name="Main" type="Control" node_paths=PackedStringArray("TopLayer", "menu_paused", "menu_options", "world_map", "commodities_menu")]
 process_mode = 3
@@ -255,6 +254,9 @@ z_index = 4096
 z_as_relative = false
 size_flags_horizontal = 6
 size_flags_vertical = 6
+
+[node name="MenuPaused" parent="TopLayer/UserBackmenus" index="0"]
+visible = false
 
 [node name="MenuOptions" parent="TopLayer/UserBackmenus" index="1"]
 custom_minimum_size = Vector2(400, 370)

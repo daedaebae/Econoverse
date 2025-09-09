@@ -92,6 +92,10 @@ text = "Options"
 layout_mode = 2
 text = "Quit"
 
+[node name="break2" type="Control" parent="MenuPaused/MasterStack/MidVBox"]
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+
 [node name="HBoxDEBUG" type="HBoxContainer" parent="MenuPaused/MasterStack/MidVBox"]
 layout_mode = 2
 size_flags_horizontal = 4
