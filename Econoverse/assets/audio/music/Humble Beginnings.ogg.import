@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dyi3myv1qka76"
+path="res://.godot/imported/Humble Beginnings.ogg-c80dbb7437910af59c9e9941ed8e47b3.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/Humble Beginnings.ogg"
+dest_files=["res://.godot/imported/Humble Beginnings.ogg-c80dbb7437910af59c9e9941ed8e47b3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
