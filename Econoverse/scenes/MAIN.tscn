@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://qdn2ymj50ymd"]
+[gd_scene load_steps=14 format=3 uid="uid://qdn2ymj50ymd"]
 
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="1_0xo7i"]
 [ext_resource type="Script" uid="uid://b6s6qj2wlkhdh" path="res://scripts/worldclock.gd" id="1_apk53"]
@@ -14,14 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://c8bry8aingweb" path="res://scenes/commodities_menu.tscn" id="13_t5wp8"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_re03l"]
+playback_mode = 2
 streams_count = 2
 stream_0/stream = ExtResource("4_xvofe")
 stream_1/stream = ExtResource("5_t5wp8")
 stream_1/weight = 2.0
-
-[sub_resource type="LabelSettings" id="LabelSettings_t5wp8"]
-
-[sub_resource type="Theme" id="Theme_t5wp8"]
 
 [node name="Main" type="Control" node_paths=PackedStringArray("TopLayer", "menu_paused", "menu_options", "world_map", "commodities_menu")]
 process_mode = 3
@@ -89,9 +86,9 @@ autostart = true
 
 [node name="MusicLoop" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_re03l")
-volume_db = 2.0
 autoplay = true
 bus = &"Music"
+playback_type = 1
 
 [node name="MidLayer" type="CanvasLayer" parent="."]
 process_mode = 1
@@ -256,35 +253,25 @@ offset_bottom = 339.0
 process_priority = -10
 z_index = 4096
 z_as_relative = false
+size_flags_horizontal = 6
+size_flags_vertical = 6
 
 [node name="MenuOptions" parent="TopLayer/UserBackmenus" index="1"]
-visible = false
 custom_minimum_size = Vector2(400, 370)
 offset_left = -200.0
 offset_top = -185.0
 offset_right = 200.0
 offset_bottom = 185.0
-scale = Vector2(0.75, 0.75)
 
 [node name="MasterStack" parent="TopLayer/UserBackmenus/MenuOptions" index="1"]
 offset_bottom = 88.0
 alignment = 1
 
-[node name="PlayerName" type="Label" parent="TopLayer/UserBackmenus/MenuOptions/MasterStack/MidVBox" index="2"]
-layout_mode = 2
-text = "PlayerName:"
-label_settings = SubResource("LabelSettings_t5wp8")
-
-[node name="InputName" type="LineEdit" parent="TopLayer/UserBackmenus/MenuOptions/MasterStack/MidVBox" index="3"]
-custom_minimum_size = Vector2(50, 30)
-layout_mode = 2
-theme = SubResource("Theme_t5wp8")
-theme_override_font_sizes/font_size = 14
-placeholder_text = "Enter your name here"
+[node name="break" parent="TopLayer/UserBackmenus/MenuOptions/MasterStack/MidVBox" index="0"]
+custom_minimum_size = Vector2(0, 2)
 
 [connection signal="timeout" from="TimeModule/Timer" to="." method="on_timer_timeout"]
 [connection signal="timeout" from="DialogueModule/DialogueNinePatchRect/TypeTimer" to="DialogueModule/DialogueNinePatchRect" method="_on_type_timer_timeout"]
-[connection signal="text_submitted" from="TopLayer/UserBackmenus/MenuOptions/MasterStack/MidVBox/InputName" to="TopLayer/UserBackmenus" method="_on_input_name_text_submitted"]
 
 [editable path="TopLayer/WorldMap"]
 [editable path="TopLayer/commodities_menu"]
