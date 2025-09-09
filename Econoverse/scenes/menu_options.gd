@@ -3,6 +3,7 @@ extends Control
 @onready var menu_paused: Control = $MenuPaused
 @onready var menu_options: Control = $MenuOptions
 @export var resolution_option: OptionButton
+@export var player_name_debug: LineEdit
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,10 +34,10 @@ func _on_button_back_pressed() -> void:
 	menu_paused.show()
 
 func _on_input_name_text_submitted(new_text: String) -> void:
-	Globals.set("player_name", $MenuOptions/MasterStack/MidVBox/InputName.text)
-	$MenuOptions/MasterStack/MidVBox/PlayerName.text = "PlayerName: " + str(Globals.player_name)
-	$MenuOptions/MasterStack/MidVBox/InputName.text = ""
-
+	Globals.set("player_name", player_name_debug.text)
+	player_name_debug.text = "PlayerName: " + str(Globals.player_name)
+	player_name_debug.text = ""
+	print("Player name changed to: " + str(Globals.player_name))
 
 func _on_option_button_resolution_item_selected(index: int) -> void:
  #kc 9/8/25 retrieves the resolution option button metadata 

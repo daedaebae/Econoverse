@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://14o27b0vk1yx"]
+[gd_scene load_steps=5 format=3 uid="uid://14o27b0vk1yx"]
 
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="1_ijeyw"]
 [ext_resource type="Script" uid="uid://fskswk5chrci" path="res://scenes/menu_options.gd" id="2_f0x44"]
 [ext_resource type="Script" uid="uid://d0561i63jiiwv" path="res://scenes/option_button_resolution.gd" id="3_f0x44"]
 
-[node name="UserBackmenus" type="Control" node_paths=PackedStringArray("resolution_option")]
+[sub_resource type="Theme" id="Theme_f0x44"]
+
+[node name="UserBackmenus" type="Control" node_paths=PackedStringArray("resolution_option", "player_name_debug")]
 process_mode = 3
 custom_minimum_size = Vector2(200, 300)
 layout_mode = 3
@@ -17,11 +19,11 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_ijeyw")
 script = ExtResource("2_f0x44")
-resolution_option = NodePath("MenuOptions/MasterStack/MidVBox/OptionButtonResolution")
+resolution_option = NodePath("MenuOptions/MasterStack/MidVBox/HBoxGraphics/OptionButtonResolution")
+player_name_debug = NodePath("MenuPaused/MasterStack/MidVBox/HBoxDEBUG/InputName")
 
 [node name="MenuPaused" type="Control" parent="."]
 process_mode = 2
-visible = false
 custom_minimum_size = Vector2(200, 300)
 layout_mode = 1
 anchors_preset = 8
@@ -90,8 +92,27 @@ text = "Options"
 layout_mode = 2
 text = "Quit"
 
+[node name="HBoxDEBUG" type="HBoxContainer" parent="MenuPaused/MasterStack/MidVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="PlayerName" type="Label" parent="MenuPaused/MasterStack/MidVBox/HBoxDEBUG"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "PlayerName:"
+
+[node name="InputName" type="LineEdit" parent="MenuPaused/MasterStack/MidVBox/HBoxDEBUG"]
+layout_mode = 2
+theme = SubResource("Theme_f0x44")
+theme_override_font_sizes/font_size = 8
+placeholder_text = "Enter your name here"
+expand_to_text_length = true
+clear_button_enabled = true
+
 [node name="MenuOptions" type="Control" parent="."]
 process_mode = 2
+visible = false
 custom_minimum_size = Vector2(250, 350)
 layout_mode = 1
 anchors_preset = 8
@@ -118,9 +139,15 @@ color = Color(0, 0, 0, 0.839216)
 
 [node name="MasterStack" type="VBoxContainer" parent="MenuOptions"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = -134.5
+offset_right = 45.5
+offset_bottom = 134.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -144,32 +171,113 @@ size_flags_vertical = 3
 theme_override_constants/separation = 50
 
 [node name="break" type="Control" parent="MenuOptions/MasterStack/MidVBox"]
-custom_minimum_size = Vector2(0, 10)
+custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
-[node name="OptionButtonResolution" type="OptionButton" parent="MenuOptions/MasterStack/MidVBox"]
+[node name="HBoxGraphics" type="HBoxContainer" parent="MenuOptions/MasterStack/MidVBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+
+[node name="Label" type="Label" parent="MenuOptions/MasterStack/MidVBox/HBoxGraphics"]
+layout_mode = 2
+text = "Window Size:"
+
+[node name="OptionButtonResolution" type="OptionButton" parent="MenuOptions/MasterStack/MidVBox/HBoxGraphics"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
 script = ExtResource("3_f0x44")
 
-[node name="CheckBoxFullscreen" type="CheckBox" parent="MenuOptions/MasterStack/MidVBox"]
+[node name="break" type="Control" parent="MenuOptions/MasterStack/MidVBox/HBoxGraphics"]
+custom_minimum_size = Vector2(8, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "Fullscreen"
 
-[node name="Label" type="Label" parent="MenuOptions/MasterStack/MidVBox"]
-visible = false
+[node name="CheckBoxFullscreen" type="CheckBox" parent="MenuOptions/MasterStack/MidVBox/HBoxGraphics"]
 layout_mode = 2
-text = "to be implemented!"
+theme_override_font_sizes/font_size = 10
+text = "Fullscreen"
 
 [node name="ButtonBack" type="Button" parent="MenuOptions/MasterStack/MidVBox"]
 layout_mode = 2
 text = "Back
 "
 
+[node name="MenuAudio" type="Control" parent="."]
+process_mode = 2
+visible = false
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -150.0
+offset_right = 100.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="ColorRect" type="ColorRect" parent="MenuAudio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.839216)
+
+[node name="MasterStack" type="VBoxContainer" parent="MenuAudio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UpperHBox" type="HBoxContainer" parent="MenuAudio/MasterStack"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="LabelPaused" type="Label" parent="MenuAudio/MasterStack/UpperHBox"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="MidVBox" type="VBoxContainer" parent="MenuAudio/MasterStack"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
+
+[node name="break" type="Control" parent="MenuAudio/MasterStack/MidVBox"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="ButtonContinue" type="Button" parent="MenuAudio/MasterStack/MidVBox"]
+layout_mode = 2
+action_mode = 0
+text = "Continue"
+
+[node name="ButtonOptions" type="Button" parent="MenuAudio/MasterStack/MidVBox"]
+layout_mode = 2
+text = "Options"
+
+[node name="ButtonQuit" type="Button" parent="MenuAudio/MasterStack/MidVBox"]
+layout_mode = 2
+text = "Quit"
+
 [connection signal="pressed" from="MenuPaused/MasterStack/MidVBox/ButtonContinue" to="." method="_on_button_continue_pressed"]
 [connection signal="pressed" from="MenuPaused/MasterStack/MidVBox/ButtonOptions" to="." method="_on_button_options_pressed"]
 [connection signal="pressed" from="MenuPaused/MasterStack/MidVBox/ButtonQuit" to="." method="_on_button_quit_pressed"]
-[connection signal="item_selected" from="MenuOptions/MasterStack/MidVBox/OptionButtonResolution" to="." method="_on_option_button_resolution_item_selected"]
-[connection signal="toggled" from="MenuOptions/MasterStack/MidVBox/CheckBoxFullscreen" to="." method="_on_check_box_fullscreen_toggled"]
+[connection signal="text_submitted" from="MenuPaused/MasterStack/MidVBox/HBoxDEBUG/InputName" to="." method="_on_input_name_text_submitted"]
+[connection signal="item_selected" from="MenuOptions/MasterStack/MidVBox/HBoxGraphics/OptionButtonResolution" to="." method="_on_option_button_resolution_item_selected"]
+[connection signal="toggled" from="MenuOptions/MasterStack/MidVBox/HBoxGraphics/CheckBoxFullscreen" to="." method="_on_check_box_fullscreen_toggled"]
 [connection signal="pressed" from="MenuOptions/MasterStack/MidVBox/ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="pressed" from="MenuAudio/MasterStack/MidVBox/ButtonContinue" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="MenuAudio/MasterStack/MidVBox/ButtonOptions" to="." method="_on_button_options_pressed"]
+[connection signal="pressed" from="MenuAudio/MasterStack/MidVBox/ButtonQuit" to="." method="_on_button_quit_pressed"]
