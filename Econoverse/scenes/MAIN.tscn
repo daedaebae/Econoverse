@@ -1,25 +1,23 @@
-[gd_scene load_steps=17 format=3 uid="uid://qdn2ymj50ymd"]
+[gd_scene load_steps=16 format=3 uid="uid://qdn2ymj50ymd"]
 
-[ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/ThemeEconographMain.tres" id="1_0xo7i"]
+[ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="1_0xo7i"]
 [ext_resource type="Script" uid="uid://b6s6qj2wlkhdh" path="res://scripts/worldclock.gd" id="1_apk53"]
-[ext_resource type="AudioStream" uid="uid://dxwfy8a7tlt24" path="res://assets/audio/music/Echoes of Time.mp3" id="2_08hpn"]
 [ext_resource type="Texture2D" uid="uid://cuqxnx6glh2hy" path="res://assets/image/background/190959_00002_.png" id="3_0xo7i"]
 [ext_resource type="Script" uid="uid://8qibux0n07d8" path="res://scripts/currency_mgmt.gd" id="3_imghw"]
 [ext_resource type="PackedScene" uid="uid://cmix5cy8e1od7" path="res://item_slot_instance.tscn" id="4_dfr2a"]
-[ext_resource type="AudioStream" uid="uid://fo0aycia6tky" path="res://assets/audio/music/Lush Echoes.mp3" id="4_ligcy"]
+[ext_resource type="AudioStream" uid="uid://dj2hnydeoq38y" path="res://assets/audio/music/Easing Fog.ogg" id="4_xvofe"]
 [ext_resource type="Resource" uid="uid://cyc3x7s70611a" path="res://resources/ItemCoin.tres" id="5_rl6xj"]
-[ext_resource type="AudioStream" uid="uid://dk84bwd8fdxvl" path="res://assets/audio/music/Chill in the Grove remix v1.2.mp3" id="6_jgwaj"]
+[ext_resource type="AudioStream" uid="uid://dyi3myv1qka76" path="res://assets/audio/music/Humble Beginnings.ogg" id="5_t5wp8"]
 [ext_resource type="Script" uid="uid://hrps11687k2t" path="res://scripts/dialogue.gd" id="8_ligcy"]
 [ext_resource type="PackedScene" uid="uid://14o27b0vk1yx" path="res://scenes/user_backmenus.tscn" id="11_aim73"]
 [ext_resource type="PackedScene" uid="uid://cdmvr0vyon0et" path="res://scenes/world_map.tscn" id="12_xvofe"]
 [ext_resource type="PackedScene" uid="uid://c8bry8aingweb" path="res://scenes/commodities_menu.tscn" id="13_t5wp8"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_re03l"]
-streams_count = 3
-stream_0/stream = ExtResource("4_ligcy")
-stream_0/weight = 2.0
-stream_1/stream = ExtResource("2_08hpn")
-stream_2/stream = ExtResource("6_jgwaj")
+streams_count = 2
+stream_0/stream = ExtResource("4_xvofe")
+stream_1/stream = ExtResource("5_t5wp8")
+stream_1/weight = 2.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_t5wp8"]
 
@@ -260,6 +258,7 @@ z_index = 4096
 z_as_relative = false
 
 [node name="MenuOptions" parent="TopLayer/UserBackmenus" index="1"]
+visible = false
 custom_minimum_size = Vector2(400, 370)
 offset_left = -200.0
 offset_top = -185.0

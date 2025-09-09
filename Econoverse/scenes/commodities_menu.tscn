@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c8bry8aingweb"]
 
 [ext_resource type="Script" uid="uid://dmc3rfcy6cm7n" path="res://scripts/commodities_menu.gd" id="1_c5m0e"]
-[ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/ThemeEconographMain.tres" id="2_iyma5"]
+[ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="2_iyma5"]
 [ext_resource type="Texture2D" uid="uid://3gkx1penpm4a" path="res://assets/image/sprites/coin.png" id="3_fxfia"]
 [ext_resource type="Texture2D" uid="uid://4lxiha4p2rag" path="res://assets/image/sprites/lumber.png" id="4_x154v"]
 [ext_resource type="Texture2D" uid="uid://crbb8cdg7etee" path="res://assets/image/sprites/stone.png" id="5_05b82"]
