@@ -8,126 +8,10 @@
 
 extends Node
 
+#region Global vars
 @onready var player_name: String = ""
 #User input to determine this. Consider randomizer with funny preset names (stretch feature).
 # var player_name_presets : String = ""
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
-#region Commodities Dict
-#var commodities : Dictionary = {
-	#au = {
-		#"id": 1,
-		#"start_price": 1.00,
-		#"name_full": "Gold",
-		#"name_abbreviated": "Au",
-		#"description": "The currency of the land. Used to purchase valuable goods.",
-		#"texture": "",
-		#"world_supply": 1000
-	#},
-	#wood = {
-		#"id": 2,
-		#"start_price":  1.00,
-		#"name_full": "Lumber",
-		#"name_abbreviated": "Wood",
-		#"description": "Raw, unprocessed lumber used for construction and industry.",
-		#"texture": "",
-		#"world_supply": 1000
-	#},
-	#stone = {
-		#"id": 3,
-		#"start_price": 1.00,
-		#"name_full": "Rock",
-		#"name_abbreviated": "Stone",
-		#"description": "Raw, unprocessed stone used for construction and industry.",
-		#"texture": "",
-		#"world_supply": 1000
-	#},
-	#whiskeh = {
-		#"id": 4,
-		#"start_price": 1.00,
-		#"name_full": "Alcohol",
-		#"name_abbreviated": "Whiskeh",
-		#"description": "A low viscocity solvent used as a painkiller, cleaning and sterilizing agent, and most notably, liquid courage.",
-		#"texture": "",
-		#"world_supply": 1000
-	#},
-	#nay = {
-		#"id": 5,
-		#"start_price": 1.00,
-		#"name_full": "Horses",
-		#"name_abbreviated": "Nay",
-		#"description": "A blue crystalline solid used in medicine and other industries.",
-		#"texture": "",
-		#"world_supply": 1000
-	#},
-	#corn = {
-		#"id": 6,
-		#"start_price": 1.00,
-		#"name_full": "Corn",
-		#"name_abbreviated": "Corn",
-		#"description": "A sweet, yellow, starchy seed know for its many industrial applications and thus in some cultures, its fungibility.",
-		#"texture": "",
-		#"world_supply": 1000
-	#},
-	#boots = {
-		#"id": 7,
-		#"start_price": 1.00,
-		#"name_full": "Boots",
-		#"name_abbreviated": "Boots",
-		#"description": "L-shaped leather protectants for your widdle toesies. Dont' ferget to earl 'em up!",
-		#"texture": "",
-		#"world_supply": 1000
-	#},
-	#ore = {
-		#"id": 8,
-		#"start_price": 1.00,
-		#"name_full": "Metals",
-		#"name_abbreviated": "Ore",
-		#"description": "Types of raw and processed ores within the lands.",
-		#"texture": "",
-		#"world_supply": 1000
-	#},
-	#cloth = {
-		#"id": 9,
-		#"start_price": 1.00,
-		#"name_full": "Textiles",
-		#"name_abbreviated": "Cloth",
-		#"description": "Different types of textiles used throught the land.",
-		#"texture": "",
-		#"world_supply": 1000
-	#},
-	#gems = {
-		#"id": 10,
-		#"start_price": 1.00,
-		#"name_full": "Gemstones",
-		#"name_abbreviated": "Gems",
-		#"description": "Raw and processed stones mined and sold throughout the land.",
-		#"texture": "",
-		#"world_supply": 1000
-	#},
-	#food = {
-		#"id": 11,
-		#"start_price": 1.00,
-		#"name_full": "Baked-goods",
-		#"name_abbreviated": "Food",
-		#"description": "Cooked foods and cooking ingredients sold throughout the land.",
-		#"texture": "",
-		#"world_supply": 1000
-	#},
-	#grain = {
-		#"id": 12,
-		#"start_price": 1.00,
-		#"name_full": "Grains",
-		#"name_abbreviated": "Grain",
-		#"description": "Raw and processed stones mined and sold throughout the land.",
-		#"texture": "",
-		#"world_supply": 1000
-	#}
-#}
-#endregion Commodities Dict
 
 var player_inventory : Dictionary
 # Could get/set this as needed for bartering/events. Will need functions use the global.player_currency variable. Just noticed you were working on a script separate for this, would work well separately!
@@ -135,8 +19,8 @@ var player_inventory : Dictionary
 var event_schedule : Dictionary = {
 	'event_id' : 0,
 	'execute_day' : 1,
-	'execute_hour' : 1,
-	'execute_minute' : 1,
+	'execute_hour' : 11,
+	'execute_minute' : 0,
 }
 #  A separate event manager script could get/set the values for the event schedule. A sort of front-desk assistant to pass around requests of NPC/Player/world events. This is not a quest manager for the player, but we could separately draw down from this schedule to create it specifically for the player. 
 # If an event goes unhandled/errors for some reason, we could also capture that more locally through the event manager as well. Godot has custom error-handling, so we could specify what we're looking for in errors, and print your own custom message to nudge us in the right direction. 
@@ -147,6 +31,135 @@ var world_supply : Dictionary
 var world_demand : Dictionary
 # Determines overall desire for each commodity. could be adjusted by ingame events or rng-based script. Here is where you can imagine the world economy fluctuate. 
 
+#region Commodities Dict
+@export var commodities : Dictionary = {
+	au = {
+		"id": 1,
+		"start_price": 1.00,
+		"name_full": "Gold",
+		"name_abbreviated": "Au",
+		"description": "The currency of the land. Used to purchase valuable goods.",
+		"texture": "",
+		"world_supply": 1000
+	},
+	wood = {
+		"id": 2,
+		"start_price":  1.00,
+		"name_full": "Lumber",
+		"name_abbreviated": "Wood",
+		"description": "Raw, unprocessed lumber used for construction and industry.",
+		"texture": "",
+		"world_supply": 1000
+	},
+	stone = {
+		"id": 3,
+		"start_price": 1.00,
+		"name_full": "Rock",
+		"name_abbreviated": "Stone",
+		"description": "Raw, unprocessed stone used for construction and industry.",
+		"texture": "",
+		"world_supply": 1000
+	},
+	whiskeh = {
+		"id": 4,
+		"start_price": 1.00,
+		"name_full": "Alcohol",
+		"name_abbreviated": "Whiskeh",
+		"description": "A low viscocity solvent used as a painkiller, cleaning and sterilizing agent, and most notably, liquid courage.",
+		"texture": "",
+		"world_supply": 1000
+	},
+	nay = {
+		"id": 5,
+		"start_price": 1.00,
+		"name_full": "Horses",
+		"name_abbreviated": "Nay",
+		"description": "A blue crystalline solid used in medicine and other industries.",
+		"texture": "",
+		"world_supply": 1000
+	},
+	corn = {
+		"id": 6,
+		"start_price": 1.00,
+		"name_full": "Corn",
+		"name_abbreviated": "Corn",
+		"description": "A sweet, yellow, starchy seed know for its many industrial applications and thus in some cultures, its fungibility.",
+		"texture": "",
+		"world_supply": 1000
+	},
+	boots = {
+		"id": 7,
+		"start_price": 1.00,
+		"name_full": "Boots",
+		"name_abbreviated": "Boots",
+		"description": "L-shaped leather protectants for your widdle toesies. Dont' ferget to earl 'em up!",
+		"texture": "",
+		"world_supply": 1000
+	},
+	ore = {
+		"id": 8,
+		"start_price": 1.00,
+		"name_full": "Metals",
+		"name_abbreviated": "Ore",
+		"description": "Types of raw and processed ores within the lands.",
+		"texture": "",
+		"world_supply": 1000
+	},
+	cloth = {
+		"id": 9,
+		"start_price": 1.00,
+		"name_full": "Textiles",
+		"name_abbreviated": "Cloth",
+		"description": "Different types of textiles used throught the land.",
+		"texture": "",
+		"world_supply": 1000
+	},
+	gems = {
+		"id": 10,
+		"start_price": 1.00,
+		"name_full": "Gemstones",
+		"name_abbreviated": "Gems",
+		"description": "Raw and processed stones mined and sold throughout the land.",
+		"texture": "",
+		"world_supply": 1000
+	},
+	food = {
+		"id": 11,
+		"start_price": 1.00,
+		"name_full": "Baked-goods",
+		"name_abbreviated": "Food",
+		"description": "Cooked foods and cooking ingredients sold throughout the land.",
+		"texture": "",
+		"world_supply": 1000
+	},
+	grain = {
+		"id": 12,
+		"start_price": 1.00,
+		"name_full": "Grains",
+		"name_abbreviated": "Grain",
+		"description": "Raw and processed stones mined and sold throughout the land.",
+		"texture": "",
+		"world_supply": 1000
+	}
+}	
+#endregion Commodities Dict
+
+#endregion Global Vars
+
+#region Global Functions
+# TODO: Need to test this function
+var rng = RandomNumberGenerator.new()
+func roll_dice(count: int, sides: int) -> Array:
+	var results = []
+	for i in range(count):
+		results.append(rng.randi_range(1, sides))
+	return results
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+#endregion Global Functions
+	
 
 ################################################################################
 

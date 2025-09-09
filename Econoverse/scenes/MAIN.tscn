@@ -221,6 +221,9 @@ z_index = 4096
 z_as_relative = false
 scale = Vector2(0.25, 0.25)
 
+[node name="MenuPaused" parent="TopLayer/UserBackmenus" index="0"]
+visible = true
+
 [node name="MenuOptions" parent="TopLayer/UserBackmenus" index="1"]
 visible = true
 
@@ -238,7 +241,6 @@ placeholder_text = "Enter your name here"
 
 [node name="WorldMap" parent="TopLayer" instance=ExtResource("12_xvofe")]
 process_priority = -8
-visible = false
 z_index = 4096
 scale = Vector2(0.25, 0.25)
 
@@ -248,7 +250,6 @@ visible = true
 [node name="commodities_menu" parent="TopLayer" instance=ExtResource("13_t5wp8")]
 process_mode = 3
 process_priority = -8
-visible = false
 z_index = 4096
 custom_minimum_size = Vector2(900, 900)
 anchors_preset = 0

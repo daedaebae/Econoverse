@@ -1,5 +1,5 @@
 ~ start
-Blacksmith: [[Welcome! | Hello there! | Yes? ]] What can I do for you?
+Blacksmith: [[Welcome! | Hello there! |  ]] What can I do for you?
 - Trade: I'd like to trade.
 => trade
 - Services: What services do you offer?
@@ -9,7 +9,7 @@ Blacksmith: [[Welcome! | Hello there! | Yes? ]] What can I do for you?
 Blacksmith: I deal in iron...
 - Ore 
 - Horseshoes
-=>
+=> 
 
 ~ services
 Blacksmith: I can repair your weapons and armor...for a fee!
@@ -17,6 +17,7 @@ Blacksmith: I can repair your weapons and armor...for a fee!
 #=> weapons
 - Armor: Can you repair this?
 #=> armor
+=> END!
 
 match
 when 1
