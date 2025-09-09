@@ -55,19 +55,17 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_0xo7i")
-expand_mode = 2
+expand_mode = 3
 
 [node name="BackgroundColorize" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0.443137)
 z_index = -1
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.999542, 0.992283)
 mouse_filter = 2
 color = Color(0.152857, 0.0984095, 0.0117827, 1)
 
@@ -215,17 +213,63 @@ scale = Vector2(1.00194, 1)
 [node name="TopLayer" type="CanvasLayer" parent="."]
 layer = 100
 
+[node name="WorldMap" parent="TopLayer" instance=ExtResource("12_xvofe")]
+process_priority = -8
+z_index = 4096
+anchors_preset = -1
+anchor_left = 0.478
+anchor_top = 0.003
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.92001
+offset_top = -0.08
+offset_right = 1008.0
+offset_bottom = 1077.0
+scale = Vector2(0.25, 0.25)
+size_flags_horizontal = 8
+
+[node name="commodities_menu" parent="TopLayer" instance=ExtResource("13_t5wp8")]
+process_mode = 3
+process_priority = -8
+z_index = 4096
+custom_minimum_size = Vector2(900, 900)
+anchors_preset = -1
+offset_left = 104.0
+offset_top = -54.0
+offset_right = 364.0
+offset_bottom = 486.0
+scale = Vector2(0.5, 0.5)
+
+[node name="CommoditiesMenu" parent="TopLayer/commodities_menu" index="0"]
+visible = false
+
+[node name="MasterStack" parent="TopLayer/commodities_menu/CommoditiesMenu" index="1"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -274.5
+offset_top = -339.0
+offset_right = 274.5
+offset_bottom = 339.0
+
 [node name="UserBackmenus" parent="TopLayer" instance=ExtResource("11_aim73")]
 process_priority = -10
 z_index = 4096
 z_as_relative = false
-scale = Vector2(0.25, 0.25)
-
-[node name="MenuPaused" parent="TopLayer/UserBackmenus" index="0"]
-visible = true
 
 [node name="MenuOptions" parent="TopLayer/UserBackmenus" index="1"]
-visible = false
+custom_minimum_size = Vector2(400, 370)
+offset_left = -200.0
+offset_top = -185.0
+offset_right = 200.0
+offset_bottom = 185.0
+scale = Vector2(0.75, 0.75)
+
+[node name="MasterStack" parent="TopLayer/UserBackmenus/MenuOptions" index="1"]
+offset_bottom = 88.0
+alignment = 1
 
 [node name="PlayerName" type="Label" parent="TopLayer/UserBackmenus/MenuOptions/MasterStack/MidVBox" index="2"]
 layout_mode = 2
@@ -233,39 +277,16 @@ text = "PlayerName:"
 label_settings = SubResource("LabelSettings_t5wp8")
 
 [node name="InputName" type="LineEdit" parent="TopLayer/UserBackmenus/MenuOptions/MasterStack/MidVBox" index="3"]
-custom_minimum_size = Vector2(0, 30)
+custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
 theme = SubResource("Theme_t5wp8")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 14
 placeholder_text = "Enter your name here"
-
-[node name="WorldMap" parent="TopLayer" instance=ExtResource("12_xvofe")]
-process_priority = -8
-z_index = 4096
-scale = Vector2(0.25, 0.25)
-
-[node name="commodities_menu" parent="TopLayer" instance=ExtResource("13_t5wp8")]
-process_mode = 3
-process_priority = -8
-z_index = 4096
-custom_minimum_size = Vector2(900, 900)
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 900.0
-offset_bottom = 900.0
-grow_horizontal = 1
-grow_vertical = 1
-scale = Vector2(0.25, 0.25)
-size_flags_horizontal = 4
-size_flags_vertical = 4
 
 [connection signal="timeout" from="TimeModule/Timer" to="." method="on_timer_timeout"]
 [connection signal="timeout" from="DialogueModule/DialogueNinePatchRect/TypeTimer" to="DialogueModule/DialogueNinePatchRect" method="_on_type_timer_timeout"]
 [connection signal="text_submitted" from="TopLayer/UserBackmenus/MenuOptions/MasterStack/MidVBox/InputName" to="TopLayer/UserBackmenus" method="_on_input_name_text_submitted"]
 
-[editable path="TopLayer/UserBackmenus"]
 [editable path="TopLayer/WorldMap"]
 [editable path="TopLayer/commodities_menu"]
+[editable path="TopLayer/UserBackmenus"]
