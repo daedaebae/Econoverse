@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://cqgehkacyykyt"]
+
+[sub_resource type="Gradient" id="Gradient_t8l3q"]
+offsets = PackedFloat32Array(0, 0.256732)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e3jo6"]
+gradient = SubResource("Gradient_t8l3q")
+
+[sub_resource type="Gradient" id="Gradient_s8jc4"]
+offsets = PackedFloat32Array(0, 0.202873, 0.32675, 0.657092, 0.881508, 1)
+colors = PackedColorArray(0, 0.635294, 0, 0, 0.788037, 0.37563, 1.92523e-07, 1, 1, 0.733333, 0, 1, 0.86, 0.55814, 0.1634, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_la155"]
+gradient = SubResource("Gradient_s8jc4")
+
+[sub_resource type="CurveTexture" id="CurveTexture_codbf"]
+
+[sub_resource type="Curve" id="Curve_t8l3q"]
+_limits = [1.0, 78.34, 0.0, 1.0]
+_data = [Vector2(0, 3.02214), 0.0, 43.4809, 0, 0, Vector2(0.65678, 37.7466), -22.5434, -22.5434, 0, 0, Vector2(0.973729, 35.0567), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_e3jo6"]
+curve = SubResource("Curve_t8l3q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t8l3q"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(600, 300, 1)
+angle_min = -39.6
+angle_max = 14.8
+direction = Vector3(2, 0, 0)
+spread = 21.278
+initial_velocity_min = 33.91
+initial_velocity_max = 73.16
+gravity = Vector3(10, 10, 0)
+linear_accel_min = -1.26
+linear_accel_max = 0.639998
+linear_accel_curve = SubResource("CurveTexture_e3jo6")
+radial_accel_min = 7.84
+radial_accel_max = 18.84
+tangential_accel_min = -16.02
+tangential_accel_max = 36.73
+damping_min = 30.455
+damping_max = 34.379
+scale_min = 0.25
+color = Color(0.47, 0.42864, 0.0564, 0.643137)
+color_ramp = SubResource("GradientTexture1D_la155")
+color_initial_ramp = SubResource("GradientTexture1D_e3jo6")
+emission_curve = SubResource("CurveTexture_codbf")
+
+[node name="LeavesParticles" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 2000
+lifetime = 1.5
+explosiveness = 0.05
+randomness = 0.03
+fixed_fps = 60
+visibility_rect = Rect2(0, 0, 700, 400)
+trail_lifetime = 0.24
+process_material = SubResource("ParticleProcessMaterial_t8l3q")
