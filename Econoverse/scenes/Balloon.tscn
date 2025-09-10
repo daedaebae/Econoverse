@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcriq28jpuwnj"]
+[gd_scene load_steps=6 format=3 uid="uid://bcriq28jpuwnj"]
 
 [ext_resource type="Script" uid="uid://5b3w40kwakl3" path="res://addons/dialogue_manager/example_balloon/ExampleBalloon.cs" id="1_3r1ia"]
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="2_6ukt2"]
+[ext_resource type="FontFile" uid="uid://c15bkghedjxxy" path="res://assets/fonts/ModernAntiqua-Regular.ttf" id="3_6ukt2"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="3_opmx1"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_6uh3n"]
 
@@ -52,7 +53,8 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
-theme_override_font_sizes/bold_font_size = 12
+theme_override_fonts/normal_font = ExtResource("3_6ukt2")
+theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "Character"
 fit_content = true
@@ -63,7 +65,7 @@ tab_size = 8
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/normal_font_size = 12
 text = "Dialogue..."
 
 [node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" node_paths=PackedStringArray("response_template")]
@@ -91,7 +93,7 @@ response_template = NodePath("ResponseExample")
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 12
 text = "Response example, really long to explain something and cause the text to roll over"
 alignment = 0
 expand_icon = true
