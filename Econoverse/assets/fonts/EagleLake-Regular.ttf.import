@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://kpnrwfstcleb"
-path="res://.godot/imported/EagleLake-Regular.ttf-fe85c740c11b2a521ea6ac5b0d47675d.fontdata"
+path="res://.godot/imported/EagleLake-Regular.ttf-c19afdaeda06d86f30ed4fd6ae6c8931.fontdata"
 
 [deps]
 
-source_file="res://EagleLake-Regular.ttf"
-dest_files=["res://.godot/imported/EagleLake-Regular.ttf-fe85c740c11b2a521ea6ac5b0d47675d.fontdata"]
+source_file="res://assets/fonts/EagleLake-Regular.ttf"
+dest_files=["res://.godot/imported/EagleLake-Regular.ttf-c19afdaeda06d86f30ed4fd6ae6c8931.fontdata"]
 
 [params]
 
