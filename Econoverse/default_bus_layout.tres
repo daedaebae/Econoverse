@@ -1,16 +1,13 @@
-[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://02owi0r4mf8p"]
-
-[sub_resource type="AudioEffectStereoEnhance" id="AudioEffectStereoEnhance_j3pel"]
-resource_name = "StereoEnhance"
-pan_pullout = 0.3
+[gd_resource type="AudioBusLayout" load_steps=4 format=3 uid="uid://02owi0r4mf8p"]
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
 resource_name = "Reverb"
-damping = 0.08
-spread = 0.6
-hipass = 0.11
-dry = 0.8
-wet = 0.15
+room_size = 1.0
+damping = 0.05
+spread = 0.5
+hipass = 0.6
+dry = 0.75
+wet = 0.2
 
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_j3pel"]
 resource_name = "Compressor"
@@ -21,8 +18,6 @@ mix = 0.9
 
 [sub_resource type="AudioEffectStereoEnhance" id="AudioEffectStereoEnhance_g28q7"]
 resource_name = "StereoEnhance"
-pan_pullout = 1.05
-time_pullout_ms = 3.25
 surround = 0.2
 
 [resource]
@@ -30,16 +25,14 @@ bus/1/name = &"Music"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = -10.0692
+bus/1/volume_db = -6.12156
 bus/1/send = &"Master"
-bus/1/effect/0/effect = SubResource("AudioEffectStereoEnhance_j3pel")
+bus/1/effect/0/effect = SubResource("AudioEffectReverb_j3pel")
 bus/1/effect/0/enabled = true
-bus/1/effect/1/effect = SubResource("AudioEffectReverb_j3pel")
-bus/1/effect/1/enabled = true
-bus/1/effect/2/effect = SubResource("AudioEffectCompressor_j3pel")
+bus/1/effect/1/effect = SubResource("AudioEffectCompressor_j3pel")
+bus/1/effect/1/enabled = false
+bus/1/effect/2/effect = SubResource("AudioEffectStereoEnhance_g28q7")
 bus/1/effect/2/enabled = true
-bus/1/effect/3/effect = SubResource("AudioEffectStereoEnhance_g28q7")
-bus/1/effect/3/enabled = true
 bus/2/name = &"UI"
 bus/2/solo = false
 bus/2/mute = false
