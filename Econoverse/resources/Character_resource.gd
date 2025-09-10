@@ -1,31 +1,73 @@
 extends Resource
-#class_name Character 
+class_name Character 
 
-# Character attributes (e.g., gender, role, race)
+# TODO: Character attributes and data in the resource, funcs in the node!
+
+@export var location = Location 
+@export var character_name: String = ""
+@export var currency: int = 0
 @export var gender: Array[String] = ["Male", "Female", "Other"]
-@export var profession: Array[String] = ["Baker", "Miller", "Mason", "Smith", "Jewler", "Carpenter", "Tanner", "Brewer", "Stable-Master"]
-@export var race: Array[String] = ["Human", "Dwarf", "Gnome", "Elf", "Orc", "Dragonborn"] #you know who asked for Dragonborn to be added here ʕ·͡ᴥ·ʔ
-@export var inventory: String
-
-# Exported variables for the character's stats
-@export var influence: int = 0
-@export var fluency: int = 0
-@export var diplomacy: int = 0
-@export var negotiation: int = 0
-#@export var disposition: int = 0
-
+@export var stats: Dictionary = {
+	"influence": 0,
+	"fluency": 0,
+	"diplomacy": 0,
+	"negotiation": 0,
+	"disposition": 0
+}
+@export var race: Array[String] = [
+	"Human",
+	"Dwarf",
+	"Gnome",
+	"Elf",
+	"Orc",
+	"Dragonborn"
+] #you know who asked for Dragonborn to be added here ʕ·͡ᴥ·ʔ
+@export var inventory: Array = []
+@export var profession:Array[String] = [
+	"Carpenter",
+	"Smith",
+	"Stablemaster",
+	"Baker",
+	"Brewer",
+	"Mason",
+	"Tanner"
+]
+#@export var location: Array[String] = [
+	#"Lumber Mill",
+	#"Smithy",
+	#"Stables",
+	#"Bakery",
+	#"Brewhouse",
+	#"Masonic Shop",
+	#"Tannery",
+	#"Town Square"
+#]
 # Optional: Add a method to reset the character's stats
-func reset():
-	influence = 0
-	fluency = 5
-	diplomacy = 0
-	negotiation = 0
-	#disposition = 5
+func reset_stats():
+	stats.set("influence", 0)
+	stats.set("fluency", 0)
+	stats.set("diplomacy", 0)
+	stats.set("negotiation", 0)
+	stats.set("disposition", 0)
 
-# TODO: Fix methods to calculate derived values
-func get_char_attr(attr) -> int:
-	attr = 0
-	return attr
+enum Location { 
+	Lumber_Mill,
+	Smithy,
+	Stables,
+	Bakery,
+	Brewhouse,
+	Masonic_Shop,
+	Tannery,
+	Town_Square
+}
+
+# DONE?: Fix methods to calculate derived values
+# Unnecessary: getters and setters for nodes come default
+#func get_stat(attr) -> int:
+	#return stats.get(attr)
+#func set_stat(attr, num):
+	#stats.set(attr, num)
+
 
 # TODO: a function to roll the character objects stats on creation.
 # func roll_stats() -> array:
