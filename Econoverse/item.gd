@@ -6,11 +6,11 @@ class_name Item
 
 @export var id : int
 @export var start_price : int
-@export var name_full : String = "full name" #what you want to display in quest context etc
-@export var name_abbreviated : String = "abrv" #useful for cramped interfaces, extensive lists
+@export var name_full : String = "" #what you want to display in quest context etc
+@export var name_abbreviated : String = "" #useful for cramped interfaces, extensive lists
 @export_multiline var description : String = ""
 @export var texture: Texture2D
-@export var world_supply: int = 1000
+@export var world_supply: int = 0
 
 # Not necessary to use. Could be a simple way to establish rules for quests etc. 
 # Doesn't need to be a player-forward value, let the world/characters emphasize the value.

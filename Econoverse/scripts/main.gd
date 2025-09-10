@@ -10,17 +10,26 @@ func _ready() -> void:
 	# Godot loads the Resource when it reads this very line.	
 	var imported_resource = preload("res://resources/Items.json")
 	preload("res://scripts/worldclock.gd")
+	
 	pass
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-# TODO: Location State Machine
-
-#region Location State-Machine
-enum Location {
-	
-}
-#endregion
+# DONE: Location State Machine
+# Fun to learn, but may not need it. Check character node and resources for 
+# location mgmt.
+##region Location State-Machine
+#enum Location { 
+	#Lumber_Mill,
+	#Smithy,
+	#Stables,
+	#Bakery,
+	#Brewhouse,
+	#Masonic_Shop,
+	#Tannery,
+	#Town_Square
+#}
+#@export var location : Location = Location.Town_Square
+##endregion
