@@ -10,7 +10,7 @@ func _ready() -> void:
 	# Godot loads the Resource when it reads this very line.	
 	var imported_resource = preload("res://resources/Items.json")
 	preload("res://scripts/worldclock.gd")
-	
+	Player.test_shit()
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,3 +33,71 @@ func _process(delta: float) -> void:
 #}
 #@export var location : Location = Location.Town_Square
 ##endregion
+
+#region Characters
+@export var Player = Character.new(
+	"Iona",
+	7,
+	10,
+	"Female",
+	"Human",
+	"Choose a profession"
+)
+
+@export var Smith = Character.new(
+	"Bron",
+	1,
+	700,
+	"Male",
+	"Human",
+	"Smith"
+)
+@export var Baker = Character.new(
+	"Tiebyrn",
+	3,
+	400,
+	"Male",
+	"Human",
+	"Baker"
+)
+@export var Stablemaster = Character.new(
+	"Brygna",
+	2,
+	1000,
+	"Female",
+	"Human",
+	"Stablemaster"
+)
+@export var Tanner = Character.new(
+	"Leomund",
+	6,
+	600,
+	"Male",
+	"Human",
+	"Tanner"
+)
+@export var Brewer = Character.new(
+	"Tymeria",
+	4,
+	800,
+	"Female",
+	"Human",
+	"Brewer"
+)
+@export var Mason = Character.new(
+	"Glorifen",
+	5,
+	800,
+	"Other",
+	"Human",
+	"Mason"
+)
+@export var Carpenter = Character.new(
+	"Flick",
+	0,
+	600,
+	"Male",
+	"Human",
+	"Carpenter"
+)
+#endregion Characters

@@ -64,7 +64,13 @@ size_flags_horizontal = 6
 size_flags_vertical = 4
 focus_mode = 2
 bbcode_enabled = true
-text = "09/02 (late);
+text = "09/10 (also late)
+	big thinky brain things: resources are loaded by nodeds. Nodes do things, resources just tell them what and how.
+character class needs a resources to build it. items are the same and commodities are items. So although there may
+be special items that you can have in your inventory, I think currency and commodities should be items as well.
+generated with the player node on creation in the main script and then items including coin should be get/set, 
+counted, and called to in realtion to the node ie `character.get(coin)`. What say ye!?
+09/02 (late);
 	Front of mind for me: A game settings menu for display, audio, and maybe FONT choice. I'll need plenty of time to focus on the full user interface after that. 
 	Maybe Thursday is a good opportunity for us to mood board together, celebrate a little, and look forward to next steps! -kc
 
