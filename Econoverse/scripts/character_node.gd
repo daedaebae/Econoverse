@@ -1,5 +1,5 @@
-extends Resource
-#class_name Character
+extends Character
+
 # TODO: Char behaviors and animations in the Node, data in the resource!
 
 # load all the stuff from the resource

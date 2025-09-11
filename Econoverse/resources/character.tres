@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://dja5cve4pr6id"]
+
+[ext_resource type="Script" uid="uid://c5yc3e5gakmr5" path="res://resources/Character_resource.gd" id="1_nxvil"]
+
+[resource]
+script = ExtResource("1_nxvil")
+name = ""
+location = {
+"Bakery": 3,
+"Brewhouse": 4,
+"Lumber_Mill": 0,
+"Masonic_Shop": 5,
+"Smithy": 1,
+"Stables": 2,
+"Tannery": 6,
+"Town_Square": 7
+}
+currency = 700
+gender = Array[String](["Male"])
+inventory = []
+race = Array[String](["Human"])
+profession = Array[String](["Smith"])
+_stats = {
+"diplomacy": 0,
+"disposition": 0,
+"fluency": 0,
+"influence": 0,
+"negotiation": 0
+}
+metadata/_custom_type_script = "uid://c5yc3e5gakmr5"
