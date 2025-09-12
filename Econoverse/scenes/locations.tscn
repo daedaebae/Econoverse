@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bt6orixl7cn1v"]
+
+[node name="Locations" type="Node2D"]
+
+[node name="LumberMill" type="Node2D" parent="."]
+
+[node name="Smithy" type="Node2D" parent="."]
+
+[node name="Stables" type="Node2D" parent="."]
+
+[node name="Bakery" type="Node2D" parent="."]
+
+[node name="Brewhouse" type="Node2D" parent="."]
+
+[node name="Masonic_Shop" type="Node2D" parent="."]
+
+[node name="Tannery" type="Node2D" parent="."]
+
+[node name="Town_Square" type="Node2D" parent="."]
