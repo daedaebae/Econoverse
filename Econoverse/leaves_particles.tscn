@@ -28,7 +28,7 @@ curve = SubResource("Curve_t8l3q")
 lifetime_randomness = 0.1
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(600, 300, 1)
+emission_box_extents = Vector3(350, 150, 1)
 angle_min = -39.6
 angle_max = 14.8
 direction = Vector3(2, 0, 0)
@@ -54,7 +54,7 @@ emission_curve = SubResource("CurveTexture_codbf")
 [node name="LeavesParticles" type="Node2D"]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-amount = 2000
+amount = 800
 lifetime = 1.5
 explosiveness = 0.05
 randomness = 0.03
