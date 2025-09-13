@@ -102,6 +102,16 @@ func _input(event):
 			get_tree().paused = false
 	#endregion
 	
+#region WorldClock
+#kc 9/13/25; The WorldClock system should be it's own independent scene for future implementations. 
+# This way, the scene and clock variables can independently work regardless of any other program logic. 
+# Game controllers can control, update, and assign values externally if needed.
+
+#kc 9/13/25; store the labels individually, so we can quickly implement a time-based system.
+@export var LabelDay: Label
+@export var LabelHours: Label
+@export var LabelMins: Label
+@export var LabelMeridian: Label
 func on_timer_timeout():
 	clock_mins += 1
 	
@@ -123,6 +133,11 @@ func on_timer_timeout():
 	
 	# set Day and Time label to regexed vars
 	$TimeModule/WorldClock.text = 'Day %d   %02d:%02d%s' % [day, clock_hours, clock_mins, meridian]
+	#kc 9/13/25; broke out individual values to improve UI seating, future use case improvements.
+	LabelDay.text = 'Day %d' % [day] 
+	LabelHours.text = '%02d' % [clock_hours]
+	LabelMins.text = '%02d' % [clock_mins]
+	LabelMeridian.text = '%s' % [meridian]
 
 # TODO: Tie to a button that sets game speed to normal, fast, or turbo
 # TODO: Move function to Game Controls module?
@@ -134,7 +149,7 @@ func game_speed(speed):
 			$TimeModule/Timer.wait_time = 0.75
 		2:
 			$TimeModule/Timer.wait_time = 0.25
-
+#endregion
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
