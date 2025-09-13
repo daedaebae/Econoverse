@@ -6,7 +6,7 @@
 
 [resource]
 default_font = ExtResource("2_mp375")
-default_font_size = 20
+default_font_size = 22
 Button/constants/outline_size = 1
 Button/font_sizes/font_size = 14
 Label/constants/shadow_outline_size = 10

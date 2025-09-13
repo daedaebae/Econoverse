@@ -32,12 +32,12 @@ else:
 			#PLACEHOLDER SMITHY: That is a possibility. [wait=2] You will have your sword if you trade your pastry to me. What say you?
 		#		- Agreed!
 		#			do trade(strudel, 1, sword, 1)
-		#			PLACEHOLDER SMITHY: Good business, stranger.
+		#			PLACEHOLDER SMITHY: Good business, stranger. => town
 		else:
 			PLACEHOLDER SMITHY: [speed=0.2] Hmm. [speed=0.8]I could be swayed. [speed=0.7]Speak with the baker, let her know I sent you. She will understand. 
 			Her fine pastries have me yearning. [wait=0.5]Thereafter, we may speak.
 			- Well okay...
-				PLACEHOLDER SMITHY: Farewell.
+				PLACEHOLDER SMITHY: Farewell. => town
 			- Like a donut?
 				PLACEHOLDER SMITHY: [speed=0.8] Something more [wait=0.2][speed=0.5]devine... [speed=0.8]but akin. [speed=0.6]Speak with you soon. => town
 	- Oh, sorry, I have to go. (leave) => town
@@ -49,9 +49,9 @@ PLACEHOLDER BAKER: Well hi stranger! Welcome to my little bakery!
 if Globals.player_name == "":
 	PLACEHOLDER BAKER: Oh, you haven't entered your name yet, can you do that from the pause screen for me? [wait=1] We don't have to be strangers! 
 	- Okay, I'll do that before clicking this.
-		PLACEHOLDER BAKER: Thank you so much.
+		PLACEHOLDER BAKER: Thank you so much. => Bakery
 	- No.
-		PLACEHOLDER BAKER: Oh goodness, are you having a bad day?
+		PLACEHOLDER BAKER: Oh goodness, are you having a bad day? => Bakery
 else:
 	PLACEHOLDER BAKER: Thank you for coming, what can I do for you, {{Globals.player_name}}?
 	#if met smith etc etc. Just railroading for now
