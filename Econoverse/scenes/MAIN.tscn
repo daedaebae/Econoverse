@@ -69,7 +69,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.0666667, 0.101961, 0.14902, 0.941176)
+color = Color(0.0675, 0.10325, 0.15, 0.501961)
 
 [node name="TimeModule" type="Control" parent="."]
 process_mode = 1
@@ -163,13 +163,14 @@ layer = 5
 
 [node name="CurrencyModule" type="Control" parent="MidLayer"]
 z_index = -1
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -300.0
+offset_left = -260.0
 offset_top = 10.0
-offset_right = -300.0
+offset_right = -60.0
 offset_bottom = 10.0
 grow_horizontal = 0
 size_flags_horizontal = 4

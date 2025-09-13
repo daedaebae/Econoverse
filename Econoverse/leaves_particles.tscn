@@ -8,8 +8,8 @@ colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
 gradient = SubResource("Gradient_t8l3q")
 
 [sub_resource type="Gradient" id="Gradient_s8jc4"]
-offsets = PackedFloat32Array(0, 0.202873, 0.32675, 0.657092, 0.881508, 1)
-colors = PackedColorArray(0, 0.635294, 0, 0, 0.788037, 0.37563, 1.92523e-07, 1, 1, 0.733333, 0, 1, 0.86, 0.55814, 0.1634, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.202873, 0.427729, 0.828909, 0.923304, 1)
+colors = PackedColorArray(0, 0.635294, 0, 0, 0.497154, 0.545402, 0, 1, 1, 0.916667, 0, 1, 0.86, 0.55814, 0.1634, 1, 0.33, 0.24464, 0.00989999, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_la155"]
 gradient = SubResource("Gradient_s8jc4")
@@ -45,8 +45,9 @@ tangential_accel_min = -16.02
 tangential_accel_max = 36.73
 damping_min = 30.455
 damping_max = 34.379
-scale_min = 0.25
-color = Color(0.47, 0.42864, 0.0564, 0.643137)
+scale_min = 0.3
+scale_max = 0.5
+color = Color(1, 0.833333, 0, 0.254902)
 color_ramp = SubResource("GradientTexture1D_la155")
 color_initial_ramp = SubResource("GradientTexture1D_e3jo6")
 emission_curve = SubResource("CurveTexture_codbf")
@@ -54,7 +55,7 @@ emission_curve = SubResource("CurveTexture_codbf")
 [node name="LeavesParticles" type="Node2D"]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-amount = 800
+amount = 1000
 lifetime = 1.5
 explosiveness = 0.05
 randomness = 0.03
