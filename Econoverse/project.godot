@@ -79,7 +79,7 @@ commods={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://assets/dialogue/intro.dialogue", "res://assets/dialogue/blacksmith.dialogue", "res://assets/dialogue/baker.dialogue", "res://assets/dialogue/stablemaster.dialogue")
+locale/translations_pot_files=PackedStringArray("res://assets/dialogue/intro.dialogue", "res://assets/dialogue/blacksmith.dialogue", "res://assets/dialogue/baker.dialogue", "res://assets/dialogue/stablemaster.dialogue", "res://assets/dialogue/intro_backup.dialogue")
 
 [rendering]
 
