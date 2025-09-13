@@ -1,0 +1,44 @@
+@ -1,43 +1,34 @@
+~ start
+Town Guard: [[You there! | Hey you! | Oh, good morning. ]] It's quite early to be at the market, what brings you here traveler?
+#- Lie: Oh, just out for a stroll! 
+#	%1 [#disposition = suspicious] I doubt that, what are you really doing out
+#	here?!
+#	%3 I see. Stroll on citizen.
+#	%3 Right, stay out of trouble.
+#	%2 [#disposition = suspicious] Hmm, is that so?
+- Smithy: I'm heading to the Blacksmith's shop!
+	%3 Of course, keep the peace.
+	%2 After some iron are ye?! Just keep it sheathed while in the city limits!
+	%1 [#disposition = suspicious] I don't believe you,
+	%1 [#disposition = suspicious] Really? I see no goods!
+- Bakery: I'm heading to the Baker's shop!
+	%3 Of course, just keep to your allotted space. Other vendor spaces are off
+	limits.
+	%2 Well aren't you just the busy bee! Remember to keep to your own space.
+	%1 I could care less, stay in your zone!
+	%1 Really? I see no goods!
+- Stables: I'm heading to the Stablemaster's shop!
+	%3 Of course, just keep to your allotted space. Other vendor spaces are off
+	limits.
+	%2 Well aren't you just the busy bee! Remember to keep to your own space.
+	%1 I could care less, stay in your zone!
+	%1 Really? I see no goods!
+- Blacksmith: I'm heading to the shop!
+	%3 Of course, just keep to your allotted space. Other vendor spaces are off
+	limits.
+	%2 Well aren't you just the busy bee! Remember to keep to your own space.
+	%1 I could care less, stay in your zone!
+	%1 Really? I see no goods!
+
+Town Guard: Wait, what's your name citizen?
+# TODO: figure out why Globals vars don't work. >:-(
+- I am {{Globals.player_name}}.
+- None of your business pig! => fight
+Town Guard: Good then, stay out of trouble. =>< start
+
+~ fight
+Town Guard: It's the Gray Fox! You're under arrest!
+- Fight
+Town Guard: I'll make Captain for this!
+=> END!

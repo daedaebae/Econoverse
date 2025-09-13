@@ -1,43 +1,63 @@
 ~ start
-Town Guard: [[You there! | Hey you! | Oh, good morning. ]] It's quite early to be at the market, what brings you here traveler?
-#- Lie: Oh, just out for a stroll! 
-#	%1 [#disposition = suspicious] I doubt that, what are you really doing out
-#	here?!
-#	%3 I see. Stroll on citizen.
-#	%3 Right, stay out of trouble.
-#	%2 [#disposition = suspicious] Hmm, is that so?
-- Smithy: I'm heading to the Blacksmith's shop!
-	%3 Of course, keep the peace.
-	%2 After some iron are ye?! Just keep it sheathed while in the city limits!
-	%1 [#disposition = suspicious] I don't believe you,
-	%1 [#disposition = suspicious] Really? I see no goods!
-- Bakery: I'm heading to the Baker's shop!
-	%3 Of course, just keep to your allotted space. Other vendor spaces are off
-	limits.
-	%2 Well aren't you just the busy bee! Remember to keep to your own space.
-	%1 I could care less, stay in your zone!
-	%1 Really? I see no goods!
-- Stables: I'm heading to the Stablemaster's shop!
-	%3 Of course, just keep to your allotted space. Other vendor spaces are off
-	limits.
-	%2 Well aren't you just the busy bee! Remember to keep to your own space.
-	%1 I could care less, stay in your zone!
-	%1 Really? I see no goods!
-- Blacksmith: I'm heading to the shop!
-	%3 Of course, just keep to your allotted space. Other vendor spaces are off
-	limits.
-	%2 Well aren't you just the busy bee! Remember to keep to your own space.
-	%1 I could care less, stay in your zone!
-	%1 Really? I see no goods!
+% It sure is breezy out here.
+% This place is so big it's kind of scary!
+% So much city to explore...
 
-Town Guard: Wait, what's your name citizen?
-# TODO: figure out why Globals vars don't work. >:-(
-- I am {{Globals.player_name}}.
-- None of your business pig! => fight
-Town Guard: Good then, stay out of trouble. =>< start
+~ town
+#do game_manager.transition(town)  
+## kc 9/12; just an example of moving back to town. If we call for a singleton function here, then the actual game_manger (state machine, whatever you like to think of it) could also emit a signal when the transition() method is called. The entire game outside of this could connect to the signal, and kickoff whatever we want when the transition should occur. (sounds, music transition, loading and unloading of data/assets, anything you can imagine)
+Where should I go?
+- Smithy: To the Smithy!
+	=> Smithy
+- Bakery: To the Bakery!
+	=> Bakery
 
-~ fight
-Town Guard: It's the Gray Fox! You're under arrest!
-- Fight
-Town Guard: I'll make Captain for this!
-=> END!
+
+~ Smithy
+#if not: character.smith.has_met: #first meeting dialogue here. (we'll implement in next version. For the cozy vibes.
+#{{character.blacksmith.name}} 
+if Globals.player_name == "":
+	PLACEHOLDER SMITHY: [speed=0.8] I haven't seen your face before. Enter your name in the pause menu so we can be aquainted. [wait=1] [speed=0.7]That would be best.
+	- Okay.
+		PLACEHOLDER SMITHY: Thanks.
+		=> Smithy
+	- No.
+		PLACEHOLDER SMITHY: It's time for you to leave. (you are pushed through the open doorway, back into the street)
+		=> town
+else:
+	PLACEHOLDER SMITHY: [speed=0.3] Hello, {{Globals.player_name}}. [#anvil.sound] Something [wait=0.2]you need?
+	- Yes. I seek a blade. May I purchase one from you?
+	## kc 9/12 - do we want to use a standard Player class for value simplification? The Globals can still control/update the Players values. Just for the sake of cleanliness, have the values set aside for quick reference?
+		# if player.inventory.strudel:
+			#PLACEHOLDER SMITHY: That is a possibility. [wait=2] You will have your sword if you trade your pastry to me. What say you?
+		#		- Agreed!
+		#			do trade(strudel, 1, sword, 1)
+		#			PLACEHOLDER SMITHY: Good business, stranger.
+		else:
+			PLACEHOLDER SMITHY: [speed=0.2] Hmm. [speed=0.8]I could be swayed. [speed=0.7]Speak with the baker, let her know I sent you. She will understand. 
+			Her fine pastries have me yearning. [wait=0.5]Thereafter, we may speak.
+			- Well okay...
+				PLACEHOLDER SMITHY: Farewell.
+			- Like a donut?
+				PLACEHOLDER SMITHY: [speed=0.8] Something more [wait=0.2][speed=0.5]devine... [speed=0.8]but akin. [speed=0.6]Speak with you soon. => town
+	- Oh, sorry, I have to go. (leave) => town
+
+~ Bakery
+#if not: character.smith.has_met: #first meeting dialogue here.
+#{{character.baker.name}} 
+PLACEHOLDER BAKER: Well hi stranger! Welcome to my little bakery!
+if Globals.player_name == "":
+	PLACEHOLDER BAKER: Oh, you haven't entered your name yet, can you do that from the pause screen for me? [wait=1] We don't have to be strangers! 
+	- Okay, I'll do that before clicking this.
+		PLACEHOLDER BAKER: Thank you so much.
+	- No.
+		PLACEHOLDER BAKER: Oh goodness, are you having a bad day?
+else:
+	PLACEHOLDER BAKER: Thank you for coming, what can I do for you, {{Globals.player_name}}?
+	#if met smith etc etc. Just railroading for now
+	- The smith seems to really like your sweets. May I buy one?
+		PLACEHOLDER BAKER: Oh, [wave]of course![/wave]
+		# do trade(gold, 5, strudel, 1)
+		PLACEHOLDER BAKER: Bye now! [wait=1] => town
+	
+	- Oh, sorry, gotta go! (leave) => town

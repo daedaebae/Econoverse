@@ -5,19 +5,9 @@
 [resource]
 script = ExtResource("1_nxvil")
 name = ""
-location = {
-"Bakery": 3,
-"Brewhouse": 4,
-"Lumber_Mill": 0,
-"Masonic_Shop": 5,
-"Smithy": 1,
-"Stables": 2,
-"Tannery": 6,
-"Town_Square": 7
-}
 currency = 700
 gender = Array[String](["Male"])
-inventory = []
+inventory = [null]
 race = Array[String](["Human"])
 profession = Array[String](["Smith"])
 _stats = {
