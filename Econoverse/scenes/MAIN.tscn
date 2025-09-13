@@ -20,7 +20,7 @@ stream_0/stream = ExtResource("4_xvofe")
 stream_1/stream = ExtResource("5_t5wp8")
 stream_1/weight = 3.0
 
-[node name="Main" type="Control" node_paths=PackedStringArray("TopLayer", "menu_paused", "menu_options", "world_map", "commodities_menu")]
+[node name="Main" type="Control" node_paths=PackedStringArray("TopLayer", "menu_paused", "menu_options", "world_map", "commodities_menu", "LabelDay", "LabelHours", "LabelMins", "LabelMeridian")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -38,6 +38,10 @@ menu_paused = NodePath("TopLayer/UserBackmenus/MenuPaused")
 menu_options = NodePath("TopLayer/UserBackmenus/MenuOptions")
 world_map = NodePath("TopLayer/WorldMap/WorldMap")
 commodities_menu = NodePath("TopLayer/commodities_menu/CommoditiesMenu")
+LabelDay = NodePath("TimeModule/HBoxClockSplayed/LabelClockDay")
+LabelHours = NodePath("TimeModule/HBoxClockSplayed/LabelClockHours")
+LabelMins = NodePath("TimeModule/HBoxClockSplayed/LabelClockMins")
+LabelMeridian = NodePath("TimeModule/HBoxClockSplayed/LabelClockMeridian")
 
 [node name="BackgroundPainting" type="TextureRect" parent="."]
 modulate = Color(0.75, 0.733125, 0.4125, 0.917647)
@@ -70,15 +74,25 @@ color = Color(0.0666667, 0.101961, 0.14902, 0.941176)
 [node name="TimeModule" type="Control" parent="."]
 process_mode = 1
 layout_mode = 1
-anchors_preset = 0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+pivot_offset = Vector2(-200, 0)
 
 [node name="WorldClock" type="Label" parent="TimeModule"]
+visible = false
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 1
-offset_left = 55.0
-offset_top = 10.0
-offset_right = 155.0
-offset_bottom = 33.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -220.0
+offset_right = -120.0
+offset_bottom = 20.0
+grow_horizontal = 0
 text = "00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -86,6 +100,52 @@ vertical_alignment = 1
 [node name="Timer" type="Timer" parent="TimeModule"]
 wait_time = 0.75
 autostart = true
+
+[node name="HBoxClockSplayed" type="HBoxContainer" parent="TimeModule"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -220.0
+offset_right = -119.0
+offset_bottom = 20.0
+grow_horizontal = 0
+theme_override_constants/separation = 0
+
+[node name="LabelClockDay" type="Label" parent="TimeModule/HBoxClockSplayed"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 12
+vertical_alignment = 2
+
+[node name="LabelClockHours" type="Label" parent="TimeModule/HBoxClockSplayed"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+clip_text = true
+
+[node name="LabelColon" type="Label" parent="TimeModule/HBoxClockSplayed"]
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = ":"
+horizontal_alignment = 1
+clip_text = true
+
+[node name="LabelClockMins" type="Label" parent="TimeModule/HBoxClockSplayed"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+clip_text = true
+
+[node name="LabelClockMeridian" type="Label" parent="TimeModule/HBoxClockSplayed"]
+layout_mode = 2
 
 [node name="MusicLoop" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_re03l")
@@ -99,25 +159,25 @@ layer = 5
 
 [node name="CurrencyModule" type="Control" parent="MidLayer"]
 z_index = -1
-custom_minimum_size = Vector2(100, 0)
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -300.0
-offset_bottom = 40.0
+offset_top = 10.0
+offset_right = -300.0
+offset_bottom = 10.0
 grow_horizontal = 0
+size_flags_horizontal = 4
 size_flags_stretch_ratio = 0.5
 theme = ExtResource("1_0xo7i")
 script = ExtResource("3_imghw")
 
 [node name="CurrencyStack" type="VBoxContainer" parent="MidLayer/CurrencyModule"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 120.0
+offset_right = 198.0
+offset_bottom = 20.0
 alignment = 1
 
 [node name="CoinHeader" type="HBoxContainer" parent="MidLayer/CurrencyModule/CurrencyStack"]
