@@ -119,6 +119,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 12
+text = "Day 1"
 vertical_alignment = 2
 
 [node name="LabelClockHours" type="Label" parent="TimeModule/HBoxClockSplayed"]
@@ -126,6 +127,7 @@ custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+text = "00"
 clip_text = true
 
 [node name="LabelColon" type="Label" parent="TimeModule/HBoxClockSplayed"]
@@ -142,10 +144,12 @@ custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+text = "00"
 clip_text = true
 
 [node name="LabelClockMeridian" type="Label" parent="TimeModule/HBoxClockSplayed"]
 layout_mode = 2
+text = "am"
 
 [node name="MusicLoop" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_re03l")
