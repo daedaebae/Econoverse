@@ -53,7 +53,7 @@ func _on_check_box_fullscreen_toggled(toggled_on: bool) -> void:
 	# Check if the checkbox is checked (toggled_on is true).
 	if toggled_on:
 		# Set the window to fullscreen mode.
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 	else:
 		# If unchecked, set the window back to windowed mode.
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
