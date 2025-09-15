@@ -17,47 +17,47 @@ Where should I go?
 #if not: character.smith.has_met: #first meeting dialogue here. (we'll implement in next version. For the cozy vibes.
 #{{character.blacksmith.name}} 
 if Globals.player_name == "":
-	PLACEHOLDER SMITHY: [speed=0.8] I haven't seen your face before. Enter your name in the pause menu so we can be aquainted. [wait=1] [speed=0.7]That would be best.
+	{{Main.Smith.char_name}}: [speed=0.8] I haven't seen your face before. Enter your name in the pause menu so we can be aquainted. [wait=1] [speed=0.7]That would be best.
 	- Okay.
-		PLACEHOLDER SMITHY: Thanks.
+		{{Main.Smith.char_name}}: Thanks.
 		=> Smithy
 	- No.
-		PLACEHOLDER SMITHY: It's time for you to leave. (you are pushed through the open doorway, back into the street)
+		{{Main.Smith.char_name}}: It's time for you to leave. (you are pushed through the open doorway, back into the street)
 		=> town
 else:
-	PLACEHOLDER SMITHY: [speed=0.3] Hello, {{Globals.player_name}}. [#anvil.sound] Something [wait=0.2]you need?
+	{{Main.Smith.char_name}}: [speed=0.3] Hello, {{Globals.player_name}}. [#anvil.sound] Something [wait=0.2]you need?
 	- Yes. I seek a blade. May I purchase one from you?
 	## kc 9/12 - do we want to use a standard Player class for value simplification? The Globals can still control/update the Players values. Just for the sake of cleanliness, have the values set aside for quick reference?
 		# if player.inventory.strudel:
-			#PLACEHOLDER SMITHY: That is a possibility. [wait=2] You will have your sword if you trade your pastry to me. What say you?
+			#{{Smithy: That is a possibility. [wait=2] You will have your sword if you trade your pastry to me. What say you?
 		#		- Agreed!
 		#			do trade(strudel, 1, sword, 1)
-		#			PLACEHOLDER SMITHY: Good business, stranger. => town
+		#			{{Smithy: Good business, stranger. => town
 		else:
-			PLACEHOLDER SMITHY: [speed=0.2] Hmm. [speed=0.8]I could be swayed. [speed=0.7]Speak with the baker, let her know I sent you. She will understand. 
+			{{Main.Smith.char_name}}: [speed=0.2] Hmm. [speed=0.8]I could be swayed. [speed=0.7]Speak with the baker, let her know I sent you. She will understand. 
 			Her fine pastries have me yearning. [wait=0.5]Thereafter, we may speak.
 			- Well okay...
-				PLACEHOLDER SMITHY: Farewell. => town
+				{{Main.Smith.char_name}}: Farewell. => town
 			- Like a donut?
-				PLACEHOLDER SMITHY: [speed=0.8] Something more [wait=0.2][speed=0.5]devine... [speed=0.8]but akin. [speed=0.6]Speak with you soon. => town
+				{{Main.Smith.char_name}}: [speed=0.8] Something more [wait=0.2][speed=0.5]devine... [speed=0.8]but akin. [speed=0.6]Speak with you soon. => town
 	- Oh, sorry, I have to go. (leave) => town
 
 ~ Bakery
 #if not: character.smith.has_met: #first meeting dialogue here.
 #{{character.baker.name}} 
-PLACEHOLDER BAKER: Well hi stranger! Welcome to my little bakery!
+{{Main.Baker.char_name}}: Well hi stranger! Welcome to my little bakery!
 if Globals.player_name == "":
-	PLACEHOLDER BAKER: Oh, you haven't entered your name yet, can you do that from the pause screen for me? [wait=1] We don't have to be strangers! 
+	{{Main.Baker.char_name}}: Oh, you haven't entered your name yet, can you do that from the pause screen for me? [wait=1] We don't have to be strangers! 
 	- Okay, I'll do that before clicking this.
-		PLACEHOLDER BAKER: Thank you so much. => Bakery
+		{{Main.Baker.char_name}}: Thank you so much. => Bakery
 	- No.
-		PLACEHOLDER BAKER: Oh goodness, are you having a bad day? => Bakery
+		{{Main.Baker.char_name}}: Oh goodness, are you having a bad day? => Bakery
 else:
-	PLACEHOLDER BAKER: Thank you for coming, what can I do for you, {{Globals.player_name}}?
+	{{Main.Baker.char_name}}: Thank you for coming, what can I do for you, {{Globals.player_name}}?
 	#if met smith etc etc. Just railroading for now
 	- The smith seems to really like your sweets. May I buy one?
-		PLACEHOLDER BAKER: Oh, [wave]of course![/wave]
+		{{Main.Baker.char_name}}: Oh, [wave]of course![/wave]
 		# do trade(gold, 5, strudel, 1)
-		PLACEHOLDER BAKER: Bye now! [wait=1] => town
+		{{Main.Baker.char_name}}: Bye now! [wait=1] => town
 	
 	- Oh, sorry, gotta go! (leave) => town

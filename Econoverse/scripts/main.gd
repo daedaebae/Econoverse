@@ -4,100 +4,84 @@ extends Node
 #		items as needed or at compile time.
 # TODO: Continue migrating everything to main
 
+#region Create Character scene and objects
+
+var CharScene = load("res://characters.tscn")
+var CharSceneInstance = CharScene.instantiate()
+var Char = CharSceneInstance
+
+var Player = Character.new("Iona",7,1,"Human",0,{"Coins": 10})
+var Smith = Character.new("Bron",1,0,"Human",0,{"Coins": 700})
+var Baker = Character.new("Tiebyrn",3,"Male","Human",4,{"Coins": 400})
+
+#@export var Stablemaster = Character.new(
+	#"Brygna",
+	#2,
+	#1000,
+	#"Female",
+	#"Human",
+	#"Stablemaster"
+#)
+#@export var Tanner = Character.new(
+	#"Leomund",
+	#6,
+	#600,
+	#"Male",
+	#"Human",
+	#"Tanner"
+#)
+#@export var Brewer = Character.new(
+	#"Tymeria",
+	#4,
+	#800,
+	#"Female",
+	#"Human",
+	#"Brewer"
+#)
+#@export var Mason = Character.new(
+	#"Glorifen",
+	#5,
+	#800,
+	#"Other",
+	#"Human",
+	#"Mason"
+#)
+#@export var Carpenter = Character.new(
+	#"Flick",
+	#0,
+	#600,
+	#"Male",
+	#"Human",
+	#"Carpenter"
+#)
+
+#endregion Create Character scene and objects
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Godot loads the Resource when it reads this very line.	
 	var imported_resource = preload("res://resources/Items.json")
-	preload("res://scripts/worldclock.gd")
-	Player.test_shit()
+	#preload("res://scripts/worldclock.gd")
+	test_shit("Player",Player)
+	test_shit("Smith",Smith)
+	test_shit("Baker",Baker)
+	print("end")
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-# DONE: Location State Machine
-# Fun to learn, but may not need it. Check character node and resources for 
-# location mgmt.
-##region Location State-Machine
-#enum Location { 
-	#Lumber_Mill,
-	#Smithy,
-	#Stables,
-	#Bakery,
-	#Brewhouse,
-	#Masonic_Shop,
-	#Tannery,
-	#Town_Square
-#}
-#@export var location : Location = Location.Town_Square
-##endregion
-
-#region Characters
-@export var Player = Character.new(
-	"Iona",
-	7,
-	10,
-	"Female",
-	"Human",
-	"Choose a profession"
-)
-
-@export var Smith = Character.new(
-	"Bron",
-	1,
-	700,
-	"Male",
-	"Human",
-	"Smith"
-)
-@export var Baker = Character.new(
-	"Tiebyrn",
-	3,
-	400,
-	"Male",
-	"Human",
-	"Baker"
-)
-@export var Stablemaster = Character.new(
-	"Brygna",
-	2,
-	1000,
-	"Female",
-	"Human",
-	"Stablemaster"
-)
-@export var Tanner = Character.new(
-	"Leomund",
-	6,
-	600,
-	"Male",
-	"Human",
-	"Tanner"
-)
-@export var Brewer = Character.new(
-	"Tymeria",
-	4,
-	800,
-	"Female",
-	"Human",
-	"Brewer"
-)
-@export var Mason = Character.new(
-	"Glorifen",
-	5,
-	800,
-	"Other",
-	"Human",
-	"Mason"
-)
-@export var Carpenter = Character.new(
-	"Flick",
-	0,
-	600,
-	"Male",
-	"Human",
-	"Carpenter"
-)
-#endregion Characters
+# FIXME: DEBUG
+func test_shit(Test, CharIn):
+	print("####################\n\ttesting_shit\n####################")
+	print(
+		str(Test),
+		"\nname: ", CharIn.char_name,
+		"\nlocation: ",CharIn.location,
+		"\ngender: ",CharIn.gender,
+		"\nrace: ",CharIn.race,
+		"\ncoin: ",CharIn.inventory.Coins,
+		"\nprofession: ",CharIn.profession
+	)
+	pass

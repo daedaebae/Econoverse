@@ -99,7 +99,7 @@ var world_demand : Dictionary
 	ore = {
 		"id": 8,
 		"start_price": 1.00,
-		"name_full": "Metals",
+		"name_full": "Metal",
 		"name_abbreviated": "Ore",
 		"description": "Types of raw and processed ores within the lands.",
 		"texture": "",
