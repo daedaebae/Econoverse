@@ -6,10 +6,12 @@ var meridian = 'am'
 var clock_hours = 5
 var clock_mins = 0
 var day = 1
-# TODO: used in call_dialogue function
+
+# Used in call_dialogue function
 var dialogue = preload("res://scripts/dialogue.gd")
 var currency = preload("res://scripts/currency_mgmt.gd")
 var resource = load("res://assets/dialogue/intro.dialogue")
+#TODO: Is states needed?
 var states = ["start", "stop"]
 @export var TopLayer: CanvasLayer
 @export var menu_paused: Control
@@ -20,6 +22,7 @@ var states = ["start", "stop"]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
+	#region Dialogue Kickoff
 	# TODO: move all this to call_dialogue function
 	var dialogue_line = await DialogueManager.get_next_dialogue_line(resource, 
 	"start")
@@ -29,6 +32,8 @@ func _ready() -> void:
 		"res://scenes/Balloon.tscn", resource, "start"
 	)
 	#dialogue.call_dialogue()
+	#endregion Dialogue Kickoff
+	
 
 func _input(event):
 	# kc 9/6/2025 moved all visibility scripts here to elevate and 
@@ -139,8 +144,8 @@ func on_timer_timeout():
 	LabelMins.text = '%02d' % [clock_mins]
 	LabelMeridian.text = '%s' % [meridian]
 
-# TODO: Tie to a button that sets game speed to normal, fast, or turbo
-# TODO: Move function to Game Controls module?
+# TODO: Tie to a button that sets game speed to normal, fast, or turbo (v2.0)
+# TODO: Move function to Game Controls module (v2.0)
 func game_speed(speed):
 	match speed:
 		0:
@@ -150,6 +155,7 @@ func game_speed(speed):
 		2:
 			$TimeModule/Timer.wait_time = 0.25
 #endregion
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

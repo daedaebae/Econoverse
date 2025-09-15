@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://qdn2ymj50ymd"]
+[gd_scene load_steps=16 format=3 uid="uid://qdn2ymj50ymd"]
 
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="1_0xo7i"]
 [ext_resource type="Script" uid="uid://b6s6qj2wlkhdh" path="res://scripts/worldclock.gd" id="1_apk53"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://14o27b0vk1yx" path="res://scenes/user_backmenus.tscn" id="11_aim73"]
 [ext_resource type="PackedScene" uid="uid://cdmvr0vyon0et" path="res://scenes/world_map.tscn" id="12_xvofe"]
 [ext_resource type="PackedScene" uid="uid://c8bry8aingweb" path="res://scenes/commodities_menu.tscn" id="13_t5wp8"]
+[ext_resource type="PackedScene" uid="uid://r4jwpdvgodd5" path="res://characters.tscn" id="14_66d1h"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_re03l"]
 streams_count = 2
@@ -340,6 +341,9 @@ alignment = 1
 
 [node name="break" parent="TopLayer/UserBackmenus/MenuOptions/MasterStack/MidVBox" index="0"]
 custom_minimum_size = Vector2(0, 2)
+
+[node name="Characters" parent="." instance=ExtResource("14_66d1h")]
+script = null
 
 [connection signal="timeout" from="TimeModule/Timer" to="." method="on_timer_timeout"]
 [connection signal="timeout" from="DialogueModule/DialogueNinePatchRect/TypeTimer" to="DialogueModule/DialogueNinePatchRect" method="_on_type_timer_timeout"]
