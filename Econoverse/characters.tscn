@@ -1,35 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://r4jwpdvgodd5"]
-
-[ext_resource type="Script" uid="uid://dunrq58boiw0e" path="res://scripts/character_node.gd" id="1_qyqqv"]
+[gd_scene format=3 uid="uid://r4jwpdvgodd5"]
 
 [node name="Characters" type="Node2D"]
 
 [node name="Player" type="Node2D" parent="."]
 unique_name_in_owner = true
-script = ExtResource("1_qyqqv")
 
 [node name="Baker" type="Node2D" parent="."]
 unique_name_in_owner = true
-script = ExtResource("1_qyqqv")
 
 [node name="Smith" type="Node2D" parent="."]
 unique_name_in_owner = true
-script = ExtResource("1_qyqqv")
 
 [node name="Stablemaster" type="Node2D" parent="."]
-script = ExtResource("1_qyqqv")
 
 [node name="Tanner" type="Node2D" parent="."]
-script = ExtResource("1_qyqqv")
 
 [node name="Brewer" type="Node2D" parent="."]
-script = ExtResource("1_qyqqv")
 
 [node name="Mason" type="Node2D" parent="."]
-script = ExtResource("1_qyqqv")
 
 [node name="Carpenter" type="Node2D" parent="."]
-script = ExtResource("1_qyqqv")
 metadata/_custom_type_script = "uid://dunrq58boiw0e"
 
 [node name="Character" type="Node2D" parent="."]

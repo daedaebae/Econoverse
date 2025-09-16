@@ -20,7 +20,7 @@ extends Node2D
 @export var gender: Gender
 @export var race: String = "Human"
 @export var profession: Profession
-@export var inventory: Dictionary = {"Coins": 0}
+@export var inventory: Dictionary = {"Sword": 0, "Strudel": 0, "Coins": 0}
 
 
 # Constructor
@@ -32,6 +32,18 @@ func _init(name, loc, gen, r, prof, inv):
 	self.profession = prof
 	self.inventory = inv
 	pass
+
+#durf 09/15/25 - v1.0 simple trade func sets dicts, v2.0 trade func with adjust
+#				 Item objects within inventory dicts.
+func trade(whom: Character, item_give: String, val1: int, item_get: String, val2: int):
+	#whasappenin'
+	print("Player traded ",val1," ",item_give," for ",val2," ",item_get)
+	# Player give val1# of item_give to the whom
+	self.inventory[item_give] = (self.inventory[item_give] - val1)
+	whom.inventory[item_give] = (whom.inventory[item_give] + val1)
+	# Player get val2# of item_get from whom
+	self.inventory[item_get] = (self.inventory[item_get] + val2)
+	whom.inventory[item_get] = (whom.inventory[item_get] - val2)
 
 func _ready() -> void:
 	pass

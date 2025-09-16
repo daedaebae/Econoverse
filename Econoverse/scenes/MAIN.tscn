@@ -343,7 +343,6 @@ alignment = 1
 custom_minimum_size = Vector2(0, 2)
 
 [node name="Characters" parent="." instance=ExtResource("14_66d1h")]
-script = null
 
 [connection signal="timeout" from="TimeModule/Timer" to="." method="on_timer_timeout"]
 [connection signal="timeout" from="DialogueModule/DialogueNinePatchRect/TypeTimer" to="DialogueModule/DialogueNinePatchRect" method="_on_type_timer_timeout"]
