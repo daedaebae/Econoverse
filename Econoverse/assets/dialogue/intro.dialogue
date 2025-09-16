@@ -31,7 +31,7 @@ else:
 		if Main.Player.inventory.Strudel == 1:
 			{{Main.Smith.char_name}}: That is a possibility. [wait=2] You will have your sword if you trade your pastry to me. What say you?
 			- Agreed!
-				do trade(strudel, 1, sword, 1)
+				do Main.Player.trade(Main.Smith, "Strudel", 1, "Sword", 1)
 			{{Main.Smith.char_name}}: Good business, stranger. => town
 		else:
 			{{Main.Smith.char_name}}: [speed=0.2] Hmm. [speed=0.8]I could be swayed. [speed=0.7]Speak with the baker, let her know I sent you. She will understand. 
@@ -56,8 +56,14 @@ else:
 	{{Main.Baker.char_name}}: Thank you for coming, what can I do for you, {{Globals.player_name}}?
 	#if met smith etc etc. Just railroading for now
 	- The smith seems to really like your sweets. May I buy one?
+		{{Main.Baker.char_name}}: Why yes, it's just five coins if you can spare.
+		- I'll have one! (Pay 5 coins)
+			{{Main.Baker.char_name}}: Here you are, dearest. 
+			do Main.Player.trade(Main.Baker, "Coins", 5, "Strudel", 1)
+			Bye now! [wait=1] => town
+		- Maybe another time.
+			Bye now! [wait=1] => town
 		{{Main.Baker.char_name}}: Oh, [wave]of course![/wave] 
-		do Main.Player.trade(Main.Baker, "Coins", 5, "Strudel", 1)
-		{{Main.Baker.char_name}}: Bye now! [wait=1] => town
+
 	
 	- Oh, sorry, gotta go! (leave) => town
