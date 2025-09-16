@@ -13,6 +13,7 @@ config_version=5
 config/name="Econoverse"
 run/main_scene="uid://qdn2ymj50ymd"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
+run/max_fps=60
 boot_splash/bg_color=Color(0.18, 0.08616, 0.0144, 0.941176)
 boot_splash/fullsize=false
 boot_splash/use_filter=false
