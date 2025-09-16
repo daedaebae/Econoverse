@@ -1,7 +1,7 @@
-@tool
 extends Node
 
 @onready var coin_header = $CurrencyStack/CoinHeader
+@export var coin_counter : Label
 var item_coin = preload("res://resources/ItemCoin.tres")
 
 # Called when the node enters the scene tree for the first time.
@@ -43,7 +43,12 @@ func set_currency(amount: int) -> String:
 	#$CurrencyStack/CoinHeader/Counter.text = 'Gp'+gold+' Sp'+silver+' Cp'+copper
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta: float) -> void:
-	# TODO: Set this to a variable defined by currency generating events.
-	#set_currency(0)
+	# DONE: kc 9/16/25 - Set this to a variable defined by currency generating events.
+	#kc 9/16/25; prevents error overrun if Player has not yet been instantiated.
+	if !Main.Player: 
+		return
+	else:
+		coin_counter.text = str(Main.Player.inventory["Coins"],"")
 	pass

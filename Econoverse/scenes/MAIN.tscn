@@ -162,7 +162,7 @@ playback_type = 1
 process_mode = 1
 layer = 5
 
-[node name="CurrencyModule" type="Control" parent="MidLayer"]
+[node name="CurrencyModule" type="Control" parent="MidLayer" node_paths=PackedStringArray("coin_counter")]
 z_index = -1
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 3
@@ -178,6 +178,7 @@ size_flags_horizontal = 4
 size_flags_stretch_ratio = 0.5
 theme = ExtResource("1_0xo7i")
 script = ExtResource("3_imghw")
+coin_counter = NodePath("CurrencyStack/CoinHeader/Counter")
 
 [node name="CurrencyStack" type="VBoxContainer" parent="MidLayer/CurrencyModule"]
 layout_mode = 1
