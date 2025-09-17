@@ -35,7 +35,7 @@ shader_parameter/cloud_color_shiftx = 0.0
 shader_parameter/cloud_color_shifty = -0.5
 shader_parameter/background_color = Color(0.02, 0.04, 0.12, 1)
 
-[node name="TitleScreen" type="Control" node_paths=PackedStringArray("song_intro", "sfx_select")]
+[node name="TitleScreen" type="Control" node_paths=PackedStringArray("song_intro", "sfx_select", "amb_air_night")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,6 +48,7 @@ theme = ExtResource("1_i1cyk")
 script = ExtResource("2_yikp0")
 song_intro = NodePath("Intro1")
 sfx_select = NodePath("SfxSelect")
+amb_air_night = NodePath("AtmAirNight")
 
 [node name="StarrySky" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_133ns")
