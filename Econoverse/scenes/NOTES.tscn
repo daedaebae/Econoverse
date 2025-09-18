@@ -1,9 +1,82 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8fg1ulosvcar"]
+[gd_scene load_steps=18 format=3 uid="uid://c8fg1ulosvcar"]
 
 [ext_resource type="Texture2D" uid="uid://3gkx1penpm4a" path="res://assets/image/sprites/coin.png" id="1_8vlpi"]
 [ext_resource type="Texture2D" uid="uid://by6kxwvc8oyxi" path="res://assets/image/sprites/horse.png" id="2_ebccb"]
+[ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="2_hn76n"]
 [ext_resource type="Texture2D" uid="uid://dkt5jtxoyo0as" path="res://assets/image/sprites/boots.png" id="3_ndml6"]
 [ext_resource type="Texture2D" uid="uid://4lxiha4p2rag" path="res://assets/image/sprites/lumber.png" id="4_hn76n"]
+[ext_resource type="Texture2D" uid="uid://tra18r25wvdn" path="res://assets/image/econoverse_main.png" id="6_1suao"]
+[ext_resource type="FontFile" uid="uid://bwgm0rcnkhr36" path="res://assets/fonts/CormorantInfant-VariableFont_wght.ttf" id="7_1suao"]
+
+[sub_resource type="Gradient" id="Gradient_t8l3q"]
+offsets = PackedFloat32Array(0, 0.256732)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e3jo6"]
+gradient = SubResource("Gradient_t8l3q")
+
+[sub_resource type="Gradient" id="Gradient_s8jc4"]
+offsets = PackedFloat32Array(0, 0.202873, 0.427729, 0.828909, 0.923304, 1)
+colors = PackedColorArray(0, 0.635294, 0, 0, 0.497154, 0.545402, 0, 1, 1, 0.916667, 0, 1, 0.86, 0.55814, 0.1634, 1, 0.33, 0.24464, 0.00989999, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_la155"]
+gradient = SubResource("Gradient_s8jc4")
+
+[sub_resource type="CurveTexture" id="CurveTexture_codbf"]
+
+[sub_resource type="Curve" id="Curve_t8l3q"]
+_limits = [1.0, 78.34, 0.0, 1.0]
+_data = [Vector2(0, 3.02214), 0.0, 43.4809, 0, 0, Vector2(0.65678, 37.7466), -22.5434, -22.5434, 0, 0, Vector2(0.973729, 35.0567), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_e3jo6"]
+curve = SubResource("Curve_t8l3q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t8l3q"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(350, 150, 1)
+angle_min = -39.6
+angle_max = 14.8
+direction = Vector3(2, 0, 0)
+spread = 21.278
+initial_velocity_min = 33.91
+initial_velocity_max = 73.16
+gravity = Vector3(10, 10, 0)
+linear_accel_min = -1.26
+linear_accel_max = 0.639998
+linear_accel_curve = SubResource("CurveTexture_e3jo6")
+radial_accel_min = 7.84
+radial_accel_max = 18.84
+tangential_accel_min = -16.02
+tangential_accel_max = 36.73
+damping_min = 30.455
+damping_max = 34.379
+scale_min = 0.3
+scale_max = 16.09
+color = Color(1, 0.833333, 0, 0.254902)
+color_ramp = SubResource("GradientTexture1D_la155")
+color_initial_ramp = SubResource("GradientTexture1D_e3jo6")
+emission_curve = SubResource("CurveTexture_codbf")
+
+[sub_resource type="FontVariation" id="FontVariation_yo8do"]
+base_font = ExtResource("7_1suao")
+variation_face_index = 7
+variation_embolden = 0.44
+spacing_glyph = 2
+spacing_space = 2
+spacing_top = 2
+spacing_bottom = 4
+baseline_offset = -0.06
+
+[sub_resource type="FontVariation" id="FontVariation_djrbu"]
+base_font = SubResource("FontVariation_yo8do")
+variation_opentype = {
+2003265652: 700
+}
+variation_embolden = -0.11
+spacing_top = 2
 
 [node name="Notes" type="Control"]
 layout_mode = 3
@@ -15,6 +88,8 @@ grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
+[node name="sry if this breaks computer" type="Node" parent="."]
+
 [node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(8000, 6000)
 layout_mode = 1
@@ -23,13 +98,14 @@ anchor_left = -0.191
 anchor_top = -0.152
 anchor_right = 0.951
 anchor_bottom = 1.137
-offset_left = 220.032
-offset_top = 98.496
-offset_right = 56.448
-offset_bottom = -88.7761
+offset_left = -3496.76
+offset_top = -2748.28
+offset_right = 3772.36
+offset_bottom = 2787.68
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="Whatever you want" type="Node" parent="."]
 
@@ -51,20 +127,94 @@ position = Vector2(-247, 931)
 scale = Vector2(31.25, 31.25)
 texture = ExtResource("1_8vlpi")
 
-[node name="FlowContainer" type="HFlowContainer" parent="."]
-top_level = true
-layout_mode = 0
-offset_right = 500.0
-offset_bottom = 1500.0
+[node name="Horse" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.290196)
+position = Vector2(549, 66)
+rotation = 0.293968
+scale = Vector2(6.6875, 3.09375)
+texture = ExtResource("2_ebccb")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="FlowContainer"]
-custom_minimum_size = Vector2(500, 1500)
+[node name="Boots" type="Sprite2D" parent="."]
+position = Vector2(-58, 539)
+texture = ExtResource("3_ndml6")
+
+[node name="Lumber" type="Sprite2D" parent="."]
+modulate = Color(0.05, 0.05, 0.05, 0.831373)
+position = Vector2(890, 360)
+scale = Vector2(23.5302, 23.5302)
+texture = ExtResource("4_hn76n")
+
+[node name="LeavesParticles" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.192157)
+position = Vector2(133, -54)
+rotation = 1.36136
+scale = Vector2(2, 2)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="LeavesParticles"]
+position = Vector2(-751.74, -222.15)
+scale = Vector2(1.74025, 2.87727)
+amount = 200
+lifetime = 1.5
+explosiveness = 0.05
+randomness = 0.03
+fixed_fps = 60
+visibility_rect = Rect2(0, 0, 700, 400)
+trail_lifetime = 0.24
+process_material = SubResource("ParticleProcessMaterial_t8l3q")
+
+[node name="EconoverseMain" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.0627451)
+position = Vector2(-1499, -180)
+rotation = -0.649632
+scale = Vector2(13.2621, 19.9971)
+texture = ExtResource("6_1suao")
+metadata/_edit_lock_ = true
+
+[node name="FlowContainer" type="HFlowContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1521.0
+offset_top = -2774.0
+offset_right = 1629.0
+offset_bottom = 2716.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EDIT HERE YO" type="RichTextLabel" parent="FlowContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(1000, 2000)
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
+size_flags_horizontal = 3
 focus_mode = 2
+theme = ExtResource("2_hn76n")
+theme_override_colors/default_color = Color(0.78802, 0.82, 0.6724, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.449933, 0.68, 0.442, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_djrbu")
+theme_override_font_sizes/normal_font_size = 72
 bbcode_enabled = true
-text = "09/10 (also late)
+text = " 09/18/25 KC -
+(left a book for you)
+	Been thinking of the pipeline for designer/developer/game guru technician whatever tf you want to think of it as.
+Right now, the trade() func has pre-determined values for \"hey, I am giving this much of a thing, and you will give me this amount of the thing\".
+Let's say, instead we focus on the bargaining idea. \"Hey, I want the sword\". Then we call something like Character.barter(Item). Pseudocode like...
+if character.iventory[item], then call a function for determining if the character even wants to sell it. 
+
+Like imagine someone saying, hey I want to buy your horse. Uh, I only have this one horse and I use it for everything. 
+Characters will have motivations to retain some things, buy some things, and sell others. Hell, we could have the artisans/characters OFFER items up front. Just think about the radiance of a bartering system, where the dialogue interweaves the character logic.
+
+Does that sound like the *top* interest in this game? Interesting characters that have a story to tell based on how they engage with the player for goods (and maybe services)? 
+
+##I've been mulling on the idea of how commodities link into this. 
+Artisans require specific resources to transform commodities into products. Our complexity can explode any which way if we don't get laser focused on what we want from the itemization of the game. So, maybe we have to decide first what aspects get us (as the developers) feeling excited going forward.
+
+##Businessy, technical learnings 
+-- It feels like game design is emulating everything API driven, webpage delivery, and subtle database design. Is there a specific challenge that's really driving us? I think the art and sound design is something aside from the game design itself. Like, I'm really just changing the feeling of the room for the sake of the actual *game*. The game itself is, what happens when you select that thing. What are you communicating to the player via consequence. Then as a designer, what values are you capturing to influence future outcomes and choices. It can get massive really quick. But, I think we can get to the point that the game will design itself as we start to service what we notice in our playthroughs. Like \"hey, I did this after playing for 20 minutes, it felt like something was missing\". >>This is where we get back into code review, quest design, game manager adjusting<< It will happen many times, and I think this is where the greatest satisfaction will come from.
+===
+
+09/10 (also late)
 	big thinky brain things: resources are loaded by nodeds. Nodes do things, resources just tell them what and how.
 character class needs a resources to build it. items are the same and commodities are items. So although there may
 be special items that you can have in your inventory, I think currency and commodities should be items as well.
@@ -90,23 +240,35 @@ Additionally, to help graphically represent this idea, can implement simple sun/
 
 8/21/25; I guess this works, still want a little note-making scene that's quick to use. There is a #TODO tag you can use within godot scripts, but I don't know how to review the todo lines. -kc
 "
-scroll_active = false
+fit_content = true
 context_menu_enabled = true
 selection_enabled = true
 
-[node name="Horse" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.290196)
-position = Vector2(549, 66)
-rotation = 0.293968
-scale = Vector2(6.6875, 3.09375)
-texture = ExtResource("2_ebccb")
+[node name="lol" type="Label" parent="."]
+layout_mode = 0
+offset_left = -3275.0
+offset_top = -2738.0
+offset_right = -2683.0
+offset_bottom = -2336.0
+rotation = 0.388582
+scale = Vector2(0.845638, 2.1928)
+theme_override_font_sizes/font_size = 57
+text = "Need to get a custom viewport and make it where we can edit while scene runs"
+autowrap_mode = 3
 
-[node name="Boots" type="Sprite2D" parent="."]
-position = Vector2(-58, 539)
-texture = ExtResource("3_ndml6")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Lumber" type="Sprite2D" parent="."]
-modulate = Color(0.05, 0.05, 0.05, 0.831373)
-position = Vector2(890, 360)
-scale = Vector2(23.5302, 23.5302)
-texture = ExtResource("4_hn76n")
+[node name="Chill brightness plz" type="ColorRect" parent="CanvasLayer"]
+custom_minimum_size = Vector2(4000, 4000)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4734.0
+offset_top = -2873.0
+offset_right = -1374.0
+offset_bottom = 767.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.83242, 5.15401)
+color = Color(0.0666667, 0.0352941, 0.0352941, 0.262745)
+metadata/_edit_lock_ = true
