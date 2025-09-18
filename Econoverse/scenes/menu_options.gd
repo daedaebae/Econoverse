@@ -4,6 +4,8 @@ extends Control
 @onready var menu_options: Control = $MenuOptions
 @export var resolution_option: OptionButton
 @export var player_name_debug: LineEdit
+@export var blur : Control
+@export var sfx_select : AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,14 +21,18 @@ func _input(event):
 	pass
 
 func _on_button_continue_pressed() -> void:
+	blur.hide()
 	menu_paused.hide()
 	get_tree().paused = false
 	
 func _on_button_options_pressed() -> void:
 	menu_paused.hide()
 	menu_options.show()
+	sfx_select.play()
 
 func _on_button_quit_pressed() -> void:
+	sfx_select.play()
+	await sfx_select.finished
 	get_tree().quit()
 	
 func _on_button_back_pressed() -> void:

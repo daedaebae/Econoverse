@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://jeisvflnggfs"]
+[gd_scene load_steps=11 format=3 uid="uid://jeisvflnggfs"]
 
 [ext_resource type="Texture2D" uid="uid://tra18r25wvdn" path="res://assets/image/econoverse_main.png" id="1_4qofq"]
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="1_i1cyk"]
@@ -8,7 +8,6 @@
 [ext_resource type="AudioStream" uid="uid://gnxtmixp2q0w" path="res://assets/audio/sfx/sfx_select.ogg" id="5_25d2p"]
 [ext_resource type="AudioStream" uid="uid://dsp7uput0vh2q" path="res://assets/audio/music/intro1.ogg" id="6_133ns"]
 [ext_resource type="AudioStream" uid="uid://cupiunyi147xp" path="res://assets/audio/ambiance/atm_air_night.ogg" id="8_25d2p"]
-[ext_resource type="PackedScene" uid="uid://bdrcd03bq4so4" path="res://scenes/blur.tscn" id="9_2tu13"]
 [ext_resource type="PackedScene" uid="uid://14o27b0vk1yx" path="res://scenes/user_backmenus.tscn" id="9_133ns"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_133ns"]
@@ -37,20 +36,7 @@ shader_parameter/cloud_color_shiftx = 0.0
 shader_parameter/cloud_color_shifty = -0.5
 shader_parameter/background_color = Color(0.02, 0.04, 0.12, 1)
 
-[sub_resource type="Shader" id="Shader_pavg7"]
-code = "// NOTE: Shader automatically converted from Godot Engine 4.4.1.stable.mono's CanvasItemMaterial.
-
-shader_type canvas_item;
-render_mode blend_mix;
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e0g7h"]
-shader = SubResource("Shader_pavg7")
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_133ns"]
-blend_mode = 2
-
-[node name="TitleScreen" type="Control" node_paths=PackedStringArray("song_intro", "sfx_select", "amb_air_night", "button_options", "user_backmenus", "TopLayer", "menu_paused", "menu_options", "blur")]
+[node name="TitleScreen" type="Control" node_paths=PackedStringArray("song_intro", "sfx_select", "amb_air_night", "button_options", "user_backmenus", "TopLayer", "menu_paused", "menu_options")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -71,7 +57,6 @@ user_backmenus = NodePath("TopLayer/UserBackmenus/MenuPaused")
 TopLayer = NodePath("TopLayer")
 menu_paused = NodePath("TopLayer/UserBackmenus/MenuPaused")
 menu_options = NodePath("TopLayer/UserBackmenus/MenuOptions")
-blur = NodePath("Blur")
 
 [node name="StarrySky" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_133ns")
@@ -100,7 +85,6 @@ grow_vertical = 2
 color = Color(0.1, 0.073, 0.01, 0.258824)
 
 [node name="Icon" type="Control" parent="."]
-material = SubResource("ShaderMaterial_e0g7h")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -113,12 +97,6 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="EconoverseMain2" type="Sprite2D" parent="Icon"]
-material = SubResource("CanvasItemMaterial_133ns")
-position = Vector2(28, -21)
-scale = Vector2(2, 2)
-texture = ExtResource("1_4qofq")
 
 [node name="EconoverseMain" type="Sprite2D" parent="Icon"]
 position = Vector2(30, -20)
@@ -142,16 +120,14 @@ alignment = 1
 [node name="Button_Start" type="Button" parent="Buttons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Click to Start"
+text = "Start"
 flat = true
 
 [node name="spacer" type="Control" parent="Buttons"]
-visible = false
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
 [node name="Button_Options" type="Button" parent="Buttons"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
@@ -173,28 +149,13 @@ bus = &"Music"
 stream = ExtResource("8_25d2p")
 bus = &"Ambiance"
 
-[node name="Blur" parent="." instance=ExtResource("9_2tu13")]
-layout_mode = 1
-
 [node name="TopLayer" type="CanvasLayer" parent="."]
 layer = 100
 
-[node name="UserBackmenus" parent="TopLayer" node_paths=PackedStringArray("blur") instance=ExtResource("9_133ns")]
-blur = NodePath("../../Blur")
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -33.0
-offset_right = 102.0
-offset_bottom = -10.0
-grow_vertical = 0
-text = "ESC - Options"
+[node name="UserBackmenus" parent="TopLayer" instance=ExtResource("9_133ns")]
 
 [connection signal="button_down" from="Buttons/Button_Start" to="." method="_on_button_start_button_down"]
+[connection signal="button_down" from="Buttons/Button_Options" to="." method="_on_button_options_button_down"]
 [connection signal="finished" from="Intro1" to="." method="_on_intro_1_finished"]
 
 [editable path="TopLayer/UserBackmenus"]

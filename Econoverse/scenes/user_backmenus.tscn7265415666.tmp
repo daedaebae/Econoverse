@@ -1,13 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://14o27b0vk1yx"]
+[gd_scene load_steps=5 format=3 uid="uid://14o27b0vk1yx"]
 
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="1_ijeyw"]
 [ext_resource type="Script" uid="uid://fskswk5chrci" path="res://scenes/menu_options.gd" id="2_f0x44"]
 [ext_resource type="Script" uid="uid://d0561i63jiiwv" path="res://scenes/option_button_resolution.gd" id="3_f0x44"]
-[ext_resource type="AudioStream" uid="uid://gnxtmixp2q0w" path="res://assets/audio/sfx/sfx_select.ogg" id="4_j2okn"]
 
 [sub_resource type="Theme" id="Theme_f0x44"]
 
-[node name="UserBackmenus" type="Control" node_paths=PackedStringArray("resolution_option", "player_name_debug", "sfx_select")]
+[node name="UserBackmenus" type="Control" node_paths=PackedStringArray("resolution_option", "player_name_debug")]
 process_mode = 3
 process_priority = -10
 z_index = 4096
@@ -24,11 +23,9 @@ theme = ExtResource("1_ijeyw")
 script = ExtResource("2_f0x44")
 resolution_option = NodePath("MenuOptions/MasterStack/MidVBox/HBoxGraphics/OptionButtonResolution")
 player_name_debug = NodePath("MenuPaused/MasterStack/MidVBox/HBoxDEBUG/InputName")
-sfx_select = NodePath("SfxSelect")
 
 [node name="MenuPaused" type="Control" parent="."]
 process_mode = 2
-visible = false
 custom_minimum_size = Vector2(200, 300)
 layout_mode = 1
 anchors_preset = 8
@@ -279,12 +276,6 @@ text = "Options"
 [node name="ButtonQuit" type="Button" parent="MenuAudio/MasterStack/MidVBox"]
 layout_mode = 2
 text = "Quit"
-
-[node name="SfxSelect" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_j2okn")
-volume_db = -9.226
-pitch_scale = 4.0
-bus = &"SFX"
 
 [connection signal="pressed" from="MenuPaused/MasterStack/MidVBox/ButtonContinue" to="." method="_on_button_continue_pressed"]
 [connection signal="pressed" from="MenuPaused/MasterStack/MidVBox/ButtonOptions" to="." method="_on_button_options_pressed"]

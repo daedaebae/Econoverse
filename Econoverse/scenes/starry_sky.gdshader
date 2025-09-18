@@ -10,7 +10,7 @@ uniform float twinkle_effect : hint_range(0.0, 1.0, 0.1) = 0.6;
 uniform float twinkle_speed : hint_range(0.0, 100.0, 0.1) = 0.3;
 
 uniform float fbm_strength : hint_range(0.0, 3.0, 0.01) = 0.12;
-uniform float fbm_mix : hint_range(0.0, 1.0, 0.01) = 0.07; 
+uniform float fbm_mix : hint_range(0.0, 1.0, 0.01) = 0.07;
 uniform float fbm_freq : hint_range(0, 200, 1) = 4;
 uniform float fbm_amp : hint_range(0, 10., 0.01) = 1.5;
 uniform float fbm_speed : hint_range(-10.0, 10.0, 0.01) = 5.;
