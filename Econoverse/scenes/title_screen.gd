@@ -15,6 +15,7 @@ extends Control
 @export var menu_paused : Control
 @export var menu_options : Control
 @export var blur : Control
+@export var BlackOut : ColorRect
 var world_map = null
 var commodities_menu = null
 #@export var menu_audio : Control
@@ -98,11 +99,17 @@ func _on_intro_1_finished() -> void:
 #play select sound, load Main scene, transition effects
 func _on_button_start_button_down() -> void:
 	sfx_select.play()
+	var tween = get_tree().create_tween()
+	tween.set_ease(Tween.EASE_IN)
+	tween.tween_property(BlackOut, "modulate", Color.BLACK, 2)
+	
 	await sfx_select.finished
-	if Globals.player_name == "":
-		prompt_user_for_name()
-	else:
-		go_to_main_scene()
+	
+	get_tree().change_scene_to_file("res://scenes/MAIN.tscn")
+	#if Globals.player_name == "":
+		#prompt_user_for_name()
+	#else:
+	
 	#begin transition out
 	#await some time for sfx to play and menu to transition
 	#allow player to quickly interrupt by clicking again? 

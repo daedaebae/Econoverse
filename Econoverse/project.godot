@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Econoverse"
-run/main_scene="uid://qdn2ymj50ymd"
+run/main_scene="uid://jeisvflnggfs"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 run/max_fps=60
 boot_splash/bg_color=Color(0.18, 0.08616, 0.0144, 0.941176)
@@ -23,6 +23,7 @@ config/icon="uid://3gkx1penpm4a"
 [autoload]
 
 Globals="*res://scripts/GLOBALS.gd"
+SceneManager="*res://SINGLETONS/scene_manager.tscn"
 Main="*res://scripts/main.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
