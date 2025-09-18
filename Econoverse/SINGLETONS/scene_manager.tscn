@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch240k2bcraqu"]
+
+[ext_resource type="Script" uid="uid://n2sw88e02y1x" path="res://SINGLETONS/scene_manager.gd" id="1_0fxib"]
+
+[node name="SceneManager" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_0fxib")
+
+[node name="Blackout" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)

@@ -60,7 +60,6 @@ texture = ExtResource("3_0xo7i")
 expand_mode = 3
 
 [node name="Blur" parent="." instance=ExtResource("5_0tikr")]
-visible = true
 layout_mode = 1
 
 [node name="LeavesParticles" parent="." instance=ExtResource("3_t5wp8")]
