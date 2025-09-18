@@ -1,14 +1,17 @@
 shader_type canvas_item;
 
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
+uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 
+// Blurs the screen in the Y-direction.
 void fragment() {
-	// Called for every pixel the material is visible on.
+    vec3 col = texture(screen_texture, SCREEN_UV).xyz * 0.05;
+    col += texture(screen_texture, SCREEN_UV + vec2(0.0, SCREEN_PIXEL_SIZE.y)).xyz * 0.15;
+    col += texture(screen_texture, SCREEN_UV + vec2(0.0, -SCREEN_PIXEL_SIZE.y)).xyz * 0.15;
+    col += texture(screen_texture, SCREEN_UV + vec2(0.0, 2.0 * SCREEN_PIXEL_SIZE.y)).xyz * 0.12;
+    col += texture(screen_texture, SCREEN_UV + vec2(0.0, 2.0 * -SCREEN_PIXEL_SIZE.y)).xyz * 0.12;
+    col += texture(screen_texture, SCREEN_UV + vec2(0.0, 3.0 * SCREEN_PIXEL_SIZE.y)).xyz * 0.09;
+    col += texture(screen_texture, SCREEN_UV + vec2(0.0, 3.0 * -SCREEN_PIXEL_SIZE.y)).xyz * 0.09;
+    col += texture(screen_texture, SCREEN_UV + vec2(0.0, 6.0 * SCREEN_PIXEL_SIZE.y)).xyz * 0.05;
+    col += texture(screen_texture, SCREEN_UV + vec2(0.0, 6.0 * -SCREEN_PIXEL_SIZE.y)).xyz * 0.05;
+    COLOR.xyz = col;
 }
-
-//void light() {
-//	// Called for every pixel for every light affecting the CanvasItem.
-//	// Uncomment to replace the default light processing function with this one.
-//}
