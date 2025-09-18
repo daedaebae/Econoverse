@@ -5,7 +5,11 @@
 
 ~ town
 #do game_manager.transition(town)  
+## kc 9/18; have been experimenting with scene management. A module based system could work great, and any script could call for a scene change function.
+## There are mountains to move to get the systems in place and correctly calling/storing values for scene management in tandem with the player save file. 
+
 ## kc 9/12; just an example of moving back to town. If we call for a singleton function here, then the actual game_manger (state machine, whatever you like to think of it) could also emit a signal when the transition() method is called. The entire game outside of this could connect to the signal, and kickoff whatever we want when the transition should occur. (sounds, music transition, loading and unloading of data/assets, anything you can imagine)
+
 Where should I go?
 - Smithy: To the Smithy!
 	=> Smithy
@@ -32,7 +36,9 @@ else:
 			{{Main.Smith.char_name}}: That is a possibility. [wait=2] You will have your sword if you trade your pastry to me. What say you?
 			- Agreed!
 				do Main.Player.trade(Main.Smith, "Strudel", 1, "Sword", 1)
-			{{Main.Smith.char_name}}: Good business, stranger. => town
+				do Main.Smith.trust = KNOWN
+			{{Main.Smith.char_name}}: Good business. 
+			We may do further dealings in the future. => town
 		else:
 			{{Main.Smith.char_name}}: [speed=0.2] Hmm. [speed=0.8]I could be swayed. [speed=0.7]Speak with the baker, let her know I sent you. She will understand. 
 			Her fine pastries have me yearning. [wait=0.5]Thereafter, we may speak.
