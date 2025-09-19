@@ -111,7 +111,7 @@ metadata/_edit_lock_ = true
 
 [node name="Coin2" type="Sprite2D" parent="."]
 modulate = Color(0.0129662, 0.0129662, 0.0129662, 1)
-position = Vector2(544, 267)
+position = Vector2(-1145, -1230)
 scale = Vector2(84.8125, 79.7363)
 texture = ExtResource("1_8vlpi")
 
@@ -135,7 +135,10 @@ scale = Vector2(6.6875, 3.09375)
 texture = ExtResource("2_ebccb")
 
 [node name="Boots" type="Sprite2D" parent="."]
-position = Vector2(-58, 539)
+modulate = Color(1, 1, 1, 0.509804)
+position = Vector2(2117, 631)
+rotation = 0.218842
+scale = Vector2(-4.18283, 4.2129)
 texture = ExtResource("3_ndml6")
 
 [node name="Lumber" type="Sprite2D" parent="."]
@@ -145,7 +148,7 @@ scale = Vector2(23.5302, 23.5302)
 texture = ExtResource("4_hn76n")
 
 [node name="LeavesParticles" type="Node2D" parent="."]
-modulate = Color(1, 1, 1, 0.192157)
+modulate = Color(1, 1, 1, 0.576471)
 position = Vector2(133, -54)
 rotation = 1.36136
 scale = Vector2(2, 2)
