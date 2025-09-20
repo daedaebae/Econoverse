@@ -21,16 +21,17 @@ extends Node2D
 @export var race: String = "Human"
 @export var profession: Profession
 @export var inventory: Dictionary = {"Sword": 0, "Strudel": 0, "Coins": 0}
-
+@export var met : bool = false
 
 # Constructor
-func _init(name, loc, gen, r, prof, inv):
+func _init(name, loc, gen, r, prof, inv, met):
 	self.char_name = name
 	self.location = loc
 	self.gender = gen
 	self.race = r
 	self.profession = prof
 	self.inventory = inv
+	self.met = met
 	pass
 
 #durf 09/15/25 - v1.0 simple trade func sets dicts, v2.0 trade func with adjust
