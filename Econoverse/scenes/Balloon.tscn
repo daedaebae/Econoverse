@@ -1,18 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcriq28jpuwnj"]
+[gd_scene load_steps=6 format=3 uid="uid://bcriq28jpuwnj"]
 
 [ext_resource type="Script" uid="uid://5b3w40kwakl3" path="res://addons/dialogue_manager/example_balloon/ExampleBalloon.cs" id="1_3r1ia"]
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="2_6ukt2"]
 [ext_resource type="FontFile" uid="uid://c15bkghedjxxy" path="res://assets/fonts/ModernAntiqua-Regular.ttf" id="3_6ukt2"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="3_opmx1"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_6uh3n"]
-[ext_resource type="FontFile" uid="uid://bwgm0rcnkhr36" path="res://assets/fonts/CormorantInfant-VariableFont_wght.ttf" id="5_opmx1"]
-
-[sub_resource type="FontVariation" id="FontVariation_6uh3n"]
-base_font = ExtResource("5_opmx1")
-variation_face_index = 1
-variation_embolden = 0.25
-spacing_space = 1
-spacing_top = -1
 
 [node name="ExampleBalloon" type="CanvasLayer"]
 layer = 2
@@ -77,14 +69,8 @@ tab_size = 8
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/table_v_separation = 0
 theme_override_constants/outline_size = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_outline_size = 2
-theme_override_constants/line_separation = 0
-theme_override_fonts/normal_font = SubResource("FontVariation_6uh3n")
-theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/normal_font_size = 12
 text = "Dialogue..."
 
 [node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" node_paths=PackedStringArray("response_template")]
