@@ -14,6 +14,7 @@ var Char = CharSceneInstance
 var Player = Character.new("Iona",7,1,"Human",0,{"Sword": 0, "Strudel": 0, "Coins": 5}, false)
 var Smith = Character.new("Bron",1,0,"Human",0,{"Sword": 1, "Strudel": 0, "Coins": 700}, false)
 var Baker = Character.new("Tiebyrn",3,"Female","Human",4,{"Sword": 0, "Strudel": 1, "Coins": 0}, false)
+var Guard = Character.new("Roric Harthorne",7,0,"Human",0,{"Sword": 0, "Strudel":0, "Coins": 200}, false)
 
 #@export var Stablemaster = Character.new(
 	#"Brygna",

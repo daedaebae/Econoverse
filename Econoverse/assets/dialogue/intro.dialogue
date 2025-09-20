@@ -11,17 +11,134 @@
 ## kc 9/12; just an example of moving back to town. If we call for a singleton function here, then the actual game_manger (state machine, whatever you like to think of it) could also emit a signal when the transition() method is called. The entire game outside of this could connect to the signal, and kickoff whatever we want when the transition should occur. (sounds, music transition, loading and unloading of data/assets, anything you can imagine)
 
 Where should I go?
+- Front Gate: To the Front Gate!
+	=> front_gate
 - Smithy: To the Smithy!
 	=> Smithy
 - Bakery: To the Bakery!
 	=> Bakery
 
+~ front_gate
+if Main.Guard.met:
+	=> guard_quest
+
+if !Main.Guard.met:
+	=> guard_intro
+			#kc 9/19/25; here is an excellent opportunity to give the player multiple different opportunities to complete the quest. 
+#		They could obtain a new blade from the smith, or somehow encounter the thief and take back the original blade. 
+#		Maybe having a good enough relationship with some character would enable a successful investigation, and a more substantial and interesting reward in the end. 
+#		In this example, just giving multiple options to respond and gain a sense of immersion. Like you are speaking with a real person.
+
+~ guard_intro
+???: Another one. Fine. Just... listen up, citizen. This city is my responsibility, and I, {{Main.Guard.char_name}}, take that duty seriously. It's a fine place, filled with good folk. Try not to cause any trouble, and for the love of the Divines, stay out of the armory.
+- What happened in the armory?
+	=> guard_armory_q
+- Your armor looks a bit worn, Guard.
+	=> guard_armor_q
+- You seem tired. Is everything alright?
+	=> guard_tired_q
+- Oh, sorry, gotta go.
+	=> guard_goodbye
+- Goodbye.
+=> guard_goodbye
+
+~ guard_armory_q
+{{Main.Guard.char_name}}: Something's afoot. Someone stole my best blade, you see. Now I'm stuck with this rusty thing. A lot of good a rusty sword does me. If you can help, I'll make it well worth your time.
+- That's a shame. Who would steal from a guard?
+	=> guard_armory_sympathy
+if Main.Baker.met:
+	- I have an idea who might be behind this.
+		=> guard_armory_hint
+- I'm not interested in your problems.
+	=> guard_armory_dismissal
+
+~ guard_armory_sympathy
+{{Main.Guard.char_name}}: I don't know. It's not a common cutpurse. The thief was too clever. But it was more than just a piece of steel. It was a gift from my captain. I swore to protect this city and its property, and that includes my own gear. Find it, and I'll make it well worth your while.
+- Sounds like a challenge. I'll get it back for you.
+	{{Main.Guard.char_name}}: That's the spirit! I knew I could trust a traveler with a spine. The thief was a nimble one, snuck out through the old cistern. We've got a detailed report—not that it's done me any good. I'd start with the smith, if you want a lead. Probably trying to peddle it off.
+	do Main.Guard.met = true
+	=> guard_goodbye
+- I'll think about it.
+	{{Main.Guard.char_name}}: I understand. The road is long and full of distractions. Just know I'm on watch here most days, so don't be a stranger if you change your mind. We're a bit understaffed these days, so my duties keep me on my feet. I'm afraid I don't get much time for sword hunting.
+	do Main.Guard.met = true
+	=> guard_goodbye
+if Main.Smith.met and Main.Baker.met:
+	- Maybe you should try talking to the Baker.
+		{{Main.Guard.char_name}}: The baker? Why would I talk to the baker?
+		- The smith and baker seem to have a close relationship.
+			{{Main.Guard.char_name}}: [smiles wryly] A bit of gossip, are we? You're clever, I'll give you that. It's true, the baker knows more than she lets on. She's the heart of this town. And the smith... well, he's a good man, for a hermit. She'll get a word out of him with enough patience.
+			- Is that the only reason?
+				{{Main.Guard.char_name}}: No. He and I… we have an understanding. Now, if you’re as clever as you are with words, you might be able to find it. The offer's there if you want it.
+				do Main.Guard.met = true
+				=> guard_goodbye
+
+~ guard_armory_hint
+{{Main.Guard.char_name}}: Oh? And what would that be?
+if Main.Baker.met:
+	- I was talking to the baker, she seems to know a lot about people.
+		{{Main.Guard.char_name}}: The baker? (His expression softens slightly.) She does. She's a good woman. And she's the only one who can get a word out of the smith, I'll tell you that much. If you want to know about a blade, you talk to the man who forges them.
+		- So you want me to talk to the smith?
+			{{Main.Guard.char_name}}: If you want to find that blade, yes. And if you're not going to cause any trouble, you can go on your way.
+			do Main.Guard.met = true
+			=> guard_goodbye
+		- I'll go to the baker first.
+			{{Main.Guard.char_name}}: Suit yourself.
+			do Main.Guard.met = true
+			=> guard_goodbye
+- I think it might have been an inside job.
+	{{Main.Guard.char_name}}: Are you accusing a sworn guard of this city of being a thief?
+	- It was just an idea.
+		{{Main.Guard.char_name}}: (His hand moves to his sword hilt.) A poor idea. My job is to protect this city, not to make friends. If you want a friendly face, go talk to the tavern keeper. Just don't get in my way.
+		do Main.Guard.met = true
+		=> guard_goodbye
+	- I am a good person.
+		{{Main.Guard.char_name}}: (He sighs and shakes his head.) Then go and prove it. My blade... it was a gift. It was more than steel. If you want to help, go to the smith.
+		do Main.Guard.met = true
+		=> guard_goodbye
+
+~ guard_armory_dismissal
+{{Main.Guard.char_name}}: Is that so? Then you are free to leave. We don't need more trouble. I've been stationed here for a long time, and I've seen enough outlanders come and go to know which ones mean well. You'll have to prove yourself like everyone else.
+do Main.Guard.met = true
+=> guard_goodbye
+
+~ guard_armor_q
+{{Main.Guard.char_name}}: [He looks down at his breastplate and sighs.] It gets the job done. This city is short on funds, so we have to make do with what we have. It was a good blade, you know. The one I used to have. It was a gift from my captain. I had to let it go.
+- What happened to it?
+	{{Main.Guard.char_name}}: It was stolen. Someone snuck in and took it. And now I’m stuck with this rusty thing. A lot of good that does me. But I’ll tell you what. If you’ve got a nose for trouble and an arm for a fight, maybe you and I can help each other out.
+	do Main.Guard.met = true
+	=> guard_armory_sympathy
+- Can't you just get a new one?
+	{{Main.Guard.char_name}}: It's not that simple. City protocol, you see. Any piece of equipment that goes missing has to be reported, documented... and replaced by an armory quartermaster, which takes an eternity. My captain would have my head if I just bought a new one and didn't follow the proper channels. Besides, it was a good blade. You get attached to things.
+	do Main.Guard.met = true
+	=> guard_goodbye
+
+~ guard_tired_q
+{{Main.Guard.char_name}}: (He runs a hand over his face.) I've stood watch in this city for over a decade. I've seen enough to know a good sort when I see one. You seem like a good sort.
+- What made you want to be a guard?
+	{{Main.Guard.char_name}}: My father was a guard. His father before him. It’s what we do. We protect the people of this city. It’s a good life, a lonely one, but a good one.
+	- Why is it lonely?
+		{{Main.Guard.char_name}}: It just is. You're always on watch, always on guard. You see things others don't, you hear things others can't. You lose things. My favorite sword... it was a gift from my captain. I had to let it go.
+		- What happened to it?
+			{{Main.Guard.char_name}}: It was stolen. Someone snuck in and took it. And now I’m stuck with this rusty thing. A lot of good that does me. But I’ll tell you what. If you’ve got a nose for trouble and an arm for a fight, maybe you and I can help each other out.
+			do Main.Guard.met = true
+			=> guard_armory_sympathy
+	- It seems like an honorable life.
+		{{Main.Guard.char_name}}: It is. I’ve lost a lot of men on my watch, but I’ve saved more than I can count.
+		- What do you mean you've lost things?
+			{{Main.Guard.char_name}}: My favorite sword... it was a gift from my captain. I had to let it go.
+			- What happened to it?
+				{{Main.Guard.char_name}}: It was stolen. Someone snuck in and took it. And now I’m stuck with this rusty thing. A lot of good that does me. But I’ll tell you what. If you’ve got a nose for trouble and an arm for a fight, maybe you and I can help each other out.
+				do Main.Guard.met = true
+				=> guard_armory_sympathy
+
+
 
 ~ Smithy
-#if not: character.smith.has_met: #first meeting dialogue here. (we'll implement in next version. For the cozy vibes.
-#{{character.blacksmith.name}} 
+if !Main.Smith.met:
+	???: [speed=0.8] I haven't seen your face before. I am {{Main.Smith.char_name}}.
+	do Main.Smith.met = true
 if Globals.player_name == "":
-	{{Main.Smith.char_name}}: [speed=0.8] I haven't seen your face before. Enter your name in the pause menu so we can be aquainted. [wait=1] [speed=0.7]That would be best.
+	{{Main.Smith.char_name}}: [speed=0.8] Enter your name in the pause menu so we can be aquainted. [wait=1] [speed=0.7]That would be best.
 	- Okay.
 		{{Main.Smith.char_name}}: Thanks.
 		=> Smithy
@@ -29,49 +146,426 @@ if Globals.player_name == "":
 		{{Main.Smith.char_name}}: It's time for you to leave. (you are pushed through the open doorway, back into the street)
 		=> town
 else:
-	{{Main.Smith.char_name}}: [speed=0.3] Hello, {{Globals.player_name}}. [#anvil.sound] Something [wait=0.2]you need?
-	- Yes. I seek a blade. May I purchase one from you?
-	## kc 9/12 - do we want to use a standard Player class for value simplification? The Globals can still control/update the Players values. Just for the sake of cleanliness, have the values set aside for quick reference?
-		if Main.Player.inventory.Strudel == 1:
-			{{Main.Smith.char_name}}: That is a possibility. [wait=2] You will have your sword if you trade your pastry to me. What say you?
-			- Agreed!
-				do Main.Player.trade(Main.Smith, "Strudel", 1, "Sword", 1)
-				do Main.Smith.trust = KNOWN
-			{{Main.Smith.char_name}}: Good business. 
-			We may do further dealings in the future. => town
-		else:
-			{{Main.Smith.char_name}}: [speed=0.2] Hmm. [speed=0.8]I could be swayed. [speed=0.7]Speak with the baker, let her know I sent you. She will understand. 
-			Her fine pastries have me yearning. [wait=0.5]Thereafter, we may speak.
-			- Well okay...
-				{{Main.Smith.char_name}}: Farewell. => town
-			- Like a donut?
-				{{Main.Smith.char_name}}: [speed=0.8] Something more [wait=0.2][speed=0.5]devine... [speed=0.8]but akin. [speed=0.6]Speak with you soon. => town
-	- Oh, sorry, I have to go. (leave) => town
+	=> smith_main
+	
+
+~ smith_main
+if Main.Guard.inventory.Sword >= 1:
+	=> smith_post_quest
+{{Main.Smith.char_name}}: [speed=0.3] Hello, {{Globals.player_name}}. [#anvil.sound] Something [wait=0.2]you need?
+
+if Main.Player.inventory.Strudel >= 1:
+	- I have something for you.
+		=> smith_strudel_trade
+	- Can you tell me about your work?
+		=> smith_work
+	- Goodbye.
+		=> smith_goodbye
+if Main.Guard.met:
+	- I'm here for the guard's blade.
+		=> smith_guard_quest
+	- I need to buy a sword.
+		=> smith_buy_sword
+	- Can you tell me about your work?
+		=> smith_work
+	- Goodbye.
+		=> smith_goodbye
+
+
+~ smith_guard_quest
+{{Main.Smith.char_name}}: That old bear. Let him deal with his own troubles.
+- He said it was a masterpiece.
+	{{Main.Smith.char_name}}: [speed=0.5] It is. The finest I've ever made. The balance, the edge... perfect. Now, if you are to be of use to me, you will bring me one of the baker's famous strudels.
+	- Why?
+		{{Main.Smith.char_name}}: A man needs his pleasures. She'll understand.
+		=> smith_main
+	- This is ridiculous.
+		{{Main.Smith.char_name}}: Then you are free to leave.
+		=> smith_main
+
+~ smith_strudel_trade
+if Main.Player.inventory.Strudel >= 1:
+	{{Main.Smith.char_name}}: You will have your sword if you trade your pastry to me. What say you?
+	- Agreed!
+		do Main.Player.trade(Main.Smith, "Strudel", 1, "Sword", 1)
+		#do trust increment
+		{{Main.Smith.char_name}}: Good business. We may do further dealings in the future.
+		=> smith_main
+	- Not for a strudel.
+		{{Main.Smith.char_name}}: Suit yourself. Now get on with it.
+		=> smith_main
+
+~ smith_buy_sword
+{{Main.Smith.char_name}}: That is a possibility.
+if Main.Player.inventory.Strudel >= 1:
+	{{Main.Smith.char_name}}: You have a strudel. The price is your pastry. What say you?
+	=> smith_strudel_trade
+else:
+	{{Main.Smith.char_name}}: [speed=0.2] Hmm. [speed=0.8]I could be swayed. [speed=0.7]Speak with the baker, let her know I sent you. She will understand. Her fine pastries have me yearning. [wait=0.5]Thereafter, we may speak.
+	- Well okay...
+		{{Main.Smith.char_name}}: Farewell.
+		=> smith_main
+	- Like a donut?
+		{{Main.Smith.char_name}}: [speed=0.8] Something more [wait=0.2][speed=0.5]devine... [speed=0.8]but akin. [speed=0.6]Speak with you soon.
+		=> smith_main
+			
+~ smith_work
+{{Main.Smith.char_name}}: My work? It's my life. I don't work for profit, I work for perfection. Every piece is a reflection of my soul.
+- So you don't care about money?
+	{{Main.Smith.char_name}}: Money is a tool. Nothing more. But the praise of a satisfied customer... that is what I live for.
+	=> smith_main
+- Is that why the guard's sword was so important?
+	{{Main.Smith.char_name}}: It was. I poured my heart into that blade. It was not a commission, but a gift to a good friend.
+	- A good friend?
+		{{Main.Smith.char_name}}: (He grunts.) Do not question my motives. Now, if you have no more questions, I have work to do.
+		=> smith_main
+	- Why did you make a gift for a guard?
+		{{Main.Smith.char_name}}: He is one of the only men in this town who understands the value of a perfectly crafted blade. We have an understanding. Now, if you'll excuse me, I have work to do.
+		=> smith_main
+
 
 ~ Bakery
-#if not: character.smith.has_met: #first meeting dialogue here.
-#{{character.baker.name}} 
-if Main.Baker.met == false:
-	{{Main.Baker.char_name}}: Well hi stranger! Welcome to my little bakery!
+if Main.Guard.inventory.Sword >= 1:
+	=> baker_post_quest
+if !Main.Baker.met:
+	??: Well hi stranger! Welcome to my little bakery, I'm {{Main.Baker.char_name}}!
+	do Main.Baker.met = true
 if Globals.player_name == "":
-	{{Main.Baker.char_name}}: Oh, you haven't entered your name yet, can you do that from the pause screen for me? [wait=1] We don't have to be strangers! 
+	{{Main.Baker.char_name}}: Looking like you still need to enter your name, can you do that from the pause screen for me? [wait=1] We don't have to be strangers! 
 	- Okay, I'll do that before clicking this.
 		{{Main.Baker.char_name}}: Thank you so much. => Bakery
 	- No.
 		{{Main.Baker.char_name}}: Oh goodness, are you having a bad day? => Bakery
 else:
-	{{Main.Baker.char_name}}: Thank you for coming, what can I do for you, {{Globals.player_name}}?
-	do Main.Baker.met = true
-	#if met smith etc etc. Just railroading for now
-	- The smith seems to really like your sweets. May I buy one?
-		{{Main.Baker.char_name}}: Why yes, it's just five coins if you can spare.
-		- I'll have one! (Pay 5 coins)
-			{{Main.Baker.char_name}}: Here you are, dearest. 
-			do Main.Player.trade(Main.Baker, "Coins", 5, "Strudel", 1)
-			Bye now! [wait=1] => town
-		- Maybe another time.
-			Bye now! [wait=1] => town
-		{{Main.Baker.char_name}}: Oh, [wave]of course![/wave] 
+	=> baker_main
 
+~ baker_main
+{{Main.Baker.char_name}}: Thank you for coming, what can I do for you, {{Globals.player_name}}?
+- I'm here on behalf of the smith. He sent me for a strudel.
+	{{Main.Baker.char_name}}: Oh, that old grump! I knew he couldn't resist. He's always trying to get someone else to do his errands. That will be five coins if you can spare it, dear. It's the least he can do for me.
+	- I'll have one! (Pay 5 coins)
+		{{Main.Baker.char_name}}: Here you are, dearest. Don’t tell the smith I gave you his favorite. He’s going to be so happy he'll be faking grumpy for an hour straight.
+		do Main.Player.trade(Main.Baker, "Coins", 5, "Strudel", 1)
+		=> baker_after_purchase
+	- Maybe another time.
+		{{Main.Baker.char_name}}: Oh, of course! You come back any time, dearie.
+		=> baker_main
+
+- I'm not here for the smith. I just want to buy a pastry.
+	{{Main.Baker.char_name}}: Oh, wonderful! I've got so many to choose from. A strudel? A muffin? Or a fresh pie?
+	- I'll take a strudel.
+		{{Main.Baker.char_name}}: A fine choice. That will be five coins, dear.
+		- I'll have one! (Pay 5 coins)
+			{{Main.Baker.char_name}}: Here you are, dearest. Enjoy every last bite!
+			do Main.Player.trade(Main.Baker, "Coins", 5, "Strudel", 1)
+			=> baker_after_purchase
+		- Maybe another time.
+			{{Main.Baker.char_name}}: Oh, of course! You come back any time, dearie.
+			=> baker_main
+
+- What can you tell me about this town?
+	{{Main.Baker.char_name}}: Oh, we're just a small, quiet little town. We don't have many travelers coming through anymore.
+	- Why not?
+		{{Main.Baker.char_name}}: Things have been... quiet. Some of our people have left. But you'll find no friendlier folk in all the land, dear. We all stick together.
+		=> baker_main
+
+- What can you tell me about the guard?
+	=> baker_talks_guard
+
+- What can you tell me about the smith?
+	=> baker_talks_smith
+
+- Goodbye.
+=> baker_goodbye
+
+~ baker_after_purchase
+{{Main.Baker.char_name}}: I hope you enjoy your strudel. It's truly a labor of love.
+- What can you tell me about the guard?
+	=> baker_talks_guard
+- What can you tell me about the smith?
+	=> baker_talks_smith
+- This is a strange town.
+	{{Main.Baker.char_name}}: (chuckles) It has its quirks. Every place does, I suppose.
+	=> baker_main
+
+~ baker_talks_guard
+{{Main.Baker.char_name}}: The Guard, you say? He's a good man. He's seen a lot, and he carries it all on his shoulders. But he's got a heart of gold underneath that hard shell.
+- He seems like a stickler for the rules.
+	{{Main.Baker.char_name}}: He is. And for good reason. He lost a good friend, a long time ago, because someone didn't follow the rules. He never talks about it, but you can see it in his eyes. It made him the man he is today.
+	- That's sad.
+		{{Main.Baker.char_name}}: It is. But he's not one for pity. He just wants to keep the people of this town safe, so that no one else has to feel that kind of loss. He's very dedicated.
+		=> baker_main
+	- I'm just here to find a sword.
+		{{Main.Baker.char_name}}: (pauses, looking at you thoughtfully) That's what you're telling yourself, dearie? You're not here because you feel a need to help him? Or because you're a good person? Sometimes we do things for others to prove something to ourselves.
+		- I am a good person.
+			{{Main.Baker.char_name}}: I can see that. Now, about that sword... you might want to talk to the smith. He knows the guard better than most.
+			=> baker_main
+		- I'm not.
+			{{Main.Baker.char_name}}: Well, what does that matter? You are who you are, and you're still here to help. Now, what do you need to know about the smith?
+			=> baker_talks_smith
+- Tell me about his friendship with the smith.
+	{{Main.Baker.char_name}}: Oh, those two! They've been like brothers for years. They have a funny rivalry over my strudels, but they're closer than most. The smith is the only one who can make the guard laugh, and the guard is the only one who can get the smith to leave his anvil.
+	=> baker_main
+
+~ baker_talks_smith
+{{Main.Baker.char_name}}: He's all tough on the outside, but it's just a shell. He has a very kind heart, you know. He's just always so focused on his work. It's a kind of perfectionism.
+- He seems very cold.
+	{{Main.Baker.char_name}}: He is, to those who don't understand him. He speaks with his hands and his hammer, not his words. He has to. He's responsible for making sure our tools and weapons don't fail when we need them most.
+	- He mentioned you owe him a debt.
+		{{Main.Baker.char_name}}: (chuckles) Oh, that old debt! He's referring to the time I ran out of eggs for a special order. He went all the way to the farmlands to get some for me. He wouldn't take a coin, but he'll always ask for a fresh strudel. It's his way of showing he cares.
+		=> baker_main
+- Tell me about his friendship with the guard.
+	{{Main.Baker.char_name}}: Oh, those two! They've been like brothers for years. They have a funny rivalry over my strudels, but they're closer than most. The smith is the only one who can make the guard laugh, and the guard is the only one who can get the smith to leave his anvil.
+	=> baker_main
+
+
+
+~ smith_goodbye
+% {{Main.Smith.char_name}}: Gods be with you. => town
+% {{Main.Smith.char_name}}: Farewell. => town
+% {{Main.Smith.char_name}}: Godspeed. => town
+
+~ baker_goodbye
+% {{Main.Baker.char_name}}: Toodles! => town
+% {{Main.Baker.char_name}}: Have a great day, please. => town
+% {{Main.Baker.char_name}}: Come back soon! => town
+
+~ guard_goodbye
+% Guard: Farewell => town
+% Guard: Stay out of trouble => town
+% Guard: Be well => town
 	
-	- Oh, sorry, gotta go! (leave) => town
+~ guard_quest
+~ guard_return
+if Main.Guard.inventory.Sword >= 1:
+	=> guard_post_quest
+{{Main.Guard.char_name}}: Back again, are you? I hope you have good news.
+
+if Main.Player.inventory.Sword >= 1:
+	- I have your sword.
+		=> guard_quest_complete
+- I haven't found your sword yet.
+	=> guard_no_sword
+- Tell me about yourself.
+	=> guard_casual_chat
+- Tell me about the town.
+	=> guard_town_info
+- Goodbye.
+=> guard_goodbye
+
+~ guard_quest_complete
+{{Main.Guard.char_name}}: [eyes widening] You... you found it? (He looks at you with a mix of disbelief and hope.) I... I never thought I'd see it again.
+- Here it is.
+	{{Main.Guard.char_name}}: (He takes the sword, his calloused hands running over the hilt with a reverence that reveals his deep affection for the blade.) You have no idea what this means to me. It's not just a weapon. It's a piece of who I am.
+	do Main.Player.trade(Main.Guard, "Sword", 1, "Coin", 100)
+	{{Main.Guard.char_name}}: The baker told me you were a good sort. She was right. This is more than a reward for your trouble. It's a token of my gratitude. You have my thanks, traveler. And my trust.
+	- What does this sword mean to you?
+		{{Main.Guard.char_name}}: It was a gift from my old captain. The last one he ever made before he passed. He always said, "A soldier is only as good as the steel in his hand and the heart in his chest." He was a father to me, and this blade is all I have left of him. It's the only thing that's ever protected me. And you... you brought it back. You've honored his memory.
+		=> guard_quest_complete_outro
+	- You're welcome, Guard.
+		{{Main.Guard.char_name}}: Thank you, traveler.
+		=> guard_quest_complete_outro
+
+~ guard_quest_complete_outro
+{{Main.Guard.char_name}}: Now, if you'll excuse me, I need to go tell that old smith he owes me a pastry.
+- Goodbye.
+=> guard_goodbye
+
+~ guard_no_sword
+{{Main.Guard.char_name}}: A shame. I had my hopes up. The trail must be cold by now. A thief clever enough to steal that blade is a thief clever enough to hide it. I can't leave my post. I just hope you find something.
+- I talked to the baker.
+	{{Main.Guard.char_name}}: [A faint smile crosses his face.] She's a good woman, isn't she? A balm for a weary soul. She knows more about what goes on in this town than anyone.
+	- Does she know something about the sword?
+		{{Main.Guard.char_name}}: (His eyes get a far-off look.) She knows everything about what goes on between me and the smith. Maybe she knows more. You should ask her.
+		=> guard_goodbye
+- I talked to the smith.
+	{{Main.Guard.char_name}}: (He grunts.) That old curmudgeon. He’s always been jealous of that blade. I wouldn’t be surprised if he hid it somewhere.
+	- Jealous?
+		{{Main.Guard.char_name}}: He is, but in a friendly way. He's proud of his work, as he should be. He's a good man, for a hermit. He'll get a word out of him with enough patience.
+		=> guard_goodbye
+- I'm not giving up.
+	{{Main.Guard.char_name}}: [A flash of admiration in his eyes.] That's a rare quality in these parts. Good luck, traveler.
+	=> guard_goodbye
+
+~ guard_casual_chat
+{{Main.Guard.char_name}}: I don't get much time for idle chatter. My duty is to protect this city. But... I suppose it's been a long day.
+- What's it like being a guard here?
+	{{Main.Guard.char_name}}: It's lonely. You're always on watch, always on guard. You see things others don't, you hear things others can't. But it's a good life. It's an honest living.
+	- Do you like it?
+		{{Main.Guard.char_name}}: I do. I wouldn't trade it for anything. My father was a guard, his father before him. It's what we do.
+		=> guard_return
+- Do you ever get a break?
+	{{Main.Guard.char_name}}: Every once in a while. I usually head to the tavern, or to the bakery to visit my friends.
+	- Your friends?
+		{{Main.Guard.char_name}}: Aye. The baker and the smith. They're a strange pair, but they're the only ones who can make me feel like a person, not just a guard.
+		=> guard_return
+
+~ guard_town_info
+{{Main.Guard.char_name}}: It's a good town. Quiet. Peaceful. We don't have many travelers coming through anymore.
+- Why not?
+	{{Main.Guard.char_name}}: Things have been... quiet. Some of our people have left. But you'll find no friendlier folk in all the land. We all stick together.
+	=> guard_return
+	
+
+~ guard_post_quest
+{{Main.Guard.char_name}}: Well met, friend. It's good to see you again. A bit of fresh air and a good deed has lifted my spirits.
+
+- How are you and your sword doing?
+	=> guard_sword_talk
+- I was wondering about this town. What's it like for you now?
+	=> guard_reflect
+- Tell me more about the smith and the baker.
+	=> guard_lore_talk
+- Goodbye.
+=> guard_goodbye
+
+~ guard_sword_talk
+{{Main.Guard.char_name}}: (He smiles faintly, placing a hand on the sword hilt.) Like an extension of my arm. Better than that rusty thing I was stuck with, that's for sure. The weight, the balance... it’s all perfect. It's good to have it back.
+- What do you think happened to the thief?
+	{{Main.Guard.char_name}}: I don't know, and I don't care. That blade was more important to me than any thief. The man who made it poured his soul into it. All that matters is it's back where it belongs.
+	- That's a powerful sentiment.
+		{{Main.Guard.char_name}}: It is. A man's work is who he is. We are all judged by what we leave behind. And that blade... it's a testament to the finest craftsman I've ever known.
+		=> guard_post_quest
+	- Did you ever find out who did it?
+		{{Main.Guard.char_name}}: No. But the baker said some things. And the smith. I can't quite piece it together, but I think someone else was involved. A merchant, a caravan... something. It's not my concern anymore.
+		=> guard_post_quest
+- So, was the reward fair?
+	{{Main.Guard.char_name}}: Fair? (He laughs, a short, humorless sound.) The coin is a pittance for what you did. You paid a baker for a pastry to get a sword. It’s a good tale. That blade... its value is beyond money. But I hope the coin will serve you well.
+	- It will. Thank you.
+		{{Main.Guard.char_name}}: The road ahead is long. A little extra coin can go a long way. Use it wisely.
+		=> guard_post_quest
+	- Can I do more for you?
+		{{Main.Guard.char_name}}: (He shakes his head.) My debt to you is repaid. But this town has its share of troubles. Perhaps you can find another way to help.
+		=> guard_post_quest
+
+~ guard_reflect
+{{Main.Guard.char_name}}: The town? It's quiet. People are afraid. They've been through a lot. But they're good people. They look out for each other.
+- What are they afraid of?
+	{{Main.Guard.char_name}}: I'm not a man of many words, but... there's a darkness on the wind. Things have been... different. Strange things have been happening on the road. The baker has some theories. But you'll have to ask her.
+	- What about your new sword?
+		{{Main.Guard.char_name}}: (He pats the scabbard.) It gives me strength. Knowing that I have a piece of home with me. A good friend who watches over me. It is a good thing to have.
+		=> guard_post_quest
+- You seem to be in better spirits.
+	{{Main.Guard.char_name}}: I am. You've brought back a piece of my past. Something I thought I'd lost forever. It's an honor to stand on watch again with this blade in my hand.
+	- What's next for you?
+		{{Main.Guard.char_name}}: My duty. And my hope. I hope to one day see this town thrive again, to be the bustling place I remember from my youth.
+		=> guard_post_quest
+
+~ guard_lore_talk
+{{Main.Guard.char_name}}: The baker and the smith, you ask? (He smiles, a rare, genuine smile.) They're the best people I know. The baker is the heart of this town. She knows everyone's secrets, and she keeps them safe. The smith... he's a brother to me.
+- A brother?
+	{{Main.Guard.char_name}}: Aye. We've been through a lot together. We've seen things no man should have to see. But he always had my back. He’s the only one who can make me laugh.
+	- How did you meet?
+		{{Main.Guard.char_name}}: We were just boys, really. He was an apprentice. I was a young guard. He forged a blade for me, and we've been inseparable ever since.
+		=> guard_post_quest
+	- Is he a good friend?
+		{{Main.Guard.char_name}}: The best. Now if you'll excuse me, I have my duties to attend to.
+		=> guard_post_quest
+- What do they think of you?
+	{{Main.Guard.char_name}}: (He shrugs.) They think I'm a bit of a grouch. But they know my heart is in the right place.
+	=> guard_post_quest
+	
+
+
+~ smith_post_quest
+{{Main.Smith.char_name}}: [He glances up from his anvil, his expression unchanging, but he sets his hammer down.] You've returned. What is it this time?
+
+- I heard the guard has his sword back.
+	=> smith_sword_returned
+- How is your relationship with the guard and the baker?
+	=> smith_baker_guard_talk
+- I'm curious about your craft.
+	=> smith_craft_talk
+- Goodbye.
+=> smith_goodbye
+
+~ smith_sword_returned
+{{Main.Smith.char_name}}: He does. He's a different man with that blade. It's good to see it back where it belongs.
+- What did you think of the whole affair?
+	{{Main.Smith.char_name}}: It was a waste of time. For all of us. He shouldn't have to lose his blade, and I shouldn't have to be worried about it. But you handled it well.
+	- Was it difficult to forge?
+		{{Main.Smith.char_name}}: The finest piece of work I've ever made. The steel was pure. The balance, perfect. I don't regret giving it to him.
+		=> smith_post_quest
+	- Why was it so important?
+		{{Main.Smith.char_name}}: It was a gift. It was not for money, but for friendship. I don't give gifts lightly. That blade is a part of me, and it belongs with him.
+		=> smith_post_quest
+
+~ smith_baker_guard_talk
+{{Main.Smith.char_name}}: You're nosy. But I suppose you've earned the right to ask.
+- What do you think of the guard?
+	{{Main.Smith.char_name}}: He’s a good man. Stubborn. But his heart is in the right place. He protects this town with his life. He is a brother.
+	- You seem to care about him a lot.
+		{{Main.Smith.char_name}}: We've been through a lot. Now, that's all I'll say on the matter.
+		=> smith_post_quest
+	- So you are friends?
+		{{Main.Smith.char_name}}: A man needs to trust another man. We have that.
+		=> smith_post_quest
+- What do you think of the baker?
+	{{Main.Smith.char_name}}: The baker... she's the only one who can make me smile. Her pastries are the best. They're a balm for my soul.
+	- So you like her?
+		{{Main.Smith.char_name}}: (He grunts.) I have my affections.
+		=> smith_post_quest
+
+~ smith_craft_talk
+{{Main.Smith.char_name}}: [He picks up a small piece of metal and inspects it.] The art of the blade is a lonely one. It requires patience, discipline, and a willingness to stare into the fire until it stares back at you.
+- What makes a good blade?
+	{{Main.Smith.char_name}}: The steel is important, but a true blade is not about the steel. It's about the balance, the weight, the way it feels in your hand. It's an extension of your body, a piece of your soul.
+	- That's a powerful sentiment.
+		{{Main.Smith.char_name}}: It is. That blade you returned... it had my soul in it. And now... he has it back.
+		=> smith_post_quest
+- Do you ever get tired of it?
+	{{Main.Smith.char_name}}: No. My work is my life. It is my purpose.
+	=> smith_post_quest
+- Can you teach me about it?
+	{{Main.Smith.char_name}}: You can try, but you will not learn anything from me. It is a path you must walk alone.
+	=> smith_post_quest
+
+
+~ baker_post_quest
+{{Main.Baker.char_name}}: Oh, hello again, sweetheart! I heard the good news. Everyone is so relieved. What can I do for you today?
+
+- Tell me about the guard and the sword.
+	=> baker_sword_talk
+- I was wondering about this town.
+	=> baker_town_talk
+- You seem to know everyone here.
+	=> baker_lore_talk
+- Goodbye.
+=> baker_goodbye
+
+~ baker_sword_talk
+{{Main.Baker.char_name}}: You truly are a dear soul. The guard looks so much lighter now, doesn't he? He was so worried about that blade. It's more than just steel to him.
+- What does it mean to him?
+	{{Main.Baker.char_name}}: It's a reminder of what he stands for. Of his captain, who taught him everything he knows. And it's a piece of his history. He's been through so much. It's a miracle it was found.
+	- Was it a surprise to you that I was able to find it?
+		{{Main.Baker.char_name}}: Oh, no, not at all, dearie. The way you stood up to him, I knew you had a good heart. And besides... the smith was looking for you. He was so excited he could barely stand still! He kept talking about you.
+		=> baker_post_quest
+	- Did the guard pay me fairly?
+		{{Main.Baker.char_name}}: The gold is nothing compared to the service you've done. You gave him back his heart. He's a very grateful man. He will be in your debt forever.
+		=> baker_post_quest
+- The smith and the guard are good friends, aren't they?
+	{{Main.Baker.char_name}}: Oh, yes! They're like two old brothers who just can't get along, but they'll always have each other's backs. That little rivalry over my pastries is all in good fun.
+	- That's heartwarming.
+		{{Main.Baker.char_name}}: Isn't it? It makes my heart sing.
+		=> baker_post_quest
+
+~ baker_town_talk
+{{Main.Baker.char_name}}: This town is a good place. It's a bit tired, but it's a good place.
+- Why is it so quiet?
+	{{Main.Baker.char_name}}: Things have been changing, dearie. The old road is not as safe as it used to be. Some of our people have left. But you've brought a bit of hope back to this town.
+	- What can be done about it?
+		{{Main.Baker.char_name}}: Oh, I'm just a baker. But you're a hero! A person like you could make a big difference. I'm sure you will find a way.
+		=> baker_post_quest
+
+~ baker_lore_talk
+{{Main.Baker.char_name}}: You want to know my secrets? Well, I suppose you've earned the right to ask.
+- Tell me about the guard.
+	{{Main.Baker.char_name}}: He's a good man. He's been through a lot. He lost a good friend a long time ago. It made him who he is today. He's a very dedicated man.
+	- So he's not as tough as he seems?
+		{{Main.Baker.char_name}}: Oh, no, not at all. He's a very sensitive man. He just hides it well. You've given him a reason to show it again.
+		=> baker_post_quest
+- Tell me about the smith.
+	{{Main.Baker.char_name}}: He's all tough on the outside, but it's just a shell. He has a very kind heart, you know. He's just always so focused on his work.
+	- He gave me a sword for a pastry.
+		{{Main.Baker.char_name}}: (chuckles) That's his way of showing he cares. He's a very generous man, but he doesn't want anyone to know. It's his little secret.
+		=> baker_post_quest
