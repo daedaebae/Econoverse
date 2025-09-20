@@ -373,19 +373,21 @@ if Main.Player.inventory.Sword >= 1:
 
 ~ guard_no_sword
 {{Main.Guard.char_name}}: A shame. I had my hopes up. The trail must be cold by now. A thief clever enough to steal that blade is a thief clever enough to hide it. I can't leave my post. I just hope you find something.
-- I talked to the baker.
-	{{Main.Guard.char_name}}: [A faint smile crosses his face.] She's a good woman, isn't she? A balm for a weary soul. She knows more about what goes on in this town than anyone.
-	- Does she know something about the sword?
-		{{Main.Guard.char_name}}: (His eyes get a far-off look.) She knows everything about what goes on between me and the smith. Maybe she knows more. You should ask her.
-		=> guard_goodbye
-- I talked to the smith.
-	{{Main.Guard.char_name}}: (He grunts.) That old curmudgeon. He’s always been jealous of that blade. I wouldn’t be surprised if he hid it somewhere.
-	- Jealous?
-		{{Main.Guard.char_name}}: He is, but in a friendly way. He's proud of his work, as he should be. He's a good man, for a hermit. He'll get a word out of him with enough patience.
-		=> guard_goodbye
+if Main.Baker.met:
+	- I talked to the baker.
+		{{Main.Guard.char_name}}: [A faint smile crosses his face.] She's a good woman, isn't she? A balm for a weary soul. She knows more about what goes on in this town than anyone.
+		- Does she know something about the sword?
+			{{Main.Guard.char_name}}: (His eyes get a far-off look.) She knows everything about what goes on between me and the smith. Maybe she knows more. You should ask her.
+			=> guard_quest
+if Main.Smith.met:
+	- I talked to the smith.
+		{{Main.Guard.char_name}}: (He grunts.) That old curmudgeon. He’s always been jealous of that blade. I wouldn’t be surprised if he hid it somewhere.
+		- Jealous?
+			{{Main.Guard.char_name}}: He is, but in a friendly way. He's proud of his work, as he should be. He's a good man, for a hermit. He'll get a word out of him with enough patience.
+			=> guard_quest
 - I'm not giving up.
-	{{Main.Guard.char_name}}: [A flash of admiration in his eyes.] That's a rare quality in these parts. Good luck, traveler.
-	=> guard_goodbye
+	{{Main.Guard.char_name}}: [A flash of admiration in his eyes.] That's a rare quality in these parts. Good luck to you, traveler.
+	=> guard_quest
 
 ~ guard_casual_chat
 {{Main.Guard.char_name}}: I don't get much time for idle chatter. My duty is to protect this city. But... I suppose it's been a long day.
