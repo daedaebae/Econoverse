@@ -51,7 +51,8 @@ else:
 ~ Bakery
 #if not: character.smith.has_met: #first meeting dialogue here.
 #{{character.baker.name}} 
-{{Main.Baker.char_name}}: Well hi stranger! Welcome to my little bakery!
+if Main.Baker.met == false:
+	{{Main.Baker.char_name}}: Well hi stranger! Welcome to my little bakery!
 if Globals.player_name == "":
 	{{Main.Baker.char_name}}: Oh, you haven't entered your name yet, can you do that from the pause screen for me? [wait=1] We don't have to be strangers! 
 	- Okay, I'll do that before clicking this.
@@ -60,6 +61,7 @@ if Globals.player_name == "":
 		{{Main.Baker.char_name}}: Oh goodness, are you having a bad day? => Bakery
 else:
 	{{Main.Baker.char_name}}: Thank you for coming, what can I do for you, {{Globals.player_name}}?
+	do Main.Baker.met = true
 	#if met smith etc etc. Just railroading for now
 	- The smith seems to really like your sweets. May I buy one?
 		{{Main.Baker.char_name}}: Why yes, it's just five coins if you can spare.
