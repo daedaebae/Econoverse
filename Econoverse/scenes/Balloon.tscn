@@ -9,9 +9,10 @@
 
 [sub_resource type="FontVariation" id="FontVariation_6uh3n"]
 base_font = ExtResource("5_opmx1")
-variation_embolden = 0.78
-spacing_glyph = -1
-spacing_space = 2
+variation_face_index = 1
+variation_embolden = 0.25
+spacing_space = 1
+spacing_top = -1
 
 [node name="ExampleBalloon" type="CanvasLayer"]
 layer = 2
@@ -31,17 +32,17 @@ mouse_filter = 1
 theme = ExtResource("2_6ukt2")
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon"]
-custom_minimum_size = Vector2(320, 30)
+custom_minimum_size = Vector2(340, 50)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -40.0
-offset_right = 100.0
-offset_bottom = -10.0
+offset_left = -170.0
+offset_top = -80.0
+offset_right = 170.0
+offset_bottom = -45.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -60,6 +61,10 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
+theme_override_colors/default_color = Color(0.83, 0.664, 0, 0.701961)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 4
 theme_override_fonts/normal_font = ExtResource("3_6ukt2")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
@@ -72,23 +77,29 @@ tab_size = 8
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/table_v_separation = 0
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = SubResource("FontVariation_6uh3n")
-theme_override_font_sizes/normal_font_size = 14
+theme_override_font_sizes/normal_font_size = 10
 text = "Dialogue..."
 
 [node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.265
-anchor_top = 0.46
-anchor_right = 0.735
-anchor_bottom = 0.54
-offset_left = 0.109993
-offset_top = 0.0999985
-offset_right = -0.110016
-offset_bottom = -0.100006
+anchor_left = 0.5
+anchor_top = 0.455
+anchor_right = 0.55
+anchor_bottom = 0.48
+offset_left = -128.52
+offset_top = -5.70001
+offset_right = 128.52
+offset_bottom = 5.7
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
@@ -101,7 +112,7 @@ response_template = NodePath("ResponseExample")
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 10
 text = "Response example, really long to explain something and cause the text to roll over"
 alignment = 0
 expand_icon = true
