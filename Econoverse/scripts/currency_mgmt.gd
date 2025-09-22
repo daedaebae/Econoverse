@@ -4,11 +4,29 @@ extends Node
 @export var coin_counter : Label
 var item_coin = preload("res://resources/ItemCoin.tres")
 
+@onready var strudel_header = $CurrencyStack/StrudelHeader
+@export var strudel_counter : Label
+var item_strudel = preload("res://resources/ItemStrudel.tres")
+
+@onready var sword_header = $CurrencyStack/SwordHeader
+@export var sword_counter : Label
+var item_sword = preload("res://resources/ItemSword.tres")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var coin_container = coin_header.get_children()[0] 
 	coin_container.set_item(item_coin)
 	$CurrencyStack/CoinHeader/Counter.text = str(set_currency(1000000))
+	
+	#TODO kc 9/22/25; create a function which populates the item list with every unique item. 
+	#Only items which the player has 1 or more of should be in the item list. 
+	#Later, enable categorization? 
+	
+	var strudel_container = strudel_header.get_children()[0] 
+	strudel_container.set_item(item_strudel)
+
+	var sword_container = sword_header.get_children()[0] 
+	sword_container.set_item(item_sword)
 
 # Currency converter
 func convert_copper_to_currency(copper: int) -> Dictionary:
@@ -51,4 +69,6 @@ func _process(delta: float) -> void:
 		return
 	else:
 		coin_counter.text = str(Main.Player.inventory["Coins"],"")
+		strudel_counter.text = str(Main.Player.inventory["Strudel"],"")
+		sword_counter.text = str(Main.Player.inventory["Sword"],"")
 	pass
