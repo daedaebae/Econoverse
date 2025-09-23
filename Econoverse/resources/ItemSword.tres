@@ -7,8 +7,8 @@
 script = ExtResource("1_qka07")
 id = 2
 start_price = 5
-name_full = "Strudel"
-name_abbreviated = "stru"
+name_full = "Sword"
+name_abbreviated = "swo"
 description = "Gleaming nickel hilt, 
 steel blade folded a hundred times and more.
 Singing with strength."
