@@ -63,3 +63,12 @@ func _on_check_box_fullscreen_toggled(toggled_on: bool) -> void:
 	else:
 		# If unchecked, set the window back to windowed mode.
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+func _on_check_debug(toggled_on: bool) -> void:
+	# Check if the checkbox is checked (toggled_on is true).
+	if toggled_on:
+		# If checked, turn on debug.
+		Globals.debug_on = true
+	else:
+		# If unchecked, turn off debug.
+		Globals.debug_on = false
