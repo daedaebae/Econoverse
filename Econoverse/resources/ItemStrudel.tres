@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://2q8w6ky3tmsg"]
+
+[ext_resource type="Script" uid="uid://dq4j684bldndn" path="res://item.gd" id="1_c816t"]
+[ext_resource type="Texture2D" uid="uid://d01wdhr2gofa5" path="res://assets/image/sprites/strudel.png" id="2_c816t"]
+
+[resource]
+script = ExtResource("1_c816t")
+id = 2
+start_price = 5
+name_full = "Strudel"
+name_abbreviated = "stru"
+description = "Pastry, warm in your hands.
+Smells of butter and tangy fruit."
+texture = ExtResource("2_c816t")
+world_supply = 5
+rarity = 1
+metadata/_custom_type_script = "uid://dq4j684bldndn"

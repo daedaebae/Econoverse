@@ -12,5 +12,6 @@ name_abbreviated = "coin"
 description = "The currency of the land. 
 Used to purchase valuable goods."
 texture = ExtResource("2_84esi")
+world_supply = 0
 rarity = 0
 metadata/_custom_type_script = "uid://dq4j684bldndn"

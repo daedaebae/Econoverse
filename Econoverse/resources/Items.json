@@ -97,10 +97,18 @@
   },
   {
 	"id": 13,
-	"start_price": 1.00,
-	"name_full": "???",
-	"name_abbreviated": "???",
-	"description": "???",
-	"texture": ""
+	"start_price": 5.00,
+	"name_full": "Strudel",
+	"name_abbreviated": "stru",
+	"description": "Pastry, warm in your hands. Smells of butter and tangy fruit.",
+	"texture": "res://assets/image/sprites/strudel.png"
+  },
+  {
+	"id": 14,
+	"start_price": 5.00,
+	"name_full": "Sword",
+	"name_abbreviated": "blade",
+	"description": "Gleaming nickel hilt, steel blade folded a hundred times and more. Singing with strength.",
+	"texture": "res://assets/image/sprites/sword.png"
   }
 ]
