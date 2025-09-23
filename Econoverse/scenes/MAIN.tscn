@@ -406,6 +406,15 @@ alignment = 1
 [node name="break" parent="TopLayer/UserBackmenus/MenuOptions/MasterStack/MidVBox" index="0"]
 custom_minimum_size = Vector2(0, 2)
 
+[node name="HBoxContainer" type="HBoxContainer" parent="TopLayer/UserBackmenus/MenuOptions/MasterStack/MidVBox" index="3"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CheckBox" type="CheckBox" parent="TopLayer/UserBackmenus/MenuOptions/MasterStack/MidVBox/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Debug"
+
 [node name="Characters" parent="." instance=ExtResource("14_66d1h")]
 
 [node name="AtmAirDay(trimmed)" type="AudioStreamPlayer" parent="."]
@@ -415,6 +424,7 @@ bus = &"Ambiance"
 
 [connection signal="timeout" from="TimeModule/Timer" to="." method="on_timer_timeout"]
 [connection signal="timeout" from="DialogueModule/DialogueNinePatchRect/TypeTimer" to="DialogueModule/DialogueNinePatchRect" method="_on_type_timer_timeout"]
+[connection signal="toggled" from="TopLayer/UserBackmenus/MenuOptions/MasterStack/MidVBox/HBoxContainer/CheckBox" to="TopLayer/UserBackmenus" method="_on_check_debug"]
 
 [editable path="TopLayer/WorldMap"]
 [editable path="TopLayer/commodities_menu"]
