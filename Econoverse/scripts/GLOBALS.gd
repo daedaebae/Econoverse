@@ -13,6 +13,8 @@ extends Node
 #User input to determine this. Consider randomizer with funny preset names (stretch feature).
 # var player_name_presets : String = ""
 
+var debug_on = false
+
 var player_inventory : Dictionary
 # Could get/set this as needed for bartering/events. Will need functions use the global.player_currency variable. Just noticed you were working on a script separate for this, would work well separately!
 
