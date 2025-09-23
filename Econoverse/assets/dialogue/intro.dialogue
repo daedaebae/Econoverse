@@ -1,7 +1,14 @@
+import "res://assets/dialogue/debug.dialogue" as debug
+
 ~ start
 % It sure is breezy out here.
 % This place is so big it's kind of scary!
 % So much city to explore...
+
+if Globals.debug_on == true:
+	=> debug/debug_menu
+else:
+	=> town
 
 ~ town
 #do game_manager.transition(town)  
