@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dl56r05npwumn"]
+
+[ext_resource type="Script" uid="uid://dq4j684bldndn" path="res://item.gd" id="1_qka07"]
+[ext_resource type="Texture2D" uid="uid://c8txrdwjql62x" path="res://assets/image/sprites/sword.png" id="2_qka07"]
+
+[resource]
+script = ExtResource("1_qka07")
+id = 2
+start_price = 5
+name_full = "Sword"
+name_abbreviated = "swo"
+description = "Gleaming nickel hilt, 
+steel blade folded a hundred times and more.
+Singing with strength."
+texture = ExtResource("2_qka07")
+world_supply = 5
+rarity = 1
+metadata/_custom_type_script = "uid://dq4j684bldndn"
