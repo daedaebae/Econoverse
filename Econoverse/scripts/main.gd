@@ -64,9 +64,9 @@ func _ready() -> void:
 	# Godot loads the Resource when it reads this very line.	
 	var imported_resource = preload("res://resources/Items.json")
 	#preload("res://scripts/worldclock.gd")
-	test_shit("Player",Player)
-	test_shit("Smith",Smith)
-	test_shit("Baker",Baker)
+	#debug("Player",Player)
+	#debug("Smith",Smith)
+	#debug("Baker",Baker)
 	print("end")
 	pass
 
@@ -75,18 +75,22 @@ func _process(delta: float) -> void:
 	pass
 
 # FIXME: DEBUG
-func test_shit(Test, CharIn):
-	print("####################\n\ttesting_shit\n####################")
+# Takes a TestName param and a CharIn param for the name of the test and the
+# Character you want to print details for.
+func debug(TestName, CharIn):
+	print("####################\n\tdebug\n####################")
 	print(
-		str(Test),
+		str("Testing: "+TestName),
 		"\nname: ", CharIn.char_name,
 		"\nlocation: ",CharIn.location,
 		"\ngender: ",CharIn.gender,
 		"\nrace: ",CharIn.race,
+		# TODO: print foreach inventory item and it's quant
 		"\ninventory:\n\t\t[Sword: ",CharIn.inventory.Sword,
 		"] [Strudel: ",CharIn.inventory.Strudel,"] [Coins: ",CharIn.inventory.Coins,
 		"] ",
 		"\nprofession: ",CharIn.profession
+		# TODO: get and print current dialgue quest/location 
 	)
 	#print(
 		#"#######\nTrade prep\n#######"

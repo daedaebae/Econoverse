@@ -1,0 +1,15 @@
+import "res://assets/dialogue/intro.dialogue" as intro
+
+~ debug_menu
+DEBUG MENU - Turn off Debug in the options menu to start the game.
+Choose an outcome to jump to:
+- Guard
+	=> intro/guard_quest_complete
+- Smith
+	=> intro/smith_guard_quest
+- Baker
+	=> intro/baker_after_purchase
+	
+- Start again => debug_menu
+- End the conversation => intro/start
+=> intro/start
