@@ -13,6 +13,8 @@ extends Node
 #User input to determine this. Consider randomizer with funny preset names (stretch feature).
 # var player_name_presets : String = ""
 
+var debug_on = false
+
 var player_inventory : Dictionary
 # Could get/set this as needed for bartering/events. Will need functions use the global.player_currency variable. Just noticed you were working on a script separate for this, would work well separately!
 
@@ -140,6 +142,24 @@ var world_demand : Dictionary
 		"description": "Raw and processed stones mined and sold throughout the land.",
 		"texture": "",
 		"world_supply": 1000
+	},
+	strudel = {
+		"id": 13,
+		"start_price": 5.00,
+		"name_full": "Strudel",
+		"name_abbreviated": "stru",
+		"description": "Pastry, warm in your hands. Smells of butter and tangy fruit.",
+		"texture": "res://assets/image/sprites/strudel.png",
+		"world_supply": 5
+  	},
+  	sword = {
+		"id": 14,
+		"start_price": 5.00,
+		"name_full": "Sword",
+		"name_abbreviated": "blade",
+		"description": "Gleaming nickel hilt, steel blade folded a hundred times and more. Singing with strength.",
+		"texture": "res://assets/image/sprites/sword.png",
+		"world_supply": 5
 	}
 }	
 #endregion Commodities Dict

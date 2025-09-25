@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://qdn2ymj50ymd"]
+[gd_scene load_steps=20 format=3 uid="uid://qdn2ymj50ymd"]
 
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="1_0xo7i"]
 [ext_resource type="Script" uid="uid://b6s6qj2wlkhdh" path="res://scripts/worldclock.gd" id="1_apk53"]
@@ -12,6 +12,8 @@
 [ext_resource type="AudioStream" uid="uid://dyi3myv1qka76" path="res://assets/audio/music/Humble Beginnings.ogg" id="5_t5wp8"]
 [ext_resource type="Script" uid="uid://hrps11687k2t" path="res://scripts/dialogue.gd" id="8_ligcy"]
 [ext_resource type="PackedScene" uid="uid://14o27b0vk1yx" path="res://scenes/user_backmenus.tscn" id="11_aim73"]
+[ext_resource type="Resource" uid="uid://2q8w6ky3tmsg" path="res://resources/ItemStrudel.tres" id="11_fr04l"]
+[ext_resource type="Resource" uid="uid://dl56r05npwumn" path="res://resources/ItemSword.tres" id="12_jgtwp"]
 [ext_resource type="PackedScene" uid="uid://cdmvr0vyon0et" path="res://scenes/world_map.tscn" id="12_xvofe"]
 [ext_resource type="PackedScene" uid="uid://c8bry8aingweb" path="res://scenes/commodities_menu.tscn" id="13_t5wp8"]
 [ext_resource type="PackedScene" uid="uid://r4jwpdvgodd5" path="res://characters.tscn" id="14_66d1h"]
@@ -167,7 +169,7 @@ playback_type = 1
 process_mode = 1
 layer = 5
 
-[node name="CurrencyModule" type="Control" parent="MidLayer" node_paths=PackedStringArray("coin_counter")]
+[node name="CurrencyModule" type="Control" parent="MidLayer" node_paths=PackedStringArray("coin_counter", "strudel_counter", "sword_counter")]
 z_index = -1
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 3
@@ -184,6 +186,8 @@ size_flags_stretch_ratio = 0.5
 theme = ExtResource("1_0xo7i")
 script = ExtResource("3_imghw")
 coin_counter = NodePath("CurrencyStack/CoinHeader/Counter")
+strudel_counter = NodePath("CurrencyStack/StrudelHeader/Counter")
+sword_counter = NodePath("CurrencyStack/SwordHeader/Counter")
 
 [node name="CurrencyStack" type="VBoxContainer" parent="MidLayer/CurrencyModule"]
 layout_mode = 1
@@ -215,6 +219,64 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Counter" type="Label" parent="MidLayer/CurrencyModule/CurrencyStack/CoinHeader"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "100"
+vertical_alignment = 1
+
+[node name="StrudelHeader" type="HBoxContainer" parent="MidLayer/CurrencyModule/CurrencyStack"]
+layout_mode = 2
+alignment = 2
+
+[node name="StrudelItem" parent="MidLayer/CurrencyModule/CurrencyStack/StrudelHeader" instance=ExtResource("4_dfr2a")]
+layout_mode = 2
+size_flags_horizontal = 8
+tooltip_text = "Coin
+The currency of the land. 
+Used to purchase valuable goods.
+
+Value: 1
+"
+mouse_default_cursor_shape = 16
+item_data = ExtResource("11_fr04l")
+
+[node name="break" type="Control" parent="MidLayer/CurrencyModule/CurrencyStack/StrudelHeader"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Counter" type="Label" parent="MidLayer/CurrencyModule/CurrencyStack/StrudelHeader"]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "100"
+vertical_alignment = 1
+
+[node name="SwordHeader" type="HBoxContainer" parent="MidLayer/CurrencyModule/CurrencyStack"]
+layout_mode = 2
+alignment = 2
+
+[node name="SwordItem" parent="MidLayer/CurrencyModule/CurrencyStack/SwordHeader" instance=ExtResource("4_dfr2a")]
+layout_mode = 2
+size_flags_horizontal = 8
+tooltip_text = "Coin
+The currency of the land. 
+Used to purchase valuable goods.
+
+Value: 1
+"
+mouse_default_cursor_shape = 16
+item_data = ExtResource("12_jgtwp")
+
+[node name="break" type="Control" parent="MidLayer/CurrencyModule/CurrencyStack/SwordHeader"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Counter" type="Label" parent="MidLayer/CurrencyModule/CurrencyStack/SwordHeader"]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -344,6 +406,15 @@ alignment = 1
 [node name="break" parent="TopLayer/UserBackmenus/MenuOptions/MasterStack/MidVBox" index="0"]
 custom_minimum_size = Vector2(0, 2)
 
+[node name="HBoxContainer" type="HBoxContainer" parent="TopLayer/UserBackmenus/MenuOptions/MasterStack/MidVBox" index="3"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CheckBox" type="CheckBox" parent="TopLayer/UserBackmenus/MenuOptions/MasterStack/MidVBox/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Debug"
+
 [node name="Characters" parent="." instance=ExtResource("14_66d1h")]
 
 [node name="AtmAirDay(trimmed)" type="AudioStreamPlayer" parent="."]
@@ -353,6 +424,7 @@ bus = &"Ambiance"
 
 [connection signal="timeout" from="TimeModule/Timer" to="." method="on_timer_timeout"]
 [connection signal="timeout" from="DialogueModule/DialogueNinePatchRect/TypeTimer" to="DialogueModule/DialogueNinePatchRect" method="_on_type_timer_timeout"]
+[connection signal="toggled" from="TopLayer/UserBackmenus/MenuOptions/MasterStack/MidVBox/HBoxContainer/CheckBox" to="TopLayer/UserBackmenus" method="_on_check_debug"]
 
 [editable path="TopLayer/WorldMap"]
 [editable path="TopLayer/commodities_menu"]
