@@ -1,0 +1,96 @@
+Here is a Game Design Document (GDD) for your merchant game concept, structured using the prompt you provided.
+
+Section 1: Core Concept & Overview
+Game Title: The Merchant's Burden (Placeholder)
+
+Genre: Resource Management, Simulation, Strategy
+
+Target Audience: Gamers who enjoy economic simulation, strategy, and low-pressure but engaging single-player experiences. The isometric art style appeals to fans of classic RPGs and sim games.
+
+Core Loop: The player travels between points of interest on the world map, buying low and selling high to make a profit. They use this profit to buy new gear and goods, pay their scheduled tithe, and survive. The loop expands as they unlock new trade routes and opportunities.
+
+Unique Selling Proposition (USP): An economic simulation that combines the stress of a survival game (paying a tithe) with the freedom of an open-world trading game. The isometric view and simple mechanics make it accessible to a wide audience.
+
+Section 2: Gameplay & Mechanics
+Game Modes: A single-player campaign with a focus on a main quest line (getting rich, paying a final debt, etc.) and an open-ended "endless" mode where the player simply tries to survive for as long as possible.
+
+Player Abilities: The player can move their merchant caravan on the world map, interact with Points of Interest (POIs) to trade or take quests, and manage their inventory and finances through the UI.
+
+Core Mechanics:
+
+Physics: The game world has minimal physics. Player and NPC movement is based on a grid or pathfinding on the world map.
+
+Combat System: No direct combat. Encounters with enemies (e.g., bandits, tax collectors) are handled through a simple risk-reward system, possibly involving paying a bribe, or losing some goods.
+
+Progression: The player's primary progression is through wealth accumulation. This can unlock new POIs, better equipment for their caravan (increasing inventory slots or speed), and access to more profitable goods.
+
+UI/UX:
+
+Main Menu: Simple menu with options for New Game, Load Game, Settings, and Quit.
+
+HUD (Heads-Up Display): The HUD will show the current time (day/night cycle), money, a count-down to the next tithe payment, and a quick-access button to the inventory.
+
+Inventory Screen: A grid-based system for the player's goods. Items will have a clear icon, name, and quantity. Tooltips will show detailed information like item value, weight, and where it can be sold.
+
+Section 3: Story, World & Characters
+Story Synopsis: The player is a disgraced merchant who has accumulated a massive debt or angered a powerful guild. They must pay a regular tithe to keep their enemies at bay. The ultimate goal is to pay off a final, massive debt to regain their freedom and status.
+
+Lore & World: The world is a medieval fantasy setting with different regions, each with unique goods and resources. For example, a lush forest region might have cheap lumber but expensive metal, while a mountainous region has the opposite. POIs will include towns, resource-gathering sites, bandit camps, and ancient ruins.
+
+Characters: The player character is a customizable merchant. NPCs are primarily vendors and quest-givers at different POIs. They can have unique personalities and trade special goods.
+
+Enemies & NPCs: The primary "enemy" is the time-based tithe. Other antagonistic NPCs include bandits who can steal goods and corrupt tax collectors who demand more than is due.
+
+Section 4: Art & Audio
+Art Style: A clean, vibrant pixel-art style with an isometric perspective. The character sprites and world objects will be small but detailed enough to be distinct. The UI will be simple and intuitive.
+
+Lighting & Color Palette: The color palette will be vibrant and slightly saturated. The day/night cycle will be represented by a gradual shift in lighting and hue, from a warm, bright daytime to a cool, dark nighttime.
+
+Sound Design:
+
+Music: A lo-fi, peaceful soundtrack with a medieval or folk theme. It should be calming during travel and subtly change to be more suspenseful when the tithe deadline approaches.
+
+Sound Effects: Simple, satisfying sounds for UI clicks, money transactions, and caravan movement. Environmental sounds like bird chirps or wind will add atmosphere.
+
+Voice Acting: No voice acting to keep production costs low and focus on gameplay. Dialogue will be text-based.
+
+Section 5: Technical Specifications
+Platform(s): PC (Windows, Mac, Linux) via Steam.
+
+Engine & Tools: Godot Engine is the primary engine. Additional tools will include Aseprite for pixel art and Audacity for basic sound editing.
+
+Minimum System Requirements: Very low. A typical modern laptop with integrated graphics should be able to run it.
+
+Network & Online Features: No online features. The game is a single-player experience.
+
+Save System: An auto-save system that saves progress at key moments (e.g., entering a town) and a manual save option.
+
+Section 6: Monetization & Business Model
+Business Model: A one-time premium purchase on Steam.
+
+Monetization Strategy: No in-game microtransactions or DLC are planned for the initial release.
+
+Section 7: Project Plan & Milestones
+Development Timeline: The project will be broken into manageable phases.
+
+Phase 1 (Pre-production): Complete the GDD, create a vertical slice with core mechanics, and finalize the art style. (Approx. 2-3 months)
+
+Phase 2 (Alpha): Build out the full world map, implement all core mechanics, and add a few POIs. (Approx. 4-6 months)
+
+Phase 3 (Beta): Add all content (story, POIs, items), polish the UI, and begin extensive bug testing. (Approx. 2-3 months)
+
+Phase 4 (Launch): Final bug fixes, marketing push, and release.
+
+Milestones:
+
+Vertical Slice: A playable version with a single town and a handful of trade goods.
+
+Alpha Build: A full, playable game from start to finish with placeholder art.
+
+Feature Complete: All planned features are implemented and working.
+
+Bug-Free: No major bugs found during final testing.
+
+Team Roles: Solo Developer. All roles are handled by one person.
+
+This document gives you a solid foundation. You can expand on it with more detailed descriptions and lists as you develop the game. Does this help you envision the project more clearly?
