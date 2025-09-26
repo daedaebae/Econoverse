@@ -157,6 +157,10 @@ else:
 	
 
 ~ smith_main
+#debug delete later
+do Main.debug("Guard", Main.Guard)
+#debug delete later
+
 if Main.Guard.inventory.Sword >= 1:
 	=> smith_post_quest
 {{Main.Smith.char_name}}: [speed=0.3] Hello, {{Globals.player_name}}. [#anvil.sound] Something [wait=0.2]you need?
@@ -178,6 +182,7 @@ if Main.Guard.met:
 	- Goodbye.
 		=> smith_goodbye
 
+#TODO: durf - 09/24/25: Do we need to add a response menu here to open guard_quest dialogue? If you haven't bought tht strudel and you haven't met the guard the 2 conditionals above are skipped and the Smith launches into this guard_quest unprompted.
 
 ~ smith_guard_quest
 {{Main.Smith.char_name}}: That old bear. Let him deal with his own troubles.
