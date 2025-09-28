@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=4 uid="uid://c8v5s5eqhgm3c"]
+
+[ext_resource type="Texture2D" uid="uid://lcm4lko4nh4s" path="res://assets/image/sprite/1x1.png" id="1_qchbg"]
+[ext_resource type="Texture2D" uid="uid://dcf31shksj5lr" path="res://assets/image/sprite/1x2.png" id="3_kddj0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q8s1k"]
+texture = ExtResource("1_qchbg")
+margins = Vector2i(0, 1)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -7)
+0:0/0/z_index = 1
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o6wi6"]
+texture = ExtResource("3_kddj0")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -2)
+0:0/0/z_index = 1
+
+[sub_resource type="TileSet" id="TileSet_o6wi6"]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(32, 16)
+sources/2 = SubResource("TileSetAtlasSource_q8s1k")
+sources/4 = SubResource("TileSetAtlasSource_o6wi6")
+
+[node name="Playground" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TileMapLayer - Building" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAFAAIAAgAAAAAAAAAWABEAAgAAAAAAAAAmAAMAAgAAAAAAAAAWAPP/AgAAAAAAAAAQAPv/AgAAAAAAAAAQAPz/AgAAAAAAAAAQAP3/AgAAAAAAAAAQAP7/AgAAAAAAAAAQAP//AgAAAAAAAAAQAAAAAgAAAAAAAAARAPv/AgAAAAAAAAARAPz/AgAAAAAAAAARAP3/AgAAAAAAAAARAP7/AgAAAAAAAAARAP//AgAAAAAAAAARAAAAAgAAAAAAAAASAPv/AgAAAAAAAAASAPz/AgAAAAAAAAASAP3/AgAAAAAAAAASAP7/AgAAAAAAAAASAP//AgAAAAAAAAASAAAAAgAAAAAAAAATAPv/AgAAAAAAAAATAPz/AgAAAAAAAAATAP3/AgAAAAAAAAATAP7/AgAAAAAAAAATAP//AgAAAAAAAAATAAAAAgAAAAAAAAAUAPv/AgAAAAAAAAAUAPz/AgAAAAAAAAAUAP3/AgAAAAAAAAAUAP7/AgAAAAAAAAAUAP//AgAAAAAAAAAUAAAAAgAAAAAAAAAVAPv/AgAAAAAAAAAVAPz/AgAAAAAAAAAVAP3/AgAAAAAAAAAVAP7/AgAAAAAAAAAVAP//AgAAAAAAAAAVAAAAAgAAAAAAAAA=")
+tile_set = SubResource("TileSet_o6wi6")
