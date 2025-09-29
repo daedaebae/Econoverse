@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://c8v5s5eqhgm3c"]
+[gd_scene load_steps=7 format=4 uid="uid://c8v5s5eqhgm3c"]
 
 [ext_resource type="Texture2D" uid="uid://lcm4lko4nh4s" path="res://assets/image/sprite/1x1.png" id="1_qchbg"]
 [ext_resource type="Texture2D" uid="uid://dcf31shksj5lr" path="res://assets/image/sprite/1x2.png" id="3_kddj0"]
+[ext_resource type="AudioStream" uid="uid://dbltj13yf83hb" path="res://assets/audio/music/artifacts.ogg" id="3_q8s1k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q8s1k"]
 texture = ExtResource("1_qchbg")
@@ -38,3 +39,8 @@ grow_vertical = 2
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAFAAIAAgAAAAAAAAAWABEAAgAAAAAAAAAmAAMAAgAAAAAAAAAWAPP/AgAAAAAAAAAQAPv/AgAAAAAAAAAQAPz/AgAAAAAAAAAQAP3/AgAAAAAAAAAQAP7/AgAAAAAAAAAQAP//AgAAAAAAAAAQAAAAAgAAAAAAAAARAPv/AgAAAAAAAAARAPz/AgAAAAAAAAARAP3/AgAAAAAAAAARAP7/AgAAAAAAAAARAP//AgAAAAAAAAARAAAAAgAAAAAAAAASAPv/AgAAAAAAAAASAPz/AgAAAAAAAAASAP3/AgAAAAAAAAASAP7/AgAAAAAAAAASAP//AgAAAAAAAAASAAAAAgAAAAAAAAATAPv/AgAAAAAAAAATAPz/AgAAAAAAAAATAP3/AgAAAAAAAAATAP7/AgAAAAAAAAATAP//AgAAAAAAAAATAAAAAgAAAAAAAAAUAPv/AgAAAAAAAAAUAPz/AgAAAAAAAAAUAP3/AgAAAAAAAAAUAP7/AgAAAAAAAAAUAP//AgAAAAAAAAAUAAAAAgAAAAAAAAAVAPv/AgAAAAAAAAAVAPz/AgAAAAAAAAAVAP3/AgAAAAAAAAAVAP7/AgAAAAAAAAAVAP//AgAAAAAAAAAVAAAAAgAAAAAAAAA=")
 tile_set = SubResource("TileSet_o6wi6")
+
+[node name="Artifacts" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_q8s1k")
+volume_db = -6.163
+autoplay = true
