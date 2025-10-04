@@ -1,6 +1,7 @@
-<!-- Economy_System.md -->
-<!-- TODO: Rework overview to show how goods flow into the kingdom inlcuding
+<!-- Economy_System_Overview.md -->
+<!-- TODO: durf 10/4/25 Rework overview to show how goods flow into kingdom
 to/from the player. -->
+
 
 ### Economy System
 

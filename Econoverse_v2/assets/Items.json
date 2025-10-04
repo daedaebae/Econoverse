@@ -1,0 +1,114 @@
+[
+  {
+	"id": 1,
+	"start_price": 1.00,
+	"name_full": "Gold",
+	"name_abbreviated": "Gold",
+	"description": "The currency of the land. Used to purchase valuable goods.",
+	"texture": ""
+  },
+  {
+	"id": 2,
+	"start_price":  1.00,
+	"name_full": "Lumber",
+	"name_abbreviated": "Wood",
+	"description": "Raw, unprocessed lumber used for construction and industry.",
+	"texture": ""
+  },
+  {
+	"id": 3,
+	"start_price": 1.00,
+	"name_full": "Stone",
+	"name_abbreviated": "Rock",
+	"description": "Raw, unprocessed stone used for construction and industry.",
+	"texture": ""
+  },
+  {
+	"id": 4,
+	"start_price": 1.00,
+	"name_full": "Alcohol",
+	"name_abbreviated": "Whiskey",
+	"description": "A low viscocity solvent used as a painkiller, cleaning and sterilizing agent, and most notably, liquid courage.",
+	"texture": ""
+  },
+  {
+	"id": 5,
+	"start_price": 1.00,
+	"name_full": "Horses",
+	"name_abbreviated": "Horses",
+	"description": "A blue crystalline solid used in medicine and other industries.",
+	"texture": ""
+  },
+  {
+	"id": 6,
+	"start_price": 1.00,
+	"name_full": "Corn",
+	"name_abbreviated": "Corn",
+	"description": "A sweet, yellow, starchy seed know for its many industrial applications and thus in some cultures, its fungibility.",
+	"texture": ""
+  },
+  {
+	"id": 7,
+	"start_price": 1.00,
+	"name_full": "Boots",
+	"name_abbreviated": "Boots",
+	"description": "L-shaped leather protectants for your widdle toesies. Dont' ferget to earl 'em up!",
+	"texture": ""
+  },
+  {
+	"id": 8,
+	"start_price": 1.00,
+	"name_full": "Ore",
+	"name_abbreviated": "Metal",
+	"description": "Types of raw and processed ores within the lands.",
+	"texture": ""
+  },
+  {
+	"id": 9,
+	"start_price": 1.00,
+	"name_full": "Textiles",
+	"name_abbreviated": "Cloth",
+	"description": "Different types of textiles used throught the land.",
+	"texture": ""
+  },
+  {
+	"id": 10,
+	"start_price": 1.00,
+	"name_full": "Gemstones",
+	"name_abbreviated": "Gems",
+	"description": "Raw and processed stones mined and sold throughout the land.",
+	"texture": ""
+  },
+  {
+	"id": 11,
+	"start_price": 1.00,
+	"name_full": "Baked-goods",
+	"name_abbreviated": "Food",
+	"description": "Cooked foods and cooking ingredients sold throughout the land.",
+	"texture": ""
+  },
+  {
+	"id": 12,
+	"start_price": 1.00,
+	"name_full": "Grains",
+	"name_abbreviated": "Grain",
+	"description": "Raw and processed stones mined and sold throughout the land.",
+	"texture": ""
+  },
+  {
+	"id": 13,
+	"start_price": 5.00,
+	"name_full": "Strudel",
+	"name_abbreviated": "stru",
+	"description": "Pastry, warm in your hands. Smells of butter and tangy fruit.",
+	"texture": "res://assets/image/sprites/strudel.png"
+  },
+  {
+	"id": 14,
+	"start_price": 5.00,
+	"name_full": "Sword",
+	"name_abbreviated": "blade",
+	"description": "Gleaming nickel hilt, steel blade folded a hundred times and more. Singing with strength.",
+	"texture": "res://assets/image/sprites/sword.png"
+  }
+]
