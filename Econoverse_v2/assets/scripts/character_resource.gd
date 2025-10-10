@@ -6,7 +6,6 @@ extends Resource
 
 # DONE: Character attributes and data in the resource, funcs in the node!
 @export var char_name: String
-@export var currency: int
 @export var location: Location
 @export var gender: Gender
 #@export var gender: Array[String] = ["Male", "Female", "Other"]
@@ -73,8 +72,6 @@ enum Location {
 func _process(delta: float) -> void:
 	match location:
 		Location.Lumber_Mill:
-			# Run carpenter convo scene
-			#
 			pass
 		Location.Smithy:
 			pass
@@ -99,7 +96,9 @@ func _process(delta: float) -> void:
 
 #region NodeFunctions
 func trade(item_in: Item,item_out: Item):
+	
 	print("item_in: "+item_in.name+"\nitem_out: "+item_out.name)
+	
 
 #TODO: durf 09/14/25 - Implement in v3.0
 # Optional: Add a method to reset the character's stats

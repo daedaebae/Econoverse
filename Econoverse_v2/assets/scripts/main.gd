@@ -62,7 +62,7 @@ var Guard = Character.new("Roric Harthorne",7,0,"Human",0,{"Sword": 0, "Strudel"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Godot loads the Resource when it reads this very line.	
-	var imported_resource = preload("res://resources/Items.json")
+	var Items = preload("res://assets/Items.json")
 	#preload("res://scripts/worldclock.gd")
 	#debug("Player",Player)
 	#debug("Smith",Smith)

@@ -39,12 +39,6 @@ func get_item_data() -> Dictionary:
 		"rarity": rarity
 	}
 
-#TODO:	New trade functions for v2
-func tradeItem():
-	# Trade item logic here
-	# GD.print("Traded item: %s for %f" % [itemName, itemCost])
-	pass
-
 # Get the items ID, no setter needed as ID is established in code when defined
 func get_id() -> int:
 	return id
