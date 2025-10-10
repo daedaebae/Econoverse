@@ -1,10 +1,11 @@
 @tool
 class_name Character
+#extends CharacterResource
 extends Node2D
 
 # DONE: Char behaviors and animations in the Node, data in the resource! load all the stuff from 
 #		the resource(will try again in v2)
-#@export var CharRes: CharacterResource = preload("res://resources/character_resource.tres")
+@export var CharRes = preload("res://assets/scripts/character_resource.gd")
 #@export var CharRes: CharacterResource = load("CharacterResource")
 
 #@export var char_name: String = CharRes.char_name
