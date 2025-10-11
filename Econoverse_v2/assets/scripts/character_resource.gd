@@ -1,14 +1,11 @@
-# FIXME: dmurf 09/14/25 -  couldn't get resource classes to work as expected, moved on to using
-# 						   simpler classes. Will reattempt in v2
 @tool
 class_name CharacterResource
 extends Resource
 
-# DONE: Character attributes and data in the resource, funcs in the node!
+# NOTE: Character attributes and data in the resource, funcs in the node!
 @export var char_name: String
 @export var location: Location
 @export var gender: Gender
-#@export var gender: Array[String] = ["Male", "Female", "Other"]
 @export var inventory: Dictionary = {
 	"Coins": 0, 
 	"Slots": {
@@ -16,29 +13,8 @@ extends Resource
 	}
 }
 @export var race: String = "Human"
-	#"Dwarf",
-	#"Gnome",
-	#"Elf",
-	#"Orc",
-	#"Dragonborn"
-#] #you know who asked for Dragonborn to be added here ʕ·͡ᴥ·ʔ
 @export var profession: Profession
-#@export var profession:Array[String] = [
-	##"Carpenter",
-	#"Smith",
-	##"Stablemaster",
-	#"Baker"#,
-	##"Brewer",
-	##"Mason",
-	##"Tanner"
-#]
-#@export var _stats: Dictionary = {
-	#"influence": 0,
-	#"fluency": 0,
-	#"diplomacy": 0,
-	#"negotiation": 0,
-	#"disposition": 0
-#}
+
 enum Profession{
 	None,
 	Carpenter,
