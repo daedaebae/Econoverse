@@ -1,7 +1,7 @@
 @tool
-class_name Character
+class_name Character 
+#extends CharacterBody2D
 #extends CharacterResource
-extends Node2D
 
 # DONE: Char behaviors and animations in the Node, data in the resource! load all the stuff from 
 #		the resource(will try again in v2)
@@ -25,14 +25,13 @@ extends Node2D
 @export var met : bool = false
 
 # Constructor
-func _init(name, loc, gen, r, prof, inv, met):
-	self.char_name = name
+func _init(char_name, loc, gen, r, prof, inv):
+	self.char_name = char_name
 	self.location = loc
 	self.gender = gen
 	self.race = r
 	self.profession = prof
 	self.inventory = inv
-	self.met = met
 	pass
 
 #durf 09/15/25 - v1.0 simple trade func sets dicts, v2.0 trade func with adjust
