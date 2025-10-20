@@ -1,6 +1,6 @@
 @tool
 class_name Character 
-#extends CharacterBody2D
+extends CharacterBody2D
 #extends CharacterResource
 
 # DONE: Char behaviors and animations in the Node, data in the resource! load all the stuff from 
