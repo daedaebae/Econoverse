@@ -8,10 +8,11 @@ radius = 16.0
 height = 44.0
 
 [node name="Throwaway-CharacterBody2D" type="CharacterBody2D"]
+input_pickable = true
 script = ExtResource("1_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(26, 22)
+position = Vector2(26, 26)
 shape = SubResource("CapsuleShape2D_dkjbp")
 
 [node name="Dude" type="Sprite2D" parent="CollisionShape2D"]
