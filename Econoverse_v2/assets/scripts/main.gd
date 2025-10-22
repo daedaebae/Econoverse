@@ -69,6 +69,9 @@ func _ready() -> void:
 	#debug("Player",Player)
 	#debug("Smith",Smith)
 	#debug("Baker",Baker)
+	
+	#debug outputs
+	
 	print("end")
 	pass
 
