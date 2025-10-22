@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://c8v5s5eqhgm3c"]
+[gd_scene load_steps=11 format=4 uid="uid://c8v5s5eqhgm3c"]
 
 [ext_resource type="Texture2D" uid="uid://bj4yhphojx3wd" path="res://assets/image/sprite/ground.png" id="1_mm0a5"]
 [ext_resource type="Texture2D" uid="uid://lcm4lko4nh4s" path="res://assets/image/sprite/1x1.png" id="1_qchbg"]
 [ext_resource type="Texture2D" uid="uid://dcf31shksj5lr" path="res://assets/image/sprite/1x2.png" id="3_kddj0"]
+[ext_resource type="Script" uid="uid://blql4gnwekxcl" path="res://assets/scripts/character_resource.gd" id="3_mm0a5"]
 [ext_resource type="AudioStream" uid="uid://dbltj13yf83hb" path="res://assets/audio/music/artifacts.ogg" id="3_q8s1k"]
 [ext_resource type="PackedScene" uid="uid://df85tx01j44vs" path="res://scenes/player.tscn" id="4_mm0a5"]
 
@@ -49,6 +50,7 @@ tile_map_data = PackedByteArray("AAAFAAIAAgAAAAAAAAAWABEAAgAAAAAAAAAmAAMAAgAAAAA
 tile_set = SubResource("TileSet_o6wi6")
 
 [node name="CharacterBody2D" parent="TileMapLayer - Building" instance=ExtResource("4_mm0a5")]
+script = ExtResource("3_mm0a5")
 
 [node name="Artifacts" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_q8s1k")

@@ -36,15 +36,27 @@ func _init(char_name, loc, gen, r, prof, inv):
 
 #durf 09/15/25 - v1.0 simple trade func sets dicts, v2.0 trade func with adjust
 #				 Item objects within inventory dicts.
-func trade(whom: Character, item_give: String, val1: int, item_get: String, val2: int):
+func trade(whom: Character, valIn: int, item_give: String, valOut: int, item_get: String):
 	#whasappenin'
-	print("Player traded ",val1," ",item_give," for ",val2," ",item_get)
+	print("Player traded ",valIn," ",item_give," for ",valOut," ",item_get)
 	# Player give val1# of item_give to the whom
-	self.inventory[item_give] = (self.inventory[item_give] - val1)
-	whom.inventory[item_give] = (whom.inventory[item_give] + val1)
+	self.inventory[item_give] = (self.inventory[item_give] - valIn)
+	whom.inventory[item_give] = (whom.inventory[item_give] + valIn)
 	# Player get val2# of item_get from whom
-	self.inventory[item_get] = (self.inventory[item_get] + val2)
-	whom.inventory[item_get] = (whom.inventory[item_get] - val2)
+	self.inventory[item_get] = (self.inventory[item_get] + valOut)
+	whom.inventory[item_get] = (whom.inventory[item_get] - valOut)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_echo():
+		return
+
+	if event is InputEventMouseButton and event.is_pressed():
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			#TODO: 10/21/25 if click trade button then 1 for 1 trade item for item
+			# this doesn't work right now as it will trade item with itself.
+			trade( self, 1, "item_give", 1, "item_get")
+			pass
+
 
 func _ready() -> void:
 	pass
