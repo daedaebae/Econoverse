@@ -71,7 +71,7 @@ func _process(delta: float) -> void:
 	#pass
 
 #region NodeFunctions
-func trade(item_in: Item,item_out: Item):
+func trade_item(item_in: Item,item_out: Item):
 	
 	print("item_in: "+item_in.name+"\nitem_out: "+item_out.name)
 	
