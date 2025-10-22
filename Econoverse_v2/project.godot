@@ -13,7 +13,10 @@ config_version=5
 config/name="Econoverse_v2"
 run/main_scene="uid://c8v5s5eqhgm3c"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.005599999, 0.014186656, 0.07, 1)
+boot_splash/image="uid://bk5gkpxrqwd4o"
+config/icon="uid://bk5gkpxrqwd4o"
+boot_splash/minimum_display_time=500
 
 [display]
 
