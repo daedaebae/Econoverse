@@ -57,7 +57,7 @@ func _input(event: InputEvent) -> void:
 		#Get mouse postion and set the target
 		mouse_position = get_viewport().get_mouse_position()
 		var target = $CollisionShape2D
-		var distance = mouse_position.distance_to(target.position)
+		var distance = mouse_position.distance_to(target.global_position)
 		# If clicked near the player collision shape run the trade function
 		if distance < 20:
 			#TODO: 10/21/25 if click trade button then 1 for 1 trade item for item
