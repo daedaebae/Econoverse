@@ -53,6 +53,7 @@ tile_set = SubResource("TileSet_o6wi6")
 char_name = "Player"
 
 [node name="Artisan" parent="TileMapLayer - Building" instance=ExtResource("5_o6wi6")]
+modulate = Color(0.97235805, 0.22522166, 0.5298163, 1)
 char_name = "Artisan"
 inventory = {
 "Coins": 0,
