@@ -73,6 +73,11 @@ z_index = -1
 y_sort_enabled = true
 position = Vector2(81, 285)
 char_name = "Player"
+inventory = {
+"Coins": 10,
+"Strudel": 0,
+"Sword": 0
+}
 
 [node name="Artisan" parent="Actors" instance=ExtResource("5_o6wi6")]
 modulate = Color(0.97235805, 0.22522166, 0.5298163, 1)
@@ -81,7 +86,7 @@ y_sort_enabled = true
 position = Vector2(352, 104)
 char_name = "Artisan"
 inventory = {
-"Coins": 0,
+"Coins": 100,
 "Strudel": 0,
 "Sword": 5
 }

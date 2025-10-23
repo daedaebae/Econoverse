@@ -25,7 +25,7 @@ extends CharacterBody2D
 @export var gender: Gender = 2
 @export var race: String = "Human"
 @export var profession: Profession = 0
-@export var inventory: Dictionary = {"Sword": 0, "Strudel": 0, "Coins": 10}
+@export var inventory: Dictionary = {"Sword": 0, "Strudel": 0, "Coins": 0}
 @export var met : bool = false
 
 # Constructor
@@ -39,10 +39,10 @@ extends CharacterBody2D
 	#pass
 
 #durf 09/15/25 - v1.0 simple trade func sets dicts, v2.0 trade func with adjust
-#				 Item objects within inventory dicts.
+#				 Item objects within inventory dicts.d
 func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_get: String):
 	#whasappenin'
-	print("Player traded ",whom.char_name," ",valGive," ",item_give," for ",valGet," ",item_get)
+	print("\nPlayer traded ",whom.char_name," ",valGive," ",item_give," for ",valGet," ",item_get)
 	# Player give val1# of item_give to the whom
 	self.inventory[item_give] = (self.inventory[item_give] - valGive)
 	whom.inventory[item_give] = (whom.inventory[item_give] + valGive)
@@ -50,17 +50,22 @@ func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_g
 	self.inventory[item_get] = (self.inventory[item_get] + valGet)
 	whom.inventory[item_get] = (whom.inventory[item_get] - valGet)
 
-#FIXME: durf 10/21/25 Draft - Click trade button activate trade function
+#FIXMEDONE: durf 10/21/25 Draft - Click trade button activate trade function
+#TODO: durf 10/22/25 Do we need to move this func to the main/game loop script?
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() \
 	and event.button_index == MOUSE_BUTTON_LEFT:
 		#Get mouse postion and set the target
 		mouse_position = get_viewport().get_mouse_position()
+		
+		#TODO: Remove this line and set "Button" as new target when GUI complete
 		var target = $CollisionShape2D
+		#var target = "$TradeButtonObjectThingy"
+		
 		var distance = mouse_position.distance_to(target.global_position)
 		# If clicked near the player collision shape run the trade function
 		if distance < 20:
-			#TODO: 10/21/25 if click trade button then 1 for 1 trade item for item
+			#TODODONE: 10/21/25 if click trade button then 1 for 1 trade item for item
 			# this doesn't work right now as it will trade item with itself.
 			trade( $"../Artisan", 10, "Coins", 1, "Sword")
 			print("Player: ",self.inventory,"\nArtisan: ",$"../Artisan".inventory)
