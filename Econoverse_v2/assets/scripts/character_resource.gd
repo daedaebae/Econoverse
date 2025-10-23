@@ -6,12 +6,7 @@ extends Resource
 @export var char_name: String
 @export var location: Location
 @export var gender: Gender
-@export var inventory: Dictionary = {
-	"Coins": 0, 
-	"Slots": {
-		1: "", 2: "", 3: ""
-	}
-}
+@export var inventory: Dictionary = {"Sword": 0, "Strudel": 0, "Coins": 0}
 @export var race: String = "Human"
 @export var profession: Profession
 
@@ -71,10 +66,12 @@ func _process(delta: float) -> void:
 	#pass
 
 #region NodeFunctions
-func trade_item(item_in: Item,item_out: Item):
-	
-	print("item_in: "+item_in.name+"\nitem_out: "+item_out.name)
-	
+#durf 10/22/25 - commenting character resource trade function as its part of the
+#				 node function for now.
+#func trade_item(item_in: Item,item_out: Item):
+	#
+	#print("item_in: "+item_in.name+"\nitem_out: "+item_out.name)
+	#
 
 #TODO: durf 09/14/25 - Implement in v3.0
 # Optional: Add a method to reset the character's stats

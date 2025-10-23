@@ -21,10 +21,10 @@ extends CharacterBody2D
 #Character attribs
 @export var char_name: String = "Name"
 #@export var currency: int
-@export var location: Location = 7
-@export var gender: Gender = 2
+@export var location: Location = Location.Town_Square
+@export var gender: Gender = Gender.Other
 @export var race: String = "Human"
-@export var profession: Profession = 0
+@export var profession: Profession = Profession.None
 @export var inventory: Dictionary = {"Sword": 0, "Strudel": 0, "Coins": 0}
 @export var met : bool = false
 
@@ -41,14 +41,18 @@ extends CharacterBody2D
 #durf 09/15/25 - v1.0 simple trade func sets dicts, v2.0 trade func with adjust
 #				 Item objects within inventory dicts.d
 func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_get: String):
-	#whasappenin'
-	print("\nPlayer traded ",whom.char_name," ",valGive," ",item_give," for ",valGet," ",item_get)
+	#Cancel trade if player out of items
+	if self.inventory[item_give] <= 0:
+		print("You don't have enough ",item_give)
+		return
 	# Player give val1# of item_give to the whom
 	self.inventory[item_give] = (self.inventory[item_give] - valGive)
 	whom.inventory[item_give] = (whom.inventory[item_give] + valGive)
 	# Player get val2# of item_get from whom
 	self.inventory[item_get] = (self.inventory[item_get] + valGet)
 	whom.inventory[item_get] = (whom.inventory[item_get] - valGet)
+	print("\nPlayer traded ",whom.char_name," ",valGive," ",item_give," for ",valGet," ",item_get)
+	
 
 #FIXMEDONE: durf 10/21/25 Draft - Click trade button activate trade function
 #TODO: durf 10/22/25 Do we need to move this func to the main/game loop script?
@@ -65,8 +69,12 @@ func _input(event: InputEvent) -> void:
 		var distance = mouse_position.distance_to(target.global_position)
 		# If clicked near the player collision shape run the trade function
 		if distance < 20:
-			#TODODONE: 10/21/25 if click trade button then 1 for 1 trade item for item
-			# this doesn't work right now as it will trade item with itself.
+			#TODODONE: durf 10/21/25 if click trade button then 1 for 1 trade 
+			#		   item for item this doesn't work right now as it will 
+			#		   trade item with itself.
+			#TODO: durf 10/22/25 need to modularize this function call so it
+			#	   works when clicking any trade button between the player and 
+			#	   any other character.
 			trade( $"../Artisan", 10, "Coins", 1, "Sword")
 			print("Player: ",self.inventory,"\nArtisan: ",$"../Artisan".inventory)
 			pass
