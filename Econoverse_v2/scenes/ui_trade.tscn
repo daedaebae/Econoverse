@@ -1,0 +1,102 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs7gurkoxmber"]
+
+[ext_resource type="Script" uid="uid://boriow0q3pktw" path="res://singleton/ui_trade.gd" id="1_0tw80"]
+
+[node name="UI-Trade" type="Control" node_paths=PackedStringArray("give_item_label", "give_amount_label", "get_item_label", "get_amount_label")]
+custom_minimum_size = Vector2(180, 250)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_0tw80")
+give_item_label = NodePath("Background/FullVBox/GiveRow/LabelItemGive")
+give_amount_label = NodePath("Background/FullVBox/GiveRow/LabelAmountGive")
+get_item_label = NodePath("Background/FullVBox/GetRow/LabelItemGet")
+get_amount_label = NodePath("Background/FullVBox/GetRow/LabelAmountGet")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FullVBox" type="VBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -52.5
+offset_right = 63.0
+offset_bottom = 52.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Background/FullVBox"]
+layout_mode = 2
+
+[node name="GiveRow" type="HBoxContainer" parent="Background/FullVBox"]
+layout_mode = 2
+
+[node name="LabelItemGive" type="Label" parent="Background/FullVBox/GiveRow"]
+layout_mode = 2
+text = "You Give:"
+
+[node name="ButtonMinusGive" type="Button" parent="Background/FullVBox/GiveRow"]
+layout_mode = 2
+text = "-"
+
+[node name="LabelAmountGive" type="Label" parent="Background/FullVBox/GiveRow"]
+layout_mode = 2
+text = "0"
+
+[node name="ButtonPlusGive" type="Button" parent="Background/FullVBox/GiveRow"]
+layout_mode = 2
+text = "+"
+
+[node name="GetRow" type="HBoxContainer" parent="Background/FullVBox"]
+layout_mode = 2
+
+[node name="LabelItemGet" type="Label" parent="Background/FullVBox/GetRow"]
+layout_mode = 2
+text = "You Get:"
+
+[node name="ButtonMinusGet" type="Button" parent="Background/FullVBox/GetRow"]
+layout_mode = 2
+text = "-"
+
+[node name="LabelAmountGet" type="Label" parent="Background/FullVBox/GetRow"]
+layout_mode = 2
+text = "0"
+
+[node name="ButtonPlusGet" type="Button" parent="Background/FullVBox/GetRow"]
+layout_mode = 2
+text = "+"
+
+[node name="ActionsRow" type="HBoxContainer" parent="Background/FullVBox"]
+layout_mode = 2
+
+[node name="ButtonTrade" type="Button" parent="Background/FullVBox/ActionsRow"]
+layout_mode = 2
+text = "Trade"
+
+[node name="ButtonCancel" type="Button" parent="Background/FullVBox/ActionsRow"]
+layout_mode = 2
+text = "Cancel"
+
+[connection signal="pressed" from="Background/FullVBox/GiveRow/ButtonMinusGive" to="." method="_on_button_minus_give_pressed"]
+[connection signal="pressed" from="Background/FullVBox/GiveRow/ButtonPlusGive" to="." method="_on_button_plus_give_pressed"]
+[connection signal="pressed" from="Background/FullVBox/GetRow/ButtonMinusGet" to="." method="_on_button_minus_get_pressed"]
+[connection signal="pressed" from="Background/FullVBox/GetRow/ButtonPlusGet" to="." method="_on_button_plus_get_pressed"]
+[connection signal="pressed" from="Background/FullVBox/ActionsRow/ButtonTrade" to="." method="_on_button_trade_pressed"]
+[connection signal="pressed" from="Background/FullVBox/ActionsRow/ButtonCancel" to="." method="_on_button_cancel_pressed"]
