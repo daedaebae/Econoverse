@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://cg03wq6a2ermb"]
+[gd_scene load_steps=2 format=3 uid="uid://cg03wq6a2ermb"]
+
+[ext_resource type="Script" uid="uid://dk1uf4u80ps7x" path="res://assets/resources/items/item_resource.gd" id="1_xh5dw"]
 
 [node name="Inventory_menu" type="Control"]
 layout_mode = 3
@@ -18,8 +20,14 @@ text = "ç"
 layout_mode = 2
 text = "∑"
 
-[node name="Label3" type="Label" parent="GridContainer"]
-layout_mode = 2
+[node name="Item_Resource" type="Node2D" parent="GridContainer"]
+position = Vector2(51, 0)
+script = ExtResource("1_xh5dw")
+metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
+
+[node name="Label3" type="Label" parent="GridContainer/Item_Resource"]
+offset_right = 16.0
+offset_bottom = 23.0
 text = "©"
 
 [node name="Label4" type="Label" parent="GridContainer"]

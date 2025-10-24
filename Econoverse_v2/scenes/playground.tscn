@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c8v5s5eqhgm3c"]
+[gd_scene load_steps=12 format=4 uid="uid://c8v5s5eqhgm3c"]
 
 [ext_resource type="Texture2D" uid="uid://bj4yhphojx3wd" path="res://assets/image/sprite/ground.png" id="1_mm0a5"]
 [ext_resource type="Texture2D" uid="uid://lcm4lko4nh4s" path="res://assets/image/sprite/1x1.png" id="1_qchbg"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dbltj13yf83hb" path="res://assets/audio/music/artifacts.ogg" id="3_q8s1k"]
 [ext_resource type="PackedScene" uid="uid://df85tx01j44vs" path="res://scenes/player.tscn" id="4_mm0a5"]
 [ext_resource type="PackedScene" uid="uid://bpc8lo0rmh2xi" path="res://scenes/artisan.tscn" id="5_o6wi6"]
+[ext_resource type="PackedScene" uid="uid://bfrnj3fkr25mr" path="res://scenes/player2.tscn" id="7_emj6c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_emj6c"]
 texture = ExtResource("1_mm0a5")
@@ -73,11 +74,6 @@ z_index = -1
 y_sort_enabled = true
 position = Vector2(81, 285)
 char_name = "Player"
-inventory = {
-"Coins": 10,
-"Strudel": 0,
-"Sword": 0
-}
 
 [node name="Artisan" parent="Actors" instance=ExtResource("5_o6wi6")]
 modulate = Color(0.97235805, 0.22522166, 0.5298163, 1)
@@ -85,8 +81,5 @@ z_index = -1
 y_sort_enabled = true
 position = Vector2(352, 104)
 char_name = "Artisan"
-inventory = {
-"Coins": 100,
-"Strudel": 0,
-"Sword": 5
-}
+
+[node name="Throwaway-CharacterBody2D" parent="Actors" instance=ExtResource("7_emj6c")]

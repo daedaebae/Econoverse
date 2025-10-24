@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://ojsbnybvjpfc"]
+
+[ext_resource type="Script" uid="uid://dwnpbkvflcul7" path="res://assets/resources/items/item.gd" id="1_wus0f"]
+
+[resource]
+script = ExtResource("1_wus0f")
+start_price = 20
+name_full = "Sword"

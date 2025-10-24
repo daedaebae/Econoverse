@@ -1,9 +1,11 @@
-#TODO: 	Review Getters and Setters for any missing functions that manipulate
-#		items.
+#GDScript template for Item type Resources
 
 @tool
+class_name Item_Resource
 extends Resource
-class_name Item
+
+#TODO: durf 10/23/25 need to set all vars below as key value pairs pulled from
+#	   the Items.json file to complete this Item_Resource blueprint.
 
 @export var id : int
 @export var start_price : int

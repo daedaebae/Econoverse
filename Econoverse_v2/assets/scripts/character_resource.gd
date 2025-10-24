@@ -6,7 +6,8 @@ extends Resource
 @export var char_name: String
 @export var location: Location
 @export var gender: Gender
-@export var inventory: Dictionary = {"Sword": 0, "Strudel": 0, "Coins": 0}
+#@export var inventory: Dictionary = {"Sword": 0, "Strudel": 0, "Coins": 0}
+var inventory: Inventory
 @export var race: String = "Human"
 @export var profession: Profession
 

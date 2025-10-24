@@ -5,7 +5,9 @@
 	"name_full": "Gold",
 	"name_abbreviated": "Gold",
 	"description": "The currency of the land. Used to purchase valuable goods.",
-	"texture": ""
+	"texture": "",
+  	"world_supply": 1000,
+	"rarity": 0
   },
   {
 	"id": 2,
@@ -13,7 +15,9 @@
 	"name_full": "Lumber",
 	"name_abbreviated": "Wood",
 	"description": "Raw, unprocessed lumber used for construction and industry.",
-	"texture": ""
+	"texture": "",
+  	"world_supply": 1000,
+	"rarity": 0
   },
   {
 	"id": 3,
@@ -21,7 +25,9 @@
 	"name_full": "Stone",
 	"name_abbreviated": "Rock",
 	"description": "Raw, unprocessed stone used for construction and industry.",
-	"texture": ""
+	"texture": "",
+  	"world_supply": 1000,
+	"rarity": 0
   },
   {
 	"id": 4,
@@ -29,7 +35,9 @@
 	"name_full": "Alcohol",
 	"name_abbreviated": "Whiskey",
 	"description": "A low viscocity solvent used as a painkiller, cleaning and sterilizing agent, and most notably, liquid courage.",
-	"texture": ""
+	"texture": "",
+  	"world_supply": 1000,
+	"rarity": 0
   },
   {
 	"id": 5,
@@ -37,7 +45,9 @@
 	"name_full": "Horses",
 	"name_abbreviated": "Horses",
 	"description": "A blue crystalline solid used in medicine and other industries.",
-	"texture": ""
+	"texture": "",
+  	"world_supply": 1000,
+	"rarity": 0
   },
   {
 	"id": 6,
@@ -45,7 +55,9 @@
 	"name_full": "Corn",
 	"name_abbreviated": "Corn",
 	"description": "A sweet, yellow, starchy seed know for its many industrial applications and thus in some cultures, its fungibility.",
-	"texture": ""
+	"texture": "",
+  	"world_supply": 1000,
+	"rarity": 0
   },
   {
 	"id": 7,
@@ -53,7 +65,9 @@
 	"name_full": "Boots",
 	"name_abbreviated": "Boots",
 	"description": "L-shaped leather protectants for your widdle toesies. Dont' ferget to earl 'em up!",
-	"texture": ""
+	"texture": "",
+  	"world_supply": 1000,
+	"rarity": 0
   },
   {
 	"id": 8,
@@ -61,7 +75,9 @@
 	"name_full": "Ore",
 	"name_abbreviated": "Metal",
 	"description": "Types of raw and processed ores within the lands.",
-	"texture": ""
+	"texture": "",
+  	"world_supply": 1000,
+	"rarity": 0
   },
   {
 	"id": 9,
@@ -69,7 +85,9 @@
 	"name_full": "Textiles",
 	"name_abbreviated": "Cloth",
 	"description": "Different types of textiles used throught the land.",
-	"texture": ""
+	"texture": "",
+  	"world_supply": 1000,
+	"rarity": 0
   },
   {
 	"id": 10,
@@ -77,7 +95,9 @@
 	"name_full": "Gemstones",
 	"name_abbreviated": "Gems",
 	"description": "Raw and processed stones mined and sold throughout the land.",
-	"texture": ""
+	"texture": "",
+  	"world_supply": 1000,
+	"rarity": 0
   },
   {
 	"id": 11,
@@ -85,7 +105,9 @@
 	"name_full": "Baked-goods",
 	"name_abbreviated": "Food",
 	"description": "Cooked foods and cooking ingredients sold throughout the land.",
-	"texture": ""
+	"texture": "",
+  	"world_supply": 1000,
+	"rarity": 0
   },
   {
 	"id": 12,
@@ -93,7 +115,9 @@
 	"name_full": "Grains",
 	"name_abbreviated": "Grain",
 	"description": "Raw and processed stones mined and sold throughout the land.",
-	"texture": ""
+	"texture": "",
+  	"world_supply": 1000,
+	"rarity": 0
   },
   {
 	"id": 13,
@@ -101,7 +125,9 @@
 	"name_full": "Strudel",
 	"name_abbreviated": "stru",
 	"description": "Pastry, warm in your hands. Smells of butter and tangy fruit.",
-	"texture": "res://assets/image/sprites/strudel.png"
+	"texture": "res,://assets/image/sprites/strudel.png",
+  	"world_supply": 1000,
+	"rarity": 0
   },
   {
 	"id": 14,
@@ -109,6 +135,8 @@
 	"name_full": "Sword",
 	"name_abbreviated": "blade",
 	"description": "Gleaming nickel hilt, steel blade folded a hundred times and more. Singing with strength.",
-	"texture": "res://assets/image/sprites/sword.png"
+	"texture": "res://assets/image/sprites/sword.png",
+	"world_supply": 1000,
+	"rarity": 0
   }
 ]

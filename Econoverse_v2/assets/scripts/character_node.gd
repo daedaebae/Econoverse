@@ -25,7 +25,8 @@ extends CharacterBody2D
 @export var gender: Gender = Gender.Other
 @export var race: String = "Human"
 @export var profession: Profession = Profession.None
-@export var inventory: Dictionary = {"Sword": 0, "Strudel": 0, "Coins": 0}
+var inventory: Inventory
+#@export var inventory: Dictionary = {"Sword": 0, "Strudel": 0, "Coins": 0}
 @export var met : bool = false
 
 # Constructor
@@ -41,9 +42,14 @@ extends CharacterBody2D
 #durf 09/15/25 - v1.0 simple trade func sets dicts, v2.0 trade func with adjust
 #				 Item objects within inventory dicts.d
 func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_get: String):
-	#Cancel trade if player out of items
+	#Cancel trade if either character out of items
+	#FIXME: durf 10/23/25 - fix the call to items within Char Inventory after
+	#	    changing Inventory.gd to resource type
 	if self.inventory[item_give] <= 0:
 		print("You don't have enough ",item_give)
+		return
+	if self.inventory[item_get] <= 0:
+		print("You don't have enough ",item_get)
 		return
 	# Player give val1# of item_give to the whom
 	self.inventory[item_give] = (self.inventory[item_give] - valGive)
