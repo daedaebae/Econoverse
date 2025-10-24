@@ -1,6 +1,7 @@
 @tool
 class_name Character 
 extends CharacterBody2D
+@export var Playground: Control
 #extends CharacterResource
 
 # DONE: Char behaviors and animations in the Node, data in the resource! load all the stuff from 
@@ -49,8 +50,28 @@ func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_g
 	# Player get val2# of item_get from whom
 	self.inventory[item_get] = (self.inventory[item_get] + valGet)
 	whom.inventory[item_get] = (whom.inventory[item_get] - valGet)
+	
+	print_inv_values()
 
 #FIXME: durf 10/21/25 Draft - Click trade button activate trade function
+
+#TEST: kc 10/25/25 commented out this version and 
+# for testing new version before merge.
+#func _input(event: InputEvent) -> void:
+	#if event is InputEventMouseButton and event.is_pressed() \
+	#and event.button_index == MOUSE_BUTTON_LEFT:
+		##Get mouse postion and set the target
+		#mouse_position = get_viewport().get_mouse_position()
+		#var target = $CollisionShape2D
+		#var distance = mouse_position.distance_to(target.global_position)
+		## If clicked near the player collision shape run the trade function
+		#if distance < 20:
+			##TODO: 10/21/25 if click trade button then 1 for 1 trade item for item
+			## this doesn't work right now as it will trade item with itself.
+			#trade( $"../Artisan", 10, "Coins", 1, "Sword")
+			#print("Player: ",self.inventory,"\nArtisan: ",$"../Artisan".inventory)
+			#pass
+			
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() \
 	and event.button_index == MOUSE_BUTTON_LEFT:
@@ -60,12 +81,16 @@ func _input(event: InputEvent) -> void:
 		var distance = mouse_position.distance_to(target.global_position)
 		# If clicked near the player collision shape run the trade function
 		if distance < 20:
-			#TODO: 10/21/25 if click trade button then 1 for 1 trade item for item
-			# this doesn't work right now as it will trade item with itself.
-			trade( $"../Artisan", 10, "Coins", 1, "Sword")
-			print("Player: ",self.inventory,"\nArtisan: ",$"../Artisan".inventory)
+			Playground.start_trade_with_npc()
+			
+			
 			pass
 
+#kc 10/24/25; moved this to a callable method so it can be called elsewhere. 
+# it now passes the whom variable and will only print if there is a whom.
+func print_inv_values():
+	print (self.name," now has: ",self.inventory)
+	
 func _ready() -> void:
 	pass
 

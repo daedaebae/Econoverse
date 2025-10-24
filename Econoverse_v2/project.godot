@@ -33,6 +33,7 @@ project/assembly_name="Econoverse_v2"
 
 folder_colors={
 "res://assets/": "orange",
+"res://scenes/": "yellow",
 "res://scripts/": "green",
 "res://singleton/": "purple"
 }
