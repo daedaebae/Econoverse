@@ -1,6 +1,7 @@
 @tool
 class_name Character 
 extends CharacterBody2D
+#kc 10/24/25; added for early ui integration testing etc
 @export var Playground: Control
 #extends CharacterResource
 
@@ -81,7 +82,7 @@ func _input(event: InputEvent) -> void:
 		var distance = mouse_position.distance_to(target.global_position)
 		# If clicked near the player collision shape run the trade function
 		if distance < 20:
-			Playground.start_trade_with_npc()
+			Playground.start_trade_with_npc(self)
 			
 			
 			pass
