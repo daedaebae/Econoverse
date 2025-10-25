@@ -72,17 +72,19 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 1
 
-[node name="Player" parent="Actors" instance=ExtResource("4_mm0a5")]
+[node name="Player" parent="Actors" node_paths=PackedStringArray("Playground") instance=ExtResource("4_mm0a5")]
 z_index = -1
 y_sort_enabled = true
 position = Vector2(81, 285)
+Playground = NodePath("../..")
 char_name = "Player"
 
-[node name="Artisan" parent="Actors" instance=ExtResource("5_o6wi6")]
+[node name="Artisan" parent="Actors" node_paths=PackedStringArray("Playground") instance=ExtResource("5_o6wi6")]
 modulate = Color(0.97235805, 0.22522166, 0.5298163, 1)
 z_index = -1
 y_sort_enabled = true
 position = Vector2(352, 104)
+Playground = NodePath("../..")
 char_name = "Artisan"
 inventory = {
 "Coins": 0,
