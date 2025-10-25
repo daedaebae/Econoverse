@@ -1,7 +1,6 @@
-[gd_scene load_steps=15 format=4 uid="uid://c8v5s5eqhgm3c"]
+[gd_scene load_steps=14 format=4 uid="uid://c8v5s5eqhgm3c"]
 
 [ext_resource type="Texture2D" uid="uid://bj4yhphojx3wd" path="res://assets/image/sprite/ground.png" id="1_mm0a5"]
-[ext_resource type="Script" uid="uid://cuqumfsxic2bx" path="res://scripts/playground.gd" id="1_mrac1"]
 [ext_resource type="Texture2D" uid="uid://lcm4lko4nh4s" path="res://assets/image/sprite/1x1.png" id="1_qchbg"]
 [ext_resource type="Texture2D" uid="uid://dcf31shksj5lr" path="res://assets/image/sprite/1x2.png" id="3_kddj0"]
 [ext_resource type="AudioStream" uid="uid://dbltj13yf83hb" path="res://assets/audio/music/artifacts.ogg" id="3_q8s1k"]
@@ -40,7 +39,7 @@ sources/2 = SubResource("TileSetAtlasSource_q8s1k")
 sources/4 = SubResource("TileSetAtlasSource_o6wi6")
 sources/1 = SubResource("TileSetAtlasSource_emj6c")
 
-[node name="Playground" type="Control" node_paths=PackedStringArray("TradeUI")]
+[node name="Playground" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,8 +47,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_mrac1")
-TradeUI = NodePath("TopLayer/UI-Trade")
 
 [node name="world" type="Node2D" parent="."]
 z_index = -1
@@ -77,9 +74,15 @@ mouse_filter = 1
 [node name="Player" parent="Actors" instance=ExtResource("4_mm0a5")]
 z_index = -1
 y_sort_enabled = true
-position = Vector2(731, 285)
+position = Vector2(65, 237)
 script = ExtResource("7_2q4k0")
 speed = 300.0
+char_name = "Player"
+inventory = {
+"Coins": 10,
+"Strudel": 0,
+"Sword": 0
+}
 
 [node name="Artisan" parent="Actors" instance=ExtResource("5_o6wi6")]
 modulate = Color(0.97235805, 0.22522166, 0.5298163, 1)
@@ -87,6 +90,13 @@ z_index = -1
 y_sort_enabled = true
 position = Vector2(352, 104)
 script = ExtResource("9_x1amm")
+char_name = "Bogus Buchanon"
+profession = 2
+inventory = {
+"Coins": 10,
+"Strudel": 0,
+"Sword": 2
+}
 
 [node name="TopLayer" type="CanvasLayer" parent="."]
 

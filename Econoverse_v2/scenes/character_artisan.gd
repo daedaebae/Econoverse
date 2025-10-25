@@ -3,7 +3,7 @@
 # It also inherits EVERYTHING from Character.gd.
 @tool
 extends Character
-
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 # This signal is for the Artisan only.
 signal artisan_clicked(npc: Node)
 
@@ -12,19 +12,16 @@ func _ready():
 	# ONLY artisans register as an artisan.
 	GameController.register_artisan(self)
 	
-	# Connect the signal from our CHILD Area2D
-	# Make sure your Area2D node is named "ClickableArea"
-	var area = $ClickableArea
-	if area:
-		area.input_event.connect(_on_input_event)
-	else:
-		print("Artisan" + self.name + " is missing a 'ClickableArea' child node!")
+	if not input_event.is_connected(_on_input_event):
+		input_event.connect(_on_input_event)
 
-# This is the click-handler. It only exists on the Artisan.
-# We MOVED this logic out of Character.gd.
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+# This is the click-handler.
+# It will now be called when the CharacterBody2D's *own* shape is clicked.
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int):
+	
 	if event is InputEventMouseButton and event.is_pressed() \
 	and event.button_index == MOUSE_BUTTON_LEFT:
 		
-		# Emit the signal *from the Artisan (self)*, not the area
+		# Emit the signal from the Artisan (self)
 		artisan_clicked.emit(self)
+		print( self.char_name + " was clicked, emits signal." )

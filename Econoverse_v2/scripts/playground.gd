@@ -14,9 +14,11 @@ func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_g
 	whom.inventory[item_get] = (whom.inventory[item_get] - valGet)
 
 # This func is called by the player
+## kc 10/25/25; this func should be dynamically updating based on 
+## what the player selects within the UI. These are simply placeholders for now!
 func start_trade_with_npc(npc_node):
-	var npc_gives_item = "gold"
-	var player_gives_item = "wood"
+	var npc_gives_item = "sword"
+	var player_gives_item = "gold"
 	
 	# Call the global Autoload instance directly
 	TradeUI.open_trade(self, npc_node, player_gives_item, npc_gives_item)

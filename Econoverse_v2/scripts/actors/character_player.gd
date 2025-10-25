@@ -18,9 +18,10 @@ func _ready():
 	print_inv_values()
 
 # Player-specific input handling
-func _physics_process(_delta: float):
-	# Example: Player-only movement logic
-	# (Assumes you have "ui_left", "ui_right", etc. set in Input Map)
-	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	velocity = direction * speed
-	move_and_slide()
+## kc 10/25/25; disable directional movement for now, try implementations later
+#func _physics_process(_delta: float):
+	## Example: Player-only movement logic
+	## (Assumes you have "ui_left", "ui_right", etc. set in Input Map)
+	#var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	#velocity = direction * speed
+	#move_and_slide()
