@@ -5,6 +5,7 @@ extends Control
 
 # --- Node References ---
 # We get these nodes so we can update their text
+@export var title_label: Label
 @export var give_item_label: Label
 @export var give_amount_label: Label
 @export var get_item_label: Label
@@ -37,7 +38,7 @@ func _ready():
 # This is the main function you'll call from your Player
 # to open and set up the trade window.
 
-##kc 10/24/25; this could be a useful place to display player/npc names. 
+##kc 10/24/25; this could be a useful place to get player/npc names. 
 func open_trade(player: Node, npc: Node, item_give: String, item_get: String):
 	# Store all the trade information
 	self.player_node = player
@@ -56,6 +57,8 @@ func open_trade(player: Node, npc: Node, item_give: String, item_get: String):
 
 # A helper function to keep all our labels in sync
 func _update_labels():
+	title_label.text = "Trading with \n%s" % npc_node.char_name
+	
 	give_item_label.text = "You Give: %s" % current_item_give
 	give_amount_label.text = str(current_give_amount)
 	

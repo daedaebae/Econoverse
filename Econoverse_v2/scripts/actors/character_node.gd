@@ -27,7 +27,7 @@ extends CharacterBody2D
 @export var gender: Gender = 2
 @export var race: String = "Human"
 @export var profession: Profession = 0
-@export var inventory: Dictionary = {"Sword": 0, "Strudel": 0, "Coins": 10}
+@export var inventory: Dictionary = {"Sword": 0, "Strudel": 0, "Coins": 0, "Wood": 0}
 @export var met : bool = false
 
 # Constructor
@@ -73,28 +73,29 @@ func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_g
 			#print("Player: ",self.inventory,"\nArtisan: ",$"../Artisan".inventory)
 			#pass
 			
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed() \
-	and event.button_index == MOUSE_BUTTON_LEFT:
-		#Get mouse postion and set the target
-		mouse_position = get_viewport().get_mouse_position()
-		
-		var target = $CollisionShape2D
-
-			
-		var distance = mouse_position.distance_to(target.global_position)
-		# If clicked near the player collision shape run the trade function
-		
-		# kc 10/25/25; checks if target is player. If so, does nothing.
-		# can be updated later to perform a different interaction.
-		if target == Player:
-			return
-		
-		if distance < 20:
-			Playground.start_trade_with_npc(self)
-			
-			
-			pass
+## kc 10/25/25; testing for game_controller
+#func _input(event: InputEvent) -> void:
+	#if event is InputEventMouseButton and event.is_pressed() \
+	#and event.button_index == MOUSE_BUTTON_LEFT:
+		##Get mouse postion and set the target
+		#mouse_position = get_viewport().get_mouse_position()
+		#
+		#var target = $CollisionShape2D
+#
+			#
+		#var distance = mouse_position.distance_to(target.global_position)
+		## If clicked near the player collision shape run the trade function
+		#
+		## kc 10/25/25; checks if target is player. If so, does nothing.
+		## can be updated later to perform a different interaction.
+		#if target == Player:
+			#return
+		#
+		#if distance < 20:
+			#Playground.start_trade_with_npc(self)
+			#
+			#
+			#pass
 
 #kc 10/24/25; moved this to a callable method so it can be called anywhere. 
 func print_inv_values():

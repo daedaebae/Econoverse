@@ -45,8 +45,11 @@ func _on_artisan_clicked(npc_who_was_clicked: Node):
 		return
 	
 	# --- Define the trade (or get it from the NPC) ---
-	var npc_gives_item = "gold"
-	var player_gives_item = "wood"
+	## kc 10/25/2025 here is where the trade items are determined. 
+	## A helper function could be implemented to update these items based on user input.
+	## There is also NO ERROR HANDLING OR CHECKING FOR REALISTIC VALUES lol. 
+	var npc_gives_item = "Sword"
+	var player_gives_item = "Coins"
 	
 	# Command the UI to open the trade
 	trade_ui_node.open_trade(player_node, npc_who_was_clicked, player_gives_item, npc_gives_item)
