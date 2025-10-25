@@ -30,6 +30,10 @@ var player_node: Node = null
 var npc_node: Node = null
 
 
+func _ready():
+	# kc 10/25/25; assign the trade ui to the gamecontroller singleton
+	GameController.register_trade_ui(self)
+
 # This is the main function you'll call from your Player
 # to open and set up the trade window.
 

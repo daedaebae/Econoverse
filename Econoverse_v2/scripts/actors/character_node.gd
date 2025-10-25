@@ -7,7 +7,7 @@ extends CharacterBody2D
 
 # DONE: Char behaviors and animations in the Node, data in the resource! load all the stuff from 
 #		the resource(will try again in v2)
-@export var CharRes = preload("res://assets/scripts/character_resource.gd")
+@export var CharRes = preload("res://scripts/actors/character_node.gd")
 #@export var CharRes: CharacterResource = load("CharacterResource")
 
 #@export var char_name: String = CharRes.char_name
@@ -78,17 +78,25 @@ func _input(event: InputEvent) -> void:
 	and event.button_index == MOUSE_BUTTON_LEFT:
 		#Get mouse postion and set the target
 		mouse_position = get_viewport().get_mouse_position()
+		
 		var target = $CollisionShape2D
+
+			
 		var distance = mouse_position.distance_to(target.global_position)
 		# If clicked near the player collision shape run the trade function
+		
+		# kc 10/25/25; checks if target is player. If so, does nothing.
+		# can be updated later to perform a different interaction.
+		if target == Player:
+			return
+		
 		if distance < 20:
 			Playground.start_trade_with_npc(self)
 			
 			
 			pass
 
-#kc 10/24/25; moved this to a callable method so it can be called elsewhere. 
-# it now passes the whom variable and will only print if there is a whom.
+#kc 10/24/25; moved this to a callable method so it can be called anywhere. 
 func print_inv_values():
 	print (self.name," now has: ",self.inventory)
 	

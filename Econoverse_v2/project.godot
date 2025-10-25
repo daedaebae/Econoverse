@@ -18,6 +18,12 @@ boot_splash/image="uid://bk5gkpxrqwd4o"
 config/icon="uid://bk5gkpxrqwd4o"
 boot_splash/minimum_display_time=500
 
+[autoload]
+
+GameController="*res://singleton/game_controller.gd"
+UITrade="*res://singleton/ui_trade.gd"
+CharacterNode="*res://scripts/actors/character_node.gd"
+
 [display]
 
 window/size/viewport_width=640
