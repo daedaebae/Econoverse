@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cs7gurkoxmber"]
+[gd_scene load_steps=3 format=3 uid="uid://cs7gurkoxmber"]
 
 [ext_resource type="Script" uid="uid://boriow0q3pktw" path="res://singleton/ui_trade.gd" id="1_0tw80"]
+[ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="1_e5ajk"]
 
 [node name="UI-Trade" type="Control" node_paths=PackedStringArray("title_label", "give_item_label", "give_amount_label", "get_item_label", "get_amount_label")]
 custom_minimum_size = Vector2(200, 260)
@@ -14,6 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme = ExtResource("1_e5ajk")
 script = ExtResource("1_0tw80")
 title_label = NodePath("FullVBox/Title")
 give_item_label = NodePath("FullVBox/GiveRow/LabelItemGive")
