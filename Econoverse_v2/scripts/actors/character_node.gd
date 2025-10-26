@@ -1,11 +1,13 @@
 @tool
 class_name Character 
 extends CharacterBody2D
+#kc 10/24/25; added for early ui integration testing etc
+@export var Playground: Control
 #extends CharacterResource
 
 # DONE: Char behaviors and animations in the Node, data in the resource! load all the stuff from 
 #		the resource(will try again in v2)
-@export var CharRes = preload("res://assets/scripts/character_resource.gd")
+@export var CharRes = preload("res://scripts/actors/character_node.gd")
 #@export var CharRes: CharacterResource = load("CharacterResource")
 
 #@export var char_name: String = CharRes.char_name
@@ -25,7 +27,7 @@ extends CharacterBody2D
 @export var gender: Gender = 2
 @export var race: String = "Human"
 @export var profession: Profession = 0
-@export var inventory: Dictionary = {"Sword": 0, "Strudel": 0, "Coins": 10}
+@export var inventory: Dictionary = {"Sword": 0, "Strudel": 0, "Coins": 0, "Wood": 0}
 @export var met : bool = false
 
 # Constructor
@@ -49,23 +51,56 @@ func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_g
 	# Player get val2# of item_get from whom
 	self.inventory[item_get] = (self.inventory[item_get] + valGet)
 	whom.inventory[item_get] = (whom.inventory[item_get] - valGet)
+	
+	print_inv_values()
 
 #FIXME: durf 10/21/25 Draft - Click trade button activate trade function
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed() \
-	and event.button_index == MOUSE_BUTTON_LEFT:
-		#Get mouse postion and set the target
-		mouse_position = get_viewport().get_mouse_position()
-		var target = $CollisionShape2D
-		var distance = mouse_position.distance_to(target.global_position)
-		# If clicked near the player collision shape run the trade function
-		if distance < 20:
-			#TODO: 10/21/25 if click trade button then 1 for 1 trade item for item
-			# this doesn't work right now as it will trade item with itself.
-			trade( $"../Artisan", 10, "Coins", 1, "Sword")
-			print("Player: ",self.inventory,"\nArtisan: ",$"../Artisan".inventory)
-			pass
 
+#TEST: kc 10/25/25 commented out this version and 
+# for testing new version before merge.
+#func _input(event: InputEvent) -> void:
+	#if event is InputEventMouseButton and event.is_pressed() \
+	#and event.button_index == MOUSE_BUTTON_LEFT:
+		##Get mouse postion and set the target
+		#mouse_position = get_viewport().get_mouse_position()
+		#var target = $CollisionShape2D
+		#var distance = mouse_position.distance_to(target.global_position)
+		## If clicked near the player collision shape run the trade function
+		#if distance < 20:
+			##TODO: 10/21/25 if click trade button then 1 for 1 trade item for item
+			## this doesn't work right now as it will trade item with itself.
+			#trade( $"../Artisan", 10, "Coins", 1, "Sword")
+			#print("Player: ",self.inventory,"\nArtisan: ",$"../Artisan".inventory)
+			#pass
+			
+## kc 10/25/25; testing for game_controller
+#func _input(event: InputEvent) -> void:
+	#if event is InputEventMouseButton and event.is_pressed() \
+	#and event.button_index == MOUSE_BUTTON_LEFT:
+		##Get mouse postion and set the target
+		#mouse_position = get_viewport().get_mouse_position()
+		#
+		#var target = $CollisionShape2D
+#
+			#
+		#var distance = mouse_position.distance_to(target.global_position)
+		## If clicked near the player collision shape run the trade function
+		#
+		## kc 10/25/25; checks if target is player. If so, does nothing.
+		## can be updated later to perform a different interaction.
+		#if target == Player:
+			#return
+		#
+		#if distance < 20:
+			#Playground.start_trade_with_npc(self)
+			#
+			#
+			#pass
+
+#kc 10/24/25; moved this to a callable method so it can be called anywhere. 
+func print_inv_values():
+	print (self.name," now has: ",self.inventory)
+	
 func _ready() -> void:
 	pass
 

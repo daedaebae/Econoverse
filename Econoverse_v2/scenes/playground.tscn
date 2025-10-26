@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c8v5s5eqhgm3c"]
+[gd_scene load_steps=14 format=4 uid="uid://c8v5s5eqhgm3c"]
 
 [ext_resource type="Texture2D" uid="uid://bj4yhphojx3wd" path="res://assets/image/sprite/ground.png" id="1_mm0a5"]
 [ext_resource type="Texture2D" uid="uid://lcm4lko4nh4s" path="res://assets/image/sprite/1x1.png" id="1_qchbg"]
@@ -6,6 +6,9 @@
 [ext_resource type="AudioStream" uid="uid://dbltj13yf83hb" path="res://assets/audio/music/artifacts.ogg" id="3_q8s1k"]
 [ext_resource type="PackedScene" uid="uid://df85tx01j44vs" path="res://scenes/player.tscn" id="4_mm0a5"]
 [ext_resource type="PackedScene" uid="uid://bpc8lo0rmh2xi" path="res://scenes/artisan.tscn" id="5_o6wi6"]
+[ext_resource type="Script" uid="uid://q1mqyaq7dqu4" path="res://scripts/actors/character_player.gd" id="7_2q4k0"]
+[ext_resource type="PackedScene" uid="uid://cs7gurkoxmber" path="res://scenes/ui_trade.tscn" id="7_emj6c"]
+[ext_resource type="Script" uid="uid://ejpb7luf6o4x" path="res://scenes/character_artisan.gd" id="9_x1amm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_emj6c"]
 texture = ExtResource("1_mm0a5")
@@ -71,17 +74,31 @@ mouse_filter = 1
 [node name="Player" parent="Actors" instance=ExtResource("4_mm0a5")]
 z_index = -1
 y_sort_enabled = true
-position = Vector2(81, 285)
+position = Vector2(65, 237)
+script = ExtResource("7_2q4k0")
+speed = 300.0
 char_name = "Player"
+inventory = {
+"Coins": 10,
+"Strudel": 0,
+"Sword": 0
+}
 
 [node name="Artisan" parent="Actors" instance=ExtResource("5_o6wi6")]
 modulate = Color(0.97235805, 0.22522166, 0.5298163, 1)
 z_index = -1
 y_sort_enabled = true
 position = Vector2(352, 104)
-char_name = "Artisan"
+script = ExtResource("9_x1amm")
+char_name = "Bogus Buchanon"
+profession = 2
 inventory = {
-"Coins": 0,
+"Coins": 10,
 "Strudel": 0,
-"Sword": 5
+"Sword": 2
 }
+
+[node name="TopLayer" type="CanvasLayer" parent="."]
+
+[node name="UI-Trade" parent="TopLayer" instance=ExtResource("7_emj6c")]
+visible = false
