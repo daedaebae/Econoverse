@@ -1,0 +1,44 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cb4jx472vkydf"]
+
+[ext_resource type="StyleBox" uid="uid://b25n2vxk82fqm" path="res://scenes/themes/style_box_flat-GOLDfirst.tres" id="1_mlh0v"]
+[ext_resource type="FontFile" uid="uid://c15bkghedjxxy" path="res://assets/fonts/ModernAntiqua-Regular.ttf" id="1_vyh8d"]
+[ext_resource type="FontFile" uid="uid://bwgm0rcnkhr36" path="res://assets/fonts/CormorantInfant-VariableFont_wght.ttf" id="2_mp375"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vyh8d"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3n34"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.729236, 0.474936, 0.311323, 1)
+border_blend = true
+corner_detail = 4
+
+[sub_resource type="FontVariation" id="FontVariation_vyh8d"]
+base_font = ExtResource("2_mp375")
+variation_embolden = 0.1
+spacing_glyph = -1
+
+[resource]
+default_font = ExtResource("2_mp375")
+default_font_size = 26
+Button/colors/icon_pressed_color = Color(1, 1, 1, 0)
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 14
+Button/styles/disabled = ExtResource("1_mlh0v")
+Button/styles/focus = SubResource("StyleBoxFlat_vyh8d")
+Button/styles/pressed = SubResource("StyleBoxFlat_c3n34")
+Label/constants/shadow_outline_size = 10
+Label/font_sizes/font_size = 18
+Label/fonts/font = SubResource("FontVariation_vyh8d")
+Panel/styles/panel = ExtResource("1_mlh0v")
+RichTextLabel/font_sizes/bold_font_size = 16
+RichTextLabel/font_sizes/normal_font_size = 16
+RichTextLabel/fonts/bold_font = ExtResource("1_vyh8d")
+TooltipLabel/font_sizes/font_size = 12
+TooltipLabel/styles/normal = ExtResource("1_mlh0v")
+TooltipPanel/font_sizes/title_font_size = 12
+TooltipPanel/styles/panel = ExtResource("1_mlh0v")
