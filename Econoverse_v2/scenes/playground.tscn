@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=4 uid="uid://c8v5s5eqhgm3c"]
+[gd_scene load_steps=16 format=4 uid="uid://c8v5s5eqhgm3c"]
 
 [ext_resource type="Texture2D" uid="uid://bj4yhphojx3wd" path="res://assets/image/sprite/isometric/ground.png" id="1_mm0a5"]
 [ext_resource type="Texture2D" uid="uid://lcm4lko4nh4s" path="res://assets/image/sprite/isometric/1x1.png" id="1_qchbg"]
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="1_x1amm"]
+[ext_resource type="PackedScene" uid="uid://c81dcduek3q67" path="res://singleton/audio_master.tscn" id="2_2bfhc"]
 [ext_resource type="Texture2D" uid="uid://dcf31shksj5lr" path="res://assets/image/sprite/isometric/1x2.png" id="3_kddj0"]
 [ext_resource type="AudioStream" uid="uid://dbltj13yf83hb" path="res://assets/audio/music/artifacts.ogg" id="3_q8s1k"]
 [ext_resource type="PackedScene" uid="uid://df85tx01j44vs" path="res://scenes/player.tscn" id="4_mm0a5"]
@@ -49,6 +50,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_x1amm")
+
+[node name="AudioMaster" parent="." instance=ExtResource("2_2bfhc")]
 
 [node name="world" type="Node2D" parent="."]
 z_index = -1

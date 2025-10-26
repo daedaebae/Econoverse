@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cs7gurkoxmber"]
+[gd_scene load_steps=7 format=3 uid="uid://cs7gurkoxmber"]
 
 [ext_resource type="Script" uid="uid://boriow0q3pktw" path="res://singleton/ui_trade.gd" id="1_0tw80"]
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="1_e5ajk"]
+[ext_resource type="AudioStream" uid="uid://c1ekqxpft6f4a" path="res://assets/audio/sfx/sfx_increment.ogg" id="3_plr5u"]
+[ext_resource type="AudioStream" uid="uid://q7iv0ujiwvcm" path="res://assets/audio/sfx/sfx_decrement.ogg" id="4_pglr2"]
+[ext_resource type="AudioStream" uid="uid://crvce2oxapbdm" path="res://assets/audio/sfx/sfx_papyrus_close.ogg" id="5_lm5gh"]
+[ext_resource type="AudioStream" uid="uid://bxtx44wc1v5ey" path="res://assets/audio/sfx/sfx_papyrus_open.ogg" id="6_fmvxx"]
 
-[node name="UI-Trade" type="Control" node_paths=PackedStringArray("title_label", "give_item_label", "give_amount_label", "get_item_label", "get_amount_label")]
+[node name="UI-Trade" type="Control" node_paths=PackedStringArray("title_label", "give_item_label", "give_amount_label", "get_item_label", "get_amount_label", "sound_show", "sound_hide", "sound_plus", "sound_minus")]
 custom_minimum_size = Vector2(200, 260)
 layout_mode = 3
 anchors_preset = 8
@@ -22,6 +26,10 @@ give_item_label = NodePath("FullVBox/GiveRow/LabelItemGive")
 give_amount_label = NodePath("FullVBox/GiveRow/LabelAmountGive")
 get_item_label = NodePath("FullVBox/GetRow/LabelItemGet")
 get_amount_label = NodePath("FullVBox/GetRow/LabelAmountGet")
+sound_show = NodePath("SfxPapyrusOpen")
+sound_hide = NodePath("SfxPapyrusClose")
+sound_plus = NodePath("SfxIncrement")
+sound_minus = NodePath("SfxDecrement")
 
 [node name="Background" type="Panel" parent="."]
 layout_mode = 1
@@ -104,6 +112,18 @@ text = "Trade"
 [node name="ButtonCancel" type="Button" parent="FullVBox/ActionsRow"]
 layout_mode = 2
 text = "Cancel"
+
+[node name="SfxIncrement" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_plr5u")
+
+[node name="SfxDecrement" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_pglr2")
+
+[node name="SfxPapyrusClose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lm5gh")
+
+[node name="SfxPapyrusOpen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_fmvxx")
 
 [connection signal="pressed" from="FullVBox/GiveRow/ButtonMinusGive" to="." method="_on_button_minus_give_pressed"]
 [connection signal="pressed" from="FullVBox/GiveRow/ButtonPlusGive" to="." method="_on_button_plus_give_pressed"]
