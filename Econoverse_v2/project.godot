@@ -23,6 +23,8 @@ boot_splash/minimum_display_time=500
 GameController="*res://singleton/game_controller.gd"
 UITrade="*res://singleton/ui_trade.gd"
 CharacterNode="*res://scripts/actors/character_node.gd"
+AudioMaster="*res://singleton/audio_master.tscn"
+AudioMasterScript="*res://singleton/audio_master_script.gd"
 
 [display]
 
