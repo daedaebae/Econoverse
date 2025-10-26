@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bpc8lo0rmh2xi"]
 
-[ext_resource type="Script" uid="uid://cuyyhpbt3xolc" path="res://assets/scripts/character_node.gd" id="1_rux1i"]
+[ext_resource type="Script" uid="uid://cuyyhpbt3xolc" path="res://scripts/actors/character_node.gd" id="1_rux1i"]
 [ext_resource type="Texture2D" uid="uid://dqxhs1tlvdn0x" path="res://assets/image/sprite/SpriteDude.png" id="2_30vcf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dkjbp"]
