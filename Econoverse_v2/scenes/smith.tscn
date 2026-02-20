@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://x511n04o45d2"]
+[gd_scene format=3 uid="uid://bklxsicy80plf"]
 
-[ext_resource type="Script" uid="uid://cuyyhpbt3xolc" path="res://scripts/actors/Character.gd" id="1_rux1i"]
-[ext_resource type="Texture2D" uid="uid://dqxhs1tlvdn0x" path="res://assets/image/sprite/SpriteDude.png" id="2_30vcf"]
+[ext_resource type="Script" uid="uid://cuyyhpbt3xolc" path="res://scripts/actors/Character.gd" id="1_p2irl"]
+[ext_resource type="Texture2D" uid="uid://dqxhs1tlvdn0x" path="res://assets/image/sprite/SpriteDude.png" id="2_0dxiq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dkjbp"]
 radius = 16.0
@@ -9,14 +9,12 @@ height = 44.0
 
 [node name="Throwaway-CharacterBody2D" type="CharacterBody2D" unique_id=696976295]
 input_pickable = true
-script = ExtResource("1_rux1i")
-resource = null
+script = ExtResource("1_p2irl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1114704356]
 y_sort_enabled = true
-position = Vector2(77, 23)
 shape = SubResource("CapsuleShape2D_dkjbp")
 
 [node name="Artisan" type="Sprite2D" parent="CollisionShape2D" unique_id=326726181]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_30vcf")
+texture = ExtResource("2_0dxiq")

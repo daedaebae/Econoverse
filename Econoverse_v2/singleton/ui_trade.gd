@@ -120,7 +120,6 @@ func _on_button_minus_give_pressed() -> void:
 	sound_minus.play()
 
 
-
 func _on_button_plus_give_pressed() -> void:
 	current_give_amount += 1
 	# Add logic here to check if player has enough

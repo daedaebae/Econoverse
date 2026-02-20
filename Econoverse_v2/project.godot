@@ -26,7 +26,7 @@ boot_splash/minimum_display_time=500
 
 GameController="*res://singleton/game_controller.gd"
 UITrade="*res://singleton/ui_trade.gd"
-CharacterNode="*res://scripts/actors/character_node.gd"
+CharacterNode="*res://scripts/actors/Character.gd"
 AudioMaster="*res://singleton/audio_master.tscn"
 AudioMasterScript="*res://singleton/audio_master_script.gd"
 
@@ -40,6 +40,10 @@ window/stretch/scale_mode="integer"
 [dotnet]
 
 project/assembly_name="Econoverse_v2"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
 
 [file_customization]
 
