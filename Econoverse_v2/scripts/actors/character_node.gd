@@ -23,10 +23,10 @@ extends CharacterBody2D
 #Character attribs
 @export var char_name: String = "Name"
 #@export var currency: int
-@export var location: Location = 7
-@export var gender: Gender = 2
+@export var location: Location = 7 as Location
+@export var gender: Gender = 2 as Gender
 @export var race: String = "Human"
-@export var profession: Profession = 0
+@export var profession: Profession = 0 as Profession
 @export var inventory: Dictionary = {"Sword": 0, "Strudel": 0, "Coins": 0, "Wood": 0}
 @export var met : bool = false
 

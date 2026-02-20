@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cb4jx472vkydf"]
+[gd_resource type="Theme" format=3 uid="uid://cb4jx472vkydf"]
 
 [ext_resource type="StyleBox" uid="uid://b25n2vxk82fqm" path="res://scenes/themes/style_box_flat-GOLDfirst.tres" id="1_mlh0v"]
 [ext_resource type="FontFile" uid="uid://c15bkghedjxxy" path="res://assets/fonts/ModernAntiqua-Regular.ttf" id="1_vyh8d"]

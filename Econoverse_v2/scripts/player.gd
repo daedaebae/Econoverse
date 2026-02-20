@@ -24,6 +24,7 @@ extends CharacterBody2D
 @export var inventory: Dictionary = {"Sword": 0, "Strudel": 0, "Coins": 0}
 @export var met : bool = false
 
+
 # Constructor
 func _init(char_name, loc, gen, r, prof, inv) -> void:
 	self.char_name = char_name

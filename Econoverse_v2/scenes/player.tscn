@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://df85tx01j44vs"]
+[gd_scene format=3 uid="uid://df85tx01j44vs"]
 
 [ext_resource type="Texture2D" uid="uid://dqxhs1tlvdn0x" path="res://assets/image/sprite/SpriteDude.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://cuyyhpbt3xolc" path="res://scripts/actors/character_node.gd" id="1_g2els"]
@@ -7,14 +7,18 @@
 radius = 16.0
 height = 44.0
 
-[node name="Throwaway-CharacterBody2D" type="CharacterBody2D"]
+[node name="Throwaway-CharacterBody2D" type="CharacterBody2D" unique_id=324386717]
+z_index = 1
+y_sort_enabled = true
+collision_layer = 3
+collision_mask = 3
 input_pickable = true
 script = ExtResource("1_g2els")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=124601216]
 position = Vector2(26, 26)
 shape = SubResource("CapsuleShape2D_dkjbp")
 
-[node name="Dude" type="Sprite2D" parent="CollisionShape2D"]
+[node name="Dude" type="Sprite2D" parent="CollisionShape2D" unique_id=1718935711]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_3vyb7")
