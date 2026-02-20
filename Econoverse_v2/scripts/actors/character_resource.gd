@@ -6,7 +6,6 @@ extends Resource
 @export var char_name: String
 @export var location: Location
 @export var gender: Gender
-
 ## kc 10/25/25; could implement a function that updates the inventory dynmically 
 ## based on new items? such as, if item not in dictionary, assign value 
 ## after final value etc etc. Maybe need enums to ensure no duplicates or naming errors.
@@ -70,10 +69,6 @@ func _process(delta: float) -> void:
 			pass
 			
 #endregion LocationStateMachine
-
-# Constructor not needed?
-#func _init(name, location, currency, gender, race, profession) -> void:
-	#pass
 
 #region NodeFunctions
 func trade_item(item_in: Item,item_out: Item):

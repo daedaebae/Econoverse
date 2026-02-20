@@ -16,6 +16,7 @@ func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_g
 # This func is called by the player
 ## kc 10/25/25; this func should be dynamically updating based on 
 ## what the player selects within the UI. These are simply placeholders for now!
+
 func start_trade_with_npc(npc_node):
 	var npc_gives_item = "sword"
 	var player_gives_item = "gold"
