@@ -2,71 +2,78 @@
 class_name CharacterResource
 extends Resource
 
-# NOTE: Character attributes and data in the resource, funcs in the node!
 @export var char_name: String
 @export var location: Location
 @export var gender: Gender
+@export var race: String = "Human"
+@export var profession: Profession
+#durf: maybe rename later
+@export var	state: State
 ## kc 10/25/25; could implement a function that updates the inventory dynmically 
 ## based on new items? such as, if item not in dictionary, assign value 
 ## after final value etc etc. Maybe need enums to ensure no duplicates or naming errors.
 @export var inventory: Dictionary = {
 	"Coins": 0, 
 	"Slots": {
-		1: "", 2: "", 3: "", 4: ""
+		1: "", 2: "", 3: "", 4: "", 5: "", 6: "", 7: ""
 	}
 }
 
-@export var race: String = "Human"
-@export var profession: Profession
-
-enum Profession{
-	None,
-	Carpenter,
-	Smith,
-	Stablemaster,
-	Baker,
-	Brewer,
-	Mason,
-	Tanner
+# Sets the player stat to show what they are doing.
+enum State{
+	TRAVELING,
+	INTERACTING,
+	MENU
 }
 
-enum Gender {
-	Male,
-	Female,
-	Other
+enum Profession{
+	UNEMPLOYED,
+	CARPENTER,
+	SMITH,
+	STABLEMASTER,
+	BAKER,
+	BREWER,
+	MASON,
+	TANNER
+}
+
+enum Gender{
+	MALE,
+	FEMALE,
+	OTHER
 }
 
 #region LocationStateMachine
-enum Location { 
-	Lumber_Mill,
-	Smithy,
-	Stables,
-	Bakery,
-	Brewhouse,
-	Masonic_Shop,
-	Tannery,
-	Town_Square
+enum Location{ 
+	LUMBER_MILL,
+	SMITHY,
+	STABLES,
+	BAKERY,
+	BREWHOUSE,
+	MASONIC_SHOP,
+	TANNERY,
+	TOWN_SQUARE
 }
 
 #TODO: Connect to relevant scene/shop/conversation.
-func _process(delta: float) -> void:
-	match location:
-		Location.Lumber_Mill:
-			pass
-		Location.Smithy:
-			pass
-		Location.Stables:
-			pass
-		Location.Bakery:
-			pass
-		Location.Brewhouse:
-			pass
-		Location.Masonic_Shop:
-			pass
-		Location.Tannery:
-			pass
-		Location.Town_Square:
-			pass
+#func _process(delta: float) -> void:
+	#match location:
+		#Location.LUMBER_MILL:
+			#pass
+		#Location.SMITHY:
+			#pass
+		#Location.STABLES:
+			#pass
+		#Location.BAKERY:
+			#pass
+		#Location.BREWHOUSE:
+			#pass
+		#Location.MASONIC_SHOP:
+			#pass
+		#Location.TANNERY:
+			#pass
+		#Location.TOWN_SQUARE:
+			#pass
 			
 #endregion LocationStateMachine
 

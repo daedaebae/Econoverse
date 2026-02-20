@@ -1,33 +1,31 @@
 @tool
-class_name Character 
+class_name Character
 extends CharacterBody2D
+
 #kc 10/24/25; added for early ui integration testing etc
 @export var Playground: Control
-#extends CharacterResource
-
-# DONE: Char behaviors and animations in the Node, data in the resource! load all the stuff from 
-#		the resource(will try again in v2)
-@export var CharRes = preload("res://scripts/actors/character_node.gd")
-#@export var CharRes: CharacterResource = load("CharacterResource")
-
-#@export var char_name: String = CharRes.char_name
-#@export var location: int = CharRes.location
-#@export var currency: int = CharRes.currency
-#@export var gender: int = CharRes.gender
-#@export var race: String = CharRes.race
-#@export var profession: int = CharRes.profession
-
 #mouse funcs
 @onready var mouse_position: Vector2
+#@export var attribs : CharacterResource
 
-#Character attribs
+#TODO: durf- char_name is not ideal! X-D
 @export var char_name: String = "Name"
 #@export var currency: int
-@export var location: Location = 7 as Location
-@export var gender: Gender = 2 as Gender
+#@export var location: Location = Location.Town_Square
+@export var gender: Gender = Gender.OTHER
 @export var race: String = "Human"
-@export var profession: Profession = 0 as Profession
-@export var inventory: Dictionary = {"Sword": 0, "Strudel": 0, "Coins": 0, "Wood": 0}
+@export var profession: Profession = Profession.UNEMPLOYED
+@export var inventory: Dictionary = {
+	"Sword": 0, 
+	"Strudel": 0, 
+	"Coins": 0, 
+	"Lumber": 0,
+	"Stone": 0,
+	"Whiskey": 0,
+	"Corn": 0,
+	"Boots": 0,
+	"Horses": 0	
+}
 @export var met : bool = false
 
 # Constructor
@@ -53,8 +51,6 @@ func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_g
 	whom.inventory[item_get] = (whom.inventory[item_get] - valGet)
 	
 	print_inv_values()
-
-#FIXME: durf 10/21/25 Draft - Click trade button activate trade function
 
 #TEST: kc 10/25/25 commented out this version and 
 # for testing new version before merge.
@@ -99,35 +95,42 @@ func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_g
 
 #kc 10/24/25; moved this to a callable method so it can be called anywhere. 
 func print_inv_values():
-	print (self.name," now has: ",self.inventory)
+	print (self.char_name," Inventory: ",self.inventory)
 	
 func _ready() -> void:
 	pass
 
+# Sets the player stat to show what they are doing.
+enum State{
+	TRAVELING,
+	INTERACTING,
+	MENU
+}
+
 enum Profession{
-	None,
-	Carpenter,
-	Smith,
-	Stablemaster,
-	Baker,
-	Brewer,
-	Mason,
-	Tanner
+	UNEMPLOYED,
+	CARPENTER,
+	SMITH,
+	STABLEMASTER,
+	BAKER,
+	BREWER,
+	MASON,
+	TANNER
 }
 
-enum Gender {
-	Male,
-	Female,
-	Other
+enum Gender{
+	MALE,
+	FEMALE,
+	OTHER
 }
 
-enum Location { 
-	Lumber_Mill,
-	Smithy,
-	Stables,
-	Bakery,
-	Brewhouse,
-	Masonic_Shop,
-	Tannery,
-	Town_Square
+enum Location{ 
+	LUMBER_MILL,
+	SMITHY,
+	STABLES,
+	BAKERY,
+	BREWHOUSE,
+	MASONIC_SHOP,
+	TANNERY,
+	TOWN_SQUARE
 }

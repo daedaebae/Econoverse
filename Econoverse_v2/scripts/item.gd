@@ -1,6 +1,3 @@
-#TODO: 	Review Getters and Setters for any missing functions that manipulate
-#		items.
-
 @tool
 extends Resource
 class_name Item

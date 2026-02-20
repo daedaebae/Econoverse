@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://df85tx01j44vs"]
 
 [ext_resource type="Texture2D" uid="uid://dqxhs1tlvdn0x" path="res://assets/image/sprite/SpriteDude.png" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://cuyyhpbt3xolc" path="res://scripts/actors/character_node.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://cuyyhpbt3xolc" path="res://scripts/actors/Character.gd" id="1_g2els"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dkjbp"]
 radius = 16.0
@@ -18,6 +18,7 @@ script = ExtResource("1_g2els")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=124601216]
 position = Vector2(26, 26)
 shape = SubResource("CapsuleShape2D_dkjbp")
+debug_color = Color(6.2569975e-06, 0.91344684, 0.17746532, 0.41960785)
 
 [node name="Dude" type="Sprite2D" parent="CollisionShape2D" unique_id=1718935711]
 scale = Vector2(0.5, 0.5)

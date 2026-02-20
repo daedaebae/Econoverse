@@ -16,7 +16,7 @@ func _ready():
 		input_event.connect(_on_input_event)
 
 # This is the click-handler.
-# It will now be called when the CharacterBody2D's *own* shape is clicked.
+# It will now be called when the Artisan's *own* shape is clicked.
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int):
 	
 	if event is InputEventMouseButton and event.is_pressed() \
