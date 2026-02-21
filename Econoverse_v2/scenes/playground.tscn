@@ -83,12 +83,23 @@ mouse_filter = 1
 
 [node name="Player" parent="Actors" unique_id=200302002 instance=ExtResource("4_mm0a5")]
 top_level = true
-position = Vector2(183.90245, 167.74895)
+position = Vector2(236.67587, 125.28847)
 script = ExtResource("7_2q4k0")
 speed = 150.0
 char_name = "Player"
 gender = 2
-race = "Human"
+profession = 0
+inventory = {
+"Boots": 0,
+"Coins": 10,
+"Corn": 0,
+"Horses": 0,
+"Lumber": 0,
+"Stone": 0,
+"Strudel": 0,
+"Sword": 0,
+"Whiskey": 0
+}
 
 [node name="Bogus Buchannon" parent="Actors" unique_id=1394432855 instance=ExtResource("11_osidk")]
 modulate = Color(0.97235805, 0.22522166, 0.5298163, 1)
@@ -97,8 +108,17 @@ y_sort_enabled = true
 position = Vector2(391, 17)
 script = ExtResource("10_2bfhc")
 char_name = "Bogus Buchannon"
-gender = 2
-race = "Human"
+inventory = {
+"Boots": 0,
+"Coins": 0,
+"Corn": 0,
+"Horses": 0,
+"Lumber": 0,
+"Stone": 0,
+"Strudel": 0,
+"Sword": 5,
+"Whiskey": 0
+}
 
 [node name="Smith" parent="Actors" unique_id=1487200782 instance=ExtResource("11_osidk")]
 modulate = Color(0.2, 1, 1, 1)
@@ -107,8 +127,6 @@ y_sort_enabled = true
 position = Vector2(463, 126)
 script = ExtResource("10_2bfhc")
 char_name = "Bron"
-gender = 2
-race = "Human"
 
 [node name="Carpenter" parent="Actors" unique_id=696976295 instance=ExtResource("11_osidk")]
 modulate = Color(0.81938946, 0.95567757, 2.3102762e-06, 1)
@@ -117,9 +135,6 @@ y_sort_enabled = true
 position = Vector2(407, 168)
 script = ExtResource("10_2bfhc")
 char_name = "Butthead"
-gender = 2
-race = "Human"
-profession = 1
 
 [node name="TopLayer" type="CanvasLayer" parent="." unique_id=1670831378]
 

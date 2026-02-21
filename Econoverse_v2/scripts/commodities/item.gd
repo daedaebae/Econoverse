@@ -1,6 +1,6 @@
 @tool
-extends Resource
 class_name Item
+extends Resource
 
 @export var id : int
 @export var start_price : int
@@ -9,9 +9,13 @@ class_name Item
 @export_multiline var description : String = ""
 @export var texture: Texture2D
 @export var world_supply: int = 0
-
-enum Rarity { COMMON , UNCOMMON , RARE }
 @export var rarity : Rarity = Rarity.COMMON
+
+enum Rarity { 
+	COMMON,
+	UNCOMMON,
+	RARE
+}
 
 # Decide later if we want to classify items or not, feels broad scope to work in the logic
 ### enum ItemType { farm , clothes , ??? }
