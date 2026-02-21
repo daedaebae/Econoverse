@@ -10,6 +10,7 @@ height = 44.0
 [node name="Throwaway-CharacterBody2D" type="CharacterBody2D" unique_id=696976295]
 input_pickable = true
 script = ExtResource("1_p2irl")
+profession = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1114704356]
 y_sort_enabled = true
