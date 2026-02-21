@@ -9,12 +9,9 @@ extends CharacterBody2D
 # view simple details. Could also design a way for entities to not provide full details until they are
 # met/discovered. Curiosity opportunity
 @onready var mouse_position: Vector2
-#@export var attribs : CharacterResource
-
 #TODO: durf- char_name is not ideal! X-D
 @export var char_name: String = "Name"
-#@export var currency: int
-#@export var location: Location = Location.Town_Square
+@export var location: Location = Location.TOWN_SQUARE
 @export var gender: Gender
 @export var race: Race
 @export var profession: Profession = Profession.UNEMPLOYED
@@ -32,30 +29,26 @@ extends CharacterBody2D
 }
 @export var met : bool = false
 
+#region CharFunctions
 
-# Constructor
-#func _init(char_name, loc, gen, r, prof, inv):
-	#self.char_name = char_name
-	#self.location = loc
-	#self.gender = gen
-	#self.race = r
-	#self.profession = prof
-	#self.inventory = inv
-	#pass
-
-#durf 09/15/25 - v1.0 simple trade func sets dicts, v2.0 trade func with adjust
-#				 Item objects within inventory dicts.
 func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_get: String):
-	# Print what is happening.
-	print("Player traded ",whom.char_name," ",valGive," ",item_give," for ",valGet," ",item_get)
-	# Player give val1# of item_give to the whom
-	self.inventory[item_give] = (self.inventory[item_give] - valGive)
-	whom.inventory[item_give] = (whom.inventory[item_give] + valGive)
-	# Player get val2# of item_get from whom
-	self.inventory[item_get] = (self.inventory[item_get] + valGet)
-	whom.inventory[item_get] = (whom.inventory[item_get] - valGet)
-	#Print player inventory.
-	print_inv_values()
+	if valGive > self.inventory[item_give]:
+		print("Can't make that trade, not enough ", item_give, ".")
+	elif valGet > whom.inventory[item_get]:
+		print("Can't make that trade, not enough ", item_get, ".")
+	else:
+		# Print what is happening.
+		print("Player traded ",whom.char_name," ",valGive," ",item_give," for ",valGet," ",item_get)
+		# Player give val1# of item_give to the whom
+		self.inventory[item_give] = (self.inventory[item_give] - valGive)
+		whom.inventory[item_give] = (whom.inventory[item_give] + valGive)
+		# Player get val2# of item_get from whom
+		self.inventory[item_get] = (self.inventory[item_get] + valGet)
+		whom.inventory[item_get] = (whom.inventory[item_get] - valGet)
+		#Print player inventory.
+		print_inv_values()
+		
+#endregion CharFunctions
 
 #TEST: kc 10/25/25 commented out this version and 
 # for testing new version before merge.
@@ -107,20 +100,20 @@ func _ready() -> void:
 
 # Sets the player stat to show what they are doing.
 enum State{
-	TRAVELING,
 	INTERACTING,
-	MENU
+	MENU,
+	TRAVELING
 }
 
 enum Profession{
-	UNEMPLOYED,
-	CARPENTER,
-	SMITH,
-	STABLEMASTER,
 	BAKER,
 	BREWER,
+	CARPENTER,
 	MASON,
-	TANNER
+	SMITH,
+	STABLEMASTER,
+	TANNER,
+	UNEMPLOYED,
 }
 
 enum Gender{
@@ -134,13 +127,13 @@ enum Race{
 	OTHER
 }
 
-enum Location{ 
-	LUMBER_MILL,
-	SMITHY,
-	STABLES,
+enum Location{
 	BAKERY,
 	BREWHOUSE,
+	LUMBER_MILL,
 	MASONIC_SHOP,
+	SMITHY,
+	STABLES,
 	TANNERY,
 	TOWN_SQUARE
 }
