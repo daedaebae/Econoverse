@@ -5,6 +5,7 @@ extends CharacterBody2D
 #kc 10/24/25; added for early ui integration testing etc
 @export var Playground: Control
 #mouse funcs
+#TODO: kc 02/21/26; we'll have proximity based interaction, but still enable clicking on entities to view simple details. Could also design a way for entities to not provide full details until they are met/discovered. Curiosity opportunity
 @onready var mouse_position: Vector2
 #@export var attribs : CharacterResource
 
@@ -78,7 +79,7 @@ func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_g
 		#
 		#var target = $CollisionShape2D
 #
-			#
+		#
 		#var distance = mouse_position.distance_to(target.global_position)
 		## If clicked near the player collision shape run the trade function
 		#
@@ -134,3 +135,5 @@ enum Location{
 	TANNERY,
 	TOWN_SQUARE
 }
+
+#TODO: kc 2/21/26; need enum for race as well? Would follow all other stat designs
