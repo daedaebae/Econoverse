@@ -5,7 +5,9 @@ extends CharacterBody2D
 #kc 10/24/25; added for early ui integration testing etc
 @export var Playground: Control
 #mouse funcs
-#TODO: kc 02/21/26; we'll have proximity based interaction, but still enable clicking on entities to view simple details. Could also design a way for entities to not provide full details until they are met/discovered. Curiosity opportunity
+#TODO: kc 02/21/26; we'll have proximity based interaction, but still enable clicking on entities to
+# view simple details. Could also design a way for entities to not provide full details until they are
+# met/discovered. Curiosity opportunity
 @onready var mouse_position: Vector2
 #@export var attribs : CharacterResource
 
@@ -13,21 +15,23 @@ extends CharacterBody2D
 @export var char_name: String = "Name"
 #@export var currency: int
 #@export var location: Location = Location.Town_Square
-@export var gender: Gender = Gender.OTHER
-@export var race: String = "Human"
+@export var gender: Gender
+@export var race: Race
 @export var profession: Profession = Profession.UNEMPLOYED
+# Alphabetized Inventory Dict
 @export var inventory: Dictionary = {
-	"Sword": 0, 
-	"Strudel": 0, 
+	"Boots": 0,
 	"Coins": 0, 
+	"Corn": 0,
+	"Horses": 0,
 	"Lumber": 0,
 	"Stone": 0,
+	"Strudel": 0, 
+	"Sword": 0, 
 	"Whiskey": 0,
-	"Corn": 0,
-	"Boots": 0,
-	"Horses": 0	
 }
 @export var met : bool = false
+
 
 # Constructor
 #func _init(char_name, loc, gen, r, prof, inv):
@@ -42,7 +46,7 @@ extends CharacterBody2D
 #durf 09/15/25 - v1.0 simple trade func sets dicts, v2.0 trade func with adjust
 #				 Item objects within inventory dicts.
 func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_get: String):
-	#whasappenin'
+	# Print what is happening.
 	print("Player traded ",whom.char_name," ",valGive," ",item_give," for ",valGet," ",item_get)
 	# Player give val1# of item_give to the whom
 	self.inventory[item_give] = (self.inventory[item_give] - valGive)
@@ -50,7 +54,7 @@ func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_g
 	# Player get val2# of item_get from whom
 	self.inventory[item_get] = (self.inventory[item_get] + valGet)
 	whom.inventory[item_get] = (whom.inventory[item_get] - valGet)
-	
+	#Print player inventory.
 	print_inv_values()
 
 #TEST: kc 10/25/25 commented out this version and 
@@ -125,6 +129,11 @@ enum Gender{
 	OTHER
 }
 
+enum Race{
+	HUMAN,
+	OTHER
+}
+
 enum Location{ 
 	LUMBER_MILL,
 	SMITHY,
@@ -135,5 +144,3 @@ enum Location{
 	TANNERY,
 	TOWN_SQUARE
 }
-
-#TODO: kc 2/21/26; need enum for race as well? Would follow all other stat designs

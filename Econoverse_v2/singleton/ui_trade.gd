@@ -65,7 +65,7 @@ func open_trade(player: Node, npc: Node, item_give: String, item_get: String):
 
 # A helper function to keep all our labels in sync
 func _update_labels():
-	title_label.text = "Trading\n" + str(npc_node.profession.profession) + "\n" +  str(npc_node.char_name)
+	title_label.text = "Trading\n" + str(npc_node.profession) + "\n" +  str(npc_node.char_name)
 	
 	give_item_label.text = "You Give: %s" % current_item_give
 	give_amount_label.text = str(current_give_amount)

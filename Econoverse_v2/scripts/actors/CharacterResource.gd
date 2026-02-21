@@ -5,21 +5,27 @@ extends Resource
 @export var char_name: String
 @export var location: Location
 @export var gender: Gender
-@export var race: String = "Human"
+@export var race: Race
 @export var profession: Profession
 #durf: maybe rename later
 @export var	state: State
 ## kc 10/25/25; could implement a function that updates the inventory dynmically 
 ## based on new items? such as, if item not in dictionary, assign value 
 ## after final value etc etc. Maybe need enums to ensure no duplicates or naming errors.
+# Alphabetized Inventory Dict
 @export var inventory: Dictionary = {
+	"Boots": 0,
 	"Coins": 0, 
-	"Slots": {
-		1: "", 2: "", 3: "", 4: "", 5: "", 6: "", 7: ""
-	}
+	"Corn": 0,
+	"Horses": 0,
+	"Lumber": 0,
+	"Stone": 0,
+	"Strudel": 0, 
+	"Sword": 0, 
+	"Whiskey": 0,
 }
 
-# Sets the player stat to show what they are doing.
+# Sets the player state to show what they are doing.
 enum State{
 	TRAVELING,
 	INTERACTING,
@@ -40,6 +46,11 @@ enum Profession{
 enum Gender{
 	MALE,
 	FEMALE,
+	OTHER
+}
+
+enum Race{
+	HUMAN,
 	OTHER
 }
 
