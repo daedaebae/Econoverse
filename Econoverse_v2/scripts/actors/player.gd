@@ -15,6 +15,7 @@ func _ready():
 	
 	# We can still call this function, because we INHERITED it!
 	print_inv_values()
+	
 
 # Player-specific input handling
 ## kc 10/25/25; disable directional movement for now, try implementations later
@@ -24,3 +25,4 @@ func _physics_process(_delta: float):
 	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = direction * speed
 	move_and_slide()
+	
