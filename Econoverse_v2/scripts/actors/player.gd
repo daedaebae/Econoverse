@@ -1,10 +1,12 @@
 # --- player.gd ---
 # This is the "Player" specific script.
-# It inherits EVERYTHING from character_node.gd
+# It inherits EVERYTHING from the Character Class (Class_Character.gd)
 @tool
 extends Character
 # We can add player-specific logic here, like movement.
-@export var speed: float = 300.0 
+@export var speed: float = 300.0
+
+
 
 # _ready() is a "virtual" function. This code will run
 # IN ADDITION to any _ready() code in Character.gd.

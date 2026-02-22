@@ -1,4 +1,6 @@
 # --- game_controller.gd ---
+# This script acts as a Centralized Event Bus and prevents objects, scripts, nodes etc. from having
+# to connect to eachother. everything connects to the game_controller
 extends Node
 
 ## kc 10/25/25; functions for mechanics and interactive systems
@@ -53,3 +55,33 @@ func _on_artisan_clicked(npc_who_was_clicked: Node):
 	
 	# Command the UI to open the trade
 	trade_ui_node.open_trade(player_node, npc_who_was_clicked, player_gives_item, npc_gives_item)
+
+#region Debug
+# Takes a TestName param and a CharIn param for the name of the test and the
+# Character you want to print details for.
+func debug(TestName, CharIn):
+	print("####################\n\tdebug\n####################")
+	print(
+		str("Testing: "+TestName),
+		"\nname: ", CharIn.char_name,
+		"\nlocation: ",CharIn.location,
+		"\ngender: ",CharIn.gender,
+		"\nrace: ",CharIn.race,
+		# TODO: print foreach inventory item and it's quant
+		"\ninventory:\n\t\t[Sword: ",CharIn.inventory.Sword,
+		"] [Strudel: ",CharIn.inventory.Strudel,"] [Coins: ",CharIn.inventory.Coins,
+		"] ",
+		"\nprofession: ",CharIn.profession
+		# TODO: get and print current dialgue quest/location 
+	)
+	#print(
+		#"#######\nTrade prep\n#######"
+	#)
+	#if CharIn == Player:
+		#Player.trade(Baker, "Coins", 5, "Strudel", 1)
+	#print(
+			#"Seems they did the trade!\nPlayer Inv: ",Player.inventory,
+			#"\nBaker Inv:",Baker.inventory
+	#)
+	pass
+#endregion Debug
