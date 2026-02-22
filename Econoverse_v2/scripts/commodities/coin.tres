@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://cgg2v0q1xe84h"]
+
+[ext_resource type="Script" uid="uid://b61hkffm2hhan" path="res://scripts/commodities/ItemResource.gd" id="1_lr6c0"]
+[ext_resource type="Texture2D" uid="uid://c2o3ql01h5dt3" path="res://assets/image/sprite/items/coin.png" id="2_lr6c0"]
+
+[resource]
+script = ExtResource("1_lr6c0")
+id = 2
+start_price = 1
+name_full = "Coin"
+name_abbreviated = "Coin"
+texture = ExtResource("2_lr6c0")
+world_supply = 100
+metadata/_custom_type_script = "uid://b61hkffm2hhan"

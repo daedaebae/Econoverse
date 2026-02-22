@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://vg7etd666o5c"]
+
+[ext_resource type="Script" uid="uid://b61hkffm2hhan" path="res://scripts/commodities/ItemResource.gd" id="1_i5bgl"]
+[ext_resource type="Texture2D" uid="uid://cvhpo0g7smpfh" path="res://assets/image/sprite/items/lumber.png" id="2_i5bgl"]
+
+[resource]
+script = ExtResource("1_i5bgl")
+id = 5
+start_price = 5
+name_full = "Lumber"
+name_abbreviated = "Wood"
+texture = ExtResource("2_i5bgl")
+world_supply = 1000
+metadata/_custom_type_script = "uid://b61hkffm2hhan"

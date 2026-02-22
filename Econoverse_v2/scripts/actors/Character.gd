@@ -32,6 +32,7 @@ extends CharacterBody2D
 #region CharFunctions
 
 func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_get: String):
+	# Check if the values are higher than what is in Character Inventories.
 	if valGive > self.inventory[item_give]:
 		print("Can't make that trade, not enough ", item_give, ".")
 	elif valGet > whom.inventory[item_get]:
