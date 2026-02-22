@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://ce6ptjyb3wdne"]
+
+[ext_resource type="Script" uid="uid://b61hkffm2hhan" path="res://scripts/commodities/ItemResource.gd" id="1_gewsn"]
+[ext_resource type="Texture2D" uid="uid://b4r7uaan7l7x3" path="res://assets/image/sprite/items/strudel.png" id="2_gewsn"]
+
+[resource]
+script = ExtResource("1_gewsn")
+id = 6
+start_price = 3
+name_full = "Strudel"
+name_abbreviated = "Strudel"
+texture = ExtResource("2_gewsn")
+world_supply = 50
+rarity = 1
+metadata/_custom_type_script = "uid://b61hkffm2hhan"
