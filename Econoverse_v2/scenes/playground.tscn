@@ -92,7 +92,7 @@ mouse_filter = 1
 
 [node name="Player" parent="Actors" unique_id=200302002 instance=ExtResource("4_mm0a5")]
 top_level = true
-position = Vector2(405.92517, 175.92284)
+position = Vector2(328.65463, 205.07872)
 script = ExtResource("7_2q4k0")
 speed = 150.0
 char_name = "Player"
@@ -146,6 +146,14 @@ script = ExtResource("10_2bfhc")
 char_name = "Butthead"
 
 [node name="TopLayer" type="CanvasLayer" parent="." unique_id=1670831378]
+
+[node name="UI-Ledger" parent="TopLayer" unique_id=922451981 instance=ExtResource("7_emj6c")]
+visible = false
+offset_left = -100.0
+offset_top = -130.0
+offset_right = 100.0
+offset_bottom = 130.0
+script = null
 
 [node name="UI-Trade" parent="TopLayer" unique_id=2082776193 instance=ExtResource("7_emj6c")]
 visible = false
