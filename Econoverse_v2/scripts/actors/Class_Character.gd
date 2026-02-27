@@ -31,6 +31,10 @@ extends CharacterBody2D
 
 #region CharFunctions
 
+func print_inv_values():
+	print (self.char_name," Inventory: ",self.inventory)
+
+#TODO: durf- simplify params to use dictionary pulled from player inventory?
 func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_get: String):
 	# Check if the values are higher than what is in Character Inventories.
 	if valGive > self.inventory[item_give]:
@@ -92,14 +96,10 @@ func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_g
 			#
 			#pass
 
-#kc 10/24/25; moved this to a callable method so it can be called anywhere. 
-func print_inv_values():
-	print (self.char_name," Inventory: ",self.inventory)
-	
 func _ready() -> void:
 	pass
 
-# Sets the player stat to show what they are doing.
+# Sets the player state to show what they are doing.
 enum State{
 	INTERACTING,
 	MENU,

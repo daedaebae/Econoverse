@@ -14,9 +14,9 @@ extends Node
 # We will store references to key nodes as they "check in"
 var player_node: Node = null
 var trade_ui_node: Control = null
+var ledger_node: Control = null
 
-
-# --- Registration Functions ---
+#region Registration Functions
 # Other nodes will call these functions to let us know they exist.
 
 func register_player(player: Node):
@@ -32,8 +32,12 @@ func register_artisan(artisan: Node):
 	if not artisan.artisan_clicked.is_connected(_on_artisan_clicked):
 		artisan.artisan_clicked.connect(_on_artisan_clicked)
 
+func register_ledger(ledger: Control):
+	ledger_node = ledger
+	
+#endregion Registration Functions
 
-# --- Logic Handlers ---
+#region Logic Handlers
 # This function is moved from Playground.gd. It now runs globally.
 
 func _on_artisan_clicked(npc_who_was_clicked: Node):
@@ -55,6 +59,12 @@ func _on_artisan_clicked(npc_who_was_clicked: Node):
 	
 	# Command the UI to open the trade
 	trade_ui_node.open_trade(player_node, npc_who_was_clicked, player_gives_item, npc_gives_item)
+
+# Register trade to game controller
+func _on_trade_complete(trade_instance: Callable):
+	print(trade_instance)
+
+#endregion Logic Handlers
 
 #region Debug
 # Takes a TestName param and a CharIn param for the name of the test and the

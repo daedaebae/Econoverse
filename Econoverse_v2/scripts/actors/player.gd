@@ -11,16 +11,14 @@ extends Character
 # _ready() is a "virtual" function. This code will run
 # IN ADDITION to any _ready() code in Character.gd.
 func _ready():
-	# "Hello GameController, I am the player."
-	# We put this here, because ONLY the player needs to register as the player.
+	# Register player_node with game_controller
 	GameController.register_player(self)
 	
-	# We can still call this function, because we INHERITED it!
-	print_inv_values()
+	# Print player inventory value
+	#print_inv_values()
 	
 
 # Player-specific input handling
-## kc 10/25/25; disable directional movement for now, try implementations later
 func _physics_process(_delta: float):
 	# Example: Player-only movement logic
 	# (Assumes you have "ui_left", "ui_right", etc. set in Input Map)
