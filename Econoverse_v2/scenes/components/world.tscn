@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://cpwkq03bvsxl"]
+
+[ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="1_qv4yj"]
+[ext_resource type="PackedScene" uid="uid://c81dcduek3q67" path="res://singleton/audio_master.tscn" id="2_apylj"]
+[ext_resource type="PackedScene" path="res://assets/audio/music/music_player_(shuffled).tscn" id="3_wd2hd"]
+[ext_resource type="AudioStream" path="res://assets/audio/ambience/overworld nature 1.ogg" id="4_00e4p"]
+[ext_resource type="PackedScene" uid="uid://df85tx01j44vs" path="res://scenes/player.tscn" id="5_w6knx"]
+[ext_resource type="Script" uid="uid://q1mqyaq7dqu4" path="res://scripts/actors/player.gd" id="6_pcrdc"]
+[ext_resource type="PackedScene" uid="uid://bpc8lo0rmh2xi" path="res://scenes/bogus buchannon.tscn" id="7_2xut7"]
+[ext_resource type="Script" uid="uid://ejpb7luf6o4x" path="res://scripts/actors/artisan.gd" id="8_khig8"]
+[ext_resource type="PackedScene" uid="uid://cs7gurkoxmber" path="res://scenes/ui_trade.tscn" id="9_rvwgn"]
+[ext_resource type="Script" uid="uid://dk1uf4u80ps7x" path="res://scripts/commodities/item.gd" id="10_d475v"]
+[ext_resource type="Resource" uid="uid://bfgadxp57w3l5" path="res://scripts/commodities/boots.tres" id="11_ibw03"]
+[ext_resource type="Resource" uid="uid://cgg2v0q1xe84h" path="res://scripts/commodities/coin.tres" id="12_l1sdb"]
+[ext_resource type="Resource" uid="uid://d2y5qxjj44jel" path="res://scripts/commodities/corn.tres" id="13_k5twn"]
+[ext_resource type="Resource" uid="uid://bphkkse2cmd1r" path="res://scripts/commodities/horse.tres" id="14_0i0ry"]
+[ext_resource type="Resource" uid="uid://vg7etd666o5c" path="res://scripts/commodities/lumber.tres" id="15_22rm6"]
+[ext_resource type="Resource" uid="uid://ce6ptjyb3wdne" path="res://scripts/commodities/strudel.tres" id="16_2it17"]
+[ext_resource type="Resource" uid="uid://cgwpkjtyr5vt2" path="res://scripts/commodities/sword.tres" id="17_s3i2e"]
+[ext_resource type="Resource" uid="uid://ccqkttfwiq03j" path="res://scripts/commodities/whiskey.tres" id="18_kmddd"]
+[ext_resource type="PackedScene" uid="uid://cpwkq03bvsxl" path="res://scenes/components/world.tscn" id="19_d2lcs"]
+
+[node name="Playground" type="Control" unique_id=1469718561]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_qv4yj")
+
+[node name="AudioMaster" parent="." unique_id=1459243896 instance=ExtResource("2_apylj")]
+
+[node name="world" parent="." unique_id=1930356656 instance=ExtResource("19_d2lcs")]
+
+[node name="Music Player (shuffled)" parent="." unique_id=540266813 instance=ExtResource("3_wd2hd")]
+volume_db = -6.0
+
+[node name="Ambience" type="AudioStreamPlayer" parent="." unique_id=264260605]
+stream = ExtResource("4_00e4p")
+pitch_scale = 0.8
+autoplay = true
+bus = &"Ambience"
+parameters/looping = true
+
+[node name="Actors" type="Control" parent="." unique_id=1396825585]
+process_priority = -1
+z_index = -1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="Player" parent="Actors" unique_id=200302002 instance=ExtResource("5_w6knx")]
+top_level = true
+position = Vector2(326, 219.5)
+script = ExtResource("6_pcrdc")
+speed = 150.0
+char_name = "Player"
+gender = 2
+profession = 0
+inventory = {
+"Boots": 0,
+"Coins": 10,
+"Corn": 0,
+"Horses": 0,
+"Lumber": 0,
+"Stone": 0,
+"Strudel": 0,
+"Sword": 0,
+"Whiskey": 0
+}
+
+[node name="Bogus Buchannon" parent="Actors" unique_id=1394432855 instance=ExtResource("7_2xut7")]
+modulate = Color(0.97235805, 0.22522166, 0.5298163, 1)
+z_index = 1
+y_sort_enabled = true
+position = Vector2(391, 17)
+script = ExtResource("8_khig8")
+char_name = "Bogus Buchannon"
+inventory = {
+"Boots": 0,
+"Coins": 0,
+"Corn": 0,
+"Horses": 0,
+"Lumber": 0,
+"Stone": 0,
+"Strudel": 0,
+"Sword": 5,
+"Whiskey": 0
+}
+
+[node name="Smith" parent="Actors" unique_id=1487200782 instance=ExtResource("7_2xut7")]
+modulate = Color(0.2, 1, 1, 1)
+z_index = 1
+y_sort_enabled = true
+position = Vector2(463, 126)
+script = ExtResource("8_khig8")
+char_name = "Bron"
+
+[node name="Carpenter" parent="Actors" unique_id=696976295 instance=ExtResource("7_2xut7")]
+modulate = Color(0.81938946, 0.95567757, 2.3102762e-06, 1)
+z_index = 1
+y_sort_enabled = true
+position = Vector2(407, 168)
+script = ExtResource("8_khig8")
+char_name = "Butthead"
+
+[node name="TopLayer" type="CanvasLayer" parent="." unique_id=1670831378]
+
+[node name="UI-Trade" parent="TopLayer" unique_id=2082776193 instance=ExtResource("9_rvwgn")]
+visible = false
+
+[node name="Boots" type="Sprite2D" parent="." unique_id=1974883372]
+script = ExtResource("10_d475v")
+attribs = ExtResource("11_ibw03")
+metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
+
+[node name="Coin" type="Sprite2D" parent="." unique_id=1193575114]
+script = ExtResource("10_d475v")
+attribs = ExtResource("12_l1sdb")
+metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
+
+[node name="Corn" type="Sprite2D" parent="." unique_id=2126706023]
+script = ExtResource("10_d475v")
+attribs = ExtResource("13_k5twn")
+metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
+
+[node name="Horse" type="Sprite2D" parent="." unique_id=295565799]
+script = ExtResource("10_d475v")
+attribs = ExtResource("14_0i0ry")
+metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
+
+[node name="Lumber" type="Sprite2D" parent="." unique_id=1920670522]
+script = ExtResource("10_d475v")
+attribs = ExtResource("15_22rm6")
+metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
+
+[node name="Strudel" type="Sprite2D" parent="." unique_id=1680164786]
+script = ExtResource("10_d475v")
+attribs = ExtResource("16_2it17")
+metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
+
+[node name="Sword" type="Sprite2D" parent="." unique_id=1634820725]
+script = ExtResource("10_d475v")
+attribs = ExtResource("17_s3i2e")
+metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
+
+[node name="Whiskey" type="Sprite2D" parent="." unique_id=2040568710]
+script = ExtResource("10_d475v")
+attribs = ExtResource("18_kmddd")
+metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
