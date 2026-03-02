@@ -3,7 +3,7 @@ extends Resource
 class_name LedgerResource
 
 #TODO: 	durf - Update the dictionary to include all items and data points needing to be
-# 		displayed within the ledger. Ledge could be displayed to player later,
+# 		displayed within the ledger. Ledger could be displayed to player later,
 #		but will be initially used as tooling for tracking item progressions.
 @export var ledger = {
 	"item1": "item1",
