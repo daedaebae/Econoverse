@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c2yrlynpcsdes"]
+
+[ext_resource type="AudioStream" uid="uid://bbhew36r5nh4c" path="res://assets/audio/music/The Fascination Does Flow.ogg" id="1_1d8ga"]
+[ext_resource type="AudioStream" uid="uid://cupmbdssey23e" path="res://assets/audio/music/The Kindred Canopy.ogg" id="2_okcvy"]
+[ext_resource type="AudioStream" uid="uid://ddq2qaw8whp3l" path="res://assets/audio/music/Tick & Tally.ogg" id="3_c5if1"]
+[ext_resource type="AudioStream" uid="uid://di8x086ei8rxu" path="res://assets/audio/music/Forthright.ogg" id="4_vbiss"]
+[ext_resource type="AudioStream" uid="uid://0f1vtxx8666l" path="res://assets/audio/music/Stewing.ogg" id="5_mnunv"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_rdeg0"]
+shuffle = true
+stream_count = 5
+stream_0 = ExtResource("1_1d8ga")
+stream_1 = ExtResource("2_okcvy")
+stream_2 = ExtResource("3_c5if1")
+stream_3 = ExtResource("4_vbiss")
+stream_4 = ExtResource("5_mnunv")
+
+[node name="Music Player (shuffled)" type="AudioStreamPlayer" unique_id=540266813]
+stream = SubResource("AudioStreamPlaylist_rdeg0")
+volume_db = -6.163
+autoplay = true
+bus = &"Music"

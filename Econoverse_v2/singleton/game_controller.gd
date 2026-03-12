@@ -32,6 +32,7 @@ func register_artisan(artisan: Node):
 	if not artisan.artisan_clicked.is_connected(_on_artisan_clicked):
 		artisan.artisan_clicked.connect(_on_artisan_clicked)
 
+# Register the ledger to the game_controller
 func register_ledger(ledger: Control):
 	ledger_node = ledger
 	
@@ -62,7 +63,10 @@ func _on_artisan_clicked(npc_who_was_clicked: Node):
 
 # Register trade to game controller
 func _on_trade_complete(trade_instance: Callable):
+	# log it
 	print(trade_instance)
+	# add it to the ledger
+	ledger_node.track(trade_instance)
 
 #endregion Logic Handlers
 
