@@ -1,8 +1,16 @@
 @tool
-class_name Item
 extends Sprite2D
+class_name Item
 
-@export var attribs: Resource
+@export var attribs: Dictionary = {
+	"ID": 0,
+	"Start Price": 0,
+	"Name Full": "",
+	"Name Abbreviated": "",
+	"Description": "",
+	"World Supply": 0,
+	"Rarity": Rarity
+}
 
 enum Rarity { 
 	COMMON,
