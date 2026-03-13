@@ -22,6 +22,10 @@ boot_splash/image="uid://bk5gkpxrqwd4o"
 config/icon="uid://bk5gkpxrqwd4o"
 boot_splash/minimum_display_time=500
 
+[audio]
+
+buses/default_bus_layout="uid://yicjv23th881"
+
 [autoload]
 
 GameController="*res://singleton/game_controller.gd"
