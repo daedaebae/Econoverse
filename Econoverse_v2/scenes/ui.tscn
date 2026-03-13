@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://b4nvajmgiohdg"]
 
-[ext_resource type="Texture2D" uid="uid://dyxshmxysnvqn" path="res://assets/image/Age-of-Empires-II-Definitive-Edition07082021-083356-53423.jpg" id="1_nt7q6"]
+[ext_resource type="Texture2D" uid="uid://dyxshmxysnvqn" path="res://`_design/examples/ui/Age-of-Empires-II-Definitive-Edition07082021-083356-53423.jpg" id="1_nt7q6"]
+[ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="1_x4jx1"]
+[ext_resource type="FontFile" uid="uid://c15bkghedjxxy" path="res://assets/fonts/ModernAntiqua-Regular.ttf" id="3_yev5y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4jx1"]
+bg_color = Color(0, 0, 0, 0.5921569)
 
 [node name="UI" type="Control" unique_id=172092760]
 layout_mode = 3
@@ -9,9 +14,221 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_x4jx1")
 
 [node name="reference" type="Sprite2D" parent="." unique_id=462048231]
 modulate = Color(1, 1, 1, 0.47843137)
 position = Vector2(320.33334, 180.1875)
 scale = Vector2(0.3329861, 0.3329861)
 texture = ExtResource("1_nt7q6")
+metadata/_edit_lock_ = true
+
+[node name="study outline" type="Control" parent="." unique_id=1922337104]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="study outline" unique_id=1474127947]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 65.0
+offset_right = 128.0
+offset_bottom = 192.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.25333354, 0, 0.95, 0.49411765)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/paragraph_spacing = -1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("3_yev5y")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4jx1")
+text = "Notifications 
+- 
+- (ephemeral)
+- (immersion breaking?)
+->"
+
+[node name="Label2" type="Label" parent="study outline" unique_id=546093266]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 308.0
+offset_right = 263.0
+offset_bottom = 357.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.25333354, 0, 0.95, 0.49411765)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/paragraph_spacing = -1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("3_yev5y")
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4jx1")
+text = "Main Info Box"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="study outline" unique_id=794020157]
+layout_mode = 0
+offset_top = 308.0
+offset_right = 83.0
+offset_bottom = 360.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.25333354, 0, 0.95, 0.49411765)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/paragraph_spacing = -1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("3_yev5y")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4jx1")
+text = "Options 
+Buttons
+Cluster"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="study outline" unique_id=967211654]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 307.0
+offset_right = 639.0
+offset_bottom = 358.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.25333354, 0, 0.95, 0.49411765)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/paragraph_spacing = -1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("3_yev5y")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4jx1")
+text = "Map / Markers
+(maybe diagetic as well)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="study outline" unique_id=1197744087]
+layout_mode = 0
+offset_left = 525.0
+offset_top = 214.0
+offset_right = 639.0
+offset_bottom = 307.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.25333354, 0, 0.95, 0.49411765)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/paragraph_spacing = -1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("3_yev5y")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4jx1")
+text = "Players / 
+Alliances 
+
+- don't use?
+(opt for diagetic)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="study outline" unique_id=1462699714]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 170.0
+offset_bottom = 29.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.25333354, 0, 0.95, 0.49411765)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/paragraph_spacing = -1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("3_yev5y")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4jx1")
+text = "Stats / Overview"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="study outline" unique_id=90417696]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 1.0
+offset_right = 286.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.25333354, 0, 0.95, 0.49411765)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/paragraph_spacing = -1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("3_yev5y")
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4jx1")
+text = "Advancement 
+(broad time or level)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="study outline" unique_id=1214834368]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 235.0
+offset_right = 167.0
+offset_bottom = 299.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.25333354, 0, 0.95, 0.49411765)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/paragraph_spacing = -1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("3_yev5y")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4jx1")
+text = "Button Tooltip - Action (Cost: amount (sprite))
+Lot's of text, going and going. 
+Telling you lots of things.
+(cool stats, various, many)
+(cool tips)"
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="study outline" unique_id=1436620201]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 1.0
+offset_right = 641.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.25333354, 0, 0.95, 0.49411765)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/paragraph_spacing = -1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("3_yev5y")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4jx1")
+text = "Settings / backmenu"
+horizontal_alignment = 1
+vertical_alignment = 1

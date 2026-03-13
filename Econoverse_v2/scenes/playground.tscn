@@ -6,14 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://c81dcduek3q67" path="res://singleton/audio_master.tscn" id="2_2bfhc"]
 [ext_resource type="Texture2D" uid="uid://dcf31shksj5lr" path="res://assets/image/sprite/isometric/1x2.png" id="3_kddj0"]
 [ext_resource type="PackedScene" uid="uid://df85tx01j44vs" path="res://scenes/player.tscn" id="4_mm0a5"]
-[ext_resource type="Texture2D" uid="uid://3i2xs2l7ljpv" path="res://assets/image/sprite/isometric/ground tiles.png" id="6_ocmmj"]
+[ext_resource type="Texture2D" uid="uid://67hb8thddwe8" path="res://assets/image/sprite/isometric/ground tiles.png" id="6_ocmmj"]
 [ext_resource type="PackedScene" uid="uid://c2yrlynpcsdes" path="res://assets/audio/music/music_player_(shuffled).tscn" id="6_wm6m6"]
 [ext_resource type="Script" uid="uid://q1mqyaq7dqu4" path="res://scripts/actors/player.gd" id="7_2q4k0"]
 [ext_resource type="PackedScene" uid="uid://cs7gurkoxmber" path="res://scenes/ui_trade.tscn" id="7_emj6c"]
 [ext_resource type="Script" uid="uid://ejpb7luf6o4x" path="res://scripts/actors/artisan.gd" id="10_2bfhc"]
 [ext_resource type="PackedScene" uid="uid://bpc8lo0rmh2xi" path="res://scenes/bogus buchannon.tscn" id="11_osidk"]
-[ext_resource type="AudioStream" uid="uid://88mpkqrg76y" path="res://assets/audio/ambience/overworld nature 1.ogg" id="11_rdeg0"]
+[ext_resource type="AudioStream" uid="uid://dh0c67pmqa25i" path="res://assets/audio/ambience/overworld nature 1.ogg" id="11_rdeg0"]
 [ext_resource type="Script" uid="uid://dk1uf4u80ps7x" path="res://scripts/commodities/Class_Item.gd" id="12_osidk"]
+[ext_resource type="PackedScene" uid="uid://b4nvajmgiohdg" path="res://scenes/ui.tscn" id="15_fn4oh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_emj6c"]
 texture = ExtResource("1_mm0a5")
@@ -207,3 +208,6 @@ metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
 [node name="Whiskey" type="Sprite2D" parent="." unique_id=2040568710]
 script = ExtResource("12_osidk")
 metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
+
+[node name="UI" parent="." unique_id=172092760 instance=ExtResource("15_fn4oh")]
+layout_mode = 1
