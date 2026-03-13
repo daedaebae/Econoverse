@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dh0c67pmqa25i"
+path="res://.godot/imported/overworld nature 1.ogg-9397757115a37e32cef497432303fa10.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/ambience/overworld nature 1.ogg"
+dest_files=["res://.godot/imported/overworld nature 1.ogg-9397757115a37e32cef497432303fa10.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
