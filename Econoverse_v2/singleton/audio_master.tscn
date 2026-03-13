@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c81dcduek3q67"]
+[gd_scene format=3 uid="uid://c81dcduek3q67"]
 
 [ext_resource type="Script" uid="uid://bm2ol25bdxv10" path="res://singleton/audio_master_script.gd" id="1_1n1w1"]
 [ext_resource type="AudioStream" uid="uid://bxtx44wc1v5ey" path="res://assets/audio/sfx/sfx_papyrus_open.ogg" id="1_sqxkb"]
@@ -6,17 +6,17 @@
 [ext_resource type="AudioStream" uid="uid://c1ekqxpft6f4a" path="res://assets/audio/sfx/sfx_increment.ogg" id="3_tlggh"]
 [ext_resource type="AudioStream" uid="uid://q7iv0ujiwvcm" path="res://assets/audio/sfx/sfx_decrement.ogg" id="4_p1l3c"]
 
-[node name="AudioMaster" type="Node"]
+[node name="AudioMaster" type="Node" unique_id=1410981680]
 script = ExtResource("1_1n1w1")
 
-[node name="SfxPapyrusOpen" type="AudioStreamPlayer" parent="."]
+[node name="SfxPapyrusOpen" type="AudioStreamPlayer" parent="." unique_id=1907272038]
 stream = ExtResource("1_sqxkb")
 
-[node name="SfxPapyrusClose" type="AudioStreamPlayer" parent="."]
+[node name="SfxPapyrusClose" type="AudioStreamPlayer" parent="." unique_id=1442014605]
 stream = ExtResource("2_1n1w1")
 
-[node name="SfxIncrement" type="AudioStreamPlayer" parent="."]
+[node name="SfxIncrement" type="AudioStreamPlayer" parent="." unique_id=682747377]
 stream = ExtResource("3_tlggh")
 
-[node name="SfxDecrement" type="AudioStreamPlayer" parent="."]
+[node name="SfxDecrement" type="AudioStreamPlayer" parent="." unique_id=540755456]
 stream = ExtResource("4_p1l3c")

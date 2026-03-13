@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://kjym303aetqk"
+path="res://.godot/imported/The Fascination Does Flow.ogg-a5b3f7a094a73f80118ae84283f00d33.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/The Fascination Does Flow.ogg"
+dest_files=["res://.godot/imported/The Fascination Does Flow.ogg-a5b3f7a094a73f80118ae84283f00d33.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
