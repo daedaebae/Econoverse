@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b4nvajmgiohdg"]
+
+[ext_resource type="Texture2D" uid="uid://dyxshmxysnvqn" path="res://assets/image/Age-of-Empires-II-Definitive-Edition07082021-083356-53423.jpg" id="1_nt7q6"]
+
+[node name="UI" type="Control" unique_id=172092760]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="reference" type="Sprite2D" parent="." unique_id=462048231]
+modulate = Color(1, 1, 1, 0.47843137)
+position = Vector2(320.33334, 180.1875)
+scale = Vector2(0.3329861, 0.3329861)
+texture = ExtResource("1_nt7q6")

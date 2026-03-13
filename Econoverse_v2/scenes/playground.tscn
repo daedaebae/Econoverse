@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c81dcduek3q67" path="res://singleton/audio_master.tscn" id="2_2bfhc"]
 [ext_resource type="Texture2D" uid="uid://dcf31shksj5lr" path="res://assets/image/sprite/isometric/1x2.png" id="3_kddj0"]
 [ext_resource type="PackedScene" uid="uid://df85tx01j44vs" path="res://scenes/player.tscn" id="4_mm0a5"]
-[ext_resource type="Texture2D" uid="uid://67hb8thddwe8" path="res://assets/image/sprite/isometric/ground tiles.png" id="6_ocmmj"]
+[ext_resource type="Texture2D" uid="uid://3i2xs2l7ljpv" path="res://assets/image/sprite/isometric/ground tiles.png" id="6_ocmmj"]
 [ext_resource type="PackedScene" uid="uid://c2yrlynpcsdes" path="res://assets/audio/music/music_player_(shuffled).tscn" id="6_wm6m6"]
 [ext_resource type="Script" uid="uid://q1mqyaq7dqu4" path="res://scripts/actors/player.gd" id="7_2q4k0"]
 [ext_resource type="PackedScene" uid="uid://cs7gurkoxmber" path="res://scenes/ui_trade.tscn" id="7_emj6c"]
@@ -14,14 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://bpc8lo0rmh2xi" path="res://scenes/bogus buchannon.tscn" id="11_osidk"]
 [ext_resource type="AudioStream" uid="uid://88mpkqrg76y" path="res://assets/audio/ambience/overworld nature 1.ogg" id="11_rdeg0"]
 [ext_resource type="Script" uid="uid://dk1uf4u80ps7x" path="res://scripts/commodities/Class_Item.gd" id="12_osidk"]
-[ext_resource type="Resource" uid="uid://bfgadxp57w3l5" path="res://scripts/commodities/resource_files/boots.tres" id="13_j30dx"]
-[ext_resource type="Resource" uid="uid://cgg2v0q1xe84h" path="res://scripts/commodities/resource_files/coin.tres" id="14_2ilni"]
-[ext_resource type="Resource" uid="uid://d2y5qxjj44jel" path="res://scripts/commodities/resource_files/corn.tres" id="15_d3jfy"]
-[ext_resource type="Resource" uid="uid://bphkkse2cmd1r" path="res://scripts/commodities/resource_files/horse.tres" id="16_x2tju"]
-[ext_resource type="Resource" uid="uid://vg7etd666o5c" path="res://scripts/commodities/resource_files/lumber.tres" id="17_wm6m6"]
-[ext_resource type="Resource" uid="uid://ce6ptjyb3wdne" path="res://scripts/commodities/resource_files/strudel.tres" id="18_ocmmj"]
-[ext_resource type="Resource" uid="uid://cgwpkjtyr5vt2" path="res://scripts/commodities/resource_files/sword.tres" id="19_vwj6b"]
-[ext_resource type="Resource" uid="uid://ccqkttfwiq03j" path="res://scripts/commodities/resource_files/whiskey.tres" id="20_62tve"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_emj6c"]
 texture = ExtResource("1_mm0a5")
@@ -186,40 +178,32 @@ visible = false
 
 [node name="Boots" type="Sprite2D" parent="." unique_id=1974883372]
 script = ExtResource("12_osidk")
-attribs = ExtResource("13_j30dx")
 metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
 
 [node name="Coin" type="Sprite2D" parent="." unique_id=1193575114]
 script = ExtResource("12_osidk")
-attribs = ExtResource("14_2ilni")
 metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
 
 [node name="Corn" type="Sprite2D" parent="." unique_id=2126706023]
 script = ExtResource("12_osidk")
-attribs = ExtResource("15_d3jfy")
 metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
 
 [node name="Horse" type="Sprite2D" parent="." unique_id=295565799]
 script = ExtResource("12_osidk")
-attribs = ExtResource("16_x2tju")
 metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
 
 [node name="Lumber" type="Sprite2D" parent="." unique_id=1920670522]
 script = ExtResource("12_osidk")
-attribs = ExtResource("17_wm6m6")
 metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
 
 [node name="Strudel" type="Sprite2D" parent="." unique_id=1680164786]
 script = ExtResource("12_osidk")
-attribs = ExtResource("18_ocmmj")
 metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
 
 [node name="Sword" type="Sprite2D" parent="." unique_id=1634820725]
 script = ExtResource("12_osidk")
-attribs = ExtResource("19_vwj6b")
 metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
 
 [node name="Whiskey" type="Sprite2D" parent="." unique_id=2040568710]
 script = ExtResource("12_osidk")
-attribs = ExtResource("20_62tve")
 metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
