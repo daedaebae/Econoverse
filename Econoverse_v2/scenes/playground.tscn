@@ -118,7 +118,7 @@ mouse_filter = 1
 
 [node name="Player" parent="Actors" unique_id=200302002 instance=ExtResource("4_mm0a5")]
 top_level = true
-position = Vector2(326, 207)
+position = Vector2(343.5, 207)
 script = ExtResource("7_2q4k0")
 speed = 150.0
 char_name = "Player"
