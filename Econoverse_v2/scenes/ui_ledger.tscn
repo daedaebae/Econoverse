@@ -1,0 +1,214 @@
+[gd_scene format=3 uid="uid://3ru2w73jcfi0"]
+
+[ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="1_twrmn"]
+[ext_resource type="Script" uid="uid://boriow0q3pktw" path="res://singleton/ui_trade.gd" id="2_85w0j"]
+[ext_resource type="AudioStream" uid="uid://c1ekqxpft6f4a" path="res://assets/audio/sfx/sfx_increment.ogg" id="3_mldyh"]
+[ext_resource type="Texture2D" uid="uid://yeq2ce28qpje" path="res://assets/image/sprite/items/horse.png" id="3_mvwvy"]
+[ext_resource type="Texture2D" uid="uid://c2o3ql01h5dt3" path="res://assets/image/sprite/items/coin.png" id="4_1ie5g"]
+[ext_resource type="AudioStream" uid="uid://q7iv0ujiwvcm" path="res://assets/audio/sfx/sfx_decrement.ogg" id="4_mvwvy"]
+[ext_resource type="AudioStream" uid="uid://crvce2oxapbdm" path="res://assets/audio/sfx/sfx_papyrus_close.ogg" id="5_1ie5g"]
+[ext_resource type="AudioStream" uid="uid://bxtx44wc1v5ey" path="res://assets/audio/sfx/sfx_papyrus_open.ogg" id="6_368o0"]
+
+[node name="UI-Ledger" type="Control" unique_id=922451981 node_paths=PackedStringArray("title_label", "give_item_label", "give_amount_label", "get_item_label", "get_amount_label")]
+custom_minimum_size = Vector2(200, 260)
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_twrmn")
+script = ExtResource("2_85w0j")
+title_label = NodePath("FullVBox/Menu Title")
+give_item_label = NodePath("FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row1/LabelItemGive")
+give_amount_label = NodePath("FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row1/LabelAmountGive")
+get_item_label = NodePath("FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row2/LabelItemGet")
+get_amount_label = NodePath("FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row2/LabelAmountGet")
+
+[node name="Background" type="Panel" parent="." unique_id=1529041325]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FullVBox" type="VBoxContainer" parent="." unique_id=450936102]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Menu Title" type="Label" parent="FullVBox" unique_id=1491322645]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Ledger"
+
+[node name="Header Row" type="HBoxContainer" parent="FullVBox" unique_id=1023082747]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SortbyWhenTraded" type="Button" parent="FullVBox/Header Row" unique_id=889048087]
+layout_mode = 2
+text = "When"
+
+[node name="SortbyWhoTraded1" type="Button" parent="FullVBox/Header Row" unique_id=1455649038]
+layout_mode = 2
+text = "Who"
+
+[node name="<->" type="Label" parent="FullVBox/Header Row" unique_id=217346261]
+layout_mode = 2
+text = "<->"
+
+[node name="SortbyWhoTraded2" type="Button" parent="FullVBox/Header Row" unique_id=317635311]
+layout_mode = 2
+text = "Who"
+
+[node name="ItemTradedSprite1" type="CenterContainer" parent="FullVBox/Header Row" unique_id=619037301]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Item1Sprite" type="Sprite2D" parent="FullVBox/Header Row/ItemTradedSprite1" unique_id=1682321492]
+position = Vector2(-4, -7)
+scale = Vector2(0.375, 0.3645531)
+texture = ExtResource("3_mvwvy")
+centered = false
+
+[node name="SortbyWhatTraded1" type="Button" parent="FullVBox/Header Row" unique_id=1039059291]
+layout_mode = 2
+text = "Item: Price"
+
+[node name="<->2" type="Label" parent="FullVBox/Header Row" unique_id=524741027]
+layout_mode = 2
+text = "<->"
+
+[node name="SortbyWhatTraded2" type="Button" parent="FullVBox/Header Row" unique_id=1138979813]
+layout_mode = 2
+text = "Item: Price"
+
+[node name="ItemTradedSprite2" type="BoxContainer" parent="FullVBox/Header Row" unique_id=1541289183]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Item2Sprite" type="Sprite2D" parent="FullVBox/Header Row/ItemTradedSprite2" unique_id=1308556526]
+position = Vector2(3, 0)
+scale = Vector2(1.0076951, 1)
+texture = ExtResource("4_1ie5g")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="FullVBox" unique_id=65694372]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FullVBox/ScrollContainer" unique_id=576315338]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VScrollBar" type="VScrollBar" parent="FullVBox/ScrollContainer/VBoxContainer" unique_id=1989042500]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+
+[node name="Row1" type="HBoxContainer" parent="FullVBox/ScrollContainer/VBoxContainer/VScrollBar" unique_id=989492977]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -109.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="LabelItemGive" type="Label" parent="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row1" unique_id=382851019]
+layout_mode = 2
+text = "Date"
+
+[node name="ButtonMinusGive" type="Button" parent="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row1" unique_id=1091235951]
+layout_mode = 2
+text = "-"
+
+[node name="LabelAmountGive" type="Label" parent="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row1" unique_id=292439590]
+layout_mode = 2
+text = "0"
+
+[node name="ButtonPlusGive" type="Button" parent="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row1" unique_id=2092536557]
+layout_mode = 2
+text = "+"
+
+[node name="Row2" type="HBoxContainer" parent="FullVBox/ScrollContainer/VBoxContainer/VScrollBar" unique_id=1371915702]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -13.0
+offset_bottom = 97.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="LabelItemGet" type="Label" parent="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row2" unique_id=1015905228]
+layout_mode = 2
+text = "You Get:"
+
+[node name="ButtonMinusGet" type="Button" parent="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row2" unique_id=119910940]
+layout_mode = 2
+text = "-"
+
+[node name="LabelAmountGet" type="Label" parent="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row2" unique_id=2046816809]
+layout_mode = 2
+text = "0"
+
+[node name="ButtonPlusGet" type="Button" parent="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row2" unique_id=755712571]
+layout_mode = 2
+text = "+"
+
+[node name="ActionsRow" type="HBoxContainer" parent="FullVBox" unique_id=766619334]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 2
+
+[node name="ButtonReset" type="Button" parent="FullVBox/ActionsRow" unique_id=463680071]
+layout_mode = 2
+text = "Reset"
+
+[node name="ButtonCancel" type="Button" parent="FullVBox/ActionsRow" unique_id=2075981986]
+layout_mode = 2
+text = "Cancel"
+
+[node name="SfxIncrement" type="AudioStreamPlayer" parent="." unique_id=783048655]
+stream = ExtResource("3_mldyh")
+
+[node name="SfxDecrement" type="AudioStreamPlayer" parent="." unique_id=253467825]
+stream = ExtResource("4_mvwvy")
+
+[node name="SfxPapyrusClose" type="AudioStreamPlayer" parent="." unique_id=1803404804]
+stream = ExtResource("5_1ie5g")
+
+[node name="SfxPapyrusOpen" type="AudioStreamPlayer" parent="." unique_id=253472776]
+stream = ExtResource("6_368o0")
+
+[connection signal="pressed" from="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row1/ButtonMinusGive" to="." method="_on_button_minus_give_pressed"]
+[connection signal="pressed" from="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row1/ButtonPlusGive" to="." method="_on_button_plus_give_pressed"]
+[connection signal="pressed" from="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row2/ButtonMinusGet" to="." method="_on_button_minus_get_pressed"]
+[connection signal="pressed" from="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row2/ButtonPlusGet" to="." method="_on_button_plus_get_pressed"]
+[connection signal="pressed" from="FullVBox/ActionsRow/ButtonReset" to="." method="_on_button_trade_pressed"]
+[connection signal="pressed" from="FullVBox/ActionsRow/ButtonCancel" to="." method="_on_button_cancel_pressed"]
