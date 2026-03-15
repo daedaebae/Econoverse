@@ -1,7 +1,7 @@
 # --- player.gd ---
 # This is the "Player" specific script.
 # It inherits EVERYTHING from the Character Class (Class_Character.gd)
-@tool
+
 extends Character
 # We can add player-specific logic here, like movement.
 @export var speed: float = 300.0
@@ -20,9 +20,14 @@ func _ready():
 
 # Player-specific input handling
 func _physics_process(_delta: float):
-	# Example: Player-only movement logic
-	# (Assumes you have "ui_left", "ui_right", etc. set in Input Map)
-	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = direction * speed
+	if direction != Vector2.ZERO:
+		#player moves along diagonal isometric axis
+		var iso_direction = Vector2(direction.x, direction.y * 0.5)
+		
+		velocity = iso_direction.normalized() * speed
+	else:
+		velocity = Vector2.ZERO
 	move_and_slide()
 	
