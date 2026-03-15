@@ -2,21 +2,24 @@
 
 [ext_resource type="Script" uid="uid://cuyyhpbt3xolc" path="res://scripts/actors/Class_Character.gd" id="1_rux1i"]
 [ext_resource type="Texture2D" uid="uid://dqxhs1tlvdn0x" path="res://assets/image/sprite/SpriteDude.png" id="2_30vcf"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dkjbp"]
-radius = 16.0
-height = 44.0
+[ext_resource type="Shape2D" uid="uid://jujaimjtmbl" path="res://scripts/actors/resources/shape.tres" id="2_he2fm"]
 
 [node name="Throwaway-CharacterBody2D" type="CharacterBody2D" unique_id=696976295]
+z_index = 1
+y_sort_enabled = true
 input_pickable = true
 script = ExtResource("1_rux1i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1114704356]
+z_index = 1
 y_sort_enabled = true
-position = Vector2(77, 23)
-shape = SubResource("CapsuleShape2D_dkjbp")
+position = Vector2(0, -8)
+shape = ExtResource("2_he2fm")
 debug_color = Color(0.98509103, 0, 0.34177807, 0.41960785)
 
-[node name="Artisan" type="Sprite2D" parent="CollisionShape2D" unique_id=326726181]
+[node name="Artisan" type="Sprite2D" parent="." unique_id=326726181]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, -15)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_30vcf")
