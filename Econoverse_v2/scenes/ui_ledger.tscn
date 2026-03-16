@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://3ru2w73jcfi0"]
 
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="1_twrmn"]
-[ext_resource type="Script" uid="uid://boriow0q3pktw" path="res://singleton/ui_trade.gd" id="2_85w0j"]
+[ext_resource type="Script" uid="uid://jvvuu66ysjuc" path="res://singleton/ui_ledger.gd" id="2_mldyh"]
 [ext_resource type="AudioStream" uid="uid://c1ekqxpft6f4a" path="res://assets/audio/sfx/sfx_increment.ogg" id="3_mldyh"]
 [ext_resource type="Texture2D" uid="uid://yeq2ce28qpje" path="res://assets/image/sprite/items/horse.png" id="3_mvwvy"]
-[ext_resource type="Texture2D" uid="uid://c2o3ql01h5dt3" path="res://assets/image/sprite/items/coin.png" id="4_1ie5g"]
+[ext_resource type="Texture2D" uid="uid://3yetk08m3j3j" path="res://assets/image/sprite/items/lumber.png" id="4_mldyh"]
 [ext_resource type="AudioStream" uid="uid://q7iv0ujiwvcm" path="res://assets/audio/sfx/sfx_decrement.ogg" id="4_mvwvy"]
 [ext_resource type="AudioStream" uid="uid://crvce2oxapbdm" path="res://assets/audio/sfx/sfx_papyrus_close.ogg" id="5_1ie5g"]
 [ext_resource type="AudioStream" uid="uid://bxtx44wc1v5ey" path="res://assets/audio/sfx/sfx_papyrus_open.ogg" id="6_368o0"]
 
-[node name="UI-Ledger" type="Control" unique_id=922451981 node_paths=PackedStringArray("title_label", "give_item_label", "give_amount_label", "get_item_label", "get_amount_label")]
+[node name="UI-Ledger" type="Control" unique_id=922451981]
 custom_minimum_size = Vector2(200, 260)
 layout_mode = 3
 anchors_preset = 14
@@ -21,12 +21,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_twrmn")
-script = ExtResource("2_85w0j")
-title_label = NodePath("FullVBox/Menu Title")
-give_item_label = NodePath("FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row1/LabelItemGive")
-give_amount_label = NodePath("FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row1/LabelAmountGive")
-get_item_label = NodePath("FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row2/LabelItemGet")
-get_amount_label = NodePath("FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row2/LabelAmountGet")
+script = ExtResource("2_mldyh")
 
 [node name="Background" type="Panel" parent="." unique_id=1529041325]
 layout_mode = 1
@@ -36,7 +31,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FullVBox" type="VBoxContainer" parent="." unique_id=450936102]
+[node name="LedgerDisplayBox" type="VBoxContainer" parent="." unique_id=450936102]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,150 +42,911 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Menu Title" type="Label" parent="FullVBox" unique_id=1491322645]
+[node name="Menu Title" type="Label" parent="LedgerDisplayBox" unique_id=1491322645]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Ledger"
 
-[node name="Header Row" type="HBoxContainer" parent="FullVBox" unique_id=1023082747]
+[node name="ScrollContainer" type="ScrollContainer" parent="LedgerDisplayBox" unique_id=65694372]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="VScrollBar" type="VScrollBar" parent="LedgerDisplayBox/ScrollContainer" unique_id=1989042500]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 3
+
+[node name="Header Row" type="HBoxContainer" parent="LedgerDisplayBox/ScrollContainer/VScrollBar" unique_id=1023082747]
+layout_mode = 0
+offset_left = -511.0
+offset_right = -114.0
+offset_bottom = 32.0
+size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="SortbyWhenTraded" type="Button" parent="FullVBox/Header Row" unique_id=889048087]
+[node name="|1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Header Row" unique_id=266300138]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyWhenTraded" type="Button" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Header Row" unique_id=208150451]
 layout_mode = 2
 text = "When"
 
-[node name="SortbyWhoTraded1" type="Button" parent="FullVBox/Header Row" unique_id=1455649038]
+[node name="|2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Header Row" unique_id=1836209096]
 layout_mode = 2
-text = "Who"
+text = "|"
 
-[node name="<->" type="Label" parent="FullVBox/Header Row" unique_id=217346261]
+[node name="SortbyWhoTraded1" type="Button" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Header Row" unique_id=1105028877]
 layout_mode = 2
-text = "<->"
+text = "Who1"
 
-[node name="SortbyWhoTraded2" type="Button" parent="FullVBox/Header Row" unique_id=317635311]
-layout_mode = 2
-text = "Who"
-
-[node name="ItemTradedSprite1" type="CenterContainer" parent="FullVBox/Header Row" unique_id=619037301]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="Item1Sprite" type="Sprite2D" parent="FullVBox/Header Row/ItemTradedSprite1" unique_id=1682321492]
-position = Vector2(-4, -7)
-scale = Vector2(0.375, 0.3645531)
-texture = ExtResource("3_mvwvy")
-centered = false
-
-[node name="SortbyWhatTraded1" type="Button" parent="FullVBox/Header Row" unique_id=1039059291]
-layout_mode = 2
-text = "Item: Price"
-
-[node name="<->2" type="Label" parent="FullVBox/Header Row" unique_id=524741027]
+[node name="<->" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Header Row" unique_id=217346261]
 layout_mode = 2
 text = "<->"
 
-[node name="SortbyWhatTraded2" type="Button" parent="FullVBox/Header Row" unique_id=1138979813]
+[node name="SortbyWhoTraded2" type="Button" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Header Row" unique_id=1097898308]
 layout_mode = 2
-text = "Item: Price"
+text = "Who2"
 
-[node name="ItemTradedSprite2" type="BoxContainer" parent="FullVBox/Header Row" unique_id=1541289183]
+[node name="|3" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Header Row" unique_id=1889584045]
 layout_mode = 2
-size_flags_horizontal = 6
+text = "|"
+
+[node name="SortbyItemTraded1" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Header Row" unique_id=926577956]
+layout_mode = 2
 size_flags_vertical = 4
+texture_normal = ExtResource("3_mvwvy")
 
-[node name="Item2Sprite" type="Sprite2D" parent="FullVBox/Header Row/ItemTradedSprite2" unique_id=1308556526]
-position = Vector2(3, 0)
-scale = Vector2(1.0076951, 1)
-texture = ExtResource("4_1ie5g")
-
-[node name="ScrollContainer" type="ScrollContainer" parent="FullVBox" unique_id=65694372]
+[node name="AmountTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Header Row" unique_id=852150559]
 layout_mode = 2
-size_flags_vertical = 3
+text = "Amount: 0"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="FullVBox/ScrollContainer" unique_id=576315338]
+[node name="PriceTraded1" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Header Row" unique_id=1041908866]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="VScrollBar" type="VScrollBar" parent="FullVBox/ScrollContainer/VBoxContainer" unique_id=1989042500]
+[node name="<->2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Header Row" unique_id=524741027]
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 3
+text = "<->"
 
-[node name="Row1" type="HBoxContainer" parent="FullVBox/ScrollContainer/VBoxContainer/VScrollBar" unique_id=989492977]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -109.0
+[node name="SortbyItemTraded2" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Header Row" unique_id=1743015475]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_mldyh")
+
+[node name="AmountTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Header Row" unique_id=625938720]
+layout_mode = 2
+text = "Amount: 0"
+
+[node name="PriceTraded2" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Header Row" unique_id=1859761749]
+layout_mode = 2
+
+[node name="|4" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Header Row" unique_id=1767781685]
+layout_mode = 2
+text = "|"
+
+[node name="Row1" type="HBoxContainer" parent="LedgerDisplayBox/ScrollContainer/VScrollBar" unique_id=989492977]
+layout_mode = 0
+offset_left = -484.0
+offset_top = 36.0
+offset_right = -140.0
+offset_bottom = 59.0
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="LabelItemGive" type="Label" parent="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row1" unique_id=382851019]
+[node name="|1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row1" unique_id=2102830839]
 layout_mode = 2
-text = "Date"
+text = "|"
 
-[node name="ButtonMinusGive" type="Button" parent="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row1" unique_id=1091235951]
+[node name="SortbyWhenTraded" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row1" unique_id=2145475090]
 layout_mode = 2
-text = "-"
+text = "When"
 
-[node name="LabelAmountGive" type="Label" parent="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row1" unique_id=292439590]
+[node name="|2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row1" unique_id=1016269411]
 layout_mode = 2
-text = "0"
+text = "|"
 
-[node name="ButtonPlusGive" type="Button" parent="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row1" unique_id=2092536557]
+[node name="SortbyWhoTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row1" unique_id=1637179112]
 layout_mode = 2
-text = "+"
+text = "Who"
 
-[node name="Row2" type="HBoxContainer" parent="FullVBox/ScrollContainer/VBoxContainer/VScrollBar" unique_id=1371915702]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -103.0
-offset_top = -13.0
-offset_bottom = 97.0
+[node name="<->" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row1" unique_id=2121168419]
+layout_mode = 2
+text = "<->"
+
+[node name="SortbyWhoTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row1" unique_id=56446503]
+layout_mode = 2
+text = "Who"
+
+[node name="|3" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row1" unique_id=525796679]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyItemTraded3" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row1" unique_id=748832905]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("3_mvwvy")
+
+[node name="SortbyItemTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row1" unique_id=1322606106]
+layout_mode = 2
+
+[node name="SortbyWhatTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row1" unique_id=1534026544]
+layout_mode = 2
+text = "Amount: 0"
+
+[node name="PriceTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row1" unique_id=732464127]
+layout_mode = 2
+text = "Price: 0"
+
+[node name="<->2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row1" unique_id=1276561765]
+layout_mode = 2
+text = "<->"
+
+[node name="SortbyItemTraded4" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row1" unique_id=768403032]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_mldyh")
+
+[node name="SortbyWhatTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row1" unique_id=1535856611]
+layout_mode = 2
+text = "Amount: 0"
+
+[node name="PriceTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row1" unique_id=115602447]
+layout_mode = 2
+text = "Price: 0"
+
+[node name="SortbyItemTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row1" unique_id=768321625]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="|4" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row1" unique_id=1433202855]
+layout_mode = 2
+text = "|"
+
+[node name="Row2" type="HBoxContainer" parent="LedgerDisplayBox/ScrollContainer/VScrollBar" unique_id=1534854822]
+layout_mode = 0
+offset_left = -484.0
+offset_top = 36.0
+offset_right = -140.0
+offset_bottom = 59.0
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="LabelItemGet" type="Label" parent="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row2" unique_id=1015905228]
+[node name="|1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row2" unique_id=1117217730]
 layout_mode = 2
-text = "You Get:"
+text = "|"
 
-[node name="ButtonMinusGet" type="Button" parent="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row2" unique_id=119910940]
+[node name="SortbyWhenTraded" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row2" unique_id=152758878]
 layout_mode = 2
-text = "-"
+text = "When"
 
-[node name="LabelAmountGet" type="Label" parent="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row2" unique_id=2046816809]
+[node name="|2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row2" unique_id=868192198]
 layout_mode = 2
-text = "0"
+text = "|"
 
-[node name="ButtonPlusGet" type="Button" parent="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row2" unique_id=755712571]
+[node name="SortbyWhoTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row2" unique_id=242814063]
 layout_mode = 2
-text = "+"
+text = "Who"
 
-[node name="ActionsRow" type="HBoxContainer" parent="FullVBox" unique_id=766619334]
+[node name="<->" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row2" unique_id=1045855477]
+layout_mode = 2
+text = "<->"
+
+[node name="SortbyWhoTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row2" unique_id=813140760]
+layout_mode = 2
+text = "Who"
+
+[node name="|3" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row2" unique_id=1416021353]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyItemTraded3" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row2" unique_id=1238457093]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("3_mvwvy")
+
+[node name="SortbyItemTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row2" unique_id=1305271170]
+layout_mode = 2
+
+[node name="SortbyWhatTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row2" unique_id=1658876696]
+layout_mode = 2
+text = "Amount: 0"
+
+[node name="PriceTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row2" unique_id=1204160889]
+layout_mode = 2
+text = "Price: 0"
+
+[node name="<->2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row2" unique_id=1192259124]
+layout_mode = 2
+text = "<->"
+
+[node name="SortbyItemTraded4" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row2" unique_id=2074655716]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_mldyh")
+
+[node name="SortbyWhatTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row2" unique_id=306874923]
+layout_mode = 2
+text = "Amount: 0"
+
+[node name="PriceTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row2" unique_id=900213774]
+layout_mode = 2
+text = "Price: 0"
+
+[node name="SortbyItemTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row2" unique_id=327753882]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="|4" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row2" unique_id=1674439489]
+layout_mode = 2
+text = "|"
+
+[node name="Row3" type="HBoxContainer" parent="LedgerDisplayBox/ScrollContainer/VScrollBar" unique_id=225598662]
+layout_mode = 0
+offset_left = -484.0
+offset_top = 36.0
+offset_right = -140.0
+offset_bottom = 59.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="|1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row3" unique_id=133123521]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyWhenTraded" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row3" unique_id=577219672]
+layout_mode = 2
+text = "When"
+
+[node name="|2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row3" unique_id=1922842424]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyWhoTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row3" unique_id=1622701421]
+layout_mode = 2
+text = "Who"
+
+[node name="<->" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row3" unique_id=307847502]
+layout_mode = 2
+text = "<->"
+
+[node name="SortbyWhoTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row3" unique_id=496337036]
+layout_mode = 2
+text = "Who"
+
+[node name="|3" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row3" unique_id=21604585]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyItemTraded3" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row3" unique_id=1337848247]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("3_mvwvy")
+
+[node name="SortbyItemTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row3" unique_id=366195644]
+layout_mode = 2
+
+[node name="SortbyWhatTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row3" unique_id=67855504]
+layout_mode = 2
+text = "Amount: 0"
+
+[node name="PriceTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row3" unique_id=1594891217]
+layout_mode = 2
+text = "Price: 0"
+
+[node name="<->2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row3" unique_id=1729652931]
+layout_mode = 2
+text = "<->"
+
+[node name="SortbyItemTraded4" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row3" unique_id=659162106]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_mldyh")
+
+[node name="SortbyWhatTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row3" unique_id=1955956460]
+layout_mode = 2
+text = "Amount: 0"
+
+[node name="PriceTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row3" unique_id=712527561]
+layout_mode = 2
+text = "Price: 0"
+
+[node name="SortbyItemTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row3" unique_id=1677046573]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="|4" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row3" unique_id=506436296]
+layout_mode = 2
+text = "|"
+
+[node name="Row4" type="HBoxContainer" parent="LedgerDisplayBox/ScrollContainer/VScrollBar" unique_id=439043934]
+layout_mode = 0
+offset_left = -484.0
+offset_top = 36.0
+offset_right = -140.0
+offset_bottom = 59.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="|1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row4" unique_id=1485771777]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyWhenTraded" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row4" unique_id=1104792934]
+layout_mode = 2
+text = "When"
+
+[node name="|2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row4" unique_id=1378674271]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyWhoTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row4" unique_id=109875382]
+layout_mode = 2
+text = "Who"
+
+[node name="<->" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row4" unique_id=938788285]
+layout_mode = 2
+text = "<->"
+
+[node name="SortbyWhoTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row4" unique_id=2113451076]
+layout_mode = 2
+text = "Who"
+
+[node name="|3" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row4" unique_id=1195072838]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyItemTraded3" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row4" unique_id=1013613093]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("3_mvwvy")
+
+[node name="SortbyItemTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row4" unique_id=1046559701]
+layout_mode = 2
+
+[node name="SortbyWhatTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row4" unique_id=8081175]
+layout_mode = 2
+text = "Amount: 0"
+
+[node name="PriceTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row4" unique_id=203932740]
+layout_mode = 2
+text = "Price: 0"
+
+[node name="<->2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row4" unique_id=1487556611]
+layout_mode = 2
+text = "<->"
+
+[node name="SortbyItemTraded4" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row4" unique_id=434347813]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_mldyh")
+
+[node name="SortbyWhatTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row4" unique_id=1869083932]
+layout_mode = 2
+text = "Amount: 0"
+
+[node name="PriceTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row4" unique_id=115671562]
+layout_mode = 2
+text = "Price: 0"
+
+[node name="SortbyItemTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row4" unique_id=420938444]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="|4" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row4" unique_id=1353879179]
+layout_mode = 2
+text = "|"
+
+[node name="Row5" type="HBoxContainer" parent="LedgerDisplayBox/ScrollContainer/VScrollBar" unique_id=412518358]
+layout_mode = 0
+offset_left = -484.0
+offset_top = 36.0
+offset_right = -140.0
+offset_bottom = 59.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="|1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row5" unique_id=821332038]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyWhenTraded" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row5" unique_id=1705765134]
+layout_mode = 2
+text = "When"
+
+[node name="|2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row5" unique_id=1566027671]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyWhoTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row5" unique_id=681133698]
+layout_mode = 2
+text = "Who"
+
+[node name="<->" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row5" unique_id=1840308645]
+layout_mode = 2
+text = "<->"
+
+[node name="SortbyWhoTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row5" unique_id=1333467843]
+layout_mode = 2
+text = "Who"
+
+[node name="|3" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row5" unique_id=590259897]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyItemTraded3" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row5" unique_id=1806556522]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("3_mvwvy")
+
+[node name="SortbyItemTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row5" unique_id=1333931842]
+layout_mode = 2
+
+[node name="SortbyWhatTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row5" unique_id=1238011002]
+layout_mode = 2
+text = "Amount: 0"
+
+[node name="PriceTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row5" unique_id=1139275153]
+layout_mode = 2
+text = "Price: 0"
+
+[node name="<->2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row5" unique_id=86778408]
+layout_mode = 2
+text = "<->"
+
+[node name="SortbyItemTraded4" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row5" unique_id=2132451525]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_mldyh")
+
+[node name="SortbyWhatTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row5" unique_id=449029113]
+layout_mode = 2
+text = "Amount: 0"
+
+[node name="PriceTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row5" unique_id=1242610074]
+layout_mode = 2
+text = "Price: 0"
+
+[node name="SortbyItemTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row5" unique_id=464381481]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="|4" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row5" unique_id=1812377681]
+layout_mode = 2
+text = "|"
+
+[node name="Row6" type="HBoxContainer" parent="LedgerDisplayBox/ScrollContainer/VScrollBar" unique_id=1193663921]
+layout_mode = 0
+offset_left = -484.0
+offset_top = 36.0
+offset_right = -140.0
+offset_bottom = 59.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="|1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row6" unique_id=1472565761]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyWhenTraded" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row6" unique_id=1835697829]
+layout_mode = 2
+text = "When"
+
+[node name="|2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row6" unique_id=175106272]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyWhoTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row6" unique_id=1745438651]
+layout_mode = 2
+text = "Who"
+
+[node name="<->" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row6" unique_id=2057122311]
+layout_mode = 2
+text = "<->"
+
+[node name="SortbyWhoTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row6" unique_id=769217282]
+layout_mode = 2
+text = "Who"
+
+[node name="|3" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row6" unique_id=1719841861]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyItemTraded3" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row6" unique_id=1905074716]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("3_mvwvy")
+
+[node name="SortbyItemTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row6" unique_id=2065683117]
+layout_mode = 2
+
+[node name="SortbyWhatTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row6" unique_id=797569174]
+layout_mode = 2
+text = "Amount: 0"
+
+[node name="PriceTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row6" unique_id=850388018]
+layout_mode = 2
+text = "Price: 0"
+
+[node name="<->2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row6" unique_id=2102961070]
+layout_mode = 2
+text = "<->"
+
+[node name="SortbyItemTraded4" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row6" unique_id=442140859]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_mldyh")
+
+[node name="SortbyWhatTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row6" unique_id=1842250599]
+layout_mode = 2
+text = "Amount: 0"
+
+[node name="PriceTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row6" unique_id=1047525834]
+layout_mode = 2
+text = "Price: 0"
+
+[node name="SortbyItemTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row6" unique_id=531536350]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="|4" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row6" unique_id=793487058]
+layout_mode = 2
+text = "|"
+
+[node name="Row7" type="HBoxContainer" parent="LedgerDisplayBox/ScrollContainer/VScrollBar" unique_id=1611514018]
+layout_mode = 0
+offset_left = -484.0
+offset_top = 36.0
+offset_right = -140.0
+offset_bottom = 59.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="|1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row7" unique_id=711870847]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyWhenTraded" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row7" unique_id=2038269457]
+layout_mode = 2
+text = "When"
+
+[node name="|2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row7" unique_id=711742391]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyWhoTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row7" unique_id=1039559813]
+layout_mode = 2
+text = "Who"
+
+[node name="<->" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row7" unique_id=1532137216]
+layout_mode = 2
+text = "<->"
+
+[node name="SortbyWhoTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row7" unique_id=914404628]
+layout_mode = 2
+text = "Who"
+
+[node name="|3" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row7" unique_id=1024641084]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyItemTraded3" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row7" unique_id=983754522]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("3_mvwvy")
+
+[node name="SortbyItemTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row7" unique_id=488407581]
+layout_mode = 2
+
+[node name="SortbyWhatTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row7" unique_id=1488643622]
+layout_mode = 2
+text = "Amount: 0"
+
+[node name="PriceTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row7" unique_id=195304911]
+layout_mode = 2
+text = "Price: 0"
+
+[node name="<->2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row7" unique_id=1296803068]
+layout_mode = 2
+text = "<->"
+
+[node name="SortbyItemTraded4" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row7" unique_id=1809517209]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_mldyh")
+
+[node name="SortbyWhatTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row7" unique_id=1798864117]
+layout_mode = 2
+text = "Amount: 0"
+
+[node name="PriceTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row7" unique_id=492205527]
+layout_mode = 2
+text = "Price: 0"
+
+[node name="SortbyItemTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row7" unique_id=975858687]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="|4" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row7" unique_id=521782217]
+layout_mode = 2
+text = "|"
+
+[node name="Row8" type="HBoxContainer" parent="LedgerDisplayBox/ScrollContainer/VScrollBar" unique_id=1988297863]
+layout_mode = 0
+offset_left = -484.0
+offset_top = 36.0
+offset_right = -140.0
+offset_bottom = 59.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="|1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row8" unique_id=2097318838]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyWhenTraded" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row8" unique_id=225603395]
+layout_mode = 2
+text = "When"
+
+[node name="|2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row8" unique_id=369166928]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyWhoTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row8" unique_id=1927708227]
+layout_mode = 2
+text = "Who"
+
+[node name="<->" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row8" unique_id=762983693]
+layout_mode = 2
+text = "<->"
+
+[node name="SortbyWhoTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row8" unique_id=1315497158]
+layout_mode = 2
+text = "Who"
+
+[node name="|3" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row8" unique_id=104505911]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyItemTraded3" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row8" unique_id=224599187]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("3_mvwvy")
+
+[node name="SortbyItemTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row8" unique_id=89563529]
+layout_mode = 2
+
+[node name="SortbyWhatTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row8" unique_id=739384395]
+layout_mode = 2
+text = "Amount: 0"
+
+[node name="PriceTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row8" unique_id=1163676769]
+layout_mode = 2
+text = "Price: 0"
+
+[node name="<->2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row8" unique_id=1976391467]
+layout_mode = 2
+text = "<->"
+
+[node name="SortbyItemTraded4" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row8" unique_id=2065187175]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_mldyh")
+
+[node name="SortbyWhatTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row8" unique_id=472303147]
+layout_mode = 2
+text = "Amount: 0"
+
+[node name="PriceTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row8" unique_id=966728011]
+layout_mode = 2
+text = "Price: 0"
+
+[node name="SortbyItemTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row8" unique_id=1747045460]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="|4" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row8" unique_id=1519361499]
+layout_mode = 2
+text = "|"
+
+[node name="Row9" type="HBoxContainer" parent="LedgerDisplayBox/ScrollContainer/VScrollBar" unique_id=80084850]
+layout_mode = 0
+offset_left = -484.0
+offset_top = 36.0
+offset_right = -140.0
+offset_bottom = 59.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="|1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row9" unique_id=1874654191]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyWhenTraded" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row9" unique_id=158623344]
+layout_mode = 2
+text = "When"
+
+[node name="|2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row9" unique_id=1455238570]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyWhoTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row9" unique_id=2023036036]
+layout_mode = 2
+text = "Who"
+
+[node name="<->" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row9" unique_id=1957644039]
+layout_mode = 2
+text = "<->"
+
+[node name="SortbyWhoTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row9" unique_id=1547647863]
+layout_mode = 2
+text = "Who"
+
+[node name="|3" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row9" unique_id=25939362]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyItemTraded3" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row9" unique_id=126470562]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("3_mvwvy")
+
+[node name="SortbyItemTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row9" unique_id=1575794007]
+layout_mode = 2
+
+[node name="SortbyWhatTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row9" unique_id=1215488260]
+layout_mode = 2
+text = "Amount: 0"
+
+[node name="PriceTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row9" unique_id=1562445917]
+layout_mode = 2
+text = "Price: 0"
+
+[node name="<->2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row9" unique_id=1153521023]
+layout_mode = 2
+text = "<->"
+
+[node name="SortbyItemTraded4" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row9" unique_id=2035124791]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_mldyh")
+
+[node name="SortbyWhatTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row9" unique_id=765793851]
+layout_mode = 2
+text = "Amount: 0"
+
+[node name="PriceTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row9" unique_id=377569474]
+layout_mode = 2
+text = "Price: 0"
+
+[node name="SortbyItemTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row9" unique_id=90828575]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="|4" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row9" unique_id=715912219]
+layout_mode = 2
+text = "|"
+
+[node name="Row10" type="HBoxContainer" parent="LedgerDisplayBox/ScrollContainer/VScrollBar" unique_id=1984624440]
+layout_mode = 0
+offset_left = -484.0
+offset_top = 36.0
+offset_right = -140.0
+offset_bottom = 59.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="|1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row10" unique_id=480028273]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyWhenTraded" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row10" unique_id=1007760539]
+layout_mode = 2
+text = "When"
+
+[node name="|2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row10" unique_id=270447660]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyWhoTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row10" unique_id=537865812]
+layout_mode = 2
+text = "Who"
+
+[node name="<->" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row10" unique_id=569099431]
+layout_mode = 2
+text = "<->"
+
+[node name="SortbyWhoTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row10" unique_id=1965807458]
+layout_mode = 2
+text = "Who"
+
+[node name="|3" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row10" unique_id=1982583177]
+layout_mode = 2
+text = "|"
+
+[node name="SortbyItemTraded3" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row10" unique_id=1398431456]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("3_mvwvy")
+
+[node name="SortbyItemTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row10" unique_id=963495045]
+layout_mode = 2
+
+[node name="SortbyWhatTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row10" unique_id=2037702285]
+layout_mode = 2
+text = "Amount: 0"
+
+[node name="PriceTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row10" unique_id=988338735]
+layout_mode = 2
+text = "Price: 0"
+
+[node name="<->2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row10" unique_id=377308761]
+layout_mode = 2
+text = "<->"
+
+[node name="SortbyItemTraded4" type="TextureButton" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row10" unique_id=2087573842]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_mldyh")
+
+[node name="SortbyWhatTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row10" unique_id=54871630]
+layout_mode = 2
+text = "Amount: 0"
+
+[node name="PriceTraded1" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row10" unique_id=508967088]
+layout_mode = 2
+text = "Price: 0"
+
+[node name="SortbyItemTraded2" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row10" unique_id=1810439962]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="|4" type="Label" parent="LedgerDisplayBox/ScrollContainer/VScrollBar/Row10" unique_id=1316431660]
+layout_mode = 2
+text = "|"
+
+[node name="ActionsRow" type="HBoxContainer" parent="LedgerDisplayBox" unique_id=766619334]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 alignment = 2
 
-[node name="ButtonReset" type="Button" parent="FullVBox/ActionsRow" unique_id=463680071]
+[node name="ButtonReset" type="Button" parent="LedgerDisplayBox/ActionsRow" unique_id=463680071]
 layout_mode = 2
 text = "Reset"
 
-[node name="ButtonCancel" type="Button" parent="FullVBox/ActionsRow" unique_id=2075981986]
+[node name="ButtonCancel" type="Button" parent="LedgerDisplayBox/ActionsRow" unique_id=2075981986]
 layout_mode = 2
 text = "Cancel"
 
@@ -206,9 +962,5 @@ stream = ExtResource("5_1ie5g")
 [node name="SfxPapyrusOpen" type="AudioStreamPlayer" parent="." unique_id=253472776]
 stream = ExtResource("6_368o0")
 
-[connection signal="pressed" from="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row1/ButtonMinusGive" to="." method="_on_button_minus_give_pressed"]
-[connection signal="pressed" from="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row1/ButtonPlusGive" to="." method="_on_button_plus_give_pressed"]
-[connection signal="pressed" from="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row2/ButtonMinusGet" to="." method="_on_button_minus_get_pressed"]
-[connection signal="pressed" from="FullVBox/ScrollContainer/VBoxContainer/VScrollBar/Row2/ButtonPlusGet" to="." method="_on_button_plus_get_pressed"]
-[connection signal="pressed" from="FullVBox/ActionsRow/ButtonReset" to="." method="_on_button_trade_pressed"]
-[connection signal="pressed" from="FullVBox/ActionsRow/ButtonCancel" to="." method="_on_button_cancel_pressed"]
+[connection signal="pressed" from="LedgerDisplayBox/ActionsRow/ButtonReset" to="." method="open_ledger"]
+[connection signal="pressed" from="LedgerDisplayBox/ActionsRow/ButtonCancel" to="." method="_on_button_cancel_pressed"]

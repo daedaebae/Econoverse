@@ -15,35 +15,30 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#TODO: Update ledger here or in the game controller?
+	#update_ledger() function to check for trades and track.
 	pass
 
 # ui menu node labels
-@export var title_label: Label
-@export var item_title_label: Label
-@export var item_amount_label: Label
+@export var target_label: Label
 
 # --- Sound ---
-##kc 10/26/25; began basic sfx implementation. Not the most  
-## rigid yet. Also considering variations based on
-## signal values and extensible game logic.
 @onready var sound_show: AudioStreamPlayer = $SfxPapyrusOpen
 @onready var sound_hide: AudioStreamPlayer = $SfxPapyrusClose
-
-
 @onready var sound_plus: AudioStreamPlayer = $SfxIncrement
 @onready var sound_minus: AudioStreamPlayer = $SfxDecrement
 
-## 10/26/25; these need to specifically react to 
-## trade criteria and signals for successful or failed trades.
-#@export var sound_trade_complete: AudioStreamPlayer
-#@export var sound_trade_fail: AudioStreamPlayer
-
-# --- Trade State ---
 # These variables will store the current trade details
-var current_give_amount: int = 0
-var current_get_amount: int = 0
-var current_item_give: String = ""
-var current_item_get: String = ""
+@onready var when_traded: int = 0
+@onready var who_traded1: Character
+@onready var who_traded2: Character
+@onready var item_traded1: Item
+@onready var item_traded2: Item
+@onready var item_price1: int = 0
+@onready var item_price2: int = 0
+@onready var item_amount1: int = 0
+@onready var item_amount2: int = 0
+
 
 # These store WHO is trading
 var player_node: Node = null
@@ -52,82 +47,75 @@ var npc_node: Node = null
 # This is the main function you'll call from your Player
 # to open and set up the trade window.
 
-##kc 10/24/25; this could be a useful place to get player/npc names. 
-func open_trade(player: Node, npc: Node, item_give: String, item_get: String):
-	# Store all the trade information
-	self.player_node = player
-	self.npc_node = npc
-	self.current_item_give = item_give
-	self.current_item_get = item_get
+#TODO: If L pressed again close the menu
+func _input(event):
+	if event.is_action_pressed("open_ledger"):
+		show()
+		sound_show.play()
 	
-	# Reset amounts
-	current_give_amount = 0
-	current_get_amount = 0
-	
-	# Update labels and show the window
-	_update_labels()
-	show()
-	sound_show.play()
-
-# A helper function to keep all our labels in sync
-func _update_labels():
-	title_label.text = "Trading\n" + str(npc_node.profession) + "\n" +  str(npc_node.char_name)
-	
-	#give_item_label.text = "You Give: %s" % current_item_give
-	#give_amount_label.text = str(current_give_amount)
-	#
-	#get_item_label.text = "You Get: %s" % current_item_get
-	#get_amount_label.text = str(current_get_amount)
-
+# A helper function to set label values
+#TODO: move this function to global to use everywhere
+func _update_label(Label, label_text):
+	Label.text = label_text
 
 # --- Signal Connections ---
-
-func _on_button_trade_pressed() -> void:
-	if current_give_amount == 0 and current_get_amount == 0:
-		print("No trade specified.")
-		return
-		
-	# Call the player's trade function!
-	# We assume the 'trade' function is ON the player_node.
-	if player_node and player_node.has_method("trade"):
-		player_node.trade(npc_node, current_give_amount, current_item_give, current_get_amount, current_item_get)
-		# Close the UI after the trade
-		#TODO: kc 10/26/25; for now, this will simply play the 
-		# close window sound. Later, can play specific sounds
-		# for if trade was successful or declined... or crit? idk
-		sound_hide.play()
-		hide()
-
-	else:
-		print("Error: Player node not set or 'trade' function missing.")
-
-
-func _on_button_minus_get_pressed() -> void:
-	current_get_amount = max(0, current_get_amount - 1)
-	_update_labels()
-	sound_minus.play()
-
-
-func _on_button_plus_get_pressed() -> void:
-	current_get_amount += 1
-	# Add logic here to check if NPC has enough
-	_update_labels()
-	sound_plus.play()
-
-
 func _on_button_cancel_pressed() -> void:
 	hide()
 	sound_hide.play()
 
-
-func _on_button_minus_give_pressed() -> void:
-	current_give_amount = max(0, current_give_amount - 1)
-	_update_labels()
+func _on_button_last_page_pressed() -> void:
+	#TODO: update page number label
+	#_update_labels()
 	sound_minus.play()
 
+func _on_button_next_page_pressed() -> void:
+	#TODO: update page number label
+	#_update_labels()
+	sound_minus.play()
+	
+#TODO: All buttons below signal header buttons within the ledger to sortby that
+#	   button's value.
+func _on_button_sort_by_when_pressed() -> void:
+	#TODO: update page number label
+	#_update_labels()
+	sound_minus.play()
 
-func _on_button_plus_give_pressed() -> void:
-	current_give_amount += 1
-	# Add logic here to check if player has enough
-	_update_labels()
-	sound_plus.play()
+func _on_button_sort_by_who1_pressed() -> void:
+	#TODO: update page number label
+	#_update_labels()
+	sound_minus.play()
+	
+func _on_button_sort_by_who2_pressed() -> void:
+	#TODO: update page number label
+	#_update_labels()
+	sound_minus.play()
+	
+func _on_button_sort_by_item1_pressed() -> void:
+	#TODO: update page number label
+	#_update_labels()
+	sound_minus.play()
+	
+func _on_button_sort_by_item2_pressed() -> void:
+	#TODO: update page number label
+	#_update_labels()
+	sound_minus.play()
+	
+func _on_button_sort_by_amount1_pressed() -> void:
+	#TODO: update page number label
+	#_update_labels()
+	sound_minus.play()
+	
+func _on_button_sort_by_amount2_pressed() -> void:
+	#TODO: update page number label
+	#_update_labels()
+	sound_minus.play()
+	
+func _on_button_sort_by_price1_pressed() -> void:
+	#TODO: update page number label
+	#_update_labels()
+	sound_minus.play()
+
+func _on_button_sort_by_price2_pressed() -> void:
+	#TODO: update page number label
+	#_update_labels()
+	sound_minus.play()
