@@ -9,9 +9,13 @@ extends Control
 # transactions, and rates.
 
 # Register the ledger with the game contoller
+#TODO: append ledger to game log. 
 func _ready() -> void:
 	GameController.register_ledger(self)
-	pass
+	
+	#TODO: Add: If game-save/game-log present: then don't set values
+	# If new game then clean ledger
+	clean_ledger()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -22,13 +26,15 @@ func _process(delta: float) -> void:
 # ui menu node labels
 @export var target_label: Label
 
-# --- Sound ---
+# Menu Sfx
 @onready var sound_show: AudioStreamPlayer = $SfxPapyrusOpen
 @onready var sound_hide: AudioStreamPlayer = $SfxPapyrusClose
 @onready var sound_plus: AudioStreamPlayer = $SfxIncrement
 @onready var sound_minus: AudioStreamPlayer = $SfxDecrement
 
-# These variables will store the current trade details
+
+
+# Variables for values of each node within a Row
 @onready var when_traded: int = 0
 @onready var who_traded1: Character
 @onready var who_traded2: Character
@@ -39,13 +45,18 @@ func _process(delta: float) -> void:
 @onready var item_amount1: int = 0
 @onready var item_amount2: int = 0
 
-
-# These store WHO is trading
-var player_node: Node = null
-var npc_node: Node = null
-
-# This is the main function you'll call from your Player
-# to open and set up the trade window.
+func clean_ledger():
+	var rows = $LedgerDisplayBox/ScrollContainer/VBoxContainer.get_children()
+	print(rows)
+	for row in rows:
+		var labels = (row.get_children())
+		print("\nlabels: ",labels,"\n")
+		for label in labels:
+			print("\nlabel: ",label,"\n")
+			if label is Label:
+				_update_label(label, "---")
+			pass
+	pass
 
 #TODO: If L pressed again close the menu
 func _input(event):
