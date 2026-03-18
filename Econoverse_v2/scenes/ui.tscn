@@ -2,12 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://dyxshmxysnvqn" path="res://`_design/examples/ui/Age-of-Empires-II-Definitive-Edition07082021-083356-53423.jpg" id="1_nt7q6"]
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="1_x4jx1"]
+[ext_resource type="Script" uid="uid://cr681lcqswbv5" path="res://scenes/ui.gd" id="2_gdt2y"]
 [ext_resource type="FontFile" uid="uid://c15bkghedjxxy" path="res://assets/fonts/ModernAntiqua-Regular.ttf" id="3_yev5y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4jx1"]
 bg_color = Color(0, 0, 0, 0.5921569)
 
-[node name="UI" type="Control" unique_id=172092760]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gdt2y"]
+
+[node name="UI" type="Control" unique_id=172092760 node_paths=PackedStringArray("button_ledger", "button_music_player")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +18,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_x4jx1")
+script = ExtResource("2_gdt2y")
+button_ledger = NodePath("ButtonLedger")
+button_music_player = NodePath("ButtonMusicPlayer")
 
 [node name="reference" type="Sprite2D" parent="." unique_id=462048231]
 modulate = Color(1, 1, 1, 0.47843137)
@@ -24,6 +30,7 @@ texture = ExtResource("1_nt7q6")
 metadata/_edit_lock_ = true
 
 [node name="study outline" type="Control" parent="." unique_id=1922337104]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -232,3 +239,137 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_x4jx1")
 text = "Settings / backmenu"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ButtonLedger" type="TextureButton" parent="." unique_id=1526209766]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+ignore_texture_size = true
+
+[node name="ButtonMusicPlayer" type="TextureButton" parent="." unique_id=168747429]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+ignore_texture_size = true
+
+[node name="FullScreenArranged" type="VBoxContainer" parent="." unique_id=1533931097]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_x4jx1")
+alignment = 1
+
+[node name="RowTop" type="HBoxContainer" parent="FullScreenArranged" unique_id=1025212541]
+layout_mode = 2
+
+[node name="PanelOptions" type="Panel" parent="FullScreenArranged/RowTop" unique_id=1856391831]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClusterOptions" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelOptions" unique_id=1792161593]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="nothing_yet" type="Label" parent="FullScreenArranged/RowTop/PanelOptions/ClusterOptions" unique_id=955304067]
+layout_mode = 2
+text = "nothing here yet"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelBorder" type="Panel" parent="FullScreenArranged/RowTop" unique_id=645754961]
+custom_minimum_size = Vector2(25, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="PanelInfo" type="Panel" parent="FullScreenArranged/RowTop" unique_id=849367341]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClusterInfo" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelInfo" unique_id=1379405762]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="nothing_yet" type="Label" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo" unique_id=1175387367]
+layout_mode = 2
+text = "nothing here yet"
+
+[node name="PanelCenter" type="Panel" parent="FullScreenArranged" unique_id=95848187]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gdt2y")
+
+[node name="BoxContainer" type="BoxContainer" parent="FullScreenArranged/PanelCenter" unique_id=1791699176]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ui_explained" type="Label" parent="FullScreenArranged/PanelCenter/BoxContainer" unique_id=1005028315]
+layout_mode = 2
+text = "This is where other UI elements may populate
+
+This PanelCenter element expands to position 
+the top and bottom rows properly"
+
+[node name="RowBottom" type="HBoxContainer" parent="FullScreenArranged" unique_id=1087698011]
+layout_mode = 2
+alignment = 1
+
+[node name="PanelActions" type="Panel" parent="FullScreenArranged/RowBottom" unique_id=1978705775]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClusterActions" type="HBoxContainer" parent="FullScreenArranged/RowBottom/PanelActions" unique_id=559702637]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelBorder" type="Panel" parent="FullScreenArranged/RowBottom" unique_id=113138834]
+custom_minimum_size = Vector2(50, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="PanelMap" type="Panel" parent="FullScreenArranged/RowBottom" unique_id=1057023646]
+custom_minimum_size = Vector2(50, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClusterMap" type="HBoxContainer" parent="FullScreenArranged/RowBottom/PanelMap" unique_id=2046482228]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="nothing_yet" type="Label" parent="FullScreenArranged/RowBottom/PanelMap/ClusterMap" unique_id=8648549]
+layout_mode = 2
+text = "nothing here yet"
+
+[connection signal="button_down" from="ButtonLedger" to="." method="_on_button_ledger_button_down"]
