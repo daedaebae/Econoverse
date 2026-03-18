@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://dh0c67pmqa25i" path="res://assets/audio/ambience/overworld nature 1.ogg" id="11_rdeg0"]
 [ext_resource type="Script" uid="uid://dk1uf4u80ps7x" path="res://scripts/commodities/Class_Item.gd" id="12_osidk"]
 [ext_resource type="PackedScene" uid="uid://b4nvajmgiohdg" path="res://scenes/ui.tscn" id="15_fn4oh"]
+[ext_resource type="PackedScene" uid="uid://3ru2w73jcfi0" path="res://scenes/ui_ledger.tscn" id="13_fn4oh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_emj6c"]
 texture = ExtResource("1_mm0a5")
@@ -169,13 +170,8 @@ parameters/looping = true
 
 [node name="TopLayer" type="CanvasLayer" parent="." unique_id=1670831378]
 
-[node name="UI-Ledger" parent="TopLayer" unique_id=922451981 instance=ExtResource("7_emj6c")]
+[node name="UI-Ledger" parent="TopLayer" unique_id=922451981 instance=ExtResource("13_fn4oh")]
 visible = false
-offset_left = -100.0
-offset_top = -130.0
-offset_right = 100.0
-offset_bottom = 130.0
-script = null
 
 [node name="UI-Trade" parent="TopLayer" unique_id=2082776193 instance=ExtResource("7_emj6c")]
 visible = false
