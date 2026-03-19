@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cr33qkefpccvr"
+path="res://.godot/imported/To Fetch a Compass.ogg-f1b85641be6f79864e61728533a823a4.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/To Fetch a Compass.ogg"
+dest_files=["res://.godot/imported/To Fetch a Compass.ogg-f1b85641be6f79864e61728533a823a4.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

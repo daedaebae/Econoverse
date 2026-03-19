@@ -1,19 +1,30 @@
 [gd_scene format=3 uid="uid://c2yrlynpcsdes"]
 
-[ext_resource type="AudioStream" uid="uid://bbhew36r5nh4c" path="res://assets/audio/music/The Fascination Does Flow.ogg" id="1_1d8ga"]
-[ext_resource type="AudioStream" uid="uid://cupmbdssey23e" path="res://assets/audio/music/The Kindred Canopy.ogg" id="2_okcvy"]
-[ext_resource type="AudioStream" uid="uid://ddq2qaw8whp3l" path="res://assets/audio/music/Tick & Tally.ogg" id="3_c5if1"]
-[ext_resource type="AudioStream" uid="uid://di8x086ei8rxu" path="res://assets/audio/music/Forthright.ogg" id="4_vbiss"]
-[ext_resource type="AudioStream" uid="uid://0f1vtxx8666l" path="res://assets/audio/music/Stewing.ogg" id="5_mnunv"]
+[ext_resource type="AudioStream" uid="uid://kjym303aetqk" path="res://assets/audio/music/The Fascination Does Flow.ogg" id="1_1d8ga"]
+[ext_resource type="AudioStream" uid="uid://uicrbm3ixxrj" path="res://assets/audio/music/The Kindred Canopy.ogg" id="2_okcvy"]
+[ext_resource type="AudioStream" uid="uid://cg7y2fjjwnq0e" path="res://assets/audio/music/Tick & Tally.ogg" id="3_c5if1"]
+[ext_resource type="AudioStream" uid="uid://28qugq0ptgbq" path="res://assets/audio/music/Forthright.ogg" id="4_vbiss"]
+[ext_resource type="AudioStream" uid="uid://derlam3mo3hue" path="res://assets/audio/music/Stewing.ogg" id="5_mnunv"]
+[ext_resource type="AudioStream" uid="uid://wqe1bydg5a8d" path="res://assets/audio/music/Soothly.ogg" id="6_6j4m4"]
+[ext_resource type="AudioStream" uid="uid://cr33qkefpccvr" path="res://assets/audio/music/To Fetch a Compass.ogg" id="7_elqhv"]
+[ext_resource type="AudioStream" uid="uid://rs2t3tvpiwe7" path="res://assets/audio/music/The Light You Bring.ogg" id="8_vk1is"]
+[ext_resource type="AudioStream" uid="uid://c67u4wuh0exja" path="res://assets/audio/music/The Earth is a Cup That Never Overflows.ogg" id="9_coaj3"]
+[ext_resource type="AudioStream" uid="uid://btbw2frh352d0" path="res://assets/audio/music/The Wind Blows Where it Wills, and Thou Hearest the Sound Thereof.ogg" id="10_dn3yf"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_rdeg0"]
 shuffle = true
-stream_count = 5
+fade_time = 0.5
+stream_count = 10
 stream_0 = ExtResource("1_1d8ga")
 stream_1 = ExtResource("2_okcvy")
 stream_2 = ExtResource("3_c5if1")
 stream_3 = ExtResource("4_vbiss")
 stream_4 = ExtResource("5_mnunv")
+stream_5 = ExtResource("6_6j4m4")
+stream_6 = ExtResource("7_elqhv")
+stream_7 = ExtResource("8_vk1is")
+stream_8 = ExtResource("9_coaj3")
+stream_9 = ExtResource("10_dn3yf")
 
 [node name="Music Player (shuffled)" type="AudioStreamPlayer" unique_id=540266813]
 stream = SubResource("AudioStreamPlaylist_rdeg0")
