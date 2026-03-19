@@ -29,6 +29,7 @@ buses/default_bus_layout="uid://yicjv23th881"
 [autoload]
 
 GameController="*res://singleton/game_controller.gd"
+UI="*uid://cr681lcqswbv5"
 UITrade="*res://singleton/ui_trade.gd"
 CharacterNode="*res://scripts/actors/Class_Character.gd"
 AudioMaster="*res://singleton/audio_master.tscn"

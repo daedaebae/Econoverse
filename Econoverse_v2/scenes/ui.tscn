@@ -8,7 +8,11 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4jx1"]
 bg_color = Color(0, 0, 0, 0.5921569)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wm3ai"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gdt2y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8dubc"]
 
 [node name="UI" type="Control" unique_id=172092760 node_paths=PackedStringArray("button_ledger", "button_music_player")]
 layout_mode = 3
@@ -19,10 +23,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_x4jx1")
 script = ExtResource("2_gdt2y")
-button_ledger = NodePath("ButtonLedger")
-button_music_player = NodePath("ButtonMusicPlayer")
+button_ledger = NodePath("")
+button_music_player = NodePath("")
 
 [node name="reference" type="Sprite2D" parent="." unique_id=462048231]
+visible = false
 modulate = Color(1, 1, 1, 0.47843137)
 position = Vector2(320.33334, 180.1875)
 scale = Vector2(0.3329861, 0.3329861)
@@ -240,18 +245,6 @@ text = "Settings / backmenu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ButtonLedger" type="TextureButton" parent="." unique_id=1526209766]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-ignore_texture_size = true
-
-[node name="ButtonMusicPlayer" type="TextureButton" parent="." unique_id=168747429]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-ignore_texture_size = true
-
 [node name="FullScreenArranged" type="VBoxContainer" parent="." unique_id=1533931097]
 layout_mode = 1
 anchors_preset = 15
@@ -264,6 +257,32 @@ alignment = 1
 
 [node name="RowTop" type="HBoxContainer" parent="FullScreenArranged" unique_id=1025212541]
 layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelInfo" type="Panel" parent="FullScreenArranged/RowTop" unique_id=849367341]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClusterInfo" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelInfo" unique_id=1379405762]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="nothing_yet" type="Label" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo" unique_id=1175387367]
+layout_mode = 2
+text = "info cluster (track gold etc)"
+
+[node name="PanelBorder" type="Panel" parent="FullScreenArranged/RowTop" unique_id=645754961]
+custom_minimum_size = Vector2(25, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
 
 [node name="PanelOptions" type="Panel" parent="FullScreenArranged/RowTop" unique_id=1856391831]
 layout_mode = 2
@@ -279,35 +298,16 @@ grow_vertical = 2
 alignment = 1
 
 [node name="nothing_yet" type="Label" parent="FullScreenArranged/RowTop/PanelOptions/ClusterOptions" unique_id=955304067]
+visible = false
 layout_mode = 2
 text = "nothing here yet"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelBorder" type="Panel" parent="FullScreenArranged/RowTop" unique_id=645754961]
-custom_minimum_size = Vector2(25, 10)
+[node name="ButtonMusicPlayer" type="Button" parent="FullScreenArranged/RowTop/PanelOptions/ClusterOptions" unique_id=1782745368]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-
-[node name="PanelInfo" type="Panel" parent="FullScreenArranged/RowTop" unique_id=849367341]
-custom_minimum_size = Vector2(150, 25)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ClusterInfo" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelInfo" unique_id=1379405762]
-custom_minimum_size = Vector2(150, 25)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 2
-
-[node name="nothing_yet" type="Label" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo" unique_id=1175387367]
-layout_mode = 2
-text = "nothing here yet"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wm3ai")
+text = "🎼"
 
 [node name="PanelCenter" type="Panel" parent="FullScreenArranged" unique_id=95848187]
 custom_minimum_size = Vector2(0, 200)
@@ -325,6 +325,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="ui_explained" type="Label" parent="FullScreenArranged/PanelCenter/BoxContainer" unique_id=1005028315]
+visible = false
 layout_mode = 2
 text = "This is where other UI elements may populate
 
@@ -333,6 +334,7 @@ the top and bottom rows properly"
 
 [node name="RowBottom" type="HBoxContainer" parent="FullScreenArranged" unique_id=1087698011]
 layout_mode = 2
+theme_override_constants/separation = 0
 alignment = 1
 
 [node name="PanelActions" type="Panel" parent="FullScreenArranged/RowBottom" unique_id=1978705775]
@@ -347,9 +349,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
+
+[node name="ButtonLedger" type="Button" parent="FullScreenArranged/RowBottom/PanelActions/ClusterActions" unique_id=603894314]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8dubc")
+text = "📖"
 
 [node name="PanelBorder" type="Panel" parent="FullScreenArranged/RowBottom" unique_id=113138834]
-custom_minimum_size = Vector2(50, 25)
+custom_minimum_size = Vector2(50, 10)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
@@ -370,6 +378,7 @@ alignment = 1
 
 [node name="nothing_yet" type="Label" parent="FullScreenArranged/RowBottom/PanelMap/ClusterMap" unique_id=8648549]
 layout_mode = 2
-text = "nothing here yet"
+text = "map, relationships, etc?"
 
-[connection signal="button_down" from="ButtonLedger" to="." method="_on_button_ledger_button_down"]
+[connection signal="button_down" from="FullScreenArranged/RowTop/PanelOptions/ClusterOptions/ButtonMusicPlayer" to="." method="_on_button_music_player_button_down"]
+[connection signal="button_down" from="FullScreenArranged/RowBottom/PanelActions/ClusterActions/ButtonLedger" to="." method="_on_button_ledger_button_down"]
