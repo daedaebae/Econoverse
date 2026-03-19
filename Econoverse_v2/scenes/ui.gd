@@ -23,6 +23,7 @@ extends Control
 @export var button_music_player: Button
 
 @export_category("Menus")
+@export var music_controller: Control
 # this will be helpful to list any menus, to help along state machine logic.
 
 # signals:
@@ -50,8 +51,8 @@ func _process(delta: float) -> void:
 # functions and mechanics to kick off
 
 func _on_button_ledger_button_down() -> void:
-	emit_signal("ButtonLedgerPressed")
+	ButtonLedgerPressed.emit()
 
 
 func _on_button_music_player_button_down() -> void:
-	emit_signal("ButtonMusicPlayerPressed")
+	ButtonMusicPlayerPressed.emit()

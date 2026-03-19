@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://bwgm0rcnkhr36" path="res://assets/fonts/CormorantInfant-VariableFont_wght.ttf" id="5_8dubc"]
 [ext_resource type="StyleBox" uid="uid://b25n2vxk82fqm" path="res://scenes/themes/style_box_flat-GOLDfirst.tres" id="6_p7vwb"]
 [ext_resource type="LabelSettings" uid="uid://dl2jctwf6ni47" path="res://assets/fonts/SmallPoppingText.tres" id="7_p7vwb"]
+[ext_resource type="PackedScene" uid="uid://dlou83bkslg6b" path="res://scenes/components/music_controller.tscn" id="8_ktti3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4jx1"]
 bg_color = Color(0, 0, 0, 0.5921569)
@@ -26,7 +27,7 @@ shadow_color = Color(0, 0, 0, 0.69411767)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8dubc"]
 
-[node name="UI" type="Control" unique_id=172092760 node_paths=PackedStringArray("button_ledger", "button_music_player")]
+[node name="UI" type="Control" unique_id=172092760 node_paths=PackedStringArray("button_ledger", "button_music_player", "music_controller")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,6 +38,7 @@ theme = ExtResource("1_x4jx1")
 script = ExtResource("2_gdt2y")
 button_ledger = NodePath("FullScreenArranged/RowBottom/PanelActions/ClusterActions/ButtonLedger")
 button_music_player = NodePath("FullScreenArranged/RowTop/PanelOptions/ClusterOptions/ButtonMusicPlayer")
+music_controller = NodePath("FullScreenArranged/PanelCenter/MusicController")
 
 [node name="reference" type="Sprite2D" parent="." unique_id=462048231]
 visible = false
@@ -388,6 +390,18 @@ Notifications and popups will not interact with the size and spacing of this con
 Big pretty box with big pretty text. Yellow."
 label_settings = SubResource("LabelSettings_ktti3")
 autowrap_mode = 3
+
+[node name="MusicController" parent="FullScreenArranged/PanelCenter" unique_id=989217081 instance=ExtResource("8_ktti3")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -125.0
+offset_right = 0.0
+offset_bottom = 75.0
+grow_horizontal = 0
+grow_vertical = 1
+pivot_offset = Vector2(-25, 0)
 
 [node name="RowBottom" type="HBoxContainer" parent="FullScreenArranged" unique_id=1087698011]
 layout_mode = 2
