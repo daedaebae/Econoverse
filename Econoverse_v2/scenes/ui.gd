@@ -1,15 +1,21 @@
 extends Control
 
-# the primary on-screen UI to arrange buttons and their signal logic
+# the primary on-screen UI to arrange interface buttons and their signal logic
 
 # the UI does not perform functions for any gameplay. It is simply the display
-# and characterization of the data with which we want to present to the player.
+# and characterization of the data with which we want the player to experience.
 # This can be for celebration accomplishments, driving interest in certain
-# gameplay elements, or nudging the player to successful strategies
+# gameplay elements, or nudging the player to successful strategies. Provide
+# the player with visual tools to personalize and progress, and review 
+# their experience.
 
 # list all exports, including references to buttons and other dynamic elements
+@export_category("Buttons")
 @export var button_ledger: TextureButton
 @export var button_music_player: TextureButton
+
+@export_category("Menus")
+# this will be helpful to list any menus, to help along state machine logic.
 
 # signals:
 # list all button pressed signals here, for other functions and game mechanics
@@ -37,3 +43,7 @@ func _process(delta: float) -> void:
 
 func _on_button_ledger_button_down() -> void:
 	emit_signal("ButtonLedgerPressed")
+
+
+func _on_button_music_player_button_down() -> void:
+	emit_signal("ButtonMusicPlayerPressed")
