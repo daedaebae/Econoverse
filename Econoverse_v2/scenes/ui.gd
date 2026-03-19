@@ -42,6 +42,7 @@ func _ready() -> void:
 	# maybe there is a signal to pass user preferences in for the UI. another
 	# script may store user preferences in place. ui script could listen for it.
 
+
 func _process(delta: float) -> void:
 	pass
 	# state machine to handle a combination of UI elements on screen
@@ -51,8 +52,10 @@ func _process(delta: float) -> void:
 # functions and mechanics to kick off
 
 func _on_button_ledger_button_down() -> void:
-	ButtonLedgerPressed.emit()
+	#explicitly call the singleton signal, so it's global
+	UI.ButtonLedgerPressed.emit()
 
 
 func _on_button_music_player_button_down() -> void:
-	ButtonMusicPlayerPressed.emit()
+	#explicitly call the singleton signal, so it's global
+	UI.ButtonMusicPlayerPressed.emit()
