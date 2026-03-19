@@ -2,38 +2,63 @@
 
 [ext_resource type="PackedScene" uid="uid://c2yrlynpcsdes" path="res://assets/audio/music/music_player_(shuffled).tscn" id="1_iko4x"]
 [ext_resource type="Script" uid="uid://b4tp3y64cadtj" path="res://scenes/components/music_controller.gd" id="1_njyix"]
+[ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="2_1wr5g"]
 [ext_resource type="FontFile" uid="uid://bwgm0rcnkhr36" path="res://assets/fonts/CormorantInfant-VariableFont_wght.ttf" id="2_dna10"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dna10"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1wr5g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1wr5g"]
 line_spacing = 1.0
 font = ExtResource("2_dna10")
-font_size = 6
+font_size = 8
+font_color = Color(1, 1, 1, 0.78431374)
 outline_size = 1
-outline_color = Color(0, 0.6874999, 0.75, 0.7294118)
-shadow_color = Color(0, 0, 0, 0.87058824)
+outline_color = Color(0.5, 0.50833344, 1, 0.39215687)
+shadow_color = Color(0, 0, 0, 0.39215687)
 
-[node name="MusicController" type="Control" unique_id=989217081 node_paths=PackedStringArray("music_player__shuffled_", "button_play_pause", "button_skip", "track_title")]
-custom_minimum_size = Vector2(100, 25)
+[node name="MusicController" type="Control" unique_id=989217081 node_paths=PackedStringArray("music_player__shuffled_", "button_play_pause", "button_skip", "track_title", "panel", "v_box_container")]
+custom_minimum_size = Vector2(125, 75)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -515.0
+offset_bottom = -285.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 0
 script = ExtResource("1_njyix")
 music_player__shuffled_ = NodePath("Music Player (shuffled)")
 button_play_pause = NodePath("VBoxContainer/HBoxContainer/ButtonPlayPause")
 button_skip = NodePath("VBoxContainer/HBoxContainer/ButtonSkip")
 track_title = NodePath("VBoxContainer/TrackTitle")
+panel = NodePath("Panel")
+v_box_container = NodePath("VBoxContainer")
+
+[node name="Panel" type="Panel" parent="." unique_id=1186293816]
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_1wr5g")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=668842217]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-alignment = 1
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1327560871]
+custom_minimum_size = Vector2(50, 40)
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
@@ -42,18 +67,23 @@ alignment = 1
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dna10")
 text = "▶"
 
 [node name="ButtonSkip" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=426201217]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1wr5g")
 text = "⏯"
 
 [node name="TrackTitle" type="Label" parent="VBoxContainer" unique_id=1254792425]
+custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
 text = "Big long placeholder that gets overwritten immediately"
 label_settings = SubResource("LabelSettings_1wr5g")
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="FeatureWishlist" type="Control" parent="." unique_id=589541768]
 visible = false
