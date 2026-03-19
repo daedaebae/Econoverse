@@ -59,9 +59,11 @@ func _on_button_skip_button_down() -> void:
 	_play_current()
 
 func toggle() -> void:
-	panel.visible = !visible
-	v_box_container.visible = !visible
+	var show = !panel.visible
+	panel.visible = show
+	v_box_container.visible = show
 
 
 func _on_UI_Music_Player_button():
+	print("toggled!")
 	toggle()
