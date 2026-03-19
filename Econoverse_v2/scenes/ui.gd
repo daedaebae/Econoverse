@@ -9,10 +9,18 @@ extends Control
 # the player with visual tools to personalize and progress, and review 
 # their experience.
 
+#TODO kc - configure notifications and popup systems
+#TODO kc - 9 patch rect outlines art
+#TODO kc - determine where to use collapsable containers, vsplit or hsplit
+#TODO kc - subviewport container for notifications (ala stronghold events)
+#TODO kc - replace placeholder emojis with actual sprite art
+#TODO kc - consider texture rect buttons, better feel and response
+#TODO kc - integrate sound handling for butons only. press and release sounds for juicy feel. UI/action appears on releasee of buttons.
+
 # list all exports, including references to buttons and other dynamic elements
 @export_category("Buttons")
-@export var button_ledger: TextureButton
-@export var button_music_player: TextureButton
+@export var button_ledger: Button
+@export var button_music_player: Button
 
 @export_category("Menus")
 # this will be helpful to list any menus, to help along state machine logic.
