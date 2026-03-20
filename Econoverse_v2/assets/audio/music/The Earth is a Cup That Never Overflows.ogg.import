@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c67u4wuh0exja"
+path="res://.godot/imported/The Earth is a Cup That Never Overflows.ogg-498a3f26061eaa21b0a8f1d6a3cbe846.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/The Earth is a Cup That Never Overflows.ogg"
+dest_files=["res://.godot/imported/The Earth is a Cup That Never Overflows.ogg-498a3f26061eaa21b0a8f1d6a3cbe846.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

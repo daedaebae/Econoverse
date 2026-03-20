@@ -29,6 +29,7 @@ buses/default_bus_layout="uid://yicjv23th881"
 [autoload]
 
 GameController="*res://singleton/game_controller.gd"
+UI="*uid://cr681lcqswbv5"
 UITrade="*res://singleton/ui_trade.gd"
 CharacterNode="*res://scripts/actors/Class_Character.gd"
 AudioMaster="*res://singleton/audio_master.tscn"
@@ -55,11 +56,17 @@ enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
 [file_customization]
 
 folder_colors={
+"res://`_design/": "pink",
 "res://assets/": "orange",
 "res://scenes/": "yellow",
 "res://scripts/": "green",
 "res://singleton/": "purple"
 }
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+theme/default_font_generate_mipmaps=true
 
 [input]
 
@@ -104,3 +111,4 @@ open_ledger={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/screen_space_roughness_limiter/enabled=false

@@ -1,0 +1,457 @@
+[gd_scene format=3 uid="uid://b4nvajmgiohdg"]
+
+[ext_resource type="Texture2D" uid="uid://dyxshmxysnvqn" path="res://`_design/examples/ui/Age-of-Empires-II-Definitive-Edition07082021-083356-53423.jpg" id="1_nt7q6"]
+[ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="1_x4jx1"]
+[ext_resource type="Script" uid="uid://cr681lcqswbv5" path="res://scenes/ui.gd" id="2_gdt2y"]
+[ext_resource type="FontFile" uid="uid://c15bkghedjxxy" path="res://assets/fonts/ModernAntiqua-Regular.ttf" id="3_yev5y"]
+[ext_resource type="FontFile" uid="uid://bwgm0rcnkhr36" path="res://assets/fonts/CormorantInfant-VariableFont_wght.ttf" id="5_8dubc"]
+[ext_resource type="StyleBox" uid="uid://b25n2vxk82fqm" path="res://scenes/themes/style_box_flat-GOLDfirst.tres" id="6_p7vwb"]
+[ext_resource type="LabelSettings" uid="uid://dl2jctwf6ni47" path="res://assets/fonts/SmallPoppingText.tres" id="7_p7vwb"]
+[ext_resource type="PackedScene" uid="uid://dlou83bkslg6b" path="res://scenes/components/music_controller.tscn" id="8_ktti3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4jx1"]
+bg_color = Color(0, 0, 0, 0.5921569)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wm3ai"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gdt2y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ktti3"]
+line_spacing = 1.0
+font = ExtResource("5_8dubc")
+font_size = 10
+outline_size = 1
+outline_color = Color(0.75, 0.75, 0, 0.7294118)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.69411767)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8dubc"]
+
+[node name="UI" type="Control" unique_id=172092760 node_paths=PackedStringArray("button_ledger", "button_music_player", "music_controller")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_x4jx1")
+script = ExtResource("2_gdt2y")
+button_ledger = NodePath("FullScreenArranged/RowBottom/PanelActions/ClusterActions/ButtonLedger")
+button_music_player = NodePath("FullScreenArranged/RowTop/PanelOptions/ClusterOptions/ButtonMusicPlayer")
+music_controller = NodePath("FullScreenArranged/PanelCenter/MusicController")
+
+[node name="reference" type="Sprite2D" parent="." unique_id=462048231]
+visible = false
+modulate = Color(1, 1, 1, 0.47843137)
+position = Vector2(320.33334, 180.1875)
+scale = Vector2(0.3329861, 0.3329861)
+texture = ExtResource("1_nt7q6")
+metadata/_edit_lock_ = true
+
+[node name="study outline" type="Control" parent="." unique_id=1922337104]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="study outline" unique_id=1474127947]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 65.0
+offset_right = 128.0
+offset_bottom = 192.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.25333354, 0, 0.95, 0.49411765)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/paragraph_spacing = -1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("3_yev5y")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4jx1")
+text = "Notifications 
+- 
+- (ephemeral)
+- (immersion breaking?)
+->"
+
+[node name="Label2" type="Label" parent="study outline" unique_id=546093266]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 308.0
+offset_right = 263.0
+offset_bottom = 357.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.25333354, 0, 0.95, 0.49411765)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/paragraph_spacing = -1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("3_yev5y")
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4jx1")
+text = "Main Info Box"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="study outline" unique_id=794020157]
+layout_mode = 0
+offset_top = 308.0
+offset_right = 83.0
+offset_bottom = 360.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.25333354, 0, 0.95, 0.49411765)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/paragraph_spacing = -1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("3_yev5y")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4jx1")
+text = "Options 
+Buttons
+Cluster"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="study outline" unique_id=967211654]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 307.0
+offset_right = 639.0
+offset_bottom = 358.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.25333354, 0, 0.95, 0.49411765)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/paragraph_spacing = -1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("3_yev5y")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4jx1")
+text = "Map / Markers
+(maybe diagetic as well)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="study outline" unique_id=1197744087]
+layout_mode = 0
+offset_left = 525.0
+offset_top = 214.0
+offset_right = 639.0
+offset_bottom = 307.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.25333354, 0, 0.95, 0.49411765)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/paragraph_spacing = -1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("3_yev5y")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4jx1")
+text = "Players / 
+Alliances 
+
+- don't use?
+(opt for diagetic)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="study outline" unique_id=1462699714]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 170.0
+offset_bottom = 29.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.25333354, 0, 0.95, 0.49411765)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/paragraph_spacing = -1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("3_yev5y")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4jx1")
+text = "Stats / Overview"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="study outline" unique_id=90417696]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 1.0
+offset_right = 286.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.25333354, 0, 0.95, 0.49411765)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/paragraph_spacing = -1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("3_yev5y")
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4jx1")
+text = "Advancement 
+(broad time or level)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="study outline" unique_id=1214834368]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 235.0
+offset_right = 167.0
+offset_bottom = 299.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.25333354, 0, 0.95, 0.49411765)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/paragraph_spacing = -1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("3_yev5y")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4jx1")
+text = "Button Tooltip - Action (Cost: amount (sprite))
+Lot's of text, going and going. 
+Telling you lots of things.
+(cool stats, various, many)
+(cool tips)"
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="study outline" unique_id=1436620201]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 1.0
+offset_right = 641.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.25333354, 0, 0.95, 0.49411765)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/paragraph_spacing = -1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("3_yev5y")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = SubResource("StyleBoxFlat_x4jx1")
+text = "Settings / backmenu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FullScreenArranged" type="VBoxContainer" parent="." unique_id=1533931097]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_x4jx1")
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="RowTop" type="HBoxContainer" parent="FullScreenArranged" unique_id=1025212541]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelInfo" type="Panel" parent="FullScreenArranged/RowTop" unique_id=849367341]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClusterInfo" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelInfo" unique_id=1379405762]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="nothing_yet" type="Label" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo" unique_id=1175387367]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "info cluster (track gold etc)"
+
+[node name="PanelBorder" type="Panel" parent="FullScreenArranged/RowTop" unique_id=645754961]
+custom_minimum_size = Vector2(25, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="PanelOptions" type="Panel" parent="FullScreenArranged/RowTop" unique_id=1856391831]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClusterOptions" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelOptions" unique_id=1792161593]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="nothing_yet" type="Label" parent="FullScreenArranged/RowTop/PanelOptions/ClusterOptions" unique_id=955304067]
+visible = false
+layout_mode = 2
+text = "nothing here yet"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonMusicPlayer" type="Button" parent="FullScreenArranged/RowTop/PanelOptions/ClusterOptions" unique_id=1782745368]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wm3ai")
+text = "🎼"
+
+[node name="PanelCenter" type="Panel" parent="FullScreenArranged" unique_id=95848187]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gdt2y")
+
+[node name="Notifications and Popups" type="Control" parent="FullScreenArranged/PanelCenter" unique_id=1283178581]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxNotifications" type="VBoxContainer" parent="FullScreenArranged/PanelCenter/Notifications and Popups" unique_id=1466826108]
+modulate = Color(1, 1, 1, 0.5882353)
+custom_minimum_size = Vector2(125, 200)
+layout_mode = 0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 165.00017
+offset_bottom = 215.0
+
+[node name="Notification Example" type="Label" parent="FullScreenArranged/PanelCenter/Notifications and Popups/VBoxNotifications" unique_id=1028876326]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_8dubc")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = ExtResource("6_p7vwb")
+text = "12:03 pm (Big Lunch Time)
+Lots of things happening, important things lorum ipsum wtf
+
+12:01 pm (Big Lunch Time)
+Ope, this one is older, that means reverse chronomancer type arrangement right here.
+
+11:59 am (Technically Not Lunch)
+Just another bunch of text to put on the screen and see how it is in context with a bunch of other text on the screen going down the screeen farther, to see how it reads and feels and stuff."
+label_settings = ExtResource("7_p7vwb")
+autowrap_mode = 3
+
+[node name="BoxCenterPRIMARY" type="BoxContainer" parent="FullScreenArranged/PanelCenter" unique_id=1791699176]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ui_explained" type="Label" parent="FullScreenArranged/PanelCenter/BoxCenterPRIMARY" unique_id=1005028315]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("6_p7vwb")
+text = "Hide this label when not using it typically, but maybe use a label in this space for in-game messages of sorts, during pauses etc. 
+
+The PanelCenter element where this label resides will always expand to position the top and bottom rows properly. This is acheived by enforcing custom minimum size of panels. Should be safe to display whatever we want in the BoxCenterPRIMARY. The box arranges like a typical HBox for now.
+
+Notifications and popups will not interact with the size and spacing of this content. They draw on top of anything in BoxCenterPRIMARY as well, so should be appear-and-fade elements only in notifications and popups... maybe have a way to view notificaiton history though.
+
+Big pretty box with big pretty text. Yellow."
+label_settings = SubResource("LabelSettings_ktti3")
+autowrap_mode = 3
+
+[node name="MusicController" parent="FullScreenArranged/PanelCenter" unique_id=989217081 instance=ExtResource("8_ktti3")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -125.0
+offset_right = 0.0
+offset_bottom = 75.0
+grow_horizontal = 0
+grow_vertical = 1
+pivot_offset = Vector2(-25, 0)
+
+[node name="RowBottom" type="HBoxContainer" parent="FullScreenArranged" unique_id=1087698011]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="PanelActions" type="Panel" parent="FullScreenArranged/RowBottom" unique_id=1978705775]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClusterActions" type="HBoxContainer" parent="FullScreenArranged/RowBottom/PanelActions" unique_id=559702637]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ButtonLedger" type="Button" parent="FullScreenArranged/RowBottom/PanelActions/ClusterActions" unique_id=603894314]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8dubc")
+text = "📖"
+
+[node name="PanelBorder" type="Panel" parent="FullScreenArranged/RowBottom" unique_id=113138834]
+custom_minimum_size = Vector2(50, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="PanelMap" type="Panel" parent="FullScreenArranged/RowBottom" unique_id=1057023646]
+custom_minimum_size = Vector2(50, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClusterMap" type="HBoxContainer" parent="FullScreenArranged/RowBottom/PanelMap" unique_id=2046482228]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="nothing_yet" type="Label" parent="FullScreenArranged/RowBottom/PanelMap/ClusterMap" unique_id=8648549]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "map, relationships, etc?"
+
+[connection signal="button_down" from="FullScreenArranged/RowTop/PanelOptions/ClusterOptions/ButtonMusicPlayer" to="." method="_on_button_music_player_button_down"]
+[connection signal="button_down" from="FullScreenArranged/RowBottom/PanelActions/ClusterActions/ButtonLedger" to="." method="_on_button_ledger_button_down"]
