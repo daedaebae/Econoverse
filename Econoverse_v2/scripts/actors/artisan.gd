@@ -1,7 +1,6 @@
 # --- Artisan.gd ---
 # This is the "Artisan" specific script.
 # It also inherits EVERYTHING from the Character Class (Class_Character.gd)
-@tool
 extends Character
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 # This signal is for the Artisan only.

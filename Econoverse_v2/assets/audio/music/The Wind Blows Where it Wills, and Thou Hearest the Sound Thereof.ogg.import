@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://btbw2frh352d0"
+path="res://.godot/imported/The Wind Blows Where it Wills, and Thou Hearest the Sound Thereof.ogg-ec6898bb6904dadc5bfc4128367c79cb.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/The Wind Blows Where it Wills, and Thou Hearest the Sound Thereof.ogg"
+dest_files=["res://.godot/imported/The Wind Blows Where it Wills, and Thou Hearest the Sound Thereof.ogg-ec6898bb6904dadc5bfc4128367c79cb.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
