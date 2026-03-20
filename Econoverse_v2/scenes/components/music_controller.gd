@@ -19,6 +19,11 @@ func _ready() -> void:
 	_play_current()
 	
 	UI.ButtonMusicPlayerPressed.connect(_on_UI_Music_Player_button)
+	
+	# hidden by default
+	if panel.visible and v_box_container.visible:
+		panel.hide()
+		v_box_container.hide()
 
 func _build_shuffled_order() -> void:
 	shuffled_order = range(playlist.stream_count)
