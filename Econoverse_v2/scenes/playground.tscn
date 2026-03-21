@@ -39,6 +39,9 @@ visible = false
 [node name="UI-Trade" parent="TopLayer" unique_id=2082776193 instance=ExtResource("7_emj6c")]
 visible = false
 
+[node name="UI" parent="TopLayer" unique_id=172092760 instance=ExtResource("15_fn4oh")]
+z_index = 1000
+
 [node name="Boots" type="Sprite2D" parent="." unique_id=1974883372]
 script = ExtResource("12_osidk")
 metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
@@ -70,7 +73,3 @@ metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
 [node name="Whiskey" type="Sprite2D" parent="." unique_id=2040568710]
 script = ExtResource("12_osidk")
 metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
-
-[node name="UI" parent="." unique_id=172092760 instance=ExtResource("15_fn4oh")]
-z_index = 1000
-layout_mode = 1
