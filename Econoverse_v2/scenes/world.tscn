@@ -32,7 +32,7 @@ texture_region_size = Vector2i(48, 40)
 0:0/0/texture_origin = Vector2i(8, 12)
 0:0/0/z_index = 1
 0:0/0/y_sort_origin = -12
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -12, -24, -4, 8, 12, 24, 4)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -32, -8, 0, 8, 16, 0)
 
 [sub_resource type="TileSet" id="TileSet_o6wi6"]
 tile_shape = 1
@@ -87,7 +87,7 @@ z_as_relative = false
 position = Vector2(211.30873, 171.51122)
 scale = Vector2(0.8, 0.8)
 script = ExtResource("6_jhx03")
-speed = 80.0
+speed = 60.0
 char_name = "Player"
 gender = 2
 profession = 0
@@ -104,13 +104,13 @@ inventory = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="Actors/Player" unique_id=905691025]
-zoom = Vector2(1.2, 1.2)
 limit_left = -168
 limit_top = -972
 limit_right = 1184
 limit_bottom = 325
 limit_smoothed = true
 position_smoothing_enabled = true
+position_smoothing_speed = 6.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_limits = true
