@@ -87,7 +87,7 @@ z_as_relative = false
 position = Vector2(211.30873, 171.51122)
 scale = Vector2(0.8, 0.8)
 script = ExtResource("6_jhx03")
-speed = 60.0
+speed = 80.0
 char_name = "Player"
 gender = 2
 profession = 0
@@ -104,6 +104,7 @@ inventory = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="Actors/Player" unique_id=905691025]
+zoom = Vector2(1.5, 1.5)
 limit_left = -168
 limit_top = -972
 limit_right = 1184
