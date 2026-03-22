@@ -24,21 +24,32 @@ offsets = PackedFloat32Array(0, 0.003916449)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_l8rt4"]
 gradient = SubResource("Gradient_xsbao")
-width = 2
+width = 1
 
 [sub_resource type="Gradient" id="Gradient_qhfov"]
-offsets = PackedFloat32Array(0.9908616, 1)
-colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0.99608356, 1)
+colors = PackedColorArray(0, 1, 0.116666794, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_mb87n"]
 gradient = SubResource("Gradient_qhfov")
-width = 2
+width = 1
 
 [sub_resource type="Gradient" id="Gradient_g32o4"]
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ftmn1"]
 gradient = SubResource("Gradient_g32o4")
-width = 2
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_l8rt4"]
+offsets = PackedFloat32Array(0, 0.3067885, 0.7454308, 1)
+colors = PackedColorArray(0.40487903, 0.40487903, 0.40487903, 0, 0.4758, 0.4758, 0.78, 0.47058824, 1, 1, 0.22000003, 0.32941177, 1, 1, 0.21568628, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qhfov"]
+gradient = SubResource("Gradient_l8rt4")
+width = 1
+height = 8
+fill_from = Vector2(0.52307695, 1)
+fill_to = Vector2(0.53023756, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xsbao"]
 content_margin_left = 2.0
@@ -165,10 +176,12 @@ size_flags_vertical = 1
 theme_override_icons/grabber = SubResource("GradientTexture1D_l8rt4")
 theme_override_icons/grabber_highlight = SubResource("GradientTexture1D_mb87n")
 theme_override_icons/grabber_disabled = SubResource("GradientTexture1D_ftmn1")
+theme_override_icons/tick = SubResource("GradientTexture2D_qhfov")
 theme_override_styles/slider = SubResource("StyleBoxFlat_xsbao")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_qhfov")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_l8rt4")
-tick_count = 8
+tick_count = 5
+ticks_position = 3
 
 [node name="ScrubberFullPlaytime" type="Label" parent="FullPlayer/scrubber" unique_id=1109735096]
 custom_minimum_size = Vector2(20, 0)
@@ -204,3 +217,5 @@ offset_bottom = 8.0
 
 [connection signal="button_down" from="FullPlayer/play buttons/ButtonPlayPause" to="." method="_on_button_play_pause_button_down"]
 [connection signal="button_down" from="FullPlayer/play buttons/ButtonSkip" to="." method="_on_button_skip_button_down"]
+[connection signal="drag_ended" from="FullPlayer/scrubber/ScrubberSlidePlaytime" to="." method="_on_scrubber_slide_playtime_drag_ended"]
+[connection signal="drag_started" from="FullPlayer/scrubber/ScrubberSlidePlaytime" to="." method="_on_scrubber_slide_playtime_drag_started"]
