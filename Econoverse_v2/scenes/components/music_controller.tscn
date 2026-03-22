@@ -117,6 +117,11 @@ layout_mode = 2
 [node name="VSlider" type="VSlider" parent="FeatureWishlist/volume controls" unique_id=258805220]
 layout_mode = 2
 
+[node name="⚙ hide advanced controls one layer deeper" type="Button" parent="FeatureWishlist" unique_id=388771375]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
 [node name="Music Player (shuffled)" parent="." unique_id=540266813 instance=ExtResource("1_iko4x")]
 
 [connection signal="button_down" from="VBoxContainer/HBoxContainer/ButtonPlayPause" to="." method="_on_button_play_pause_button_down"]
