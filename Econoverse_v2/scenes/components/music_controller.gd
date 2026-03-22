@@ -11,6 +11,7 @@ extends Control
 @export var scrubber_current_playtime: Label
 @export var scrubber_slide_playtime: HSlider
 @export var scrubber_full_playtime: Label
+var is_scrubbing: bool = false
 
 
 
@@ -49,8 +50,9 @@ func _process(delta: float) -> void:
 	button_play_pause.text = "▶"
 	if music_player__shuffled_.playing:
 		button_play_pause.text = "⏸"
-		scrubber_slide_playtime.value = music_player__shuffled_.get_playback_position()
-		scrubber_current_playtime.text = _format_time(music_player__shuffled_.get_playback_position())
+		if music_player__shuffled_.playing and not is_scrubbing:
+			scrubber_slide_playtime.value = music_player__shuffled_.get_playback_position()
+			scrubber_current_playtime.text = _format_time(music_player__shuffled_.get_playback_position())
 
 func _on_track_finished() -> void:
 	print("signal! _on_track_finished")
@@ -89,3 +91,12 @@ func _format_time(seconds: float) -> String:
 
 func _on_UI_Music_Player_button():
 	toggle()
+
+
+func _on_scrubber_slide_playtime_drag_started() -> void:
+	is_scrubbing = true
+
+func _on_scrubber_slide_playtime_drag_ended(value_changed: bool) -> void:
+	if value_changed:
+		music_player__shuffled_.seek(scrubber_slide_playtime.value)
+	is_scrubbing = false
