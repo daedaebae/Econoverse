@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Stewing.ogg-d62d466e1dc22842fc13a89753af9840.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
 bpm=0
 beat_count=0

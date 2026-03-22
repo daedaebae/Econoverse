@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Tick & Tally.ogg-2d285ef9a6d9b9e1e6b82c607c9b
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
 bpm=0
 beat_count=0

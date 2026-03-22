@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Forthright.ogg-6299a01af5ba366c7fe43c9ec5d7ef
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
 bpm=0
 beat_count=0

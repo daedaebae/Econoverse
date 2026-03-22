@@ -3,10 +3,15 @@
 [sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_j3pel"]
 resource_name = "Limiter"
 
-[sub_resource type="AudioEffectStereoEnhance" id="AudioEffectStereoEnhance_j3pel"]
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_j3pel"]
+resource_name = "Compressor"
+threshold = -3.0
+ratio = 1.5
+sidechain = &"SFX"
+
+[sub_resource type="AudioEffectStereoEnhance" id="AudioEffectStereoEnhance_g28q7"]
 resource_name = "StereoEnhance"
-time_pullout_ms = 2.64
-surround = 0.1
+surround = 0.2
 
 [resource]
 bus/0/effect/0/effect = SubResource("AudioEffectLimiter_j3pel")
@@ -15,10 +20,10 @@ bus/1/name = &"Music"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = -5.993908
+bus/1/volume_db = -12.153925
 bus/1/send = &"Master"
-bus/1/effect/0/effect = SubResource("AudioEffectStereoEnhance_j3pel")
-bus/1/effect/0/enabled = false
+bus/1/effect/0/effect = SubResource("AudioEffectCompressor_j3pel")
+bus/1/effect/0/enabled = true
 bus/2/name = &"SFX"
 bus/2/solo = false
 bus/2/mute = false
@@ -31,3 +36,5 @@ bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = -5.993908
 bus/3/send = &"Master"
+bus/3/effect/0/effect = SubResource("AudioEffectStereoEnhance_g28q7")
+bus/3/effect/0/enabled = true

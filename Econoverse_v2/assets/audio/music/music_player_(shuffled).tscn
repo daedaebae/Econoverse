@@ -12,8 +12,8 @@
 [ext_resource type="AudioStream" uid="uid://btbw2frh352d0" path="res://assets/audio/music/The Wind Blows Where it Wills, and Thou Hearest the Sound Thereof.ogg" id="10_dn3yf"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_rdeg0"]
-shuffle = true
-fade_time = 0.5
+loop = false
+fade_time = 0.0
 stream_count = 10
 stream_0 = ExtResource("1_1d8ga")
 stream_1 = ExtResource("2_okcvy")
@@ -28,6 +28,5 @@ stream_9 = ExtResource("10_dn3yf")
 
 [node name="Music Player (shuffled)" type="AudioStreamPlayer" unique_id=540266813]
 stream = SubResource("AudioStreamPlaylist_rdeg0")
-volume_db = -6.163
-autoplay = true
+max_polyphony = 2
 bus = &"Music"

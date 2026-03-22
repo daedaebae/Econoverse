@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b4tp3y64cadtj" path="res://scenes/components/music_controller.gd" id="1_njyix"]
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="2_1wr5g"]
 [ext_resource type="FontFile" uid="uid://bwgm0rcnkhr36" path="res://assets/fonts/CormorantInfant-VariableFont_wght.ttf" id="2_dna10"]
+[ext_resource type="LabelSettings" uid="uid://dl2jctwf6ni47" path="res://assets/fonts/SmallPoppingText.tres" id="4_xsbao"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dna10"]
 
@@ -18,8 +19,76 @@ outline_size = 1
 outline_color = Color(0.5, 0.50833344, 1, 0.39215687)
 shadow_color = Color(0, 0, 0, 0.39215687)
 
-[node name="MusicController" type="Control" unique_id=989217081 node_paths=PackedStringArray("music_player__shuffled_", "button_play_pause", "button_skip", "track_title", "panel", "v_box_container")]
-custom_minimum_size = Vector2(125, 75)
+[sub_resource type="Gradient" id="Gradient_xsbao"]
+offsets = PackedFloat32Array(0, 0.003916449)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l8rt4"]
+gradient = SubResource("Gradient_xsbao")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_qhfov"]
+offsets = PackedFloat32Array(0.99608356, 1)
+colors = PackedColorArray(0, 1, 0.116666794, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mb87n"]
+gradient = SubResource("Gradient_qhfov")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_g32o4"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ftmn1"]
+gradient = SubResource("Gradient_g32o4")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_l8rt4"]
+offsets = PackedFloat32Array(0, 0.3067885, 0.7454308, 1)
+colors = PackedColorArray(0.40487903, 0.40487903, 0.40487903, 0, 0.4758, 0.4758, 0.78, 0.47058824, 1, 1, 0.22000003, 0.32941177, 1, 1, 0.21568628, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qhfov"]
+gradient = SubResource("Gradient_l8rt4")
+width = 1
+height = 8
+fill_from = Vector2(0.52307695, 1)
+fill_to = Vector2(0.53023756, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xsbao"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.049806766, 0.030102953, 0.005203435, 0.6)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.90588236, 0.90588236, 0.5294118, 1)
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 1
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+shadow_color = Color(0.42352942, 0.33333334, 0.13333334, 0.72156864)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhfov"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 1, 1, 0.4)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l8rt4"]
+bg_color = Color(1, 1, 1, 0.75)
+corner_detail = 1
+
+[node name="MusicController" type="Control" unique_id=989217081 node_paths=PackedStringArray("music_player__shuffled_", "button_play_pause", "button_skip", "track_title", "panel", "v_box_container", "scrubber_current_playtime", "scrubber_slide_playtime", "scrubber_full_playtime")]
+custom_minimum_size = Vector2(140, 100)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,14 +100,16 @@ grow_vertical = 2
 size_flags_vertical = 0
 script = ExtResource("1_njyix")
 music_player__shuffled_ = NodePath("Music Player (shuffled)")
-button_play_pause = NodePath("VBoxContainer/HBoxContainer/ButtonPlayPause")
-button_skip = NodePath("VBoxContainer/HBoxContainer/ButtonSkip")
-track_title = NodePath("VBoxContainer/TrackTitle")
+button_play_pause = NodePath("FullPlayer/play buttons/ButtonPlayPause")
+button_skip = NodePath("FullPlayer/play buttons/ButtonSkip")
+track_title = NodePath("FullPlayer/TrackTitle")
 panel = NodePath("Panel")
-v_box_container = NodePath("VBoxContainer")
+v_box_container = NodePath("FullPlayer")
+scrubber_current_playtime = NodePath("FullPlayer/scrubber/ScrubberCurrentPlaytime")
+scrubber_slide_playtime = NodePath("FullPlayer/scrubber/ScrubberSlidePlaytime")
+scrubber_full_playtime = NodePath("FullPlayer/scrubber/ScrubberFullPlaytime")
 
 [node name="Panel" type="Panel" parent="." unique_id=1186293816]
-custom_minimum_size = Vector2(100, 25)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,64 +118,84 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_1wr5g")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=668842217]
-custom_minimum_size = Vector2(125, 0)
+[node name="FullPlayer" type="VBoxContainer" parent="." unique_id=668842217]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = -2
+theme_override_constants/separation = 2
+alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1327560871]
+[node name="play buttons" type="HBoxContainer" parent="FullPlayer" unique_id=1327560871]
 custom_minimum_size = Vector2(50, 40)
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="ButtonPlayPause" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1004787134]
+[node name="ButtonPlayPause" type="Button" parent="FullPlayer/play buttons" unique_id=1004787134]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/normal = SubResource("StyleBoxEmpty_dna10")
 text = "▶"
 
-[node name="ButtonSkip" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=426201217]
+[node name="ButtonSkip" type="Button" parent="FullPlayer/play buttons" unique_id=426201217]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1wr5g")
 text = "⏯"
 
-[node name="TrackTitle" type="Label" parent="VBoxContainer" unique_id=1254792425]
-custom_minimum_size = Vector2(75, 25)
+[node name="TrackTitle" type="Label" parent="FullPlayer" unique_id=1254792425]
+custom_minimum_size = Vector2(75, 40)
 layout_mode = 2
 text = "Big long placeholder that gets overwritten immediately"
 label_settings = SubResource("LabelSettings_1wr5g")
 horizontal_alignment = 1
 autowrap_mode = 3
 
+[node name="scrubber" type="HBoxContainer" parent="FullPlayer" unique_id=1172094372]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+alignment = 1
+
+[node name="ScrubberCurrentPlaytime" type="Label" parent="FullPlayer/scrubber" unique_id=861661190]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "00:00"
+label_settings = ExtResource("4_xsbao")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrubberSlidePlaytime" type="HSlider" parent="FullPlayer/scrubber" unique_id=470022055]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_icons/grabber = SubResource("GradientTexture1D_l8rt4")
+theme_override_icons/grabber_highlight = SubResource("GradientTexture1D_mb87n")
+theme_override_icons/grabber_disabled = SubResource("GradientTexture1D_ftmn1")
+theme_override_icons/tick = SubResource("GradientTexture2D_qhfov")
+theme_override_styles/slider = SubResource("StyleBoxFlat_xsbao")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_qhfov")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_l8rt4")
+tick_count = 5
+ticks_position = 3
+
+[node name="ScrubberFullPlaytime" type="Label" parent="FullPlayer/scrubber" unique_id=1109735096]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "00:00"
+label_settings = ExtResource("4_xsbao")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="FeatureWishlist" type="Control" parent="." unique_id=589541768]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="CurrentPlaytime" type="Label" parent="FeatureWishlist" unique_id=861661190]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="PlaytimeScrub" type="HSlider" parent="FeatureWishlist" unique_id=470022055]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 16.0
-
-[node name="FullPlaytime" type="Label" parent="FeatureWishlist" unique_id=1109735096]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
 
 [node name="volume controls" type="HBoxContainer" parent="FeatureWishlist" unique_id=555014709]
 layout_mode = 0
@@ -117,7 +208,14 @@ layout_mode = 2
 [node name="VSlider" type="VSlider" parent="FeatureWishlist/volume controls" unique_id=258805220]
 layout_mode = 2
 
+[node name="⚙ hide advanced controls" type="Button" parent="FeatureWishlist" unique_id=388771375]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
 [node name="Music Player (shuffled)" parent="." unique_id=540266813 instance=ExtResource("1_iko4x")]
 
-[connection signal="button_down" from="VBoxContainer/HBoxContainer/ButtonPlayPause" to="." method="_on_button_play_pause_button_down"]
-[connection signal="button_down" from="VBoxContainer/HBoxContainer/ButtonSkip" to="." method="_on_button_skip_button_down"]
+[connection signal="button_down" from="FullPlayer/play buttons/ButtonPlayPause" to="." method="_on_button_play_pause_button_down"]
+[connection signal="button_down" from="FullPlayer/play buttons/ButtonSkip" to="." method="_on_button_skip_button_down"]
+[connection signal="drag_ended" from="FullPlayer/scrubber/ScrubberSlidePlaytime" to="." method="_on_scrubber_slide_playtime_drag_ended"]
+[connection signal="drag_started" from="FullPlayer/scrubber/ScrubberSlidePlaytime" to="." method="_on_scrubber_slide_playtime_drag_started"]
