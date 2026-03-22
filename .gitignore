@@ -4,6 +4,7 @@
 .vscode
 .DS_Store
 .continue/
+.claude/
 
 # Godot-specific ignores
 export.cfg
@@ -17,3 +18,4 @@ addons/Todo_Manager/todo.cfg
 *.csproj
 *.sln
 
+CLAUDE.md
