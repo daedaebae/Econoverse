@@ -19,3 +19,5 @@ addons/Todo_Manager/todo.cfg
 *.sln
 
 CLAUDE.md
+.claude/settings.local.json
+CLAUDE.md
