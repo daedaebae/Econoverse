@@ -16,12 +16,13 @@ var game_hour: float = 0.0
 func _ready() -> void:
 	_open_log_file()
 	GameController.register_logger(self)
+	log_info("=== SESSION START ===")
+	#Heartbeat check-in to log every 1 minute.
 	var timer := Timer.new()
 	timer.wait_time = 60.0
 	timer.autostart = true
 	timer.timeout.connect(_on_heartbeat)
 	add_child(timer)
-	log_info("=== SESSION START ===")
 
 func _exit_tree() -> void:
 	log_info("=== SESSION END ===")
@@ -82,6 +83,7 @@ func set_game_time(day: int, hour: float) -> void:
 	game_day = day
 	game_hour = hour
 
+# Check-in on log every 1 minute
 func _on_heartbeat() -> void:
 	log_info("♥ " + WorldClock.get_time_string())
 
