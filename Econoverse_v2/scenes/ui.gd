@@ -17,6 +17,8 @@ extends Control
 #TODO kc - consider texture rect buttons, better feel and response
 #TODO kc - integrate sound handling for butons only. press and release sounds for juicy feel. UI/action appears on releasee of buttons.
 
+var label_time: Label
+
 @export_category("Info Cluster")
 @export var label_coin_quantity: Label
 
@@ -39,7 +41,14 @@ signal ButtonLedgerPressed
 signal ButtonMusicPlayerPressed
 
 func _ready() -> void:
-	pass
+	WorldClock.time_changed.connect(_on_time_changed)
+	call_deferred("_set_initial_time")
+
+
+func _set_initial_time() -> void:
+	label_time = find_child("LabelTime", true, false)
+	if label_time:
+		label_time.text = WorldClock.get_time_string()
 	
 	# list any inbound signal connections here, to ensure the scene is ready
 	# maybe there is a signal to pass user preferences in for the UI. another
@@ -54,6 +63,10 @@ func _process(delta: float) -> void:
 	
 	# state machine to handle a combination of UI elements on screen
 	# review gameplay of other UI-rich games -- static or moveable windows?
+
+func _on_time_changed(_day: int, _hour: int, _minute: int) -> void:
+	if label_time:
+		label_time.text = WorldClock.get_time_string()
 
 # various button pressed functions to emit their signals and enable various
 # functions and mechanics to kick off

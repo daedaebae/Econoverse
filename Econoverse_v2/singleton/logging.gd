@@ -16,6 +16,11 @@ var game_hour: float = 0.0
 func _ready() -> void:
 	_open_log_file()
 	GameController.register_logger(self)
+	var timer := Timer.new()
+	timer.wait_time = 60.0
+	timer.autostart = true
+	timer.timeout.connect(_on_heartbeat)
+	add_child(timer)
 	log_info("=== SESSION START ===")
 
 func _exit_tree() -> void:
@@ -41,7 +46,13 @@ func _open_log_file() -> void:
 
 func _timestamp() -> String:
 	var real := Time.get_datetime_string_from_system()
-	var game := "Day %d  %02d:00" % [game_day, int(game_hour)]
+	var h := int(game_hour)
+	var m := int((game_hour - h) * 60)
+	var meridian := "am" if h < 12 else "pm"
+	var display_h := h if h <= 12 else h - 12
+	if display_h == 0:
+		display_h = 12
+	var game := "Day %d  %02d:%02d%s" % [game_day, display_h, m, meridian]
 	return "[%s | GameTime: %s]" % [real, game]
 
 func _write(level: String, message: String) -> void:
@@ -70,6 +81,9 @@ func log_error(message: String) -> void:
 func set_game_time(day: int, hour: float) -> void:
 	game_day = day
 	game_hour = hour
+
+func _on_heartbeat() -> void:
+	log_info("♥ " + WorldClock.get_time_string())
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_log"):

@@ -307,6 +307,34 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "info cluster (track gold etc)"
 
+[node name="WorldClock" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo" unique_id=672933165]
+layout_mode = 2
+
+[node name="PanelClock?" type="Panel" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/WorldClock" unique_id=878355632]
+visible = false
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("5_7dvkv")
+
+[node name="ClockIcon?" type="TextureRect" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/WorldClock/PanelClock?" unique_id=228940724]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 17.0
+offset_bottom = 17.0
+
+[node name="LabelTime" type="Label" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/WorldClock" unique_id=1184779159]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+text = "05:00am"
+label_settings = SubResource("LabelSettings_6rmj2")
+horizontal_alignment = 2
+vertical_alignment = 1
+
 [node name="TrackerCoin" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo" unique_id=1263674082]
 layout_mode = 2
 

@@ -46,7 +46,7 @@ func register_ledger(ledger: Control):
 # Register the clock
 func register_clock(clock: Node) -> void:
 	clock_node = clock
-
+	
 #endregion Registration Functions
 
 #region Logic Handlers

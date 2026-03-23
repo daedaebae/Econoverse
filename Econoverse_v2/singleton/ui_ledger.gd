@@ -12,10 +12,20 @@ extends Control
 #TODO: append ledger to game log. 
 func _ready() -> void:
 	GameController.register_ledger(self)
-	
+	UI.ButtonLedgerPressed.connect(_toggle)
+	call_deferred("_fix_scroll_mouse_filter")
+
 	#TODO: Add: If game-save/game-log present: then don't set values
 	# If new game then clean ledger
 	clean_ledger()
+
+func _fix_scroll_mouse_filter() -> void:
+	var vbox := $LedgerDisplayBox/ScrollContainer/VBoxContainer
+	vbox.mouse_filter = Control.MOUSE_FILTER_PASS
+	for row in vbox.get_children():
+		row.mouse_filter = Control.MOUSE_FILTER_PASS
+		for child in row.get_children():
+			child.mouse_filter = Control.MOUSE_FILTER_PASS
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -46,7 +56,7 @@ func _process(delta: float) -> void:
 @onready var item_amount2: int = 0
 
 func clean_ledger():
-	var rows = $LedgerDisplayBox/ScrollContainer/VBoxContainer.get_children()
+	var rows = %LedgerDisplayBox/ScrollContainer/VBoxContainer.get_children()
 	print(rows)
 	for row in rows:
 		var labels = (row.get_children())
@@ -58,9 +68,15 @@ func clean_ledger():
 			pass
 	pass
 
-#TODO: If L pressed again close the menu
 func _input(event):
 	if event.is_action_pressed("open_ledger"):
+		_toggle()
+
+func _toggle() -> void:
+	if visible:
+		hide()
+		sound_hide.play()
+	else:
 		show()
 		sound_show.play()
 	
@@ -70,8 +86,8 @@ func _update_label(Label, label_text):
 	Label.text = label_text
 
 # --- Signal Connections ---
-func _on_button_cancel_pressed() -> void:
-	hide()
+func open_ledger() -> void:
+	_toggle()
 	sound_hide.play()
 
 func _on_button_last_page_pressed() -> void:
