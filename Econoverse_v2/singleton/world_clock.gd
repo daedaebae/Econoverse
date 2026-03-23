@@ -6,7 +6,7 @@ signal time_changed(day: int, hour: int, minute: int)
 @export var seconds_per_game_minute: float = 1.0
 
 var day: int = 1
-var hour: int = 6       # start at 6am                                                                                                                                                                                                                 
+var hour: int = 5      # start at 5am                                                                                                                                                                                                                 
 var minute: int = 0
 var _accumulator: float = 0.0
 var _paused: bool = false                                                                                                                                                                                                                              
@@ -19,10 +19,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if _paused:
 		return
-		_accumulator += delta                                                                                                                                                                                                                              
+	_accumulator += delta                                                                                                                                                                                                                              
 	if _accumulator >= seconds_per_game_minute:
-		_accumulator -= seconds_per_game_minute                                                                                                                                                                                                        
-	_tick() 
+		_accumulator -= seconds_per_game_minute
+		_tick()
 
 #endregion Lifecycle                                                                                                                                                                                                                                   
 

@@ -32,5 +32,9 @@ func _load_existing_logs() -> void:
 			output.append_text(line + "\n")
 	f.close()
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("toggle_log"):
+		hide()
+
 func _on_log_written(entry: String) -> void:
 	output.append_text(entry + "\n")

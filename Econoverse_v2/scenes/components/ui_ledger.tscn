@@ -32,6 +32,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="LedgerDisplayBox" type="VBoxContainer" parent="." unique_id=450936102]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -128,11 +129,13 @@ text = "|"
 [node name="ScrollContainer" type="ScrollContainer" parent="LedgerDisplayBox" unique_id=65694372]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LedgerDisplayBox/ScrollContainer" unique_id=2040431013]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 0
+mouse_filter = 1
 
 [node name="Row1" type="HBoxContainer" parent="LedgerDisplayBox/ScrollContainer/VBoxContainer" unique_id=989492977]
 layout_mode = 2
@@ -891,12 +894,10 @@ size_flags_vertical = 8
 alignment = 2
 
 [node name="ButtonReset" type="Button" parent="LedgerDisplayBox/ActionsRow" unique_id=463680071]
+visible = false
 layout_mode = 2
 text = "Reset"
 
-[node name="ButtonCancel" type="Button" parent="LedgerDisplayBox/ActionsRow" unique_id=2075981986]
-layout_mode = 2
-text = "Cancel"
 
 [node name="SfxIncrement" type="AudioStreamPlayer" parent="." unique_id=783048655]
 stream = ExtResource("3_mldyh")
@@ -911,4 +912,3 @@ stream = ExtResource("5_1ie5g")
 stream = ExtResource("6_368o0")
 
 [connection signal="pressed" from="LedgerDisplayBox/ActionsRow/ButtonReset" to="." method="open_ledger"]
-[connection signal="pressed" from="LedgerDisplayBox/ActionsRow/ButtonCancel" to="." method="_on_button_cancel_pressed"]

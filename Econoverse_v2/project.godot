@@ -35,6 +35,7 @@ UITrade="*res://singleton/ui_trade.gd"
 CharacterNode="*res://scripts/actors/Class_Character.gd"
 AudioMaster="*res://singleton/audio_master.tscn"
 AudioMasterScript="*res://singleton/audio_master_script.gd"
+WorldClock="*uid://b5okat4hdsomi"
 
 [display]
 
