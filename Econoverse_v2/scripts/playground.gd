@@ -3,6 +3,9 @@ extends Control
 # Preload the UI scene
 @export var TradeUI: Control
 
+@onready var logs_window: Window = $"Logs Window"                                                                                                                                                                                                 
+
+
 # This is your existing function. It will be CALLED BY the UI.
 func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_get: String):
 	#whasappenin'
@@ -23,3 +26,7 @@ func start_trade_with_npc(npc_node):
 	
 	# Call the global Autoload instance directly
 	TradeUI.open_trade(self, npc_node, player_gives_item, npc_gives_item)
+
+func _input(event: InputEvent) -> void:                                                                                                                                                                                                                
+	if event.is_action_pressed("toggle_log"):                                                                                                                                                                                                        
+		logs_window.visible = !logs_window.visible

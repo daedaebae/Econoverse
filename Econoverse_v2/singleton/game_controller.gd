@@ -12,12 +12,19 @@ extends Node
 ## player and values. 
 
 # We will store references to key nodes as they "check in"
+var logger_node: Node = null
 var player_node: Node = null
 var trade_ui_node: Control = null
 var ledger_node: Control = null
+var artisan_nodes = (null)
+var clock_node: Node = null
 
 #region Registration Functions
 # Other nodes will call these functions to let us know they exist.
+
+# Register the log
+func register_logger(logger: Node) -> void:
+	logger_node = logger
 
 func register_player(player: Node):
 	player_node = player
@@ -35,7 +42,11 @@ func register_artisan(artisan: Node):
 # Register the ledger to the game_controller
 func register_ledger(ledger: Control):
 	ledger_node = ledger
-	
+
+# Register the clock
+func register_clock(clock: Node) -> void:
+	clock_node = clock
+
 #endregion Registration Functions
 
 #region Logic Handlers
