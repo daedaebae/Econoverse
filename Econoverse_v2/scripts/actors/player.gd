@@ -6,10 +6,6 @@ extends Character
 # We can add player-specific logic here, like movement.
 @export var speed: float = 300.0
 
-
-
-# _ready() is a "virtual" function. This code will run
-# IN ADDITION to any _ready() code in Character.gd.
 func _ready():
 	# Register player_node with game_controller
 	GameController.register_player(self)

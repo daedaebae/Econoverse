@@ -17,6 +17,9 @@ extends Control
 #TODO kc - consider texture rect buttons, better feel and response
 #TODO kc - integrate sound handling for butons only. press and release sounds for juicy feel. UI/action appears on releasee of buttons.
 
+@export_category("Info Cluster")
+@export var label_coin_quantity: Label
+
 # list all exports, including references to buttons and other dynamic elements
 @export_category("Buttons")
 @export var button_ledger: Button
@@ -45,6 +48,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	pass
+	#TODO kc 3/22/26: need to make player inventory amounts global
+	#if player: 
+		#label_coin_quantity.text = player.coins
+	
 	# state machine to handle a combination of UI elements on screen
 	# review gameplay of other UI-rich games -- static or moveable windows?
 
