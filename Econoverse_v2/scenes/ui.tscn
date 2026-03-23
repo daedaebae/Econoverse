@@ -4,13 +4,24 @@
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="1_x4jx1"]
 [ext_resource type="Script" uid="uid://cr681lcqswbv5" path="res://scenes/ui.gd" id="2_gdt2y"]
 [ext_resource type="FontFile" uid="uid://c15bkghedjxxy" path="res://assets/fonts/ModernAntiqua-Regular.ttf" id="3_yev5y"]
+[ext_resource type="StyleBox" uid="uid://bpj06k16fn21n" path="res://scenes/themes/StyleBoxTexture - scrappy background.tres" id="5_7dvkv"]
 [ext_resource type="FontFile" uid="uid://bwgm0rcnkhr36" path="res://assets/fonts/CormorantInfant-VariableFont_wght.ttf" id="5_8dubc"]
 [ext_resource type="StyleBox" uid="uid://b25n2vxk82fqm" path="res://scenes/themes/style_box_flat-GOLDfirst.tres" id="6_p7vwb"]
+[ext_resource type="Texture2D" uid="uid://c2o3ql01h5dt3" path="res://assets/image/sprite/items/coin.png" id="6_vdcm2"]
 [ext_resource type="LabelSettings" uid="uid://dl2jctwf6ni47" path="res://assets/fonts/SmallPoppingText.tres" id="7_p7vwb"]
 [ext_resource type="PackedScene" uid="uid://dlou83bkslg6b" path="res://scenes/components/music_controller.tscn" id="8_ktti3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4jx1"]
 bg_color = Color(0, 0, 0, 0.5921569)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6rmj2"]
+line_spacing = 1.0
+font = ExtResource("5_8dubc")
+font_size = 8
+outline_size = 1
+outline_color = Color(0.75, 0.75, 0, 0.7294118)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.69411767)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wm3ai"]
 
@@ -27,7 +38,7 @@ shadow_color = Color(0, 0, 0, 0.69411767)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8dubc"]
 
-[node name="UI" type="Control" unique_id=172092760 node_paths=PackedStringArray("button_ledger", "button_music_player", "music_controller")]
+[node name="UI" type="Control" unique_id=172092760 node_paths=PackedStringArray("label_coin_quantity", "button_ledger", "button_music_player", "music_controller")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,6 +47,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_x4jx1")
 script = ExtResource("2_gdt2y")
+label_coin_quantity = NodePath("FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerCoin/LabelCoinQuantity")
 button_ledger = NodePath("FullScreenArranged/RowBottom/PanelActions/ClusterActions/ButtonLedger")
 button_music_player = NodePath("FullScreenArranged/RowTop/PanelOptions/ClusterOptions/ButtonMusicPlayer")
 music_controller = NodePath("FullScreenArranged/PanelCenter/MusicController")
@@ -290,9 +302,37 @@ grow_vertical = 2
 alignment = 1
 
 [node name="nothing_yet" type="Label" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo" unique_id=1175387367]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "info cluster (track gold etc)"
+
+[node name="TrackerCoin" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo" unique_id=1263674082]
+layout_mode = 2
+
+[node name="PanelCoin" type="Panel" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerCoin" unique_id=1074229929]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("5_7dvkv")
+
+[node name="TexCoin" type="TextureRect" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerCoin/PanelCoin" unique_id=1446455503]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 17.0
+offset_bottom = 17.0
+texture = ExtResource("6_vdcm2")
+
+[node name="LabelCoinQuantity" type="Label" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerCoin" unique_id=2131477452]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_6rmj2")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="PanelBorder" type="Panel" parent="FullScreenArranged/RowTop" unique_id=645754961]
 custom_minimum_size = Vector2(25, 10)

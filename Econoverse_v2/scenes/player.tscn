@@ -11,6 +11,17 @@ collision_layer = 2
 collision_mask = 3
 input_pickable = true
 script = ExtResource("1_g2els")
+inventory = {
+"Boots": 0,
+"Coins": 5,
+"Corn": 0,
+"Horses": 0,
+"Lumber": 0,
+"Stone": 0,
+"Strudel": 0,
+"Sword": 0,
+"Whiskey": 0
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=124601216]
 z_index = 1
