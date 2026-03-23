@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c81dcduek3q67" path="res://singleton/audio_master.tscn" id="2_2bfhc"]
 [ext_resource type="PackedScene" uid="uid://3nywtukipfm7" path="res://scenes/world.tscn" id="3_mrac1"]
 [ext_resource type="PackedScene" uid="uid://cs7gurkoxmber" path="res://scenes/ui_trade.tscn" id="7_emj6c"]
+[ext_resource type="Script" uid="uid://c6gn0xd2ay1ib" path="res://scripts/ui_log_window.gd" id="9_2q4k0"]
 [ext_resource type="AudioStream" uid="uid://dh0c67pmqa25i" path="res://assets/audio/ambience/overworld nature 1.ogg" id="11_rdeg0"]
 [ext_resource type="Script" uid="uid://dk1uf4u80ps7x" path="res://scripts/commodities/Class_Item.gd" id="12_osidk"]
 [ext_resource type="PackedScene" uid="uid://3ru2w73jcfi0" path="res://scenes/ui_ledger.tscn" id="13_fn4oh"]
@@ -41,6 +42,26 @@ visible = false
 
 [node name="UI" parent="TopLayer" unique_id=172092760 instance=ExtResource("15_fn4oh")]
 z_index = 1000
+
+[node name="Logs Window" type="Window" parent="TopLayer/UI" unique_id=1344885883]
+oversampling_override = 1.0
+title = "Logs"
+position = Vector2i(20, 300)
+size = Vector2i(600, 50)
+script = ExtResource("9_2q4k0")
+
+[node name="LogOutput" type="RichTextLabel" parent="TopLayer/UI/Logs Window" unique_id=1292108859]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+scroll_following = true
+selection_enabled = true
 
 [node name="Boots" type="Sprite2D" parent="." unique_id=1974883372]
 script = ExtResource("12_osidk")
