@@ -28,12 +28,14 @@ buses/default_bus_layout="uid://yicjv23th881"
 
 [autoload]
 
+Logging="*uid://14ccq2wkrhxl"
 GameController="*res://singleton/game_controller.gd"
 UI="*uid://cr681lcqswbv5"
 UITrade="*res://singleton/ui_trade.gd"
 CharacterNode="*res://scripts/actors/Class_Character.gd"
 AudioMaster="*res://singleton/audio_master.tscn"
 AudioMasterScript="*res://singleton/audio_master_script.gd"
+WorldClock="*uid://b5okat4hdsomi"
 
 [display]
 
@@ -103,6 +105,11 @@ move_right={
 open_ledger={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":76,"key_label":0,"unicode":108,"location":0,"echo":false,"script":null)
+]
+}
+toggle_log={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":67,"key_label":0,"unicode":99,"location":0,"echo":false,"script":null)
 ]
 }
 

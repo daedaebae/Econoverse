@@ -7,6 +7,7 @@ extends Control
 	# logs of where, how, how much of an item moved and at what price, how the prices changed during the move
 # This ledger will be registered with the game_controller and will be called upon as the source of truth for prices,
 # transactions, and rates.
+#TODO: durf - need to connect all the values within the ledger.
 
 # Register the ledger with the game contoller
 func _ready() -> void:
@@ -15,4 +16,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	pass 
