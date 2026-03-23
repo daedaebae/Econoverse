@@ -328,7 +328,7 @@ offset_bottom = 17.0
 
 [node name="LabelTime" type="Label" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/WorldClock" unique_id=1184779159]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(16, 0)
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 text = "05:00am"
 label_settings = SubResource("LabelSettings_6rmj2")
@@ -355,7 +355,7 @@ offset_bottom = 17.0
 texture = ExtResource("6_vdcm2")
 
 [node name="LabelCoinQuantity" type="Label" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerCoin" unique_id=2131477452]
-custom_minimum_size = Vector2(16, 0)
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_6rmj2")

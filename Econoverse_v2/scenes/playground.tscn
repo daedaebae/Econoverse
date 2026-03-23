@@ -44,7 +44,7 @@ visible = false
 [node name="UI" parent="TopLayer" unique_id=172092760 instance=ExtResource("15_fn4oh")]
 z_index = 1000
 
-[node name="Logs Window" type="Window" parent="TopLayer/UI" unique_id=1344885883]
+[node name="Logs Window" type="Window" parent="TopLayer" unique_id=1344885883]
 oversampling_override = 1.0
 title = "Logs"
 position = Vector2i(20, 300)
@@ -52,7 +52,7 @@ size = Vector2i(600, 50)
 visible = false
 script = ExtResource("9_2q4k0")
 
-[node name="LogOutput" type="RichTextLabel" parent="TopLayer/UI/Logs Window" unique_id=1292108859]
+[node name="LogOutput" type="RichTextLabel" parent="TopLayer/Logs Window" unique_id=1292108859]
 unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
