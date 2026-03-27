@@ -11,7 +11,6 @@ extends Control
 
 # Register the ledger with the game contoller
 func _ready() -> void:
-	GameController.register_ledger(self)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

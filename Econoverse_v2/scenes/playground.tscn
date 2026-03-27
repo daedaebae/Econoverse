@@ -38,11 +38,15 @@ parameters/looping = true
 visible = false
 z_index = 2000
 
-[node name="UI-Trade" parent="TopLayer" unique_id=2082776193 instance=ExtResource("7_emj6c")]
-visible = false
-
 [node name="UI" parent="TopLayer" unique_id=172092760 instance=ExtResource("15_fn4oh")]
 z_index = 1000
+
+[node name="UI-Trade" parent="TopLayer" unique_id=2082776193 instance=ExtResource("7_emj6c")]
+visible = false
+offset_left = -100.0
+offset_top = -130.0
+offset_right = 100.0
+offset_bottom = 130.0
 
 [node name="Logs Window" type="Window" parent="TopLayer" unique_id=1344885883]
 oversampling_override = 1.0
