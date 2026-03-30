@@ -1,10 +1,11 @@
-# Godot 4+ specific ignores
+# Ignores
 .godot/
 /android/
 .vscode
 .DS_Store
 .continue/
 .claude/
+*.log
 
 # Godot-specific ignores
 export.cfg
