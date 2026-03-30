@@ -73,12 +73,27 @@ func _on_artisan_clicked(npc_who_was_clicked: Node):
 	trade_ui_node.open_trade(player_node, npc_who_was_clicked, player_gives_item, npc_gives_item)
 
 # Register trade to game controller
-func _on_trade_complete(trade_instance: Callable):
-	# log it
-	print(trade_instance)
-	# add it to the ledger
-	ledger_node.track(trade_instance)
+func on_trade_complete(trade: Dictionary) -> void:
+	#DEBUG Print Statements
+	# Confirms GameController received the trade dictionary from Class_Character.
+	# If this doesn't print, the on_trade_complete() call in Class_Character.gd didn't reach here.
+	print("[GAME_CONTROLLER] on_trade_complete received: ", trade)
+	# Shows what ledger_node is pointing to. If null, register_ledger() was never called
+	# or ui_ledger hasn't loaded yet.
+	print("[GAME_CONTROLLER] ledger_node is: ", ledger_node)
 
+	# Builds a formatted log string by slotting the trade dictionary values into a template.
+	# %s = string, %d = integer. So for a trade where the player gives 10 Coins for 1 Sword from Bogus Buchannon, it produces:
+	# TRADE: Player gave 10 Coins for 1 Sword from Bogus Buchannon
+	var msg = "TRADE: %s gave %d %s for %d %s from %s" % [
+		trade.trader, trade.val_give, trade.item_give,
+		trade.val_get, trade.item_get, trade.tradee
+	]
+	# Above string is then passed to Logging.log_info(msg) on the next line, which writes it to the log file and emits it to the log window. 
+	Logging.log_info(msg)
+	if ledger_node:
+		ledger_node.track(trade)
+		
 #endregion Logic Handlers
 
 #region Debug

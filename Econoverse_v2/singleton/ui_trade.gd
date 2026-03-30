@@ -75,7 +75,6 @@ func _update_labels():
 
 
 # --- Signal Connections ---
-
 func _on_button_trade_pressed() -> void:
 	if current_give_amount == 0 and current_get_amount == 0:
 		print("No trade specified.")

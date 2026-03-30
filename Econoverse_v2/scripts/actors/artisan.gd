@@ -10,17 +10,15 @@ func _ready():
 	# "Hello GameController, I am an artisan. Listen to me."
 	# ONLY artisans register as an artisan.
 	GameController.register_artisan(self)
-	
-	if not input_event.is_connected(_on_input_event):
-		input_event.connect(_on_input_event)
 
 # This is the click-handler.
 # It will now be called when the Artisan's *own* shape is clicked.
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int):
-	
+func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() \
-	and event.button_index == MOUSE_BUTTON_LEFT:
-		
-		# Emit the signal from the Artisan (self)
-		artisan_clicked.emit(self)
-		print( self.char_name + " was clicked, emits signal." )
+		and event.button_index == MOUSE_BUTTON_LEFT:
+		if GameController.trade_ui_node and GameController.trade_ui_node.visible:
+			return
+		var mouse_pos = get_global_mouse_position()
+		if global_position.distance_to(mouse_pos) < 20:
+			artisan_clicked.emit(self)
+			get_viewport().set_input_as_handled()

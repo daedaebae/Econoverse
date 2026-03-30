@@ -8,7 +8,6 @@ extends CharacterBody2D
 # view simple details. Could also design a way for entities to not provide full details until they are
 # met/discovered. Curiosity opportunity
 @onready var mouse_position: Vector2
-#TODO: durf- char_name is not ideal! X-D
 @export var char_name: String = "Name"
 @export var location: Location = Location.TOWN_SQUARE
 @export var gender: Gender
@@ -49,9 +48,29 @@ func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_g
 		# Player get val2# of item_get from whom
 		self.inventory[item_get] = (self.inventory[item_get] + valGet)
 		whom.inventory[item_get] = (whom.inventory[item_get] - valGet)
+
 		#Print player inventory.
 		print_inv_values()
-		
+
+		#DEBUG Print Statements
+		# Confirms a valid trade passed all checks and inventory has been updated.
+		# Shows who traded what, quantities, and both parties involved.
+		print("[TRADE] Initiating: ", self.char_name, " → ", whom.char_name, " | giving ", valGive, " ", item_give, " for ", valGet, " ", item_get)
+		# Confirms the GameController is about to be notified. If you see [TRADE] but not
+		# [GAME_CONTROLLER], the on_trade_complete() call or the GC reference is broken.
+		print("[TRADE] Inventory updated. Notifying GameController.")
+
+		# GameController Pipeline
+		# Notify the GameController that a trade has been completed.
+		# This sends a dictionary containing details about the trade.
+		GameController.on_trade_complete({
+			"trader": self.char_name,
+			"tradee": whom.char_name,
+			"item_give": item_give,
+			"val_give": valGive,
+			"item_get": item_get,
+			"val_get": valGet,
+		})
 #endregion CharFunctions
 
 #TEST: kc 10/25/25 commented out this version and 
@@ -105,6 +124,7 @@ enum State{
 	TRAVELING
 }
 
+# Sets player profession (1 at a time)
 enum Profession{
 	BAKER,
 	BREWER,

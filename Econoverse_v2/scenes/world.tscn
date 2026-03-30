@@ -172,4 +172,16 @@ z_as_relative = false
 position = Vector2(276, 136)
 scale = Vector2(0.8, 0.8)
 script = ExtResource("8_xo05s")
-char_name = "Butthead"
+char_name = "Carpenter"
+profession = 2
+inventory = {
+"Boots": 0,
+"Coins": 0,
+"Corn": 0,
+"Horses": 0,
+"Lumber": 0,
+"Stone": 0,
+"Strudel": 0,
+"Sword": 2,
+"Whiskey": 0
+}
