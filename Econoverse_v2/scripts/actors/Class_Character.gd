@@ -27,21 +27,45 @@ extends CharacterBody2D
 }
 @export var met : bool = false
 
+# Maps each profession to the item they produce and sell.
+# Used by artisan.gd to auto-set offered_item from profession.
+const PROFESSION_ITEM: Dictionary = {
+	Profession.BAKER:       "Strudel",
+	Profession.BREWER:      "Whiskey",
+	Profession.CARPENTER:   "Lumber",
+	Profession.MASON:       "Stone",
+	Profession.SMITH:       "Sword",
+	Profession.STABLEMASTER: "Horses",
+	Profession.TANNER:      "Boots",
+	Profession.UNEMPLOYED:  "Corn",
+}
+
 #region CharFunctions
 
 func print_inv_values():
 	print (self.char_name," Inventory: ",self.inventory)
 
-#TODO: durf- simplify params to use dictionary pulled from player inventory?
+# Returns only items with a quantity greater than 0.
+# Used by inventory UI to decide what to display.
+func get_visible_inventory() -> Dictionary:
+	var visible := {}
+	for item in inventory:
+		if inventory[item] > 0:
+			visible[item] = inventory[item]
+	return visible
+
+#TODO: durf- simplify params to use dictionary pulled from character inventory?
 func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_get: String):
 	# Check if the values are higher than what is in Character Inventories.
 	if valGive > self.inventory[item_give]:
-		print("Can't make that trade, not enough ", item_give, ".")
+		Logging.log_warn("Trade rejected: %s does not have enough %s (has %d, needs %d)." \
+			% [char_name, item_give, self.inventory[item_give], valGive])
 	elif valGet > whom.inventory[item_get]:
-		print("Can't make that trade, not enough ", item_get, ".")
+		Logging.log_warn("Trade rejected: %s does not have enough %s (has %d, needs %d)." \
+			% [whom.char_name, item_get, whom.inventory[item_get], valGet])
 	else:
-		# Print what is happening.
-		print("Player traded ",whom.char_name," ",valGive," ",item_give," for ",valGet," ",item_get)
+		Logging.log_info("Trade executed: %s gave %d %s to %s for %d %s." \
+			% [char_name, valGive, item_give, whom.char_name, valGet, item_get])
 		# Player give val1# of item_give to the whom
 		self.inventory[item_give] = (self.inventory[item_give] - valGive)
 		whom.inventory[item_give] = (whom.inventory[item_give] + valGive)
@@ -117,14 +141,14 @@ func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_g
 func _ready() -> void:
 	pass
 
-# Sets the player state to show what they are doing.
+# Sets the character state to show what they are doing.
 enum State{
 	INTERACTING,
 	MENU,
 	TRAVELING
 }
 
-# Sets player profession (1 at a time)
+# Sets character profession (1 at a time)
 enum Profession{
 	BAKER,
 	BREWER,

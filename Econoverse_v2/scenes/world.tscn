@@ -108,16 +108,15 @@ y_sort_enabled = true
 [node name="Player" parent="Actors" unique_id=324386717 instance=ExtResource("5_q5onr")]
 z_as_relative = false
 position = Vector2(211.30873, 171.51122)
-scale = Vector2(0.8, 0.8)
 script = ExtResource("6_jhx03")
 speed = 80.0
 char_name = "Player"
 gender = 2
 profession = 0
 inventory = {
-"Boots": 0,
-"Coins": 10,
-"Corn": 0,
+"Boots": 2,
+"Coins": 200,
+"Corn": 50,
 "Horses": 0,
 "Lumber": 0,
 "Stone": 0,
@@ -139,49 +138,192 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_limits = true
 
-[node name="Bogus Buchannon" parent="Actors" unique_id=696976295 instance=ExtResource("7_o8fc1")]
+[node name="Baker" parent="Actors" unique_id=696976295 instance=ExtResource("7_o8fc1")]
+modulate = Color(0.81938946, 0.95567757, 2.3102762e-06, 1)
+z_as_relative = false
+position = Vector2(1231.8237, 606.9856)
+script = ExtResource("8_xo05s")
+offered_item = ""
+wanted_item = "Coins"
+char_name = "Baker"
+gender = 1
+profession = 0
+inventory = {
+"Boots": 2,
+"Coins": 75,
+"Corn": 150,
+"Horses": 2,
+"Lumber": 50,
+"Stone": 40,
+"Strudel": 40,
+"Sword": 1,
+"Whiskey": 1
+}
+
+[node name="Bogus Buchannon" parent="Actors" unique_id=1263543805 instance=ExtResource("7_o8fc1")]
 modulate = Color(0.97235805, 0.22522166, 0.5298163, 1)
 z_as_relative = false
-position = Vector2(911, -455.99994)
-scale = Vector2(0.8, 0.8)
+position = Vector2(844, -455)
 script = ExtResource("8_xo05s")
+offered_item = ""
+wanted_item = "Coins"
 char_name = "Bogus Buchannon"
 inventory = {
-"Boots": 0,
-"Coins": 0,
-"Corn": 0,
-"Horses": 0,
-"Lumber": 0,
-"Stone": 0,
-"Strudel": 0,
-"Sword": 5,
-"Whiskey": 0
+"Boots": 5,
+"Coins": 200,
+"Corn": 50,
+"Horses": 5,
+"Lumber": 50,
+"Stone": 50,
+"Strudel": 3,
+"Sword": 3,
+"Whiskey": 3
 }
 
 [node name="Smith" parent="Actors" unique_id=1532277489 instance=ExtResource("7_o8fc1")]
 modulate = Color(0.2, 1, 1, 1)
 z_as_relative = false
-position = Vector2(923, 134)
-scale = Vector2(0.8, 0.8)
+position = Vector2(871, 119)
 script = ExtResource("8_xo05s")
+offered_item = ""
+wanted_item = "Coins"
 char_name = "Bron"
+profession = 4
+inventory = {
+"Boots": 3,
+"Coins": 75,
+"Corn": 25,
+"Horses": 2,
+"Lumber": 50,
+"Stone": 100,
+"Strudel": 1,
+"Sword": 40,
+"Whiskey": 1
+}
+
+[node name="CornKeeper???" parent="Actors" unique_id=1466393481 instance=ExtResource("7_o8fc1")]
+modulate = Color(0.2, 1, 1, 1)
+z_as_relative = false
+position = Vector2(615.99976, -404.00006)
+script = ExtResource("8_xo05s")
+offered_item = "Corn"
+wanted_item = "Coins"
+char_name = "CornKeeper"
+inventory = {
+"Boots": 2,
+"Coins": 75,
+"Corn": 500,
+"Horses": 5,
+"Lumber": 50,
+"Stone": 40,
+"Strudel": 1,
+"Sword": 1,
+"Whiskey": 1
+}
 
 [node name="Carpenter" parent="Actors" unique_id=513907962 instance=ExtResource("7_o8fc1")]
 modulate = Color(0.81938946, 0.95567757, 2.3102762e-06, 1)
 z_as_relative = false
-position = Vector2(276, 136)
-scale = Vector2(0.8, 0.8)
+position = Vector2(331, 135)
 script = ExtResource("8_xo05s")
+offered_item = ""
+wanted_item = "Coins"
 char_name = "Carpenter"
 profession = 2
 inventory = {
-"Boots": 0,
-"Coins": 0,
-"Corn": 0,
-"Horses": 0,
-"Lumber": 0,
-"Stone": 0,
-"Strudel": 0,
-"Sword": 2,
-"Whiskey": 0
+"Boots": 3,
+"Coins": 75,
+"Corn": 25,
+"Horses": 5,
+"Lumber": 550,
+"Stone": 100,
+"Strudel": 1,
+"Sword": 1,
+"Whiskey": 1
+}
+
+[node name="Brewer" parent="Actors" unique_id=364622522 instance=ExtResource("7_o8fc1")]
+modulate = Color(0.81938946, 0.95567757, 2.3102762e-06, 1)
+z_as_relative = false
+position = Vector2(496.8, 244.8)
+script = ExtResource("8_xo05s")
+offered_item = ""
+wanted_item = "Coins"
+char_name = "Brewer"
+gender = 1
+profession = 1
+inventory = {
+"Boots": 2,
+"Coins": 75,
+"Corn": 150,
+"Horses": 2,
+"Lumber": 50,
+"Stone": 40,
+"Strudel": 1,
+"Sword": 1,
+"Whiskey": 40
+}
+
+[node name="Stablemaster" parent="Actors" unique_id=1734113741 instance=ExtResource("7_o8fc1")]
+modulate = Color(0.81938946, 0.95567757, 2.3102762e-06, 1)
+z_as_relative = false
+position = Vector2(221, -871)
+script = ExtResource("8_xo05s")
+offered_item = ""
+wanted_item = "Coins"
+char_name = "Stablemaster"
+gender = 1
+profession = 5
+inventory = {
+"Boots": 2,
+"Coins": 75,
+"Corn": 25,
+"Horses": 75,
+"Lumber": 50,
+"Stone": 40,
+"Strudel": 1,
+"Sword": 1,
+"Whiskey": 1
+}
+
+[node name="Tanner" parent="Actors" unique_id=1874102380 instance=ExtResource("7_o8fc1")]
+modulate = Color(0.81938946, 0.95567757, 2.3102762e-06, 1)
+z_as_relative = false
+position = Vector2(443.00003, -55)
+script = ExtResource("8_xo05s")
+offered_item = ""
+wanted_item = "Coins"
+char_name = "Tanner"
+profession = 6
+inventory = {
+"Boots": 78,
+"Coins": 75,
+"Corn": 15,
+"Horses": 2,
+"Lumber": 50,
+"Stone": 40,
+"Strudel": 1,
+"Sword": 1,
+"Whiskey": 1
+}
+
+[node name="Mason" parent="Actors" unique_id=790939674 instance=ExtResource("7_o8fc1")]
+modulate = Color(0.81938946, 0.95567757, 2.3102762e-06, 1)
+z_as_relative = false
+position = Vector2(730.99994, -36.00009)
+script = ExtResource("8_xo05s")
+offered_item = ""
+wanted_item = "Coins"
+char_name = "Mason"
+profession = 3
+inventory = {
+"Boots": 1,
+"Coins": 75,
+"Corn": 10,
+"Horses": 2,
+"Lumber": 100,
+"Stone": 550,
+"Strudel": 1,
+"Sword": 1,
+"Whiskey": 1
 }

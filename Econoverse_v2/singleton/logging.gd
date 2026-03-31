@@ -62,10 +62,15 @@ func _write(level: String, message: String) -> void:
 		"ERROR": push_error(entry)
 		"WARN":  push_warning(entry)
 		_:       print(entry)
-	emit_signal("log_written", entry)
 	if file:
 		file.store_line(entry)
 		file.flush()
+	# Wrap in BBCode color for the in-game log window display.
+	var display_entry := entry
+	match level:
+		"ERROR": display_entry = "[color=red]%s[/color]" % entry
+		"WARN":  display_entry = "[color=yellow]%s[/color]" % entry
+	emit_signal("log_written", display_entry)
 
 #endregion Internal functions
 

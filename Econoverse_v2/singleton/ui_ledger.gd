@@ -8,8 +8,20 @@ extends Control
 # This ledger will be registered with the game_controller and will be called upon as the source of truth for prices,
 # transactions, and rates.
 
+# Total world supply for each commodity. The sum of all character inventories should equal these.
+const WORLD_SUPPLY: Dictionary = {
+	"Boots":   100,
+	"Coins":   1000,
+	"Corn":    1000,
+	"Horses":  100,
+	"Lumber":  1000,
+	"Stone":   1000,
+	"Strudel": 50,
+	"Sword":   50,
+	"Whiskey": 50,
+}
+
 # Register the ledger with the game contoller
-#TODO: append ledger to game log. 
 func _ready() -> void:
 	GameController.register_ledger(self)
 	UI.ButtonLedgerPressed.connect(_toggle)
@@ -72,6 +84,36 @@ func clean_ledger():
 				_update_label(label, "---")
 			pass
 	pass
+
+# Checks that all character inventories add up to the total world supply.
+func verify_supply() -> void:
+	var dist := _get_current_distribution()
+	var all_ok := true
+	for item in WORLD_SUPPLY:
+		var expected = WORLD_SUPPLY[item]
+		var actual = dist.get(item, 0)
+		if actual != expected:
+			Logging.log_warn("Supply mismatch — %s: expected %d, found %d (diff: %+d)" \
+				% [item, expected, actual, actual - expected])
+			all_ok = false
+		else:
+			Logging.log_info("Supply OK — %s: %d" % [item, actual])
+	if all_ok:
+		Logging.log_info("World supply verified: there is balance in the world.")
+
+func _get_current_distribution() -> Dictionary:
+	var distribution: Dictionary = {}
+	for item in WORLD_SUPPLY:
+		distribution[item] = 0
+	if GameController.player_node:
+		for item in GameController.player_node.inventory:
+			if item in distribution:
+				distribution[item] += GameController.player_node.inventory[item]
+	for artisan in GameController.artisan_nodes:
+		for item in artisan.inventory:
+			if item in distribution:
+				distribution[item] += artisan.inventory[item]
+	return distribution
 
 func track(trade: Dictionary) -> void:
 	#DEBUG Print Statements
