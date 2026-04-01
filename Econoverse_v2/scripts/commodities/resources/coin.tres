@@ -9,6 +9,7 @@ id = 2
 start_price = 1
 name_full = "Coin"
 name_abbreviated = "Coin"
+description = "Currency of the land"
 texture = ExtResource("2_lr6c0")
 world_supply = 100
 metadata/_custom_type_script = "uid://b61hkffm2hhan"

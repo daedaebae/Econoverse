@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://bfgadxp57w3l5"]
 
 [ext_resource type="Script" uid="uid://b61hkffm2hhan" path="res://scripts/commodities/Resource_ItemResource.gd" id="1_n47vj"]
-[ext_resource type="Texture2D" uid="uid://bx4mikisnaidb" path="res://assets/image/sprite/items/boots.png" id="2_n47vj"]
+[ext_resource type="Texture2D" uid="uid://shlf1sdj3d81" path="res://assets/image/sprite/items/boots.png" id="2_n47vj"]
 
 [resource]
 script = ExtResource("1_n47vj")
@@ -9,6 +9,7 @@ id = 1
 start_price = 2
 name_full = "Boots"
 name_abbreviated = "Boots"
+description = "Feet of the worker folk"
 texture = ExtResource("2_n47vj")
 world_supply = 100
 metadata/_custom_type_script = "uid://b61hkffm2hhan"

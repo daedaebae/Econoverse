@@ -1,10 +1,10 @@
 extends Control
 
 # the primary on-screen UI to arrange interface buttons and their signal logic
-
+# kc 03/31/2026
 # the UI does not perform functions for any gameplay. It is simply the display
 # and characterization of the data with which we want the player to experience.
-# This can be for celebration accomplishments, driving interest in certain
+# This can be for celebrating accomplishments, driving interest in certain
 # gameplay elements, or nudging the player to successful strategies. Provide
 # the player with visual tools to personalize and progress, and review 
 # their experience.
@@ -15,12 +15,12 @@ extends Control
 #TODO kc - subviewport container for notifications (ala stronghold events)
 #TODO kc - replace placeholder emojis with actual sprite art
 #TODO kc - consider texture rect buttons, better feel and response
-#TODO kc - integrate sound handling for butons only. press and release sounds for juicy feel. UI/action appears on releasee of buttons.
+#TODO kc - integrate sound handling for butons only. press and release sounds for juicy feel. UI/action appears on release of buttons.
 
 var label_time: Label
 
 @export_category("Info Cluster")
-@export var label_coin_quantity: Label
+# moved scripts to be local to cluster, so each tracker can update dynamically. 
 
 # list all exports, including references to buttons and other dynamic elements
 @export_category("Buttons")

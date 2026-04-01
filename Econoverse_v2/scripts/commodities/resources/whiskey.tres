@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://ccqkttfwiq03j"]
 
 [ext_resource type="Script" uid="uid://b61hkffm2hhan" path="res://scripts/commodities/Resource_ItemResource.gd" id="1_ullbc"]
-[ext_resource type="Texture2D" uid="uid://cfwb2uysnkupu" path="res://assets/image/sprite/items/whiskey.png" id="2_ullbc"]
+[ext_resource type="Texture2D" uid="uid://c1lvm8irhg6cg" path="res://assets/image/sprite/items/whiskey.png" id="2_ullbc"]
 
 [resource]
 script = ExtResource("1_ullbc")
@@ -9,6 +9,7 @@ id = 8
 start_price = 10
 name_full = "Whiskey"
 name_abbreviated = "Whiskey"
+description = "The drink that makes em' speak"
 texture = ExtResource("2_ullbc")
 world_supply = 100
 metadata/_custom_type_script = "uid://b61hkffm2hhan"

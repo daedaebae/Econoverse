@@ -7,21 +7,21 @@
 [ext_resource type="StyleBox" uid="uid://bpj06k16fn21n" path="res://scenes/themes/StyleBoxTexture - scrappy background.tres" id="5_7dvkv"]
 [ext_resource type="FontFile" uid="uid://bwgm0rcnkhr36" path="res://assets/fonts/CormorantInfant-VariableFont_wght.ttf" id="5_8dubc"]
 [ext_resource type="StyleBox" uid="uid://b25n2vxk82fqm" path="res://scenes/themes/style_box_flat-GOLDfirst.tres" id="6_p7vwb"]
-[ext_resource type="Texture2D" uid="uid://c2o3ql01h5dt3" path="res://assets/image/sprite/items/coin.png" id="6_vdcm2"]
+[ext_resource type="Script" uid="uid://fy5x7h3tqmhk" path="res://scenes/item_tracker.gd" id="7_6rmj2"]
 [ext_resource type="LabelSettings" uid="uid://dl2jctwf6ni47" path="res://assets/fonts/SmallPoppingText.tres" id="7_p7vwb"]
 [ext_resource type="PackedScene" uid="uid://dlou83bkslg6b" path="res://scenes/components/music_controller.tscn" id="8_ktti3"]
+[ext_resource type="Resource" uid="uid://cgg2v0q1xe84h" path="res://scripts/commodities/resources/coin.tres" id="8_vsj0x"]
+[ext_resource type="LabelSettings" uid="uid://b1gpcxkmkutxb" path="res://scenes/themes/TrackerText.tres" id="9_qsv74"]
+[ext_resource type="Resource" uid="uid://bfgadxp57w3l5" path="res://scripts/commodities/resources/boots.tres" id="10_jkdwc"]
+[ext_resource type="Resource" uid="uid://d2y5qxjj44jel" path="res://scripts/commodities/resources/corn.tres" id="10_qsv74"]
+[ext_resource type="Resource" uid="uid://vg7etd666o5c" path="res://scripts/commodities/resources/timber.tres" id="11_h1mc3"]
+[ext_resource type="Resource" uid="uid://bphkkse2cmd1r" path="res://scripts/commodities/resources/horse.tres" id="13_rlppe"]
+[ext_resource type="Resource" uid="uid://ce6ptjyb3wdne" path="res://scripts/commodities/resources/strudel.tres" id="14_ycmcx"]
+[ext_resource type="Resource" uid="uid://cgwpkjtyr5vt2" path="res://scripts/commodities/resources/sword.tres" id="15_kupmu"]
+[ext_resource type="Resource" uid="uid://ccqkttfwiq03j" path="res://scripts/commodities/resources/whiskey.tres" id="16_catpy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4jx1"]
 bg_color = Color(0, 0, 0, 0.5921569)
-
-[sub_resource type="LabelSettings" id="LabelSettings_6rmj2"]
-line_spacing = 1.0
-font = ExtResource("5_8dubc")
-font_size = 8
-outline_size = 1
-outline_color = Color(0.75, 0.75, 0, 0.7294118)
-shadow_size = 3
-shadow_color = Color(0, 0, 0, 0.69411767)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wm3ai"]
 
@@ -38,7 +38,7 @@ shadow_color = Color(0, 0, 0, 0.69411767)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8dubc"]
 
-[node name="UI" type="Control" unique_id=172092760 node_paths=PackedStringArray("label_coin_quantity", "button_ledger", "button_music_player", "music_controller")]
+[node name="UI" type="Control" unique_id=172092760 node_paths=PackedStringArray("button_ledger", "button_music_player", "music_controller")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,7 +48,6 @@ grow_vertical = 2
 mouse_filter = 1
 theme = ExtResource("1_x4jx1")
 script = ExtResource("2_gdt2y")
-label_coin_quantity = NodePath("FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerCoin/LabelCoinQuantity")
 button_ledger = NodePath("FullScreenArranged/RowBottom/PanelActions/ClusterActions/ButtonLedger")
 button_music_player = NodePath("FullScreenArranged/RowTop/PanelOptions/ClusterOptions/ButtonMusicPlayer")
 music_controller = NodePath("FullScreenArranged/PanelCenter/MusicController")
@@ -289,27 +288,28 @@ layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="PanelInfo" type="Panel" parent="FullScreenArranged/RowTop" unique_id=849367341]
-custom_minimum_size = Vector2(150, 25)
+custom_minimum_size = Vector2(170, 25)
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="ClusterInfo" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelInfo" unique_id=1379405762]
-custom_minimum_size = Vector2(150, 25)
+custom_minimum_size = Vector2(170, 25)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 8
 alignment = 1
 
-[node name="nothing_yet" type="Label" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo" unique_id=1175387367]
+[node name="5px spacer" type="MarginContainer" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo" unique_id=439550719]
 visible = false
+custom_minimum_size = Vector2(5, 1)
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "info cluster (track gold etc)"
 
 [node name="WorldClock" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo" unique_id=672933165]
+custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 
 [node name="PanelClock?" type="Panel" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/WorldClock" unique_id=878355632]
@@ -333,53 +333,328 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 text = "05:00am"
-label_settings = SubResource("LabelSettings_6rmj2")
-horizontal_alignment = 2
+label_settings = ExtResource("7_p7vwb")
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TrackerCoin" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo" unique_id=1263674082]
+[node name="TrackerCoin" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo" unique_id=1263674082 node_paths=PackedStringArray("TrackerTexture", "LabelQty")]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
+script = ExtResource("7_6rmj2")
+item_resource = ExtResource("8_vsj0x")
+TrackerTexture = NodePath("Panel/TrackerTexture")
+LabelQty = NodePath("Panel/LabelQty")
 
-[node name="PanelCoin" type="Panel" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerCoin" unique_id=1074229929]
+[node name="Panel" type="Panel" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerCoin" unique_id=1074229929]
 custom_minimum_size = Vector2(18, 18)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = ExtResource("5_7dvkv")
 
-[node name="TexCoin" type="TextureRect" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerCoin/PanelCoin" unique_id=1446455503]
+[node name="TrackerTexture" type="TextureRect" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerCoin/Panel" unique_id=1446455503]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
 offset_right = 17.0
 offset_bottom = 17.0
-texture = ExtResource("6_vdcm2")
+tooltip_text = "The currency of the land"
+theme = ExtResource("1_x4jx1")
 
-[node name="LabelCoinQuantity" type="Label" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerCoin" unique_id=2131477452]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
+[node name="LabelQty" type="Label" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerCoin/Panel" unique_id=2131477452]
+custom_minimum_size = Vector2(16, 18)
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 22.0
+theme_override_constants/line_spacing = -2
+theme_override_constants/shadow_offset_x = 1
 text = "0"
-label_settings = SubResource("LabelSettings_6rmj2")
+label_settings = ExtResource("9_qsv74")
 horizontal_alignment = 2
-vertical_alignment = 1
+vertical_alignment = 2
+
+[node name="TrackerBoots" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo" unique_id=462790958 node_paths=PackedStringArray("TrackerTexture", "LabelQty")]
+layout_mode = 2
+script = ExtResource("7_6rmj2")
+item_resource = ExtResource("10_jkdwc")
+TrackerTexture = NodePath("Panel/TrackerTexture")
+LabelQty = NodePath("Panel/LabelQty")
+
+[node name="Panel" type="Panel" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerBoots" unique_id=540990328]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("5_7dvkv")
+
+[node name="TrackerTexture" type="TextureRect" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerBoots/Panel" unique_id=2040344983]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 17.0
+offset_bottom = 17.0
+tooltip_text = "The currency of the land"
+theme = ExtResource("1_x4jx1")
+expand_mode = 2
+
+[node name="LabelQty" type="Label" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerBoots/Panel" unique_id=860541345]
+custom_minimum_size = Vector2(16, 18)
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 22.0
+theme_override_constants/line_spacing = -2
+theme_override_constants/shadow_offset_x = 1
+text = "0"
+label_settings = ExtResource("9_qsv74")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="TrackerCorn" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo" unique_id=1293207312 node_paths=PackedStringArray("TrackerTexture", "LabelQty")]
+layout_mode = 2
+script = ExtResource("7_6rmj2")
+item_resource = ExtResource("10_qsv74")
+TrackerTexture = NodePath("Panel/TrackerTexture")
+LabelQty = NodePath("Panel/LabelQty")
+
+[node name="Panel" type="Panel" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerCorn" unique_id=627448982]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("5_7dvkv")
+
+[node name="TrackerTexture" type="TextureRect" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerCorn/Panel" unique_id=1407186358]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 17.0
+offset_bottom = 17.0
+tooltip_text = "The currency of the land"
+theme = ExtResource("1_x4jx1")
+expand_mode = 2
+
+[node name="LabelQty" type="Label" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerCorn/Panel" unique_id=793165343]
+custom_minimum_size = Vector2(16, 18)
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 22.0
+theme_override_constants/line_spacing = -2
+theme_override_constants/shadow_offset_x = 1
+text = "0"
+label_settings = ExtResource("9_qsv74")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="TrackerLumber" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo" unique_id=1184076956 node_paths=PackedStringArray("TrackerTexture", "LabelQty")]
+layout_mode = 2
+script = ExtResource("7_6rmj2")
+item_resource = ExtResource("11_h1mc3")
+TrackerTexture = NodePath("Panel/TrackerTexture")
+LabelQty = NodePath("Panel/LabelQty")
+
+[node name="Panel" type="Panel" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerLumber" unique_id=1883515822]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("5_7dvkv")
+
+[node name="TrackerTexture" type="TextureRect" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerLumber/Panel" unique_id=1276185261]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 17.0
+offset_bottom = 17.0
+tooltip_text = "The currency of the land"
+theme = ExtResource("1_x4jx1")
+expand_mode = 2
+
+[node name="LabelQty" type="Label" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerLumber/Panel" unique_id=1895244279]
+custom_minimum_size = Vector2(16, 18)
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 22.0
+theme_override_constants/line_spacing = -2
+theme_override_constants/shadow_offset_x = 1
+text = "0"
+label_settings = ExtResource("9_qsv74")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="TrackerHorse" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo" unique_id=1495309004 node_paths=PackedStringArray("TrackerTexture", "LabelQty")]
+layout_mode = 2
+script = ExtResource("7_6rmj2")
+item_resource = ExtResource("13_rlppe")
+TrackerTexture = NodePath("Panel/TrackerTexture")
+LabelQty = NodePath("Panel/LabelQty")
+
+[node name="Panel" type="Panel" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerHorse" unique_id=1333663445]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("5_7dvkv")
+
+[node name="TrackerTexture" type="TextureRect" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerHorse/Panel" unique_id=926917771]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 17.0
+offset_bottom = 17.0
+tooltip_text = "The currency of the land"
+theme = ExtResource("1_x4jx1")
+expand_mode = 2
+
+[node name="LabelQty" type="Label" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerHorse/Panel" unique_id=1110890839]
+custom_minimum_size = Vector2(16, 18)
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 22.0
+theme_override_constants/line_spacing = -2
+theme_override_constants/shadow_offset_x = 1
+text = "0"
+label_settings = ExtResource("9_qsv74")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="TrackerStrudel" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo" unique_id=1089742358 node_paths=PackedStringArray("TrackerTexture", "LabelQty")]
+layout_mode = 2
+script = ExtResource("7_6rmj2")
+item_resource = ExtResource("14_ycmcx")
+TrackerTexture = NodePath("Panel/TrackerTexture")
+LabelQty = NodePath("Panel/LabelQty")
+
+[node name="Panel" type="Panel" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerStrudel" unique_id=118899225]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("5_7dvkv")
+
+[node name="TrackerTexture" type="TextureRect" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerStrudel/Panel" unique_id=1781653026]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 17.0
+offset_bottom = 17.0
+tooltip_text = "The currency of the land"
+theme = ExtResource("1_x4jx1")
+expand_mode = 2
+
+[node name="LabelQty" type="Label" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerStrudel/Panel" unique_id=753516741]
+custom_minimum_size = Vector2(16, 18)
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 22.0
+theme_override_constants/line_spacing = -2
+theme_override_constants/shadow_offset_x = 1
+text = "0"
+label_settings = ExtResource("9_qsv74")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="TrackerSword" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo" unique_id=737871263 node_paths=PackedStringArray("TrackerTexture", "LabelQty")]
+layout_mode = 2
+script = ExtResource("7_6rmj2")
+item_resource = ExtResource("15_kupmu")
+TrackerTexture = NodePath("Panel/TrackerTexture")
+LabelQty = NodePath("Panel/LabelQty")
+
+[node name="Panel" type="Panel" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerSword" unique_id=2106643572]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("5_7dvkv")
+
+[node name="TrackerTexture" type="TextureRect" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerSword/Panel" unique_id=524302050]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 17.0
+offset_bottom = 17.0
+tooltip_text = "The currency of the land"
+theme = ExtResource("1_x4jx1")
+expand_mode = 2
+
+[node name="LabelQty" type="Label" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerSword/Panel" unique_id=1898314008]
+custom_minimum_size = Vector2(16, 18)
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 22.0
+theme_override_constants/line_spacing = -2
+theme_override_constants/shadow_offset_x = 1
+text = "0"
+label_settings = ExtResource("9_qsv74")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="TrackerWhiskey" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo" unique_id=62620144 node_paths=PackedStringArray("TrackerTexture", "LabelQty")]
+layout_mode = 2
+script = ExtResource("7_6rmj2")
+item_resource = ExtResource("16_catpy")
+TrackerTexture = NodePath("Panel/TrackerTexture")
+LabelQty = NodePath("Panel/LabelQty")
+
+[node name="Panel" type="Panel" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerWhiskey" unique_id=1471467850]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("5_7dvkv")
+
+[node name="TrackerTexture" type="TextureRect" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerWhiskey/Panel" unique_id=1962708437]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 17.0
+offset_bottom = 17.0
+tooltip_text = "The currency of the land"
+theme = ExtResource("1_x4jx1")
+expand_mode = 2
+
+[node name="LabelQty" type="Label" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerWhiskey/Panel" unique_id=1994559168]
+custom_minimum_size = Vector2(16, 18)
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 22.0
+theme_override_constants/line_spacing = -2
+theme_override_constants/shadow_offset_x = 1
+text = "0"
+label_settings = ExtResource("9_qsv74")
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="PanelBorder" type="Panel" parent="FullScreenArranged/RowTop" unique_id=645754961]
-custom_minimum_size = Vector2(25, 10)
+custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 
 [node name="PanelOptions" type="Panel" parent="FullScreenArranged/RowTop" unique_id=1856391831]
+custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="ClusterOptions" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelOptions" unique_id=1792161593]
+custom_minimum_size = Vector2(100, 25)
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 0
 grow_vertical = 2
 alignment = 1
 

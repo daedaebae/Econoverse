@@ -1,0 +1,13 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://b1gpcxkmkutxb"]
+
+[ext_resource type="FontFile" uid="uid://bwgm0rcnkhr36" path="res://assets/fonts/CormorantInfant-VariableFont_wght.ttf" id="1_spglq"]
+
+[resource]
+line_spacing = 0.0
+font = ExtResource("1_spglq")
+font_size = 8
+outline_size = 1
+outline_color = Color(1, 1, 1, 0.8)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.54901963)
+shadow_offset = Vector2(0, 0)
