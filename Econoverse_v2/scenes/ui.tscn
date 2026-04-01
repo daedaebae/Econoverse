@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dyxshmxysnvqn" path="res://`_design/examples/ui/Age-of-Empires-II-Definitive-Edition07082021-083356-53423.jpg" id="1_nt7q6"]
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="1_x4jx1"]
-[ext_resource type="Script" uid="uid://cr681lcqswbv5" path="res://scenes/ui.gd" id="2_gdt2y"]
+[ext_resource type="Script" uid="uid://cr681lcqswbv5" path="res://singleton/ui.gd" id="2_gdt2y"]
 [ext_resource type="FontFile" uid="uid://c15bkghedjxxy" path="res://assets/fonts/ModernAntiqua-Regular.ttf" id="3_yev5y"]
 [ext_resource type="StyleBox" uid="uid://bpj06k16fn21n" path="res://scenes/themes/StyleBoxTexture - scrappy background.tres" id="5_7dvkv"]
 [ext_resource type="FontFile" uid="uid://bwgm0rcnkhr36" path="res://assets/fonts/CormorantInfant-VariableFont_wght.ttf" id="5_8dubc"]
@@ -38,7 +38,7 @@ shadow_color = Color(0, 0, 0, 0.69411767)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8dubc"]
 
-[node name="UI" type="Control" unique_id=172092760 node_paths=PackedStringArray("label_coin_quantity", "button_ledger", "button_music_player", "music_controller")]
+[node name="UI" type="Control" unique_id=172092760 node_paths=PackedStringArray("button_ledger", "button_music_player", "music_controller")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,7 +48,6 @@ grow_vertical = 2
 mouse_filter = 1
 theme = ExtResource("1_x4jx1")
 script = ExtResource("2_gdt2y")
-label_coin_quantity = NodePath("FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerCoin/LabelCoinQuantity")
 button_ledger = NodePath("FullScreenArranged/RowBottom/PanelActions/ClusterActions/ButtonLedger")
 button_music_player = NodePath("FullScreenArranged/RowTop/PanelOptions/ClusterOptions/ButtonMusicPlayer")
 music_controller = NodePath("FullScreenArranged/PanelCenter/MusicController")
@@ -357,6 +356,7 @@ offset_bottom = 17.0
 texture = ExtResource("6_vdcm2")
 
 [node name="LabelCoinQuantity" type="Label" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerCoin" unique_id=2131477452]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 text = "0"

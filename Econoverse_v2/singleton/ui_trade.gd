@@ -1,6 +1,6 @@
 extends Control
 
-##kc 10/24/25; could also add a separate UI 'breakout' window that 
+##kc 10/24/25; could also add a separate UI 'breakout' window that
 ##displays the inventory of the player, and a separate one for npc character?
 
 # --- Node References ---
@@ -12,7 +12,7 @@ extends Control
 @export var get_amount_label: Label
 
 # --- Sound ---
-##kc 10/26/25; began basic sfx implementation. Not the most  
+##kc 10/26/25; began basic sfx implementation. Not the most
 ## rigid yet. Also considering variations based on
 ## signal values and extensible game logic.
 @onready var sound_show: AudioStreamPlayer = $SfxPapyrusOpen
@@ -22,7 +22,7 @@ extends Control
 @onready var sound_plus: AudioStreamPlayer = $SfxIncrement
 @onready var sound_minus: AudioStreamPlayer = $SfxDecrement
 
-## 10/26/25; these need to specifically react to 
+## 10/26/25; these need to specifically react to
 ## trade criteria and signals for successful or failed trades.
 #@export var sound_trade_complete: AudioStreamPlayer
 #@export var sound_trade_fail: AudioStreamPlayer
@@ -46,18 +46,18 @@ func _ready():
 # This is the main function you'll call from your Player
 # to open and set up the trade window.
 
-##kc 10/24/25; this could be a useful place to get player/npc names. 
+##kc 10/24/25; this could be a useful place to get player/npc names.
 func open_trade(player: Node, npc: Node, item_give: String, item_get: String):
 	# Store all the trade information
 	self.player_node = player
 	self.npc_node = npc
 	self.current_item_give = item_give
 	self.current_item_get = item_get
-	
+
 	# Reset amounts
 	current_give_amount = 0
 	current_get_amount = 0
-	
+
 	# Update labels and show the window
 	_update_labels()
 	show()
@@ -66,10 +66,10 @@ func open_trade(player: Node, npc: Node, item_give: String, item_get: String):
 # A helper function to keep all our labels in sync
 func _update_labels():
 	title_label.text = "Trading\n" + str(npc_node.profession) + "\n" +  str(npc_node.char_name)
-	
+
 	give_item_label.text = "You Give: %s" % current_item_give
 	give_amount_label.text = str(current_give_amount)
-	
+
 	get_item_label.text = "You Get: %s" % current_item_get
 	get_amount_label.text = str(current_get_amount)
 
@@ -79,13 +79,13 @@ func _on_button_trade_pressed() -> void:
 	if current_give_amount == 0 and current_get_amount == 0:
 		print("No trade specified.")
 		return
-		
+
 	# Call the player's trade function!
 	# We assume the 'trade' function is ON the player_node.
 	if player_node and player_node.has_method("trade"):
 		player_node.trade(npc_node, current_give_amount, current_item_give, current_get_amount, current_item_get)
 		# Close the UI after the trade
-		#TODO: kc 10/26/25; for now, this will simply play the 
+		#TODO: kc 10/26/25; for now, this will simply play the
 		# close window sound. Later, can play specific sounds
 		# for if trade was successful or declined... or crit? idk
 		sound_hide.play()

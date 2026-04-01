@@ -3,6 +3,9 @@
 # It also inherits EVERYTHING from the Character Class (Class_Character.gd)
 extends Character
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+var character_in_range: bool = false
+var _proximity_zone: Area2D = null
+var _trade_label: Label = null
 # This signal is for the Artisan only.
 signal artisan_clicked(npc: Node)
 
