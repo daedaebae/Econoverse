@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://d2y5qxjj44jel"]
 
 [ext_resource type="Script" uid="uid://b61hkffm2hhan" path="res://scripts/commodities/Resource_ItemResource.gd" id="1_k4kt2"]
-[ext_resource type="Texture2D" uid="uid://bm8w8rh1mp26k" path="res://assets/image/sprite/items/corn.png" id="2_k4kt2"]
+[ext_resource type="Texture2D" uid="uid://dmwvikl7gcew8" path="res://assets/image/sprite/items/corn.png" id="2_k4kt2"]
 
 [resource]
 script = ExtResource("1_k4kt2")
@@ -9,6 +9,7 @@ id = 3
 start_price = 1
 name_full = "Corn"
 name_abbreviated = "Corn"
+description = "Halfly shucked, waxy sheen, toothsome at a glance"
 texture = ExtResource("2_k4kt2")
 world_supply = 1000
 metadata/_custom_type_script = "uid://b61hkffm2hhan"
