@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://bphkkse2cmd1r"]
 
 [ext_resource type="Script" uid="uid://b61hkffm2hhan" path="res://scripts/commodities/Resource_ItemResource.gd" id="1_j0a62"]
-[ext_resource type="Texture2D" uid="uid://qgdynunnaqbs" path="res://assets/image/sprite/items/horse.png" id="2_j0a62"]
+[ext_resource type="Texture2D" uid="uid://yeq2ce28qpje" path="res://assets/image/sprite/items/horse.png" id="2_j0a62"]
 
 [resource]
 script = ExtResource("1_j0a62")
@@ -9,6 +9,7 @@ id = 4
 start_price = 20
 name_full = "Horse"
 name_abbreviated = "Horse"
+description = "Steeds to trot, task, and bicker"
 texture = ExtResource("2_j0a62")
 world_supply = 100
 rarity = 2

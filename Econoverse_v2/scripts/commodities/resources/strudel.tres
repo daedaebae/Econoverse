@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://ce6ptjyb3wdne"]
 
 [ext_resource type="Script" uid="uid://b61hkffm2hhan" path="res://scripts/commodities/Resource_ItemResource.gd" id="1_gewsn"]
-[ext_resource type="Texture2D" uid="uid://b4r7uaan7l7x3" path="res://assets/image/sprite/items/strudel.png" id="2_gewsn"]
+[ext_resource type="Texture2D" uid="uid://baw0fdp404mp5" path="res://assets/image/sprite/items/strudel.png" id="2_gewsn"]
 
 [resource]
 script = ExtResource("1_gewsn")
@@ -9,6 +9,7 @@ id = 6
 start_price = 3
 name_full = "Strudel"
 name_abbreviated = "Strudel"
+description = "Delicacy treat, crumbly and sweet"
 texture = ExtResource("2_gewsn")
 world_supply = 50
 rarity = 1

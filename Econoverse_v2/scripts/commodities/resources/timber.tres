@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://vg7etd666o5c"]
+
+[ext_resource type="Script" uid="uid://b61hkffm2hhan" path="res://scripts/commodities/Resource_ItemResource.gd" id="1_024bb"]
+[ext_resource type="Texture2D" uid="uid://3yetk08m3j3j" path="res://assets/image/sprite/items/lumber.png" id="2_von45"]
+
+[resource]
+script = ExtResource("1_024bb")
+id = 5
+start_price = 5
+name_full = "Timber"
+name_abbreviated = "Timber"
+description = "Piece of tree, ready to shape or stoke "
+texture = ExtResource("2_von45")
+world_supply = 1000
+metadata/_custom_type_script = "uid://b61hkffm2hhan"
