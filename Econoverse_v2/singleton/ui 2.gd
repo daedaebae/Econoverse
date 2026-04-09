@@ -60,7 +60,9 @@ func _process(delta: float) -> void:
 	#TODO kc 3/22/26: need to make player inventory amounts global
 	#if player: 
 		#label_coin_quantity.text = player.coins
-
+	if GameController.player_node:
+		%LabelCoinQuantity.text = str(int(GameController.player_node.inventory.get("Coins",0)))
+	
 	# state machine to handle a combination of UI elements on screen
 	# review gameplay of other UI-rich games -- static or moveable windows?
 

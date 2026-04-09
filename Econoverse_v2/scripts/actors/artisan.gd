@@ -3,9 +3,6 @@
 # It also inherits EVERYTHING from the Character Class (Class_Character.gd)
 extends Character
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-var character_in_range: bool = false
-var _proximity_zone: Area2D = null
-var _trade_label: Label = null
 # This signal is for the Artisan only.
 signal artisan_clicked(npc: Node)
 
@@ -34,4 +31,4 @@ func _input(event: InputEvent) -> void:
 		var mouse_pos = get_global_mouse_position()
 		if global_position.distance_to(mouse_pos) < 20:
 			artisan_clicked.emit(self)
-			get_viewport().set_input_as_handled()
+			get_viewport().set_input_as_handled()    

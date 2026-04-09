@@ -5,8 +5,8 @@ extends Node
 
 ## kc 10/25/25; functions for mechanics and interactive systems
 ## can register to the game_controller. This way, values are passed from the
-## singleton and we don't have to manually assign actors to 
-## each other within their functions. 
+## singleton and we don't have to manually assign actors to
+## each other within their functions.
 ## ex: GameController.register_player(self) on
 ## the player script's ready function will assign the 
 ## player and values. 
@@ -77,7 +77,7 @@ func register_ledger(ledger: Control):
 # Register the clock
 func register_clock(clock: Node) -> void:
 	clock_node = clock
-	
+
 #endregion Registration Functions
 
 #region Logic Handlers

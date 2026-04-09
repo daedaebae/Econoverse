@@ -54,7 +54,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Trading with"
 
-[node name="TradeTarget" type="TextureRect" parent="FullVBox/HBoxContainer" unique_id=339146714]
+[node name="TradeTargetSprite" type="TextureRect" parent="FullVBox/HBoxContainer" unique_id=339146714]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("3_pglr2")

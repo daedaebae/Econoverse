@@ -129,13 +129,11 @@ text = "|"
 [node name="ScrollContainer" type="ScrollContainer" parent="LedgerDisplayBox" unique_id=65694372]
 layout_mode = 2
 size_flags_vertical = 3
-mouse_filter = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LedgerDisplayBox/ScrollContainer" unique_id=2040431013]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-mouse_filter = 1
 
 [node name="Row1" type="HBoxContainer" parent="LedgerDisplayBox/ScrollContainer/VBoxContainer" unique_id=989492977]
 layout_mode = 2
@@ -897,7 +895,6 @@ alignment = 2
 visible = false
 layout_mode = 2
 text = "Reset"
-
 
 [node name="SfxIncrement" type="AudioStreamPlayer" parent="." unique_id=783048655]
 stream = ExtResource("3_mldyh")
