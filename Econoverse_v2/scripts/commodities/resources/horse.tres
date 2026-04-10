@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_j0a62")
 id = 4
-start_price = 20
+start_price = 40
 name_full = "Horse"
 name_abbreviated = "Horse"
 description = "Steeds to trot, task, and bicker"

@@ -16,7 +16,7 @@ const WORLD_SUPPLY: Dictionary = {
 	"Coins":   1000,
 	"Corn":    1000,
 	"Horses":  100,
-	"Lumber":  1000,
+	"Timber":  1000,
 	"Stone":   1000,
 	"Strudel": 50,
 	"Sword":   50,

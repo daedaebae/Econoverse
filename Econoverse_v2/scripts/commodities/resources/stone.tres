@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://bl7nywpbqkpiy"]
+
+[ext_resource type="Script" uid="uid://b61hkffm2hhan" path="res://scripts/commodities/Resource_ItemResource.gd" id="1_viiaq"]
+[ext_resource type="Texture2D" uid="uid://cietk1chaac5o" path="res://assets/image/sprite/items/stone.png" id="2_viiaq"]
+
+[resource]
+script = ExtResource("1_viiaq")
+id = 5
+start_price = 4
+name_full = "Stone"
+name_abbreviated = "Stone"
+description = "Stone, hewn and hauled"
+texture = ExtResource("2_viiaq")
+world_supply = 100
+rarity = 2
+metadata/_custom_type_script = "uid://b61hkffm2hhan"

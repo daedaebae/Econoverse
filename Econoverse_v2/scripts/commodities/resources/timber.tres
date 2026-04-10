@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("1_024bb")
-id = 5
-start_price = 5
+id = 8
+start_price = 6
 name_full = "Timber"
 name_abbreviated = "Timber"
 description = "Piece of tree, ready to shape or stoke "

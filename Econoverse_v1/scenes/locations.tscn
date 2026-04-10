@@ -2,7 +2,7 @@
 
 [node name="Locations" type="Node2D"]
 
-[node name="LumberMill" type="Node2D" parent="."]
+[node name="TimberMill" type="Node2D" parent="."]
 
 [node name="Smithy" type="Node2D" parent="."]
 

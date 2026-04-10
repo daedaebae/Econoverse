@@ -16,10 +16,10 @@ extends CharacterBody2D
 # Alphabetized Inventory Dict
 @export var inventory: Dictionary = {
 	"Boots": 0,
-	"Coins": 0, 
+	"Coin": 0, 
 	"Corn": 0,
-	"Horses": 0,
-	"Lumber": 0,
+	"Horse": 0,
+	"Timber": 0,
 	"Stone": 0,
 	"Strudel": 0, 
 	"Sword": 0, 
@@ -33,7 +33,7 @@ extends CharacterBody2D
 const PROFESSION_ITEM: Dictionary = {
 	Profession.BAKER:       "Strudel",
 	Profession.BREWER:      "Whiskey",
-	Profession.CARPENTER:   "Lumber",
+	Profession.CARPENTER:   "Timber",
 	Profession.MASON:       "Stone",
 	Profession.SMITH:       "Sword",
 	Profession.STABLEMASTER: "Horses",
@@ -61,9 +61,11 @@ func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_g
 	if valGive > self.inventory[item_give]:
 		Logging.log_warn("Trade rejected: %s does not have enough %s (has %d, needs %d)." \
 			% [char_name, item_give, self.inventory[item_give], valGive])
+		return false
 	elif valGet > whom.inventory[item_get]:
 		Logging.log_warn("Trade rejected: %s does not have enough %s (has %d, needs %d)." \
 			% [whom.char_name, item_get, whom.inventory[item_get], valGet])
+		return false
 	else:
 		Logging.log_info("Trade executed: %s gave %d %s to %s for %d %s." \
 			% [char_name, valGive, item_give, whom.char_name, valGet, item_get])
@@ -73,6 +75,7 @@ func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_g
 		# Player get val2# of item_get from whom
 		self.inventory[item_get] = (self.inventory[item_get] + valGet)
 		whom.inventory[item_get] = (whom.inventory[item_get] - valGet)
+		return true
 
 		#Print player inventory.
 		print_inv_values()
@@ -175,7 +178,7 @@ enum Race{
 enum Location{
 	BAKERY,
 	BREWHOUSE,
-	LUMBER_MILL,
+	Timber_MILL,
 	MASONIC_SHOP,
 	SMITHY,
 	STABLES,

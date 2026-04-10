@@ -445,21 +445,21 @@ label_settings = ExtResource("9_qsv74")
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="TrackerLumber" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo" unique_id=1184076956 node_paths=PackedStringArray("TrackerTexture", "LabelQty")]
+[node name="TrackerTimber" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo" unique_id=1184076956 node_paths=PackedStringArray("TrackerTexture", "LabelQty")]
 layout_mode = 2
 script = ExtResource("7_6rmj2")
 item_resource = ExtResource("11_h1mc3")
 TrackerTexture = NodePath("Panel/TrackerTexture")
 LabelQty = NodePath("Panel/LabelQty")
 
-[node name="Panel" type="Panel" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerLumber" unique_id=1883515822]
+[node name="Panel" type="Panel" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerTimber" unique_id=1883515822]
 custom_minimum_size = Vector2(18, 18)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = ExtResource("5_7dvkv")
 
-[node name="TrackerTexture" type="TextureRect" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerLumber/Panel" unique_id=1276185261]
+[node name="TrackerTexture" type="TextureRect" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerTimber/Panel" unique_id=1276185261]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 0
 offset_left = 1.0
@@ -470,7 +470,7 @@ tooltip_text = "The currency of the land"
 theme = ExtResource("1_x4jx1")
 expand_mode = 2
 
-[node name="LabelQty" type="Label" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerLumber/Panel" unique_id=1895244279]
+[node name="LabelQty" type="Label" parent="FullScreenArranged/RowTop/PanelInfo/ClusterInfo/TrackerTimber/Panel" unique_id=1895244279]
 custom_minimum_size = Vector2(16, 18)
 layout_mode = 0
 offset_right = 20.0

@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("1_ullbc")
-id = 8
-start_price = 10
+id = 9
+start_price = 12
 name_full = "Whiskey"
 name_abbreviated = "Whiskey"
 description = "The drink that makes em' speak"

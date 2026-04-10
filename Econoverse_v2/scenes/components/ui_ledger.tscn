@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://jvvuu66ysjuc" path="res://singleton/ui_ledger.gd" id="2_mldyh"]
 [ext_resource type="AudioStream" uid="uid://c1ekqxpft6f4a" path="res://assets/audio/sfx/sfx_increment.ogg" id="3_mldyh"]
 [ext_resource type="Texture2D" uid="uid://yeq2ce28qpje" path="res://assets/image/sprite/items/horse.png" id="3_mvwvy"]
-[ext_resource type="Texture2D" uid="uid://3yetk08m3j3j" path="res://assets/image/sprite/items/lumber.png" id="4_mldyh"]
+[ext_resource type="Texture2D" uid="uid://3yetk08m3j3j" path="res://assets/image/sprite/items/Timber.png" id="4_mldyh"]
 [ext_resource type="AudioStream" uid="uid://q7iv0ujiwvcm" path="res://assets/audio/sfx/sfx_decrement.ogg" id="4_mvwvy"]
 [ext_resource type="AudioStream" uid="uid://crvce2oxapbdm" path="res://assets/audio/sfx/sfx_papyrus_close.ogg" id="5_1ie5g"]
 [ext_resource type="AudioStream" uid="uid://bxtx44wc1v5ey" path="res://assets/audio/sfx/sfx_papyrus_open.ogg" id="6_368o0"]

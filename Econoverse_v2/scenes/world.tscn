@@ -112,16 +112,15 @@ script = ExtResource("6_jhx03")
 speed = 80.0
 char_name = "Player"
 gender = 2
-profession = 0
 inventory = {
 "Boots": 2,
-"Coins": 200,
-"Corn": 50,
-"Horses": 0,
-"Lumber": 0,
+"Coin": 5,
+"Corn": 2,
+"Horse": 3,
 "Stone": 0,
 "Strudel": 0,
 "Sword": 0,
+"Timber": 5,
 "Whiskey": 0
 }
 
@@ -144,19 +143,19 @@ z_as_relative = false
 position = Vector2(1231.8237, 606.9856)
 script = ExtResource("8_xo05s")
 offered_item = ""
-wanted_item = "Coins"
+wanted_item = "Coin"
 char_name = "Baker"
 gender = 1
 profession = 0
 inventory = {
 "Boots": 2,
-"Coins": 75,
+"Coin": 75,
 "Corn": 150,
-"Horses": 2,
-"Lumber": 50,
+"Horse": 2,
 "Stone": 40,
 "Strudel": 40,
 "Sword": 1,
+"Timber": 50,
 "Whiskey": 1
 }
 
@@ -166,17 +165,17 @@ z_as_relative = false
 position = Vector2(844, -455)
 script = ExtResource("8_xo05s")
 offered_item = ""
-wanted_item = "Coins"
+wanted_item = "Coin"
 char_name = "Bogus Buchannon"
 inventory = {
 "Boots": 5,
-"Coins": 200,
+"Coin": 200,
 "Corn": 50,
-"Horses": 5,
-"Lumber": 50,
+"Horse": 5,
 "Stone": 50,
 "Strudel": 3,
 "Sword": 3,
+"Timber": 50,
 "Whiskey": 3
 }
 
@@ -186,18 +185,18 @@ z_as_relative = false
 position = Vector2(871, 119)
 script = ExtResource("8_xo05s")
 offered_item = ""
-wanted_item = "Coins"
+wanted_item = "Coin"
 char_name = "Bron"
 profession = 4
 inventory = {
 "Boots": 3,
-"Coins": 75,
+"Coin": 75,
 "Corn": 25,
-"Horses": 2,
-"Lumber": 50,
+"Horse": 2,
 "Stone": 100,
 "Strudel": 1,
 "Sword": 40,
+"Timber": 50,
 "Whiskey": 1
 }
 
@@ -207,17 +206,17 @@ z_as_relative = false
 position = Vector2(615.99976, -404.00006)
 script = ExtResource("8_xo05s")
 offered_item = "Corn"
-wanted_item = "Coins"
+wanted_item = "Coin"
 char_name = "CornKeeper"
 inventory = {
 "Boots": 2,
-"Coins": 75,
+"Coin": 75,
 "Corn": 500,
-"Horses": 5,
-"Lumber": 50,
+"Horse": 5,
 "Stone": 40,
 "Strudel": 1,
 "Sword": 1,
+"Timber": 50,
 "Whiskey": 1
 }
 
@@ -227,18 +226,18 @@ z_as_relative = false
 position = Vector2(331, 135)
 script = ExtResource("8_xo05s")
 offered_item = ""
-wanted_item = "Coins"
+wanted_item = "Coin"
 char_name = "Carpenter"
 profession = 2
 inventory = {
 "Boots": 3,
-"Coins": 75,
+"Coin": 75,
 "Corn": 25,
-"Horses": 5,
-"Lumber": 550,
+"Horse": 5,
 "Stone": 100,
 "Strudel": 1,
 "Sword": 1,
+"Timber": 550,
 "Whiskey": 1
 }
 
@@ -248,19 +247,19 @@ z_as_relative = false
 position = Vector2(496.8, 244.8)
 script = ExtResource("8_xo05s")
 offered_item = ""
-wanted_item = "Coins"
+wanted_item = "Coin"
 char_name = "Brewer"
 gender = 1
 profession = 1
 inventory = {
 "Boots": 2,
-"Coins": 75,
+"Coin": 75,
 "Corn": 150,
-"Horses": 2,
-"Lumber": 50,
+"Horse": 2,
 "Stone": 40,
 "Strudel": 1,
 "Sword": 1,
+"Timber": 50,
 "Whiskey": 40
 }
 
@@ -270,19 +269,19 @@ z_as_relative = false
 position = Vector2(221, -871)
 script = ExtResource("8_xo05s")
 offered_item = ""
-wanted_item = "Coins"
+wanted_item = "Coin"
 char_name = "Stablemaster"
 gender = 1
 profession = 5
 inventory = {
 "Boots": 2,
-"Coins": 75,
+"Coin": 75,
 "Corn": 25,
-"Horses": 75,
-"Lumber": 50,
+"Horse": 75,
 "Stone": 40,
 "Strudel": 1,
 "Sword": 1,
+"Timber": 50,
 "Whiskey": 1
 }
 
@@ -292,18 +291,18 @@ z_as_relative = false
 position = Vector2(443.00003, -55)
 script = ExtResource("8_xo05s")
 offered_item = ""
-wanted_item = "Coins"
+wanted_item = "Coin"
 char_name = "Tanner"
 profession = 6
 inventory = {
 "Boots": 78,
-"Coins": 75,
+"Coin": 75,
 "Corn": 15,
-"Horses": 2,
-"Lumber": 50,
+"Horse": 2,
 "Stone": 40,
 "Strudel": 1,
 "Sword": 1,
+"Timber": 50,
 "Whiskey": 1
 }
 
@@ -313,17 +312,17 @@ z_as_relative = false
 position = Vector2(730.99994, -36.00009)
 script = ExtResource("8_xo05s")
 offered_item = ""
-wanted_item = "Coins"
+wanted_item = "Coin"
 char_name = "Mason"
 profession = 3
 inventory = {
 "Boots": 1,
-"Coins": 75,
+"Coin": 75,
 "Corn": 10,
-"Horses": 2,
-"Lumber": 100,
+"Horse": 2,
 "Stone": 550,
 "Strudel": 1,
 "Sword": 1,
+"Timber": 100,
 "Whiskey": 1
 }

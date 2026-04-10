@@ -2,13 +2,22 @@
 
 [ext_resource type="Script" uid="uid://boriow0q3pktw" path="res://singleton/ui_trade.gd" id="1_0tw80"]
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="1_e5ajk"]
+[ext_resource type="Resource" uid="uid://bfgadxp57w3l5" path="res://scripts/commodities/resources/boots.tres" id="3_io35t"]
 [ext_resource type="Texture2D" uid="uid://yeq2ce28qpje" path="res://assets/image/sprite/items/horse.png" id="3_pglr2"]
 [ext_resource type="AudioStream" uid="uid://c1ekqxpft6f4a" path="res://assets/audio/sfx/sfx_increment.ogg" id="3_plr5u"]
+[ext_resource type="Resource" uid="uid://cgg2v0q1xe84h" path="res://scripts/commodities/resources/coin.tres" id="4_m8vmv"]
 [ext_resource type="AudioStream" uid="uid://q7iv0ujiwvcm" path="res://assets/audio/sfx/sfx_decrement.ogg" id="4_pglr2"]
 [ext_resource type="AudioStream" uid="uid://crvce2oxapbdm" path="res://assets/audio/sfx/sfx_papyrus_close.ogg" id="5_lm5gh"]
+[ext_resource type="Resource" uid="uid://d2y5qxjj44jel" path="res://scripts/commodities/resources/corn.tres" id="5_x1dd0"]
+[ext_resource type="Resource" uid="uid://bphkkse2cmd1r" path="res://scripts/commodities/resources/horse.tres" id="6_f8ibo"]
 [ext_resource type="AudioStream" uid="uid://bxtx44wc1v5ey" path="res://assets/audio/sfx/sfx_papyrus_open.ogg" id="6_fmvxx"]
+[ext_resource type="Resource" uid="uid://bl7nywpbqkpiy" path="res://scripts/commodities/resources/stone.tres" id="7_qacem"]
+[ext_resource type="Resource" uid="uid://ce6ptjyb3wdne" path="res://scripts/commodities/resources/strudel.tres" id="8_leorf"]
+[ext_resource type="Resource" uid="uid://cgwpkjtyr5vt2" path="res://scripts/commodities/resources/sword.tres" id="9_0mnax"]
+[ext_resource type="Resource" uid="uid://vg7etd666o5c" path="res://scripts/commodities/resources/timber.tres" id="10_bh1tr"]
+[ext_resource type="Resource" uid="uid://ccqkttfwiq03j" path="res://scripts/commodities/resources/whiskey.tres" id="11_tkw7k"]
 
-[node name="UI-Trade" type="Control" unique_id=922451981 node_paths=PackedStringArray("title_label", "give_item_label", "give_amount_label", "get_item_label", "get_amount_label")]
+[node name="UI-Trade" type="Control" unique_id=922451981 node_paths=PackedStringArray("title_label", "give_amount_label", "get_amount_label", "give_item_sprite", "get_item_sprite")]
 custom_minimum_size = Vector2(500, 260)
 layout_mode = 3
 anchors_preset = 8
@@ -23,10 +32,11 @@ size_flags_vertical = 6
 theme = ExtResource("1_e5ajk")
 script = ExtResource("1_0tw80")
 title_label = NodePath("FullVBox/HBoxContainer/Title")
-give_item_label = NodePath("FullVBox/HBoxContainer3/LabelItemGive")
-give_amount_label = NodePath("FullVBox/HBoxContainer3/HBoxContainer/GiveRow/LabelAmountGive")
-get_item_label = NodePath("FullVBox/HBoxContainer3/LabelItemGet")
-get_amount_label = NodePath("FullVBox/HBoxContainer3/HBoxContainer2/GetRow/LabelAmountGet")
+give_amount_label = NodePath("FullVBox/HBoxContainer3/HBoxContainer/GiveRow/LineEditAmountGive")
+get_amount_label = NodePath("FullVBox/HBoxContainer3/HBoxContainer2/GetRow/LineEditAmountGet")
+item_resource_list = Array[Resource]([ExtResource("3_io35t"), ExtResource("4_m8vmv"), ExtResource("5_x1dd0"), ExtResource("6_f8ibo"), ExtResource("7_qacem"), ExtResource("8_leorf"), ExtResource("9_0mnax"), ExtResource("10_bh1tr"), ExtResource("11_tkw7k")])
+give_item_sprite = NodePath("FullVBox/HBoxContainer3/SpriteItemGive")
+get_item_sprite = NodePath("FullVBox/HBoxContainer3/SpriteItemGet")
 
 [node name="Background" type="Panel" parent="." unique_id=1529041325]
 layout_mode = 1
@@ -64,75 +74,21 @@ expand_mode = 2
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="FullVBox" unique_id=1206467036]
-layout_mode = 2
-
-[node name="LabelItemGive" type="Label" parent="FullVBox/HBoxContainer4" unique_id=153389412]
-layout_mode = 2
-text = "Give:"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="FullVBox/HBoxContainer4" unique_id=2131883898]
-layout_mode = 2
-size_flags_horizontal = 2
-
-[node name="GiveRow" type="HBoxContainer" parent="FullVBox/HBoxContainer4/HBoxContainer" unique_id=1682935142]
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="ItemSprite" type="TextureRect" parent="FullVBox/HBoxContainer4/HBoxContainer/GiveRow" unique_id=1277862438]
-layout_mode = 2
-texture = ExtResource("3_pglr2")
-expand_mode = 2
-
-[node name="ButtonMinusGive" type="Button" parent="FullVBox/HBoxContainer4/HBoxContainer/GiveRow" unique_id=815950296]
-layout_mode = 2
-text = "-"
-
-[node name="LabelAmountGive" type="Label" parent="FullVBox/HBoxContainer4/HBoxContainer/GiveRow" unique_id=666456472]
-layout_mode = 2
-text = "0"
-
-[node name="ButtonPlusGive" type="Button" parent="FullVBox/HBoxContainer4/HBoxContainer/GiveRow" unique_id=1323379706]
-layout_mode = 2
-text = "+"
-
-[node name="LabelItemGet" type="Label" parent="FullVBox/HBoxContainer4" unique_id=1042715421]
-layout_mode = 2
-text = "Get:"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="FullVBox/HBoxContainer4" unique_id=1860605022]
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 4
-
-[node name="GetRow" type="HBoxContainer" parent="FullVBox/HBoxContainer4/HBoxContainer2" unique_id=1332949639]
+[node name="HBoxContainer3" type="HBoxContainer" parent="FullVBox" unique_id=817744908]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Sprite2D" type="TextureRect" parent="FullVBox/HBoxContainer4/HBoxContainer2/GetRow" unique_id=2058220926]
+[node name="ButtonGivePrev" type="Button" parent="FullVBox/HBoxContainer3" unique_id=1636327618]
 layout_mode = 2
-texture = ExtResource("3_pglr2")
-expand_mode = 2
+text = "<"
 
-[node name="ButtonMinusGet" type="Button" parent="FullVBox/HBoxContainer4/HBoxContainer2/GetRow" unique_id=563365268]
-layout_mode = 2
-text = "-"
-
-[node name="LabelAmountGet" type="Label" parent="FullVBox/HBoxContainer4/HBoxContainer2/GetRow" unique_id=1632235601]
-layout_mode = 2
-text = "0"
-
-[node name="ButtonPlusGet" type="Button" parent="FullVBox/HBoxContainer4/HBoxContainer2/GetRow" unique_id=1273855665]
-layout_mode = 2
-text = "+"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="FullVBox" unique_id=817744908]
+[node name="SpriteItemGive" type="TextureRect" parent="FullVBox/HBoxContainer3" unique_id=1596589172]
 layout_mode = 2
 
-[node name="LabelItemGive" type="Label" parent="FullVBox/HBoxContainer3" unique_id=382851019]
+[node name="ButtonGiveNext" type="Button" parent="FullVBox/HBoxContainer3" unique_id=2106539697]
 layout_mode = 2
-text = "Give:"
+text = ">"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="FullVBox/HBoxContainer3" unique_id=1836748447]
 layout_mode = 2
@@ -142,16 +98,11 @@ size_flags_horizontal = 2
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="ItemSprite" type="TextureRect" parent="FullVBox/HBoxContainer3/HBoxContainer/GiveRow" unique_id=1005173030]
-layout_mode = 2
-texture = ExtResource("3_pglr2")
-expand_mode = 2
-
 [node name="ButtonMinusGive" type="Button" parent="FullVBox/HBoxContainer3/HBoxContainer/GiveRow" unique_id=1091235951]
 layout_mode = 2
 text = "-"
 
-[node name="LabelAmountGive" type="Label" parent="FullVBox/HBoxContainer3/HBoxContainer/GiveRow" unique_id=292439590]
+[node name="LineEditAmountGive" type="LineEdit" parent="FullVBox/HBoxContainer3/HBoxContainer/GiveRow" unique_id=213318614]
 layout_mode = 2
 text = "0"
 
@@ -159,9 +110,16 @@ text = "0"
 layout_mode = 2
 text = "+"
 
-[node name="LabelItemGet" type="Label" parent="FullVBox/HBoxContainer3" unique_id=1015905228]
+[node name="ButtonGetPrev" type="Button" parent="FullVBox/HBoxContainer3" unique_id=1184638121]
 layout_mode = 2
-text = "Get:"
+text = "<"
+
+[node name="SpriteItemGet" type="TextureRect" parent="FullVBox/HBoxContainer3" unique_id=395822833]
+layout_mode = 2
+
+[node name="ButtonGetNext" type="Button" parent="FullVBox/HBoxContainer3" unique_id=1217924131]
+layout_mode = 2
+text = ">"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="FullVBox/HBoxContainer3" unique_id=1036822087]
 layout_mode = 2
@@ -173,22 +131,22 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Sprite2D" type="TextureRect" parent="FullVBox/HBoxContainer3/HBoxContainer2/GetRow" unique_id=741529444]
-layout_mode = 2
-texture = ExtResource("3_pglr2")
-expand_mode = 2
-
 [node name="ButtonMinusGet" type="Button" parent="FullVBox/HBoxContainer3/HBoxContainer2/GetRow" unique_id=119910940]
 layout_mode = 2
 text = "-"
 
-[node name="LabelAmountGet" type="Label" parent="FullVBox/HBoxContainer3/HBoxContainer2/GetRow" unique_id=2046816809]
+[node name="LineEditAmountGet" type="LineEdit" parent="FullVBox/HBoxContainer3/HBoxContainer2/GetRow" unique_id=582575860]
 layout_mode = 2
 text = "0"
 
 [node name="ButtonPlusGet" type="Button" parent="FullVBox/HBoxContainer3/HBoxContainer2/GetRow" unique_id=755712571]
 layout_mode = 2
 text = "+"
+
+[node name="LabelDenied" type="Label" parent="FullVBox" unique_id=122778505]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
 
 [node name="ActionsRow" type="HBoxContainer" parent="FullVBox" unique_id=766619334]
 layout_mode = 2
@@ -216,9 +174,15 @@ stream = ExtResource("5_lm5gh")
 [node name="SfxPapyrusOpen" type="AudioStreamPlayer" parent="." unique_id=253472776]
 stream = ExtResource("6_fmvxx")
 
+[connection signal="pressed" from="FullVBox/HBoxContainer3/ButtonGivePrev" to="." method="_on_button_give_prev_pressed"]
+[connection signal="pressed" from="FullVBox/HBoxContainer3/ButtonGiveNext" to="." method="_on_button_give_next_pressed"]
 [connection signal="pressed" from="FullVBox/HBoxContainer3/HBoxContainer/GiveRow/ButtonMinusGive" to="." method="_on_button_minus_give_pressed"]
+[connection signal="text_changed" from="FullVBox/HBoxContainer3/HBoxContainer/GiveRow/LineEditAmountGive" to="." method="_on_label_amount_give_text_changed"]
 [connection signal="pressed" from="FullVBox/HBoxContainer3/HBoxContainer/GiveRow/ButtonPlusGive" to="." method="_on_button_plus_give_pressed"]
+[connection signal="pressed" from="FullVBox/HBoxContainer3/ButtonGetPrev" to="." method="_on_button_get_prev_pressed"]
+[connection signal="pressed" from="FullVBox/HBoxContainer3/ButtonGetNext" to="." method="_on_button_get_next_pressed"]
 [connection signal="pressed" from="FullVBox/HBoxContainer3/HBoxContainer2/GetRow/ButtonMinusGet" to="." method="_on_button_minus_get_pressed"]
+[connection signal="text_changed" from="FullVBox/HBoxContainer3/HBoxContainer2/GetRow/LineEditAmountGet" to="." method="_on_label_amount_get_text_changed"]
 [connection signal="pressed" from="FullVBox/HBoxContainer3/HBoxContainer2/GetRow/ButtonPlusGet" to="." method="_on_button_plus_get_pressed"]
 [connection signal="pressed" from="FullVBox/ActionsRow/ButtonTrade" to="." method="_on_button_trade_pressed"]
 [connection signal="pressed" from="FullVBox/ActionsRow/ButtonCancel" to="." method="_on_button_cancel_pressed"]

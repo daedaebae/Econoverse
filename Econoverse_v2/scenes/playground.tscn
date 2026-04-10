@@ -39,10 +39,10 @@ visible = false
 z_index = 2000
 
 [node name="UI" parent="TopLayer" unique_id=172092760 instance=ExtResource("15_fn4oh")]
-visible = false
 z_index = 1000
 
 [node name="UI-Trade" parent="TopLayer" unique_id=2082776193 instance=ExtResource("7_emj6c")]
+visible = false
 offset_left = -100.0
 offset_top = -130.0
 offset_right = 100.0
@@ -85,7 +85,7 @@ metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
 script = ExtResource("12_osidk")
 metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
 
-[node name="Lumber" type="Sprite2D" parent="." unique_id=1920670522]
+[node name="Timber" type="Sprite2D" parent="." unique_id=1920670522]
 script = ExtResource("12_osidk")
 metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
 

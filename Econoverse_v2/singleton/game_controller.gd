@@ -19,6 +19,8 @@ var ledger_node: Control = null
 var artisan_nodes: Array = []
 var clock_node: Node = null
 
+signal inventory_changed
+
 func _ready() -> void:
 	# Wait until the end of the first frame so all scene nodes have run their _ready()
 	# and registered themselves before we run startup checks.
@@ -112,7 +114,7 @@ func on_trade_complete(trade: Dictionary) -> void:
 	# Shows what ledger_node is pointing to. If null, register_ledger() was never called
 	# or ui_ledger hasn't loaded yet.
 	print("[GAME_CONTROLLER] ledger_node is: ", ledger_node)
-
+	
 	# Builds a formatted log string by slotting the trade dictionary values into a template.
 	# %s = string, %d = integer. So for a trade where the player gives 10 Coins for 1 Sword from Bogus Buchannon, it produces:
 	# TRADE: Player gave 10 Coins for 1 Sword from Bogus Buchannon
@@ -124,5 +126,8 @@ func on_trade_complete(trade: Dictionary) -> void:
 	Logging.log_info(msg)
 	if ledger_node:
 		ledger_node.track(trade)
-		
+	
+	# Every trade emit a signal to GameController to show a trade happened and inventory is updated.
+	inventory_changed.emit()
+	
 #endregion Logic Handlers

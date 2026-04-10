@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_gewsn")
 id = 6
-start_price = 3
+start_price = 5
 name_full = "Strudel"
 name_abbreviated = "Strudel"
 description = "Delicacy treat, crumbly and sweet"

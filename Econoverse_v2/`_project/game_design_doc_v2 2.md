@@ -36,7 +36,7 @@
 **Story Synopsis:** The player is an inexperienced merchant learning to sell and trade items within the city. The ultimate goal is to make gold and become a renown trader in the kingdom.
 
 **Lore & World:** The world is a medieval fantasy setting with different regions, each with unique goods and resources. For example:
-- A lush forest region might have cheap lumber but expensive metal.
+- A lush forest region might have cheap Timber but expensive metal.
 - A mountainous region has the opposite.
 
 **Points of Interest (POIs):** Towns, resource-gathering sites, bandit camps, and ancient ruins.

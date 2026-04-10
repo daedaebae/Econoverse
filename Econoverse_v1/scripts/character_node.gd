@@ -67,7 +67,7 @@ enum Gender {
 }
 
 enum Location { 
-	Lumber_Mill,
+	Timber_Mill,
 	Smithy,
 	Stables,
 	Bakery,

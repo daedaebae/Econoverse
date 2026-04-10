@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_k4kt2")
 id = 3
-start_price = 1
+start_price = -2
 name_full = "Corn"
 name_abbreviated = "Corn"
 description = "Halfly shucked, waxy sheen, toothsome at a glance"
