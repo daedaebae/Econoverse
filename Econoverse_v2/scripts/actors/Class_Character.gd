@@ -26,6 +26,7 @@ extends CharacterBody2D
 	"Whiskey": 0,
 }
 @export var met : bool = false
+@export var sprite: Sprite2D = null
 
 # Maps each profession to the item they produce and sell.
 # Used by artisan.gd to auto-set offered_item from profession.

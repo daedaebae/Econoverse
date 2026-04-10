@@ -39,11 +39,10 @@ visible = false
 z_index = 2000
 
 [node name="UI" parent="TopLayer" unique_id=172092760 instance=ExtResource("15_fn4oh")]
+visible = false
 z_index = 1000
 
 [node name="UI-Trade" parent="TopLayer" unique_id=2082776193 instance=ExtResource("7_emj6c")]
-visible = false
-custom_minimum_size = Vector2(200, 260)
 offset_left = -100.0
 offset_top = -130.0
 offset_right = 100.0

@@ -10,6 +10,7 @@ extends Control
 @export var give_amount_label: Label
 @export var get_item_label: Label
 @export var get_amount_label: Label
+@export var npc_resource: Resource
 
 # --- Sound ---
 ##kc 10/26/25; began basic sfx implementation. Not the most
@@ -38,7 +39,6 @@ var current_item_get: String = ""
 var player_node: Node = null
 var npc_node: Node = null
 
-
 func _ready():
 	# kc 10/25/25; assign the trade ui to the gamecontroller singleton
 	GameController.register_trade_ui(self)
@@ -53,6 +53,10 @@ func open_trade(player: Node, npc: Node, item_give: String, item_get: String):
 	self.npc_node = npc
 	self.current_item_give = item_give
 	self.current_item_get = item_get
+	
+	# TODO: durf- set the sprite for this artisan based on the artisan
+	# chosen in this function
+	
 
 	# Reset amounts
 	current_give_amount = 0
