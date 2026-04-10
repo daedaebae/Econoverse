@@ -2,7 +2,7 @@ extends Node
 
 # TODO: Need to update these to Godot 4 syntax
 #@onready var locations = {
-	#BaseState.locations.Lumber_Mill: $Lumber_Mill,
+	#BaseState.locations.Timber_Mill: $Timber_Mill,
 	#BaseState.locations.Smithy: $Smithy,
 	#BaseState.locations.Stables: $Stables,
 	#BaseState.locations.Bakery: $Bakery,

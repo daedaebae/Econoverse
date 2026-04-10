@@ -6,10 +6,20 @@ extends Character
 # This signal is for the Artisan only.
 signal artisan_clicked(npc: Node)
 
+# What this artisan sells and what they accept in return.
+# If left empty, offered_item is auto-set from profession via PROFESSION_ITEM.
+@export var offered_item: String = ""
+@export var wanted_item: String = "Coins"
+
 func _ready():
 	# "Hello GameController, I am an artisan. Listen to me."
 	# ONLY artisans register as an artisan.
 	GameController.register_artisan(self)
+	# Auto-set offered_item from profession if not manually overridden.
+	if offered_item == "":
+		offered_item = PROFESSION_ITEM.get(profession, "Coins")
+	Logging.log_info("Artisan registered: %s | profession: %s | offers: %s | wants: %s" \
+		% [char_name, Profession.keys()[profession], offered_item, wanted_item])
 
 # This is the click-handler.
 # It will now be called when the Artisan's *own* shape is clicked.
@@ -21,4 +31,4 @@ func _input(event: InputEvent) -> void:
 		var mouse_pos = get_global_mouse_position()
 		if global_position.distance_to(mouse_pos) < 20:
 			artisan_clicked.emit(self)
-			get_viewport().set_input_as_handled()
+			get_viewport().set_input_as_handled()    

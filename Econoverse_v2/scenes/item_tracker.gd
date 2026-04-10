@@ -11,18 +11,25 @@ func _ready() -> void:
 	if TrackerTexture:
 		TrackerTexture.texture = item_resource.texture
 		TrackerTexture.tooltip_text = item_resource.get_tooltip()
+	# Set the UI labels to reflect Players inventory
+	LabelQty.text = str(GameController.player_node.inventory[item_resource.name_full])
+	# 
+	GameController.inventory_changed.connect(_on_inventory_changed)
 	
 func _process(delta: float) -> void:
 	pass
 	# track the quantity of the player's item here somehow something like:
 	# LabelQty.text = Player.Inventory[item_resource.resource_name]
-	
+
 	# or (more performant) updated by signal:
 	# in ready:
 	# Player.inventory_changed.connect(_on_inventory_changed)
-	
-	# func(_on_inventory_changed) --> int: 
+
+	# func(_on_inventory_changed) --> int:
 	# 	if Player.Inventory[item_resource.resource_name] != LabelQty.text
 	# 		LabelQty.text = Player.Inventory[item_resource.resource_name]
-	# 
+	#
 	# could later do dynamic roll up/down of values with sfx for the juice
+
+func _on_inventory_changed():
+	LabelQty.text = str(GameController.player_node.inventory[item_resource.name_full])

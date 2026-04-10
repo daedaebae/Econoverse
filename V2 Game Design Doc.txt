@@ -1,7 +1,7 @@
 Here is a Game Design Document (GDD) for your merchant game concept, structured using the prompt you provided.
 
 Section 1: Core Concept & Overview
-Game Title: The Merchant's Burden (Placeholder)
+Game Title: Econoverse
 
 Genre: Resource Management, Simulation, Strategy
 
@@ -35,7 +35,7 @@ Inventory Screen: A grid-based system for the player's goods. Items will have a 
 Section 3: Story, World & Characters
 Story Synopsis: The player is a disgraced merchant who has accumulated a massive debt or angered a powerful guild. They must pay a regular tithe to keep their enemies at bay. The ultimate goal is to pay off a final, massive debt to regain their freedom and status.
 
-Lore & World: The world is a medieval fantasy setting with different regions, each with unique goods and resources. For example, a lush forest region might have cheap lumber but expensive metal, while a mountainous region has the opposite. POIs will include towns, resource-gathering sites, bandit camps, and ancient ruins.
+Lore & World: The world is a medieval fantasy setting with different regions, each with unique goods and resources. For example, a lush forest region might have cheap Timber but expensive metal, while a mountainous region has the opposite. POIs will include towns, resource-gathering sites, bandit camps, and ancient ruins.
 
 Characters: The player character is a customizable merchant. NPCs are primarily vendors and quest-givers at different POIs. They can have unique personalities and trade special goods.
 

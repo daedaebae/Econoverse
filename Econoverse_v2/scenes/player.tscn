@@ -2,37 +2,24 @@
 
 [ext_resource type="Texture2D" uid="uid://dqxhs1tlvdn0x" path="res://assets/image/sprite/SpriteDude.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://cuyyhpbt3xolc" path="res://scripts/actors/Class_Character.gd" id="1_g2els"]
-[ext_resource type="Shape2D" uid="uid://jujaimjtmbl" path="res://scripts/actors/resources/shape.tres" id="2_qhqgy"]
 
-[node name="Throwaway-CharacterBody2D" type="CharacterBody2D" unique_id=324386717]
-z_index = 1
-y_sort_enabled = true
-collision_layer = 2
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
+radius = 16.0
+height = 44.0
+
+[node name="Player" type="CharacterBody2D" unique_id=242170322 node_paths=PackedStringArray("sprite")]
 collision_mask = 3
-input_pickable = true
 script = ExtResource("1_g2els")
-inventory = {
-"Boots": 0,
-"Coins": 5,
-"Corn": 0,
-"Horses": 0,
-"Lumber": 0,
-"Stone": 0,
-"Strudel": 0,
-"Sword": 0,
-"Whiskey": 0
-}
+sprite = NodePath("CollisionShape2D2/Dude")
+metadata/_custom_type_script = "uid://cuyyhpbt3xolc"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=124601216]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1009586970]
+y_sort_enabled = true
+position = Vector2(77, 23)
+shape = SubResource("CapsuleShape2D_g2els")
+
+[node name="Dude" type="Sprite2D" parent="CollisionShape2D2" unique_id=1718935711]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(0, -8)
-shape = ExtResource("2_qhqgy")
-debug_color = Color(6.2569975e-06, 0.91344684, 0.17746532, 0.41960785)
-
-[node name="Dude" type="Sprite2D" parent="." unique_id=1718935711]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(0, -15)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_3vyb7")

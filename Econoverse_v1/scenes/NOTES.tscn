@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://by6kxwvc8oyxi" path="res://assets/image/sprites/horse.png" id="2_ebccb"]
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="2_hn76n"]
 [ext_resource type="Texture2D" uid="uid://dkt5jtxoyo0as" path="res://assets/image/sprites/boots.png" id="3_ndml6"]
-[ext_resource type="Texture2D" uid="uid://4lxiha4p2rag" path="res://assets/image/sprites/lumber.png" id="4_hn76n"]
+[ext_resource type="Texture2D" uid="uid://4lxiha4p2rag" path="res://assets/image/sprites/Timber.png" id="4_hn76n"]
 [ext_resource type="Texture2D" uid="uid://tra18r25wvdn" path="res://assets/image/econoverse_main.png" id="6_1suao"]
 [ext_resource type="FontFile" uid="uid://bwgm0rcnkhr36" path="res://assets/fonts/CormorantInfant-VariableFont_wght.ttf" id="7_1suao"]
 
@@ -141,7 +141,7 @@ rotation = 0.218842
 scale = Vector2(-4.18283, 4.2129)
 texture = ExtResource("3_ndml6")
 
-[node name="Lumber" type="Sprite2D" parent="."]
+[node name="Timber" type="Sprite2D" parent="."]
 modulate = Color(0.05, 0.05, 0.05, 0.831373)
 position = Vector2(890, 360)
 scale = Vector2(23.5302, 23.5302)

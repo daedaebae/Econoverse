@@ -47,9 +47,9 @@ var world_demand : Dictionary
 	wood = {
 		"id": 2,
 		"start_price":  1.00,
-		"name_full": "Lumber",
+		"name_full": "Timber",
 		"name_abbreviated": "Wood",
-		"description": "Raw, unprocessed lumber used for construction and industry.",
+		"description": "Raw, unprocessed Timber used for construction and industry.",
 		"texture": "",
 		"world_supply": 1000
 	},

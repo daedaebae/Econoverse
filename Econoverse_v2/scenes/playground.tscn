@@ -85,7 +85,7 @@ metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
 script = ExtResource("12_osidk")
 metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
 
-[node name="Lumber" type="Sprite2D" parent="." unique_id=1920670522]
+[node name="Timber" type="Sprite2D" parent="." unique_id=1920670522]
 script = ExtResource("12_osidk")
 metadata/_custom_type_script = "uid://dk1uf4u80ps7x"
 

@@ -54,7 +54,7 @@
 #
 ##region LocationStateMachine
 #enum Location { 
-	#Lumber_Mill,
+	#Timber_Mill,
 	#Smithy,
 	#Stables,
 	#Bakery,
@@ -67,7 +67,7 @@
 ##TODO: Connect to relevant scene/shop/conversation.
 #func _process(delta: float) -> void:
 	#match location:
-		#Location.Lumber_Mill:
+		#Location.Timber_Mill:
 			## Run carpenter convo scene
 			##
 			#pass

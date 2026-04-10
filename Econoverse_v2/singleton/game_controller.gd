@@ -5,8 +5,8 @@ extends Node
 
 ## kc 10/25/25; functions for mechanics and interactive systems
 ## can register to the game_controller. This way, values are passed from the
-## singleton and we don't have to manually assign actors to 
-## each other within their functions. 
+## singleton and we don't have to manually assign actors to
+## each other within their functions.
 ## ex: GameController.register_player(self) on
 ## the player script's ready function will assign the 
 ## player and values. 
@@ -16,8 +16,37 @@ var logger_node: Node = null
 var player_node: Node = null
 var trade_ui_node: Control = null
 var ledger_node: Control = null
-var artisan_nodes = (null)
+var artisan_nodes: Array = []
 var clock_node: Node = null
+
+signal inventory_changed
+
+func _ready() -> void:
+	# Wait until the end of the first frame so all scene nodes have run their _ready()
+	# and registered themselves before we run startup checks.
+	await get_tree().process_frame
+	_check_node_registration()
+	_verify_world_supply()
+
+# Log errors for any required node that failed to register before the first frame.
+func _check_node_registration() -> void:
+	if not player_node:
+		Logging.log_error("GameController: player_node not registered at game start.")
+	if not trade_ui_node:
+		Logging.log_error("GameController: trade_ui_node not registered at game start.")
+	if not ledger_node:
+		Logging.log_error("GameController: ledger_node not registered at game start.")
+	if not clock_node:
+		Logging.log_error("GameController: clock_node not registered at game start.")
+	if not artisan_nodes:
+		Logging.log_error("GameController: no artisan_nodes registered at game start.")
+
+# Confirm the world supply based on the ledger method
+func _verify_world_supply() -> void:
+	if ledger_node and ledger_node.has_method("verify_supply"):
+		ledger_node.verify_supply()
+	elif not ledger_node:
+		Logging.log_warn("GameController: ledger_node not registered — supply verification skipped.")
 
 #region Registration Functions
 # Other nodes will call these functions to let us know they exist.
@@ -28,49 +57,53 @@ func register_logger(logger: Node) -> void:
 
 func register_player(player: Node):
 	player_node = player
+	Logging.log_info("Player registered: %s" % player.char_name)
 
 func register_trade_ui(ui: Control):
 	trade_ui_node = ui
 	trade_ui_node.hide() # Ensure it's hidden at the start
+	Logging.log_info("Trade UI registered.")
 
 func register_artisan(artisan: Node):
 	# When an artisan registers, we immediately connect its signal
-	# to our central handler function.
+	# to our central handler function then append the node to the artisan_nodes array.
 	if not artisan.artisan_clicked.is_connected(_on_artisan_clicked):
 		artisan.artisan_clicked.connect(_on_artisan_clicked)
+	artisan_nodes.append(artisan)
 
 # Register the ledger to the game_controller
 func register_ledger(ledger: Control):
 	ledger_node = ledger
+	Logging.log_info("Ledger registered.")
 
 # Register the clock
 func register_clock(clock: Node) -> void:
 	clock_node = clock
-	
+
 #endregion Registration Functions
 
 #region Logic Handlers
 # This function is moved from Playground.gd. It now runs globally.
 
-func _on_artisan_clicked(npc_who_was_clicked: Node):
-	
+func _on_artisan_clicked(clicked_npc: Node):
+
 	# A good safety check to make sure our nodes have registered
 	if not player_node:
-		print("GameController Error: Player is not registered.")
+		Logging.log_error("GameController: Player is not registered — cannot open trade.")
 		return
 	if not trade_ui_node:
-		print("GameController Error: Trade UI is not registered.")
+		Logging.log_error("GameController: Trade UI is not registered — cannot open trade.")
 		return
-	
-	# --- Define the trade (or get it from the NPC) ---
-	## kc 10/25/2025 here is where the trade items are determined. 
-	## A helper function could be implemented to update these items based on user input.
-	## There is also NO ERROR HANDLING OR CHECKING FOR REALISTIC VALUES lol. 
-	var npc_gives_item = "Sword"
-	var player_gives_item = "Coins"
-	
+
+	# --- Define the trade from NPC data ---
+	var npc_gives_item = clicked_npc.offered_item if "offered_item" in clicked_npc else "Sword"
+	var player_gives_item = clicked_npc.wanted_item if "wanted_item" in clicked_npc else "Coins"
+
+	Logging.log_info("Trade opened: Player ↔ %s | Player gives: %s | NPC gives: %s" \
+		% [clicked_npc.char_name, player_gives_item, npc_gives_item])
+
 	# Command the UI to open the trade
-	trade_ui_node.open_trade(player_node, npc_who_was_clicked, player_gives_item, npc_gives_item)
+	trade_ui_node.open_trade(player_node, clicked_npc, player_gives_item, npc_gives_item)
 
 # Register trade to game controller
 func on_trade_complete(trade: Dictionary) -> void:
@@ -81,7 +114,7 @@ func on_trade_complete(trade: Dictionary) -> void:
 	# Shows what ledger_node is pointing to. If null, register_ledger() was never called
 	# or ui_ledger hasn't loaded yet.
 	print("[GAME_CONTROLLER] ledger_node is: ", ledger_node)
-
+	
 	# Builds a formatted log string by slotting the trade dictionary values into a template.
 	# %s = string, %d = integer. So for a trade where the player gives 10 Coins for 1 Sword from Bogus Buchannon, it produces:
 	# TRADE: Player gave 10 Coins for 1 Sword from Bogus Buchannon
@@ -93,35 +126,8 @@ func on_trade_complete(trade: Dictionary) -> void:
 	Logging.log_info(msg)
 	if ledger_node:
 		ledger_node.track(trade)
-		
+	
+	# Every trade emit a signal to GameController to show a trade happened and inventory is updated.
+	inventory_changed.emit()
+	
 #endregion Logic Handlers
-
-#region Debug
-# Takes a TestName param and a CharIn param for the name of the test and the
-# Character you want to print details for.
-func debug(TestName, CharIn):
-	print("####################\n\tdebug\n####################")
-	print(
-		str("Testing: "+TestName),
-		"\nname: ", CharIn.char_name,
-		"\nlocation: ",CharIn.location,
-		"\ngender: ",CharIn.gender,
-		"\nrace: ",CharIn.race,
-		# TODO: print foreach inventory item and it's quant
-		"\ninventory:\n\t\t[Sword: ",CharIn.inventory.Sword,
-		"] [Strudel: ",CharIn.inventory.Strudel,"] [Coins: ",CharIn.inventory.Coins,
-		"] ",
-		"\nprofession: ",CharIn.profession
-		# TODO: get and print current dialgue quest/location 
-	)
-	#print(
-		#"#######\nTrade prep\n#######"
-	#)
-	#if CharIn == Player:
-		#Player.trade(Baker, "Coins", 5, "Strudel", 1)
-	#print(
-			#"Seems they did the trade!\nPlayer Inv: ",Player.inventory,
-			#"\nBaker Inv:",Baker.inventory
-	#)
-	pass
-#endregion Debug
