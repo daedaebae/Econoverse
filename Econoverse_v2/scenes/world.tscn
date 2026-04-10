@@ -75,6 +75,82 @@ tile_layout = 5
 tile_size = Vector2i(32, 16)
 sources/0 = SubResource("TileSetAtlasSource_vwj6b")
 
+[sub_resource type="Curve" id="Curve_7r4gi"]
+_data = [Vector2(0.25, 0.776116), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.90573305), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_w7kh3"]
+curve = SubResource("Curve_7r4gi")
+
+[sub_resource type="Curve" id="Curve_w7kh3"]
+_limits = [-1.0, 45.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(0.4970238, 45), 0.0, 0.0, 0, 0, Vector2(1, 20.879446), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_e3hyu"]
+curve = SubResource("Curve_w7kh3")
+
+[sub_resource type="Gradient" id="Gradient_7r4gi"]
+colors = PackedColorArray(0.92, 0.948, 1, 1, 1, 0.9835, 0.89, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_w7kh3"]
+gradient = SubResource("Gradient_7r4gi")
+
+[sub_resource type="Gradient" id="Gradient_e3hyu"]
+offsets = PackedFloat32Array(0, 0.60231024, 0.8069307, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 0.84179366, 1, 1, 1, 0.78, 1, 1, 0.77, 0.83900005, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_q5onr"]
+gradient = SubResource("Gradient_e3hyu")
+
+[sub_resource type="Curve" id="Curve_e3hyu"]
+_data = [Vector2(0, 0), 0.0, -0.7407289, 0, 0, Vector2(0.2142857, 0.7878994), 1.7321543, 1.7321543, 0, 0, Vector2(0.59821427, 0.776116), -2.262401, -2.262401, 0, 0, Vector2(1, 0), -4.0861063, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_q5onr"]
+curve = SubResource("Curve_e3hyu")
+
+[sub_resource type="Curve" id="Curve_q5onr"]
+_limits = [0.0, 30.0, 0.0, 1.0]
+_data = [Vector2(0, 12.040789), 0.0, 0.0, 0, 0, Vector2(0.2797619, 26.995243), 12.066162, 12.066162, 0, 0, Vector2(1, 19.21822), -59.029194, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_jhx03"]
+curve = SubResource("Curve_q5onr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e3hyu"]
+lifetime_randomness = 0.05
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(800, 600, 1)
+angle_min = -14.9999895
+angle_max = 15.0000105
+angle_curve = SubResource("CurveTexture_e3hyu")
+direction = Vector3(0, 0, 0)
+spread = 21.63
+initial_velocity_min = 0.37
+initial_velocity_max = 3.0
+angular_velocity_min = -105.27001
+angular_velocity_max = 131.58998
+orbit_velocity_min = -0.003999905
+orbit_velocity_max = 0.020000096
+velocity_limit_curve = SubResource("CurveTexture_jhx03")
+gravity = Vector3(0, 1, 0)
+linear_accel_min = -1.5700022
+linear_accel_max = 4.7099977
+radial_accel_min = -1.5700022
+radial_accel_max = 41.609997
+tangential_accel_min = -27.150002
+tangential_accel_max = 13.059998
+damping_max = 0.261
+scale_min = 0.19999999
+scale_curve = SubResource("CurveTexture_q5onr")
+color_ramp = SubResource("GradientTexture1D_q5onr")
+color_initial_ramp = SubResource("GradientTexture1D_w7kh3")
+alpha_curve = SubResource("CurveTexture_w7kh3")
+hue_variation_min = -0.020000022
+hue_variation_max = 0.06999998
+
 [node name="world" type="Node2D" unique_id=1021432285]
 z_index = 1
 z_as_relative = false
@@ -138,6 +214,20 @@ position_smoothing_speed = 6.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_limits = true
+
+[node name="ParticlesAir" type="GPUParticles2D" parent="Actors/Player/Camera2D" unique_id=20999950]
+modulate = Color(1, 0.998, 0.97, 0.79607844)
+z_index = 5
+scale = Vector2(0.545, 0.545)
+amount = 60000
+amount_ratio = 0.2
+lifetime = 8.0
+interp_to_end = 0.05
+preprocess = 2.0
+speed_scale = 0.4
+randomness = 0.6
+visibility_rect = Rect2(-781.595, -570.065, 1500, 1200)
+process_material = SubResource("ParticleProcessMaterial_e3hyu")
 
 [node name="Bogus Buchannon" parent="Actors" unique_id=696976295 instance=ExtResource("7_o8fc1")]
 modulate = Color(0.97235805, 0.22522166, 0.5298163, 1)
