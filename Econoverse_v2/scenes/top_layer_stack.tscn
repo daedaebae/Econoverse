@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://ovqjao0mgon8"]
+
+[ext_resource type="PackedScene" uid="uid://3ru2w73jcfi0" path="res://scenes/components/ui_ledger.tscn" id="1_uf58v"]
+[ext_resource type="PackedScene" uid="uid://b4nvajmgiohdg" path="res://scenes/ui.tscn" id="2_d50jv"]
+[ext_resource type="PackedScene" uid="uid://cs7gurkoxmber" path="res://scenes/ui_trade.tscn" id="3_uox16"]
+[ext_resource type="PackedScene" uid="uid://bao1b17crcohq" path="res://scenes/components/pause_screen.tscn" id="4_gcydm"]
+[ext_resource type="Script" uid="uid://c6gn0xd2ay1ib" path="res://scripts/ui_log_window.gd" id="5_cg41t"]
+
+[node name="TopLayerStack" type="CanvasLayer" unique_id=1074194467]
+process_mode = 3
+
+[node name="UI-Ledger" parent="." unique_id=922451981 instance=ExtResource("1_uf58v")]
+process_mode = 1
+visible = false
+z_index = 2000
+
+[node name="UI" parent="." unique_id=172092760 instance=ExtResource("2_d50jv")]
+process_mode = 1
+z_index = 1000
+metadata/_edit_lock_ = true
+
+[node name="UI-Trade" parent="." unique_id=1966253834 instance=ExtResource("3_uox16")]
+process_mode = 1
+visible = false
+offset_left = -100.0
+offset_top = -130.0
+offset_right = 100.0
+offset_bottom = 130.0
+
+[node name="PauseScreen" parent="." unique_id=2107745835 instance=ExtResource("4_gcydm")]
+visible = false
+
+[node name="Logs Window" type="Window" parent="." unique_id=178428290]
+process_mode = 3
+oversampling_override = 1.0
+title = "Logs"
+position = Vector2i(20, 300)
+size = Vector2i(600, 50)
+visible = false
+script = ExtResource("5_cg41t")
+
+[node name="LogOutput" type="RichTextLabel" parent="Logs Window" unique_id=935515192]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+scroll_following = true
+selection_enabled = true
