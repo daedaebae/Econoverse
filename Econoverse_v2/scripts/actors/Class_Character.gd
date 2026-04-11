@@ -29,7 +29,6 @@ extends CharacterBody2D
 @export var speech_goodbye : String = "Goodbye"
 @export var speech_trade_accept : String = "Thank you"
 @export var speech_trade_decline : String = "I don't want that"
-@export var speech_ : String = "Hello"
 
 #TODO: kc 02/21/26; we'll have proximity based interaction, but still enable 
 # clicking on entities to view simple details. 
