@@ -13,7 +13,7 @@ script = ExtResource("1_rux1i")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1114704356]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(0, -8)
+position = Vector2(0, -15)
 shape = ExtResource("2_he2fm")
 debug_color = Color(0.98509103, 0, 0.34177807, 0.41960785)
 

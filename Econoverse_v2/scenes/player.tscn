@@ -2,12 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://dqxhs1tlvdn0x" path="res://assets/image/sprite/characters/SpriteDude.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://cuyyhpbt3xolc" path="res://scripts/actors/Class_Character.gd" id="1_g2els"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
-radius = 16.0
-height = 44.0
+[ext_resource type="Shape2D" uid="uid://s4ae8cx017pm" path="res://scenes/components/Player_capsule_shape_2d.tres" id="2_qhqgy"]
 
 [node name="Player" type="CharacterBody2D" unique_id=242170322 node_paths=PackedStringArray("sprite")]
+z_index = 1
+y_sort_enabled = true
 collision_mask = 3
 script = ExtResource("1_g2els")
 sprite = NodePath("CollisionShape2D2/Dude")
@@ -15,11 +14,12 @@ metadata/_custom_type_script = "uid://cuyyhpbt3xolc"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1009586970]
 y_sort_enabled = true
-position = Vector2(77, 23)
-shape = SubResource("CapsuleShape2D_g2els")
+position = Vector2(0, -7)
+shape = ExtResource("2_qhqgy")
 
 [node name="Dude" type="Sprite2D" parent="CollisionShape2D2" unique_id=1718935711]
 z_index = 1
 y_sort_enabled = true
+position = Vector2(0, -8)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_3vyb7")

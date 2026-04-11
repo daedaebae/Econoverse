@@ -24,6 +24,7 @@ theme = ExtResource("1_x1amm")
 [node name="AudioMaster" parent="." unique_id=1459243896 instance=ExtResource("2_2bfhc")]
 
 [node name="world" parent="." unique_id=1021432285 instance=ExtResource("3_mrac1")]
+metadata/_edit_lock_ = true
 
 [node name="Ambience" type="AudioStreamPlayer" parent="." unique_id=264260605]
 stream = ExtResource("11_rdeg0")
@@ -40,6 +41,7 @@ z_index = 2000
 
 [node name="UI" parent="TopLayer" unique_id=172092760 instance=ExtResource("15_fn4oh")]
 z_index = 1000
+metadata/_edit_lock_ = true
 
 [node name="UI-Trade" parent="TopLayer" unique_id=2082776193 instance=ExtResource("7_emj6c")]
 visible = false
