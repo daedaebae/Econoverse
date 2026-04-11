@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bpc8lo0rmh2xi"]
 
 [ext_resource type="Script" uid="uid://cuyyhpbt3xolc" path="res://scripts/actors/Class_Character.gd" id="1_rux1i"]
-[ext_resource type="Texture2D" uid="uid://dqxhs1tlvdn0x" path="res://assets/image/sprite/SpriteDude.png" id="2_30vcf"]
+[ext_resource type="Texture2D" uid="uid://dqxhs1tlvdn0x" path="res://assets/image/sprite/characters/SpriteDude.png" id="2_30vcf"]
 [ext_resource type="Shape2D" uid="uid://jujaimjtmbl" path="res://scripts/actors/resources/shape.tres" id="2_he2fm"]
 
 [node name="Throwaway-CharacterBody2D" type="CharacterBody2D" unique_id=696976295]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bklxsicy80plf"]
 
 [ext_resource type="Script" uid="uid://cuyyhpbt3xolc" path="res://scripts/actors/Class_Character.gd" id="1_p2irl"]
-[ext_resource type="Texture2D" uid="uid://dqxhs1tlvdn0x" path="res://assets/image/sprite/SpriteDude.png" id="2_0dxiq"]
+[ext_resource type="Texture2D" uid="uid://dqxhs1tlvdn0x" path="res://assets/image/sprite/characters/SpriteDude.png" id="2_0dxiq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dkjbp"]
 radius = 16.0
