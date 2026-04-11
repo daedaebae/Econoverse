@@ -5,8 +5,10 @@
 [ext_resource type="AudioStream" uid="uid://crvce2oxapbdm" path="res://assets/audio/sfx/sfx_papyrus_close.ogg" id="2_1n1w1"]
 [ext_resource type="AudioStream" uid="uid://c1ekqxpft6f4a" path="res://assets/audio/sfx/sfx_increment.ogg" id="3_tlggh"]
 [ext_resource type="AudioStream" uid="uid://q7iv0ujiwvcm" path="res://assets/audio/sfx/sfx_decrement.ogg" id="4_p1l3c"]
+[ext_resource type="AudioStream" uid="uid://cw2d6wvu5ni1q" path="res://assets/audio/sfx/sfx_select.ogg" id="6_tlggh"]
 
 [node name="AudioMaster" type="Node" unique_id=1410981680]
+process_mode = 3
 script = ExtResource("1_1n1w1")
 
 [node name="SfxPapyrusOpen" type="AudioStreamPlayer" parent="." unique_id=1907272038]
@@ -20,3 +22,6 @@ stream = ExtResource("3_tlggh")
 
 [node name="SfxDecrement" type="AudioStreamPlayer" parent="." unique_id=540755456]
 stream = ExtResource("4_p1l3c")
+
+[node name="SfxSelect" type="AudioStreamPlayer" parent="." unique_id=1776858539]
+stream = ExtResource("6_tlggh")

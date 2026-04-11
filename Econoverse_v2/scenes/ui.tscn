@@ -641,32 +641,33 @@ custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
 
 [node name="ClusterOptions" type="HBoxContainer" parent="FullScreenArranged/RowTop/PanelOptions" unique_id=1792161593]
-custom_minimum_size = Vector2(100, 25)
+custom_minimum_size = Vector2(75, 25)
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
+offset_left = -37.5
 offset_top = -12.5
+offset_right = 37.5
 offset_bottom = 12.5
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 8
 alignment = 1
-
-[node name="nothing_yet" type="Label" parent="FullScreenArranged/RowTop/PanelOptions/ClusterOptions" unique_id=955304067]
-visible = false
-layout_mode = 2
-text = "nothing here yet"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="ButtonMusicPlayer" type="Button" parent="FullScreenArranged/RowTop/PanelOptions/ClusterOptions" unique_id=1782745368]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/normal = SubResource("StyleBoxEmpty_wm3ai")
 text = "🎼"
+
+[node name="ButtonPause" type="Button" parent="FullScreenArranged/RowTop/PanelOptions/ClusterOptions" unique_id=1935076136]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wm3ai")
+text = "⏸"
 
 [node name="PanelCenter" type="Panel" parent="FullScreenArranged" unique_id=95848187]
 custom_minimum_size = Vector2(0, 200)
@@ -798,4 +799,5 @@ theme_override_font_sizes/font_size = 12
 text = "map, relationships, etc?"
 
 [connection signal="button_down" from="FullScreenArranged/RowTop/PanelOptions/ClusterOptions/ButtonMusicPlayer" to="." method="_on_button_music_player_button_down"]
+[connection signal="button_down" from="FullScreenArranged/RowTop/PanelOptions/ClusterOptions/ButtonPause" to="." method="_on_button_pause_button_down"]
 [connection signal="button_down" from="FullScreenArranged/RowBottom/PanelActions/ClusterActions/ButtonLedger" to="." method="_on_button_ledger_button_down"]

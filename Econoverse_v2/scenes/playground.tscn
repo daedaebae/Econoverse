@@ -3,14 +3,11 @@
 [ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="1_x1amm"]
 [ext_resource type="PackedScene" uid="uid://c81dcduek3q67" path="res://singleton/audio_master.tscn" id="2_2bfhc"]
 [ext_resource type="PackedScene" uid="uid://3nywtukipfm7" path="res://scenes/world.tscn" id="3_mrac1"]
-[ext_resource type="PackedScene" uid="uid://cs7gurkoxmber" path="res://scenes/ui_trade.tscn" id="7_emj6c"]
-[ext_resource type="Script" uid="uid://c6gn0xd2ay1ib" path="res://scripts/ui_log_window.gd" id="9_2q4k0"]
-[ext_resource type="AudioStream" uid="uid://dh0c67pmqa25i" path="res://assets/audio/ambience/overworld nature 1.ogg" id="11_rdeg0"]
+[ext_resource type="PackedScene" uid="uid://ovqjao0mgon8" path="res://scenes/top_layer_stack.tscn" id="5_o6wi6"]
 [ext_resource type="Script" uid="uid://dk1uf4u80ps7x" path="res://scripts/commodities/Class_Item.gd" id="12_osidk"]
-[ext_resource type="PackedScene" uid="uid://3ru2w73jcfi0" path="res://scenes/components/ui_ledger.tscn" id="13_fn4oh"]
-[ext_resource type="PackedScene" uid="uid://b4nvajmgiohdg" path="res://scenes/ui.tscn" id="15_fn4oh"]
 
 [node name="Playground" type="Control" unique_id=1469718561]
+process_mode = 1
 y_sort_enabled = true
 layout_mode = 3
 anchors_preset = 15
@@ -26,50 +23,7 @@ theme = ExtResource("1_x1amm")
 [node name="world" parent="." unique_id=1021432285 instance=ExtResource("3_mrac1")]
 metadata/_edit_lock_ = true
 
-[node name="Ambience" type="AudioStreamPlayer" parent="." unique_id=264260605]
-stream = ExtResource("11_rdeg0")
-pitch_scale = 0.8
-autoplay = true
-bus = &"Ambience"
-parameters/looping = true
-
-[node name="TopLayer" type="CanvasLayer" parent="." unique_id=1670831378]
-
-[node name="UI-Ledger" parent="TopLayer" unique_id=922451981 instance=ExtResource("13_fn4oh")]
-visible = false
-z_index = 2000
-
-[node name="UI" parent="TopLayer" unique_id=172092760 instance=ExtResource("15_fn4oh")]
-z_index = 1000
-metadata/_edit_lock_ = true
-
-[node name="UI-Trade" parent="TopLayer" unique_id=2082776193 instance=ExtResource("7_emj6c")]
-visible = false
-offset_left = -100.0
-offset_top = -130.0
-offset_right = 100.0
-offset_bottom = 130.0
-
-[node name="Logs Window" type="Window" parent="TopLayer" unique_id=1344885883]
-oversampling_override = 1.0
-title = "Logs"
-position = Vector2i(20, 300)
-size = Vector2i(600, 50)
-visible = false
-script = ExtResource("9_2q4k0")
-
-[node name="LogOutput" type="RichTextLabel" parent="TopLayer/Logs Window" unique_id=1292108859]
-unique_name_in_owner = true
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-focus_mode = 2
-theme_override_font_sizes/normal_font_size = 8
-bbcode_enabled = true
-scroll_following = true
-selection_enabled = true
+[node name="TopLayerStack" parent="." unique_id=1074194467 instance=ExtResource("5_o6wi6")]
 
 [node name="Boots" type="Sprite2D" parent="." unique_id=1974883372]
 script = ExtResource("12_osidk")

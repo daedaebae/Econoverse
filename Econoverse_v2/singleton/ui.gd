@@ -79,3 +79,7 @@ func _on_button_ledger_button_down() -> void:
 func _on_button_music_player_button_down() -> void:
 	#explicitly call the singleton signal, so it's global
 	UI.ButtonMusicPlayerPressed.emit()
+
+
+func _on_button_pause_button_down() -> void:
+	get_tree().paused = true
