@@ -1,15 +1,11 @@
 class_name Character
 extends CharacterBody2D
 
-#kc 10/24/25; added for early ui integration testing etc
-@export var Playground: Control
-#mouse funcs
-#TODO: kc 02/21/26; we'll have proximity based interaction, but still enable clicking on entities to
-# view simple details. Could also design a way for entities to not provide full details until they are
-# met/discovered. Curiosity opportunity
-@onready var mouse_position: Vector2
-@export var char_name: String = "Name"
-@export var location: Location = Location.TOWN_SQUARE
+#region exports
+#@durf can you add validation log to ensure unique IDs and check for duplicates?
+@export var id : String = "npc_default" #name for programmatic reference, stable
+@export var char_name: String = "Name" #name seen and used by the game, flexible and changeable
+@export var sprite: Sprite2D = null
 @export var gender: Gender
 @export var race: Race
 @export var profession: Profession = Profession.UNEMPLOYED
@@ -25,21 +21,22 @@ extends CharacterBody2D
 	"Sword": 0, 
 	"Whiskey": 0,
 }
+@export_group("Social")
 @export var met : bool = false
-@export var sprite: Sprite2D = null
+@export var location: Location = Location.TOWN_SQUARE
+@export_subgroup("Speech")
+@export var speech_greeting : String = "Hello"
+@export var speech_goodbye : String = "Goodbye"
+@export var speech_trade_accept : String = "Thank you"
+@export var speech_trade_decline : String = "I don't want that"
+@export var speech_ : String = "Hello"
 
-# Maps each profession to the item they produce and sell.
-# Used by artisan.gd to auto-set offered_item from profession.
-const PROFESSION_ITEM: Dictionary = {
-	Profession.BAKER:       "Strudel",
-	Profession.BREWER:      "Whiskey",
-	Profession.CARPENTER:   "Timber",
-	Profession.MASON:       "Stone",
-	Profession.SMITH:       "Sword",
-	Profession.STABLEMASTER: "Horses",
-	Profession.TANNER:      "Boots",
-	Profession.UNEMPLOYED:  "Corn",
-}
+#TODO: kc 02/21/26; we'll have proximity based interaction, but still enable 
+# clicking on entities to view simple details. 
+# Could also design a way for entities to not provide full details until 
+# they are met/discovered. Curiosity opportunity! 
+@onready var mouse_position: Vector2
+#endregion
 
 #region CharFunctions
 
@@ -56,6 +53,7 @@ func get_visible_inventory() -> Dictionary:
 	return visible
 
 #TODO: durf- simplify params to use dictionary pulled from character inventory?
+#kc - consider trade simply emitting data based on each possible comparison operation outcome.
 func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_get: String):
 	# Check if the values are higher than what is in Character Inventories.
 	if valGive > self.inventory[item_give]:
@@ -67,27 +65,17 @@ func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_g
 			% [whom.char_name, item_get, whom.inventory[item_get], valGet])
 		return false
 	else:
+		#trade is successful, update all values
 		Logging.log_info("Trade executed: %s gave %d %s to %s for %d %s." \
 			% [char_name, valGive, item_give, whom.char_name, valGet, item_get])
+		#trading works through 
 		# Player give val1# of item_give to the whom
 		self.inventory[item_give] = (self.inventory[item_give] - valGive)
 		whom.inventory[item_give] = (whom.inventory[item_give] + valGive)
 		# Player get val2# of item_get from whom
 		self.inventory[item_get] = (self.inventory[item_get] + valGet)
 		whom.inventory[item_get] = (whom.inventory[item_get] - valGet)
-		return true
-
-		#Print player inventory.
-		print_inv_values()
-
-		#DEBUG Print Statements
-		# Confirms a valid trade passed all checks and inventory has been updated.
-		# Shows who traded what, quantities, and both parties involved.
-		print("[TRADE] Initiating: ", self.char_name, " → ", whom.char_name, " | giving ", valGive, " ", item_give, " for ", valGet, " ", item_get)
-		# Confirms the GameController is about to be notified. If you see [TRADE] but not
-		# [GAME_CONTROLLER], the on_trade_complete() call or the GC reference is broken.
-		print("[TRADE] Inventory updated. Notifying GameController.")
-
+		
 		# GameController Pipeline
 		# Notify the GameController that a trade has been completed.
 		# This sends a dictionary containing details about the trade.
@@ -99,51 +87,37 @@ func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_g
 			"item_get": item_get,
 			"val_get": valGet,
 		})
+		return true
+
+		#@durf nothing at this line and below will run since there are returns above -kc
+		print_inv_values()
+
+		#DEBUG Print Statements
+		# Confirms a valid trade passed all checks and inventory has been updated.
+		# Shows who traded what, quantities, and both parties involved.
+		print("[TRADE] Initiating: ", self.char_name, " → ", whom.char_name, " | giving ", valGive, " ", item_give, " for ", valGet, " ", item_get)
+		# Confirms the GameController is about to be notified. If you see [TRADE] but not
+		# [GAME_CONTROLLER], the on_trade_complete() call or the GC reference is broken.
+		print("[TRADE] Inventory updated. Notifying GameController.")
+
+
+
 #endregion CharFunctions
 
-#TEST: kc 10/25/25 commented out this version and 
-# for testing new version before merge.
-#func _input(event: InputEvent) -> void:
-	#if event is InputEventMouseButton and event.is_pressed() \
-	#and event.button_index == MOUSE_BUTTON_LEFT:
-		##Get mouse postion and set the target
-		#mouse_position = get_viewport().get_mouse_position()
-		#var target = $CollisionShape2D
-		#var distance = mouse_position.distance_to(target.global_position)
-		## If clicked near the player collision shape run the trade function
-		#if distance < 20:
-			##TODO: 10/21/25 if click trade button then 1 for 1 trade item for item
-			## this doesn't work right now as it will trade item with itself.
-			#trade( $"../Artisan", 10, "Coins", 1, "Sword")
-			#print("Player: ",self.inventory,"\nArtisan: ",$"../Artisan".inventory)
-			#pass
-			
-## kc 10/25/25; testing for game_controller
-#func _input(event: InputEvent) -> void:
-	#if event is InputEventMouseButton and event.is_pressed() \
-	#and event.button_index == MOUSE_BUTTON_LEFT:
-		##Get mouse postion and set the target
-		#mouse_position = get_viewport().get_mouse_position()
-		#
-		#var target = $CollisionShape2D
-#
-		#
-		#var distance = mouse_position.distance_to(target.global_position)
-		## If clicked near the player collision shape run the trade function
-		#
-		## kc 10/25/25; checks if target is player. If so, does nothing.
-		## can be updated later to perform a different interaction.
-		#if target == Player:
-			#return
-		#
-		#if distance < 20:
-			#Playground.start_trade_with_npc(self)
-			#
-			#
-			#pass
-
-func _ready() -> void:
-	pass
+#region const/enums
+# Maps each profession to the item they produce and sell.
+# Used by artisan.gd to auto-set offered_item from profession.
+#kc 04/11 should use item resource references for this, may need to move up to a singleton
+const PROFESSION_ITEM: Dictionary = {
+	Profession.BAKER:       "Strudel",
+	Profession.BREWER:      "Whiskey",
+	Profession.CARPENTER:   "Timber",
+	Profession.MASON:       "Stone",
+	Profession.SMITH:       "Sword",
+	Profession.STABLEMASTER: "Horses",
+	Profession.TANNER:      "Boots",
+	Profession.UNEMPLOYED:  "Corn",
+}
 
 # Sets the character state to show what they are doing.
 enum State{
@@ -185,3 +159,4 @@ enum Location{
 	TANNERY,
 	TOWN_SQUARE
 }
+#endregion
