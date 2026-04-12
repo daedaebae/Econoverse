@@ -18,7 +18,7 @@ var ledger_node: Control = null
 var artisan_nodes: Array = []
 var clock_node: Node = null
 
-signal inventory_changed
+signal inventory_changed(trade: Dictionary)
 
 func _ready() -> void:
 	# Wait until the end of the first frame so all scene nodes have run their _ready()
@@ -141,6 +141,6 @@ func on_trade_complete(trade: Dictionary) -> void:
 	
 	# Every trade emit a signal to GameController to show a trade happened and 
 	# inventory is updated.
-	inventory_changed.emit()
+	inventory_changed.emit(trade)
 	
 #endregion Logic Handlers
