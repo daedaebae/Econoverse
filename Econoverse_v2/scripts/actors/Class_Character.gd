@@ -80,7 +80,9 @@ func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_g
 		# This sends a dictionary containing details about the trade.
 		GameController.on_trade_complete({
 			"trader": self.char_name,
+			"trader_id": self.id,
 			"tradee": whom.char_name,
+			"tradee_id": whom.id,
 			"item_give": item_give,
 			"val_give": valGive,
 			"item_get": item_get,
