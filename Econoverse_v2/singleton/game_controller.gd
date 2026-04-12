@@ -1,17 +1,16 @@
-# --- game_controller.gd ---
-# This script acts as a Centralized Event Bus and prevents objects, scripts, nodes etc. from having
-# to connect to eachother. everything connects to the game_controller
+#the registration hub and event bus for nodes that exist in the scene tree. 
+#holds references to living nodes (player, artisans, trade UI,ledger) and 
+#mediates their interactions between one another.
+
+	# Does not handle quest logic, event dispatch, or game state evaluation.
+	# Those belong in their respective singletons (QuestManager, etc.)
+
 extends Node
 
-## kc 10/25/25; functions for mechanics and interactive systems
-## can register to the game_controller. This way, values are passed from the
-## singleton and we don't have to manually assign actors to
-## each other within their functions.
-## ex: GameController.register_player(self) on
-## the player script's ready function will assign the 
-## player and values. 
+# Nodes register themselves via GameController.register_<type>(self) in 
+# their _ready()
 
-# We will store references to key nodes as they "check in"
+# store the references to key nodes as they "check in"
 var logger_node: Node = null
 var player_node: Node = null
 var trade_ui_node: Control = null
@@ -105,6 +104,13 @@ func _on_artisan_clicked(clicked_npc: Node):
 		% [clicked_npc.char_name, player_gives_item, npc_gives_item])
 
 	# Command the UI to open the trade
+	# @durf kc 4/12/26: Consider extracting to dedicated systems 
+	# as interaction types grow, so that systems are interchangeable and maintainble. 
+	# Then, game_controller script owns just the signals and doesn't become a 
+	# bottleneck for functionality of all nodes to answer to. Instead,
+	# other nodes and systems respond as they want with their own methods. 
+	# Emitted signals can pass any data you want as a functional "return".
+	
 	trade_ui_node.open_trade(player_node, clicked_npc, player_gives_item, npc_gives_item)
 
 # Register trade to game controller
