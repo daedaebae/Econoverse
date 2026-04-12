@@ -28,6 +28,7 @@ func _ready() -> void:
 	_check_node_registration()
 	_verify_world_supply()
 
+#region Logging
 # Log errors for any required node that failed to register before the first frame.
 func _check_node_registration() -> void:
 	if not player_node:
@@ -40,6 +41,7 @@ func _check_node_registration() -> void:
 		Logging.log_error("GameController: clock_node not registered at game start.")
 	if not artisan_nodes:
 		Logging.log_error("GameController: no artisan_nodes registered at game start.")
+#endregion
 
 # Confirm the world supply based on the ledger method
 func _verify_world_supply() -> void:
@@ -86,7 +88,7 @@ func register_clock(clock: Node) -> void:
 # This function is moved from Playground.gd. It now runs globally.
 
 func _on_artisan_clicked(clicked_npc: Node):
-
+	#region Logging
 	# A good safety check to make sure our nodes have registered
 	if not player_node:
 		Logging.log_error("GameController: Player is not registered — cannot open trade.")
@@ -94,7 +96,7 @@ func _on_artisan_clicked(clicked_npc: Node):
 	if not trade_ui_node:
 		Logging.log_error("GameController: Trade UI is not registered — cannot open trade.")
 		return
-
+	#endregion
 	# --- Define the trade from NPC data ---
 	var npc_gives_item = clicked_npc.offered_item if "offered_item" in clicked_npc else "Sword"
 	var player_gives_item = clicked_npc.wanted_item if "wanted_item" in clicked_npc else "Coins"
@@ -107,6 +109,7 @@ func _on_artisan_clicked(clicked_npc: Node):
 
 # Register trade to game controller
 func on_trade_complete(trade: Dictionary) -> void:
+	#region Debug
 	#DEBUG Print Statements
 	# Confirms GameController received the trade dictionary from Class_Character.
 	# If this doesn't print, the on_trade_complete() call in Class_Character.gd didn't reach here.
@@ -114,20 +117,24 @@ func on_trade_complete(trade: Dictionary) -> void:
 	# Shows what ledger_node is pointing to. If null, register_ledger() was never called
 	# or ui_ledger hasn't loaded yet.
 	print("[GAME_CONTROLLER] ledger_node is: ", ledger_node)
-	
-	# Builds a formatted log string by slotting the trade dictionary values into a template.
-	# %s = string, %d = integer. So for a trade where the player gives 10 Coins for 1 Sword from Bogus Buchannon, it produces:
+	# Builds a formatted log string by slotting the trade dictionary values into 
+	# a template.
+	# %s = string, %d = integer. So for a trade where the player gives 10 Coins 
+	# for 1 Sword from Bogus Buchannon, it produces:
 	# TRADE: Player gave 10 Coins for 1 Sword from Bogus Buchannon
 	var msg = "TRADE: %s gave %d %s for %d %s from %s" % [
 		trade.trader, trade.val_give, trade.item_give,
 		trade.val_get, trade.item_get, trade.tradee
 	]
-	# Above string is then passed to Logging.log_info(msg) on the next line, which writes it to the log file and emits it to the log window. 
+	# Above string is then passed to Logging.log_info(msg) on the next line, 
+	# which writes it to the log file and emits it to the log window. 
 	Logging.log_info(msg)
+	#endregion
 	if ledger_node:
 		ledger_node.track(trade)
 	
-	# Every trade emit a signal to GameController to show a trade happened and inventory is updated.
+	# Every trade emit a signal to GameController to show a trade happened and 
+	# inventory is updated.
 	inventory_changed.emit()
 	
 #endregion Logic Handlers
