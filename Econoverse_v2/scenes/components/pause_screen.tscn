@@ -88,4 +88,5 @@ volume_db = -12.0
 max_polyphony = 2
 bus = &"SFX"
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="button_down" from="Panel/VBoxContainer/ButtonResume" to="." method="_on_button_resume_button_down"]

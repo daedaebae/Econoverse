@@ -83,3 +83,4 @@ func _on_button_music_player_button_down() -> void:
 
 func _on_button_pause_button_down() -> void:
 	get_tree().paused = true
+	
