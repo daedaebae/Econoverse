@@ -202,7 +202,7 @@ inventory = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="Actors/Player" unique_id=905691025]
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(1.2, 1.2)
 limit_left = -168
 limit_top = -972
 limit_right = 1184
