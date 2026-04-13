@@ -31,5 +31,5 @@ func _process(delta: float) -> void:
 	#
 	# could later do dynamic roll up/down of values with sfx for the juice
 
-func _on_inventory_changed():
+func _on_inventory_changed(trade: Dictionary):
 	LabelQty.text = str(GameController.player_node.inventory[item_resource.name_full])
