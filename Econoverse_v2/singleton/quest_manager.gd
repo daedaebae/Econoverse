@@ -52,6 +52,9 @@ func activate_quest(quest: Quest) -> void:
 	quest_started.emit(quest.id)
 
 func _on_trade_complete(trade: Dictionary) -> void:
+	# Claude review: _check_completion() can erase from active_quests mid-iteration
+	# via active_quests.erase(). This is unsafe — collect completed IDs and erase
+	# after the loop, like _on_time_changed() does with its expired array.
 	for quest_id in active_quests:
 		var quest_data = active_quests[quest_id]
 		var quest: Quest = quest_data.resource

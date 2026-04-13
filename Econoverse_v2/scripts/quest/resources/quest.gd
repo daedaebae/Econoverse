@@ -20,5 +20,11 @@ enum quest_type {TUTORIAL, MAIN_STORY, SURPRISE, TYPICAL}
 @export var objectives		: Array[QuestObjective]
 @export var days_to_complete : int	= 2
 
+# Claude review: QuestManager.completed_quests and failed_quests store only the
+# quest ID string. Once a quest leaves active_quests, this resource reference is
+# lost. If we need a quest log showing past descriptions/objectives, or want to
+# query details of a finished quest, we'll need to either retain the resource
+# reference in those arrays or maintain a lookup table to resolve IDs back to
+# Quest resources.
 @export var completion_event	: EventResource
 @export var failure_event		: EventResource
