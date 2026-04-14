@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="QuestObjective" format=3 uid="uid://dl4st5rjc6i1j"]
+
+[ext_resource type="Script" uid="uid://dopqr21noy5lf" path="res://scripts/quests/resources/quest_objective.gd" id="1_mssc2"]
+
+[resource]
+script = ExtResource("1_mssc2")
+id = "obj_first_meeting"
+description = "Meet a townsperson"
+target_id = "any_character"
+required_quantity = 1
+metadata/_custom_type_script = "uid://dopqr21noy5lf"

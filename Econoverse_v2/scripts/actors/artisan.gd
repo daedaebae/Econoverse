@@ -30,5 +30,8 @@ func _input(event: InputEvent) -> void:
 			return
 		var mouse_pos = get_global_mouse_position()
 		if global_position.distance_to(mouse_pos) < 20:
+			if not self.met:
+				self.met = true
+				GameController.on_character_met(GameController.player_node, self)
 			artisan_clicked.emit(self)
 			get_viewport().set_input_as_handled()    

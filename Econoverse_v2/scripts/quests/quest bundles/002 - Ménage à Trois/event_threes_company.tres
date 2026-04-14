@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EventResource" format=3 uid="uid://gxumrwg5tdn6"]
+
+[ext_resource type="Script" uid="uid://d22e1ohktmckk" path="res://scripts/quests/resources/event_resource.gd" id="1_lo62q"]
+
+[resource]
+script = ExtResource("1_lo62q")
+id = "event_threes_company"
+metadata/_custom_type_script = "uid://d22e1ohktmckk"

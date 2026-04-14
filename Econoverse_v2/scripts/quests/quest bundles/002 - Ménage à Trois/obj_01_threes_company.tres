@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="QuestObjective" format=3 uid="uid://cdhxdcn5ukqq"]
+
+[ext_resource type="Script" uid="uid://dopqr21noy5lf" path="res://scripts/quests/resources/quest_objective.gd" id="1_dx5ct"]
+
+[resource]
+script = ExtResource("1_dx5ct")
+id = "obj_01_threes_company"
+description = "Meet three townspeople"
+target_id = "any_character"
+required_quantity = 3
+metadata/_custom_type_script = "uid://dopqr21noy5lf"

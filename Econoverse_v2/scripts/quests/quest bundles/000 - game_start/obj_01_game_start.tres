@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="QuestObjective" format=3 uid="uid://brni34lxf8o60"]
+
+[ext_resource type="Script" uid="uid://dopqr21noy5lf" path="res://scripts/quests/resources/quest_objective.gd" id="1_rsx3b"]
+
+[resource]
+script = ExtResource("1_rsx3b")
+id = "obj_01_game_start"
+description = "One second passes"
+target_id = "world_clock"
+required_quantity = 1
+metadata/_custom_type_script = "uid://dopqr21noy5lf"

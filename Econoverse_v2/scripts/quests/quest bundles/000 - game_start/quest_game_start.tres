@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://ugkay7gqy1ty"]
+
+[ext_resource type="Resource" uid="uid://cakx2o1jneg6i" path="res://scripts/quests/quest bundles/000 - game_start/event_quest_trigger_first_meeting.tres" id="1_cfyq6"]
+[ext_resource type="Script" uid="uid://dopqr21noy5lf" path="res://scripts/quests/resources/quest_objective.gd" id="1_s3x7i"]
+[ext_resource type="Script" uid="uid://bhvdbh5g7r327" path="res://scripts/quests/resources/quest.gd" id="2_mbhsu"]
+[ext_resource type="Resource" uid="uid://brni34lxf8o60" path="res://scripts/quests/quest bundles/000 - game_start/obj_01_game_start.tres" id="3_iqv8o"]
+
+[resource]
+script = ExtResource("2_mbhsu")
+id = "000 - game_start"
+title = "Game start "
+description = "This should be hidden from the player. "
+_type = 1
+objectives = Array[ExtResource("1_s3x7i")]([ExtResource("3_iqv8o")])
+days_to_complete = 0
+completion_event = ExtResource("1_cfyq6")
+metadata/_custom_type_script = "uid://bhvdbh5g7r327"

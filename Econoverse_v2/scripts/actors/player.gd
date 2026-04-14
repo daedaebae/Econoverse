@@ -5,6 +5,7 @@
 extends Character
 # We can add player-specific logic here, like movement.
 @export var speed: float = 300.0
+@export var characters_met: Array[String] = [] #stores unique IDs of NPCs met
 
 func _ready():
 	# Register player_node with game_controller

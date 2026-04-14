@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://cdngxq823wvou"]
+
+[ext_resource type="Script" uid="uid://dopqr21noy5lf" path="res://scripts/quests/resources/quest_objective.gd" id="1_cgm18"]
+[ext_resource type="Resource" uid="uid://d230lbnl7yec1" path="res://scripts/quests/quest bundles/001 - first_meeting/event_first_meeting.tres" id="1_jn8lx"]
+[ext_resource type="Script" uid="uid://bhvdbh5g7r327" path="res://scripts/quests/resources/quest.gd" id="2_jn8lx"]
+[ext_resource type="Resource" uid="uid://dl4st5rjc6i1j" path="res://scripts/quests/quest bundles/001 - first_meeting/obj_01_first_meeting.tres" id="3_yloej"]
+
+[resource]
+script = ExtResource("2_jn8lx")
+id = "001 - first_meeting"
+title = "First Meeting"
+description = "Turns out, there are living, breathing people around these parts... and I can smell the money on em'."
+_type = 0
+objectives = Array[ExtResource("1_cgm18")]([ExtResource("3_yloej")])
+days_to_complete = 0
+completion_event = ExtResource("1_jn8lx")
+metadata/_custom_type_script = "uid://bhvdbh5g7r327"

@@ -30,9 +30,23 @@ signal quest_completed(quest_id)
 signal quest_failed(quest_id)
 #endregion
 
+var quest_game_start: Quest = preload("res://scripts/quests/quest bundles/000 - game_start/quest_game_start.tres")
+var quest_first_meeting: Quest = preload("res://scripts/quests/quest bundles/001 - first_meeting/quest_first_meeting.tres")
+var quest_threes_company: Quest = preload("res://scripts/quests/quest bundles/002 - Ménage à Trois/quest_threes_company.tres")
+
+# event_id -> Array[Quest] to activate when that event fires
+var quest_triggers: Dictionary = {
+	"quest_trigger_first_meeting": [quest_first_meeting, quest_threes_company],
+}
+
 func _ready() -> void:
 	GameController.inventory_changed.connect(_on_trade_complete)
+	GameController.character_met.connect(_on_character_met)
 	WorldClock.time_changed.connect(_on_time_changed)
+	# Game start quest activates immediately
+	activate_quest(quest_game_start)
+	# Listen for events that trigger other quests
+	_connect_quest_triggers()
 
 #region Methods
 
@@ -52,14 +66,11 @@ func activate_quest(quest: Quest) -> void:
 	quest_started.emit(quest.id)
 
 func _on_trade_complete(trade: Dictionary) -> void:
-	# Claude review: _check_completion() can erase from active_quests mid-iteration
-	# via active_quests.erase(). This is unsafe — collect completed IDs and erase
-	# after the loop, like _on_time_changed() does with its expired array.
+	var to_check := []
 	for quest_id in active_quests:
 		var quest_data = active_quests[quest_id]
 		var quest: Quest = quest_data.resource
 		for objective in quest.objectives:
-			# Match: did this trade involve the objective's target NPC?
 			if objective.target_id == trade.tradee_id:
 				# TODO: item matching uses string keys — see top of file
 				var progress = quest_data.objectives_progress[objective.id]
@@ -68,7 +79,10 @@ func _on_trade_complete(trade: Dictionary) -> void:
 				Logging.log_info("Quest progress: %s — %s: %d / %d" \
 					% [quest.title, objective.id, progress, objective.required_quantity])
 				quest_progress.emit(quest_id, objective.id, progress, objective.required_quantity)
-		_check_completion(quest_id)
+		to_check.append(quest_id)
+	for quest_id in to_check:
+		if quest_id in active_quests:
+			_check_completion(quest_id)
 
 func _check_completion(quest_id: String) -> void:
 	var quest_data = active_quests[quest_id]
@@ -84,7 +98,61 @@ func _check_completion(quest_id: String) -> void:
 	Logging.log_info("Quest completed: %s" % quest.title)
 	quest_completed.emit(quest_id)
 
+func _on_character_met(character_id: String) -> void:
+	for quest_id in active_quests.keys():
+		var quest_data = active_quests[quest_id]
+		var quest: Quest = quest_data.resource
+		for objective in quest.objectives:
+			if objective.target_id == "any_character":
+				var progress = quest_data.objectives_progress[objective.id]
+				progress += 1
+				quest_data.objectives_progress[objective.id] = progress
+				Logging.log_info("Quest progress: %s — %s: %d / %d" \
+					% [quest.title, objective.id, progress, objective.required_quantity])
+				quest_progress.emit(quest_id, objective.id, progress, objective.required_quantity)
+		if quest_id in active_quests:
+			_check_completion(quest_id)
+
+func _connect_quest_triggers() -> void:
+	for event_id in quest_triggers:
+		# Find the EventResource across all preloaded quests' completion/failure events
+		var event_resource := _find_event_resource(event_id)
+		if event_resource:
+			event_resource.triggered.connect(_on_quest_trigger_event)
+		else:
+			Logging.log_warn("QuestManager: no EventResource found for trigger '%s'" % event_id)
+
+func _find_event_resource(event_id: String) -> EventResource:
+	# Search all preloaded quests for a matching event
+	for quest in [quest_game_start, quest_first_meeting, quest_threes_company]:
+		if quest.completion_event and quest.completion_event.id == event_id:
+			return quest.completion_event
+		if quest.failure_event and quest.failure_event.id == event_id:
+			return quest.failure_event
+	return null
+
+func _on_quest_trigger_event(event_data: Dictionary) -> void:
+	var event_id = event_data.get("event_id", "")
+	if event_id in quest_triggers:
+		for quest in quest_triggers[event_id]:
+			if quest.id not in active_quests and quest.id not in completed_quests \
+				and quest.id not in failed_quests:
+				activate_quest(quest)
+
 func _on_time_changed(day: int, hour: int, minute: int) -> void:
+	# Evaluate world_clock objectives — any active quest waiting on a clock tick
+	for quest_id in active_quests.keys():
+		var quest_data = active_quests[quest_id]
+		var quest: Quest = quest_data.resource
+		for objective in quest.objectives:
+			if objective.target_id == "world_clock":
+				var progress = quest_data.objectives_progress[objective.id]
+				progress += 1
+				quest_data.objectives_progress[objective.id] = progress
+				quest_progress.emit(quest_id, objective.id, progress, objective.required_quantity)
+		if quest_id in active_quests:
+			_check_completion(quest_id)
+
 	var expired := []
 	for quest_id in active_quests:
 		var quest_data = active_quests[quest_id]
@@ -102,5 +170,34 @@ func _on_time_changed(day: int, hour: int, minute: int) -> void:
 		failed_quests.append(quest_id)
 		Logging.log_info("Quest failed: %s — deadline expired." % quest.title)
 		quest_failed.emit(quest_id)
+
+func validate_quest_state() -> void:
+	var issues := 0
+	# Check that every triggered quest landed somewhere
+	for event_id in quest_triggers:
+		for quest in quest_triggers[event_id]:
+			var in_active = quest.id in active_quests
+			var in_completed = quest.id in completed_quests
+			var in_failed = quest.id in failed_quests
+			if not in_active and not in_completed and not in_failed:
+				Logging.log_warn("Quest '%s' expected from trigger '%s' — not found anywhere." \
+					% [quest.id, event_id])
+				issues += 1
+	# Check for orphans — active quests with no trigger entry
+	for quest_id in active_quests:
+		var found := false
+		for event_id in quest_triggers:
+			for quest in quest_triggers[event_id]:
+				if quest.id == quest_id:
+					found = true
+					break
+		if not found:
+			Logging.log_warn("Quest '%s' is active but has no trigger entry." % quest_id)
+			issues += 1
+	if issues == 0:
+		Logging.log_info("Quest validation passed: %d active, %d completed, %d failed." \
+			% [active_quests.size(), completed_quests.size(), failed_quests.size()])
+	else:
+		Logging.log_error("Quest validation found %d issue(s)." % issues)
 
 #endregion
