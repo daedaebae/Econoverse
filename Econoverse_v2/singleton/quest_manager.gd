@@ -16,6 +16,32 @@ extends Node
 	# - render anything — UI listens to QuestManager, not the other way around
 #endregion
 
+#region TODO: Refactor — Dynamic Quest Loading
+# Currently, quests are preloaded as individual vars (lines 33-35) and quest_triggers
+# is a hand-written dictionary (lines 38-40). Adding a quest means editing this script.
+#
+# Plan: Replace with folder scanning and an activation_event_id field on Quest.
+#
+# Step 1: Add activation_event_id: String to Quest resource (quest.gd)
+#   - Empty string = activated manually or at game start
+#   - Event ID string = activated when that event fires (e.g., "quest_trigger_first_meeting")
+#
+# Step 2: Write _scan_quest_folder() to run in _ready()
+#   - Scan res://scripts/quests/quest bundles/ recursively for .tres files of type Quest
+#   - Store all discovered quests in a var all_quests: Array[Quest]
+#   - Build quest_triggers dictionary automatically by reading each quest's activation_event_id
+#
+# Step 3: Replace individual preload vars with the scanned array
+#   - Remove quest_game_start, quest_first_meeting, quest_threes_company vars
+#   - _find_event_resource() searches all_quests instead of a hardcoded list
+#   - Quests with empty activation_event_id and a special flag (e.g., auto_start: bool)
+#     activate immediately in _ready()
+#
+# Step 4: _connect_quest_triggers() works as-is, just reads the auto-built dictionary
+#
+# Result: Adding a quest = drop .tres files in a quest bundle folder. No script changes.
+#endregion
+
 #region Exports
 @export_group("State")
 @export var active_quests 		: Dictionary
