@@ -103,6 +103,7 @@ func _on_character_met(character_id: String) -> void:
 		var quest_data = active_quests[quest_id]
 		var quest: Quest = quest_data.resource
 		for objective in quest.objectives:
+			#TODO: need to provide enums for objective type to help describe them, quicken function
 			if objective.target_id == "any_character":
 				var progress = quest_data.objectives_progress[objective.id]
 				progress += 1
