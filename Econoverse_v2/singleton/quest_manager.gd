@@ -16,37 +16,13 @@ extends Node
 	# - render anything — UI listens to QuestManager, not the other way around
 #endregion
 
-#region TODO: Refactor — Dynamic Quest Loading
-# Currently, quests are preloaded as individual vars (lines 33-35) and quest_triggers
-# is a hand-written dictionary (lines 38-40). Adding a quest means editing this script.
-#
-# Plan: Replace with folder scanning and an activation_event_id field on Quest.
-#
-# Step 1: Add activation_event_id: String to Quest resource (quest.gd)
-#   - Empty string = activated manually or at game start
-#   - Event ID string = activated when that event fires (e.g., "quest_trigger_first_meeting")
-#
-# Step 2: Write _scan_quest_folder() to run in _ready()
-#   - Scan res://scripts/quests/quest bundles/ recursively for .tres files of type Quest
-#   - Store all discovered quests in a var all_quests: Array[Quest]
-#   - Build quest_triggers dictionary automatically by reading each quest's activation_event_id
-#
-# Step 3: Replace individual preload vars with the scanned array
-#   - Remove quest_game_start, quest_first_meeting, quest_threes_company vars
-#   - _find_event_resource() searches all_quests instead of a hardcoded list
-#   - Quests with empty activation_event_id and a special flag (e.g., auto_start: bool)
-#     activate immediately in _ready()
-#
-# Step 4: _connect_quest_triggers() works as-is, just reads the auto-built dictionary
-#
-# Result: Adding a quest = drop .tres files in a quest bundle folder. No script changes.
-#endregion
+const QUEST_BUNDLES_PATH := "res://scripts/quests/quest bundles/"
 
 #region Exports
 @export_group("State")
 @export var active_quests 		: Dictionary
 @export var completed_quests	: Array[String] #Quest IDs that finished successfully
-@export var failed_quests		: Array[String] #Quest IDs that expired or failed  
+@export var failed_quests		: Array[String] #Quest IDs that expired or failed
 #endregion
 
 #region Signals Emitted
@@ -56,23 +32,42 @@ signal quest_completed(quest_id)
 signal quest_failed(quest_id)
 #endregion
 
-var quest_game_start: Quest = preload("res://scripts/quests/quest bundles/000 - game_start/quest_game_start.tres")
-var quest_first_meeting: Quest = preload("res://scripts/quests/quest bundles/001 - first_meeting/quest_first_meeting.tres")
-var quest_threes_company: Quest = preload("res://scripts/quests/quest bundles/002 - threes_company/quest_threes_company.tres")
-
-# event_id -> Array[Quest] to activate when that event fires
-var quest_triggers: Dictionary = {
-	"quest_trigger_first_meeting": [quest_first_meeting, quest_threes_company],
-}
+# All quests discovered by folder scan
+var all_quests: Array[Quest] = []
 
 func _ready() -> void:
+	_scan_quest_folder(QUEST_BUNDLES_PATH)
+	Logging.log_info("QuestManager: discovered %d quest(s)." % all_quests.size())
 	GameController.inventory_changed.connect(_on_trade_complete)
 	GameController.character_met.connect(_on_character_met)
 	WorldClock.time_changed.connect(_on_time_changed)
-	# Game start quest activates immediately
-	activate_quest(quest_game_start)
-	# Listen for events that trigger other quests
+	# Auto-start quests that should activate immediately
+	for quest in all_quests:
+		if quest.auto_start:
+			activate_quest(quest)
+	# Connect trigger_start_events for all quests that have one
 	_connect_quest_triggers()
+
+#region Quest Discovery
+
+func _scan_quest_folder(path: String) -> void:
+	var dir := DirAccess.open(path)
+	if not dir:
+		Logging.log_error("QuestManager: cannot open quest folder '%s'" % path)
+		return
+	dir.list_dir_begin()
+	var entry := dir.get_next()
+	while entry != "":
+		var full_path := path.path_join(entry)
+		if dir.current_is_dir():
+			_scan_quest_folder(full_path)
+		elif entry.ends_with(".tres"):
+			var resource = load(full_path)
+			if resource is Quest:
+				all_quests.append(resource)
+		entry = dir.get_next()
+
+#endregion
 
 #region Methods
 
@@ -166,30 +161,14 @@ func _check_completion(quest_id: String) -> void:
 #endregion
 
 func _connect_quest_triggers() -> void:
-	for event_id in quest_triggers:
-		# Find the EventResource across all preloaded quests' completion/failure events
-		var event_resource := _find_event_resource(event_id)
-		if event_resource:
-			event_resource.triggered.connect(_on_quest_trigger_event)
-		else:
-			Logging.log_warn("QuestManager: no EventResource found for trigger '%s'" % event_id)
-
-func _find_event_resource(event_id: String) -> EventResource:
-	# Search all preloaded quests for a matching event
-	for quest in [quest_game_start, quest_first_meeting, quest_threes_company]:
-		if quest.completion_event and quest.completion_event.id == event_id:
-			return quest.completion_event
-		if quest.failure_event and quest.failure_event.id == event_id:
-			return quest.failure_event
-	return null
-
-func _on_quest_trigger_event(event_data: Dictionary) -> void:
-	var event_id = event_data.get("event_id", "")
-	if event_id in quest_triggers:
-		for quest in quest_triggers[event_id]:
-			if quest.id not in active_quests and quest.id not in completed_quests \
-				and quest.id not in failed_quests:
-				activate_quest(quest)
+	for quest in all_quests:
+		if quest.trigger_start_event:
+			quest.trigger_start_event.triggered.connect(
+				func(event_data: Dictionary) -> void:
+					if quest.id not in active_quests and quest.id not in completed_quests \
+						and quest.id not in failed_quests:
+						activate_quest(quest)
+			)
 
 func _on_time_changed(day: int, hour: int, minute: int) -> void:
 	_evaluate_event(QuestObjective.ObjectiveType.ELAPSE, {
@@ -217,26 +196,25 @@ func _on_time_changed(day: int, hour: int, minute: int) -> void:
 
 func validate_quest_state() -> void:
 	var issues := 0
-	# Check that every triggered quest landed somewhere
-	for event_id in quest_triggers:
-		for quest in quest_triggers[event_id]:
+	# Check that every quest with a trigger landed somewhere
+	for quest in all_quests:
+		if quest.trigger_start_event:
 			var in_active = quest.id in active_quests
 			var in_completed = quest.id in completed_quests
 			var in_failed = quest.id in failed_quests
 			if not in_active and not in_completed and not in_failed:
-				Logging.log_warn("Quest '%s' expected from trigger '%s' — not found anywhere." \
-					% [quest.id, event_id])
+				Logging.log_warn("Quest '%s' has a trigger_start_event but hasn't activated." \
+					% quest.id)
 				issues += 1
-	# Check for orphans — active quests with no trigger entry
+	# Check for orphans — active quests not found in all_quests
 	for quest_id in active_quests:
 		var found := false
-		for event_id in quest_triggers:
-			for quest in quest_triggers[event_id]:
-				if quest.id == quest_id:
-					found = true
-					break
+		for quest in all_quests:
+			if quest.id == quest_id:
+				found = true
+				break
 		if not found:
-			Logging.log_warn("Quest '%s' is active but has no trigger entry." % quest_id)
+			Logging.log_warn("Quest '%s' is active but not in all_quests." % quest_id)
 			issues += 1
 	if issues == 0:
 		Logging.log_info("Quest validation passed: %d active, %d completed, %d failed." \

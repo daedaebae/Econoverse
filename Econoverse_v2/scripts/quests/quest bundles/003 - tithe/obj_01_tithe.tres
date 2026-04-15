@@ -6,4 +6,8 @@
 script = ExtResource("1_p6vxn")
 id = "obj_01_tithe"
 objective_type = 0
+description = "Pay the Taxman your dues."
+target_id = "Taxman"
+item_id = "coin"
+required_quantity = 1000
 metadata/_custom_type_script = "uid://dopqr21noy5lf"

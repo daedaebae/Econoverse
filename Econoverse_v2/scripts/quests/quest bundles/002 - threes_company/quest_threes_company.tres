@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dopqr21noy5lf" path="res://scripts/quests/resources/quest_objective.gd" id="2_6rqa4"]
 [ext_resource type="Resource" uid="uid://cdhxdcn5ukqq" path="res://scripts/quests/quest bundles/002 - threes_company/obj_01_threes_company.tres" id="3_6rqa4"]
 [ext_resource type="Script" uid="uid://bhvdbh5g7r327" path="res://scripts/quests/resources/quest.gd" id="3_ri02t"]
+[ext_resource type="Resource" uid="uid://cakx2o1jneg6i" path="res://scripts/quests/quest bundles/000 - game_start/event_quest_trigger_first_meeting.tres" id="4_trig"]
 
 [resource]
 script = ExtResource("3_ri02t")
@@ -12,5 +13,6 @@ title = "Three's Company"
 description = "Turns out, there are MORE people around here! They have coins, too!"
 objectives = Array[ExtResource("2_6rqa4")]([ExtResource("3_6rqa4")])
 days_to_complete = 0
+trigger_start_event = ExtResource("4_trig")
 completion_event = ExtResource("1_7dv7l")
 metadata/_custom_type_script = "uid://bhvdbh5g7r327"

@@ -187,6 +187,7 @@ z_as_relative = false
 position = Vector2(211.30873, 171.51122)
 script = ExtResource("6_jhx03")
 speed = 80.0
+characters_met = Array[String]([])
 id = "player"
 char_name = "Player"
 gender = 2

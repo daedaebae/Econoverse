@@ -19,6 +19,12 @@ enum quest_type {TUTORIAL, MAIN_STORY, SURPRISE, TYPICAL}
 
 @export var objectives		: Array[QuestObjective]
 @export var days_to_complete : int	= 2
+@export var auto_start		: bool	= false
+	# If true, QuestManager activates this quest immediately on game start.
+
+@export var trigger_start_event	: EventResource
+	# The EventResource that causes this quest to activate when fired.
+	# Leave null for quests that auto_start or are activated manually.
 
 # Claude review: QuestManager.completed_quests and failed_quests store only the
 # quest ID string. Once a quest leaves active_quests, this resource reference is

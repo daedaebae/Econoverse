@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://d230lbnl7yec1" path="res://scripts/quests/quest bundles/001 - first_meeting/event_first_meeting.tres" id="1_jn8lx"]
 [ext_resource type="Script" uid="uid://bhvdbh5g7r327" path="res://scripts/quests/resources/quest.gd" id="2_jn8lx"]
 [ext_resource type="Resource" uid="uid://dl4st5rjc6i1j" path="res://scripts/quests/quest bundles/001 - first_meeting/obj_01_first_meeting.tres" id="3_yloej"]
+[ext_resource type="Resource" uid="uid://cakx2o1jneg6i" path="res://scripts/quests/quest bundles/000 - game_start/event_quest_trigger_first_meeting.tres" id="4_trig"]
 
 [resource]
 script = ExtResource("2_jn8lx")
@@ -13,5 +14,6 @@ description = "Turns out, there are living, breathing people around these parts.
 _type = 0
 objectives = Array[ExtResource("1_cgm18")]([ExtResource("3_yloej")])
 days_to_complete = 0
+trigger_start_event = ExtResource("4_trig")
 completion_event = ExtResource("1_jn8lx")
 metadata/_custom_type_script = "uid://bhvdbh5g7r327"
