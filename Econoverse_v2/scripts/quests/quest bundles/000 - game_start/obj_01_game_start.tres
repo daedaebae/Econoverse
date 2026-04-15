@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_rsx3b")
 id = "obj_01_game_start"
+objective_type = 4
 description = "One second passes"
 target_id = "world_clock"
 required_quantity = 1

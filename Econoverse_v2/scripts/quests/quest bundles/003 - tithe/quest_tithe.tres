@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://cofejt438r77q"]
+
+[ext_resource type="Script" uid="uid://dopqr21noy5lf" path="res://scripts/quests/resources/quest_objective.gd" id="1_hkk3n"]
+[ext_resource type="Resource" uid="uid://6tlpm0l73k6e" path="res://scripts/quests/quest bundles/003 - tithe/obj_01_tithe.tres" id="2_7dvf4"]
+[ext_resource type="Script" uid="uid://bhvdbh5g7r327" path="res://scripts/quests/resources/quest.gd" id="3_crjqw"]
+
+[resource]
+script = ExtResource("3_crjqw")
+objectives = Array[ExtResource("1_hkk3n")]([ExtResource("2_7dvf4")])
+metadata/_custom_type_script = "uid://bhvdbh5g7r327"

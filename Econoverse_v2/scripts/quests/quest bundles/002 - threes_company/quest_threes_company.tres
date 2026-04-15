@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Quest" format=3 uid="uid://d2fir0h0qoimt"]
 
-[ext_resource type="Resource" uid="uid://gxumrwg5tdn6" path="res://scripts/quests/quest bundles/002 - Ménage à Trois/event_threes_company.tres" id="1_7dv7l"]
+[ext_resource type="Resource" uid="uid://gxumrwg5tdn6" path="res://scripts/quests/quest bundles/002 - threes_company/event_threes_company.tres" id="1_7dv7l"]
 [ext_resource type="Script" uid="uid://dopqr21noy5lf" path="res://scripts/quests/resources/quest_objective.gd" id="2_6rqa4"]
-[ext_resource type="Resource" uid="uid://cdhxdcn5ukqq" path="res://scripts/quests/quest bundles/002 - Ménage à Trois/obj_01_threes_company.tres" id="3_6rqa4"]
+[ext_resource type="Resource" uid="uid://cdhxdcn5ukqq" path="res://scripts/quests/quest bundles/002 - threes_company/obj_01_threes_company.tres" id="3_6rqa4"]
 [ext_resource type="Script" uid="uid://bhvdbh5g7r327" path="res://scripts/quests/resources/quest.gd" id="3_ri02t"]
 
 [resource]

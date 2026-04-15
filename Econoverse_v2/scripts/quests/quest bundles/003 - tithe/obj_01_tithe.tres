@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="QuestObjective" format=3 uid="uid://6tlpm0l73k6e"]
+
+[ext_resource type="Script" uid="uid://dopqr21noy5lf" path="res://scripts/quests/resources/quest_objective.gd" id="1_p6vxn"]
+
+[resource]
+script = ExtResource("1_p6vxn")
+id = "obj_01_tithe"
+objective_type = 0
+metadata/_custom_type_script = "uid://dopqr21noy5lf"

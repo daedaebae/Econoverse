@@ -32,7 +32,7 @@ signal quest_failed(quest_id)
 
 var quest_game_start: Quest = preload("res://scripts/quests/quest bundles/000 - game_start/quest_game_start.tres")
 var quest_first_meeting: Quest = preload("res://scripts/quests/quest bundles/001 - first_meeting/quest_first_meeting.tres")
-var quest_threes_company: Quest = preload("res://scripts/quests/quest bundles/002 - Ménage à Trois/quest_threes_company.tres")
+var quest_threes_company: Quest = preload("res://scripts/quests/quest bundles/002 - threes_company/quest_threes_company.tres")
 
 # event_id -> Array[Quest] to activate when that event fires
 var quest_triggers: Dictionary = {
@@ -65,24 +65,63 @@ func activate_quest(quest: Quest) -> void:
 	Logging.log_info("Quest started: %s" % quest.title)
 	quest_started.emit(quest.id)
 
+#region Signal Handlers — standardize data and route to _evaluate_event
+
 func _on_trade_complete(trade: Dictionary) -> void:
+	# GIVE — what the player gave to the NPC
+	_evaluate_event(QuestObjective.ObjectiveType.GIVE, {
+		"target_id": trade.tradee_id,
+		"item_id": trade.item_give,
+		"quantity": trade.val_give,
+	})
+	# GET — what the player received from the NPC
+	_evaluate_event(QuestObjective.ObjectiveType.GET, {
+		"target_id": trade.tradee_id,
+		"item_id": trade.item_get,
+		"quantity": trade.val_get,
+	})
+
+func _on_character_met(character_id: String) -> void:
+	_evaluate_event(QuestObjective.ObjectiveType.MEET, {
+		"target_id": character_id,
+		"quantity": 1,
+	})
+
+#endregion
+
+#region Core Evaluation — one path for all objective types
+
+func _evaluate_event(event_type: int, data: Dictionary) -> void:
 	var to_check := []
-	for quest_id in active_quests:
+	for quest_id in active_quests.keys():
 		var quest_data = active_quests[quest_id]
 		var quest: Quest = quest_data.resource
 		for objective in quest.objectives:
-			if objective.target_id == trade.tradee_id:
-				# TODO: item matching uses string keys — see top of file
-				var progress = quest_data.objectives_progress[objective.id]
-				progress += trade.val_give
-				quest_data.objectives_progress[objective.id] = progress
-				Logging.log_info("Quest progress: %s — %s: %d / %d" \
-					% [quest.title, objective.id, progress, objective.required_quantity])
-				quest_progress.emit(quest_id, objective.id, progress, objective.required_quantity)
+			if objective.objective_type != event_type:
+				continue
+			if not _matches_target(objective, data):
+				continue
+			_update_progress(quest_id, quest, objective, quest_data, data)
 		to_check.append(quest_id)
 	for quest_id in to_check:
 		if quest_id in active_quests:
 			_check_completion(quest_id)
+
+func _matches_target(objective: QuestObjective, data: Dictionary) -> bool:
+	var target = objective.target_id
+	# Wildcards — match any target of the right event type
+	if target == "any_character" or target == "any_item":
+		return true
+	# Exact match against event data
+	return target == data.get("target_id", "")
+
+func _update_progress(quest_id: String, quest: Quest, objective: QuestObjective, quest_data: Dictionary, data: Dictionary) -> void:
+	var progress = quest_data.objectives_progress[objective.id]
+	progress += data.get("quantity", 1)
+	quest_data.objectives_progress[objective.id] = progress
+	Logging.log_info("Quest progress: %s — %s: %d / %d" \
+		% [quest.title, objective.id, progress, objective.required_quantity])
+	quest_progress.emit(quest_id, objective.id, progress, objective.required_quantity)
 
 func _check_completion(quest_id: String) -> void:
 	var quest_data = active_quests[quest_id]
@@ -98,21 +137,7 @@ func _check_completion(quest_id: String) -> void:
 	Logging.log_info("Quest completed: %s" % quest.title)
 	quest_completed.emit(quest_id)
 
-func _on_character_met(character_id: String) -> void:
-	for quest_id in active_quests.keys():
-		var quest_data = active_quests[quest_id]
-		var quest: Quest = quest_data.resource
-		for objective in quest.objectives:
-			#TODO: need to provide enums for objective type to help describe them, quicken function
-			if objective.target_id == "any_character":
-				var progress = quest_data.objectives_progress[objective.id]
-				progress += 1
-				quest_data.objectives_progress[objective.id] = progress
-				Logging.log_info("Quest progress: %s — %s: %d / %d" \
-					% [quest.title, objective.id, progress, objective.required_quantity])
-				quest_progress.emit(quest_id, objective.id, progress, objective.required_quantity)
-		if quest_id in active_quests:
-			_check_completion(quest_id)
+#endregion
 
 func _connect_quest_triggers() -> void:
 	for event_id in quest_triggers:
@@ -141,18 +166,10 @@ func _on_quest_trigger_event(event_data: Dictionary) -> void:
 				activate_quest(quest)
 
 func _on_time_changed(day: int, hour: int, minute: int) -> void:
-	# Evaluate world_clock objectives — any active quest waiting on a clock tick
-	for quest_id in active_quests.keys():
-		var quest_data = active_quests[quest_id]
-		var quest: Quest = quest_data.resource
-		for objective in quest.objectives:
-			if objective.target_id == "world_clock":
-				var progress = quest_data.objectives_progress[objective.id]
-				progress += 1
-				quest_data.objectives_progress[objective.id] = progress
-				quest_progress.emit(quest_id, objective.id, progress, objective.required_quantity)
-		if quest_id in active_quests:
-			_check_completion(quest_id)
+	_evaluate_event(QuestObjective.ObjectiveType.ELAPSE, {
+		"target_id": "world_clock",
+		"quantity": 1,
+	})
 
 	var expired := []
 	for quest_id in active_quests:

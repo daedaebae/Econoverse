@@ -4,6 +4,3 @@
 
 [node name="QuestManager" type="Node" unique_id=1526721551]
 script = ExtResource("1_bnwu8")
-active_quests = null
-completed_quests = null
-failed_quests = null
