@@ -4,11 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://dqxhs1tlvdn0x" path="res://assets/image/sprite/characters/SpriteDude.png" id="2_30vcf"]
 [ext_resource type="Shape2D" uid="uid://jujaimjtmbl" path="res://scripts/actors/resources/shape.tres" id="2_he2fm"]
 
-[node name="Throwaway-CharacterBody2D" type="CharacterBody2D" unique_id=696976295]
+[node name="Throwaway-CharacterBody2D" type="CharacterBody2D" unique_id=696976295 node_paths=PackedStringArray("sprite")]
 z_index = 1
 y_sort_enabled = true
 input_pickable = true
 script = ExtResource("1_rux1i")
+sprite = NodePath("Artisan")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1114704356]
 z_index = 1
