@@ -23,6 +23,7 @@ extends CharacterBody2D
 }
 @export_group("Social")
 @export var met : bool = false
+@export_range(1, 100) var disposition : int = 50
 @export var location: Location = Location.TOWN_SQUARE
 @export_subgroup("Speech")
 @export var speech_greeting : String = "Hello"
