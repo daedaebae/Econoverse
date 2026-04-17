@@ -189,6 +189,7 @@ position = Vector2(211.30873, 171.51122)
 script = ExtResource("6_jhx03")
 speed = 80.0
 characters_met = Array[String]([])
+interact_zoom_multiplier = 1.2
 id = "player"
 char_name = "Player"
 gender = 2
@@ -230,6 +231,22 @@ speed_scale = 0.4
 randomness = 0.6
 visibility_rect = Rect2(-781.595, -570.065, 1500, 1200)
 process_material = SubResource("ParticleProcessMaterial_e3hyu")
+
+[node name="Taxman" parent="Actors" unique_id=1156297503 instance=ExtResource("7_o8fc1")]
+z_as_relative = false
+position = Vector2(892, 53)
+script = ExtResource("8_xo05s")
+offered_item = ""
+wanted_item = "Coin"
+id = "npc_taxman"
+char_name = "Taxman"
+speech_greeting = "Who's this now..."
+speech_goodbye = "Go on"
+speech_trade_accept = "That's it?"
+speech_trade_decline = "Keep it"
+
+[node name="Artisan" parent="Actors/Taxman" index="1" unique_id=326726181]
+texture = ExtResource("10_e3hyu")
 
 [node name="Baker" parent="Actors" unique_id=696976295 instance=ExtResource("7_o8fc1")]
 modulate = Color(0.81938946, 0.95567757, 2.3102762e-06, 1)
@@ -300,7 +317,7 @@ inventory = {
 [node name="CornKeeper???" parent="Actors" unique_id=1466393481 instance=ExtResource("7_o8fc1")]
 modulate = Color(0.2, 1, 1, 1)
 z_as_relative = false
-position = Vector2(615.99976, -404.00006)
+position = Vector2(816, -406)
 script = ExtResource("8_xo05s")
 offered_item = "Corn"
 wanted_item = "Coin"
@@ -343,7 +360,7 @@ inventory = {
 [node name="Brewer" parent="Actors" unique_id=364622522 instance=ExtResource("7_o8fc1")]
 modulate = Color(0.81938946, 0.95567757, 2.3102762e-06, 1)
 z_as_relative = false
-position = Vector2(496.8, 244.8)
+position = Vector2(923, -416)
 script = ExtResource("8_xo05s")
 offered_item = ""
 wanted_item = "Coin"
@@ -389,7 +406,7 @@ inventory = {
 [node name="Tanner" parent="Actors" unique_id=1874102380 instance=ExtResource("7_o8fc1")]
 modulate = Color(0.81938946, 0.95567757, 2.3102762e-06, 1)
 z_as_relative = false
-position = Vector2(443.00003, -55)
+position = Vector2(398, 146)
 script = ExtResource("8_xo05s")
 offered_item = ""
 wanted_item = "Coin"
@@ -411,7 +428,7 @@ inventory = {
 [node name="Mason" parent="Actors" unique_id=790939674 instance=ExtResource("7_o8fc1")]
 modulate = Color(0.81938946, 0.95567757, 2.3102762e-06, 1)
 z_as_relative = false
-position = Vector2(730.99994, -36.00009)
+position = Vector2(1032, 192)
 script = ExtResource("8_xo05s")
 offered_item = ""
 wanted_item = "Coin"
@@ -429,30 +446,6 @@ inventory = {
 "Timber": 100,
 "Whiskey": 1
 }
-
-[node name="Taxman" parent="Actors" unique_id=1156297503 instance=ExtResource("7_o8fc1")]
-z_as_relative = false
-position = Vector2(730.99994, -36.00009)
-script = ExtResource("8_xo05s")
-offered_item = ""
-wanted_item = "Coin"
-id = "npc_taxman"
-char_name = "Taxman"
-profession = 3
-inventory = {
-"Boots": 1,
-"Coin": 75,
-"Corn": 10,
-"Horse": 2,
-"Stone": 550,
-"Strudel": 1,
-"Sword": 1,
-"Timber": 100,
-"Whiskey": 1
-}
-
-[node name="Artisan" parent="Actors/Taxman" index="1" unique_id=326726181]
-texture = ExtResource("10_e3hyu")
 
 [node name="Ambience" type="AudioStreamPlayer" parent="." unique_id=1733978206]
 stream = ExtResource("10_w7kh3")

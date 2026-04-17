@@ -37,23 +37,27 @@ func show_for_npc(npc: Character) -> void:
 	label_greeting.text = npc.get_greeting()
 	# Trade is locked until the player has talked to this NPC
 	button_trade.disabled = not npc.met
-	# Position the panel on the NPC's screen position, clamped to viewport
-	var screen_pos := npc.get_global_transform_with_canvas().origin
+	# Position the panel on the right side of the screen, centered vertically
 	var vp_size := get_viewport_rect().size
-	var margin := 20.0
-	screen_pos.x = clampf(screen_pos.x, margin, vp_size.x - panel.size.x - margin)
-	screen_pos.y = clampf(screen_pos.y, margin, vp_size.y - panel.size.y - margin)
-	panel.position = screen_pos
-	# Catch clicks outside the panel to close
+	panel.position.x = vp_size.x - panel.size.x - 36
+	panel.position.y = (vp_size.y - panel.size.y) / 2
+	# Fade in
+	panel.modulate.a = 0.0
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	visible = true
+	var tween := create_tween()
+	tween.tween_property(panel, "modulate:a", 1.0, 0.6)
 	GameController.set_player_interacting(true)
+	GameController.player_node.focus_on_npc(npc)
 
 func close() -> void:
 	current_npc = null
-	visible = false
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	GameController.set_player_interacting(false)
+	GameController.player_node.unfocus()
+	var tween := create_tween()
+	tween.tween_property(panel, "modulate:a", 0.0, 0.4)
+	tween.tween_callback(func(): visible = false)
 
 func _on_talk_pressed() -> void:
 	if not current_npc:

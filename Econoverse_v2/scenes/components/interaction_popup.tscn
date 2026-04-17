@@ -17,12 +17,13 @@ shadow_size = 4
 shadow_color = Color(0, 0, 0, 0.69411767)
 
 [node name="InteractionPopup" type="Control" unique_id=2124545381 node_paths=PackedStringArray("panel", "label_name", "label_greeting", "button_talk", "button_trade", "button_leave")]
+custom_minimum_size = Vector2(180, 216)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -80.0
-offset_bottom = -80.0
+offset_right = -459.9987
+offset_bottom = -144.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -40,10 +41,8 @@ button_leave = NodePath("PanelContainer/MarginContainer/VBoxContainer/ButtonLeav
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=485712255]
 custom_minimum_size = Vector2(180, 216)
 layout_mode = 0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 185.0
-offset_bottom = 221.0
+offset_right = 180.0
+offset_bottom = 216.0
 theme = ExtResource("1_c5ets")
 theme_override_styles/panel = ExtResource("3_dhkl3")
 
