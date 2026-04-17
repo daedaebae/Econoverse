@@ -20,12 +20,21 @@ extends Control
 
 var current_npc: Node = null
 
+# Dialogue walk state. When pending_lines is non-empty, the player is mid-walk:
+# Talk button label swaps to "Continue", Trade/Leave are locked, and clicks
+# outside the panel are ignored until the walk completes.
+var pending_lines: Array[Dictionary] = []
+var line_index: int = 0
+
 func _ready() -> void:
 	visible = false
 	GameController.register_interaction_popup(self)
 	button_talk.pressed.connect(_on_talk_pressed)
 	button_trade.pressed.connect(_on_trade_pressed)
 	button_leave.pressed.connect(close)
+
+func _is_walking() -> bool:
+	return not pending_lines.is_empty()
 
 func show_for_npc(npc: Character) -> void:
 	current_npc = npc
@@ -51,6 +60,10 @@ func show_for_npc(npc: Character) -> void:
 	GameController.player_node.focus_on_npc(npc)
 
 func close() -> void:
+	# Don't let the player escape mid-dialogue. Trade/Leave and outside-clicks
+	# all route through here; guarding once covers all paths.
+	if _is_walking():
+		return
 	current_npc = null
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	GameController.set_player_interacting(false)
@@ -62,15 +75,48 @@ func close() -> void:
 func _on_talk_pressed() -> void:
 	if not current_npc:
 		return
-	# Mark as met on first interaction
+	# Advancing through an in-progress dialogue walk
+	if _is_walking():
+		_advance_walk()
+		return
+	# Mark as met on first interaction. on_character_met may fire
+	# on_first_talk_event, which could activate a quest that contributes a
+	# dialogue line — so this must run before we query on_talk().
 	if not current_npc.met:
 		current_npc.met = true
 		GameController.on_character_met(GameController.player_node, current_npc)
-		# Update name and unlock trade now that they've met
 		label_name.text = current_npc.char_name
 		button_trade.disabled = false
-	# TODO: Open DialoguePanel with conversation options (Rumors, event topics, etc.)
-	Logging.log_info("Talk: %s — (dialogue panel not yet implemented)" % current_npc.char_name)
+	# Query pending quest dialogue. Empty = no quest lines; existing greeting
+	# stays in LabelGreeting and the player can still Trade/Leave.
+	pending_lines = current_npc.on_talk()
+	if pending_lines.is_empty():
+		Logging.log_info("Talk: %s — no pending quest dialogue." % current_npc.char_name)
+		return
+	# Begin walk: lock Trade/Leave, swap Talk → Continue, show first line.
+	line_index = 0
+	button_talk.text = "Continue"
+	button_trade.disabled = true
+	button_leave.disabled = true
+	label_greeting.text = pending_lines[0].line
+
+func _advance_walk() -> void:
+	# Mark the line just shown as delivered, then move to the next one or finish.
+	var current_entry: Dictionary = pending_lines[line_index]
+	QuestManager.mark_delivered(current_entry.quest_id, current_npc.id)
+	line_index += 1
+	if line_index >= pending_lines.size():
+		_end_walk()
+		return
+	label_greeting.text = pending_lines[line_index].line
+
+func _end_walk() -> void:
+	pending_lines = []
+	line_index = 0
+	button_talk.text = "Talk"
+	button_trade.disabled = false
+	button_leave.disabled = false
+	label_greeting.text = current_npc.get_greeting()
 
 func _on_trade_pressed() -> void:
 	if not current_npc:

@@ -25,6 +25,13 @@ extends CharacterBody2D
 @export var met : bool = false
 @export_range(1, 100) var disposition : int = 50
 @export var location: Location = Location.TOWN_SQUARE
+@export var accepts_only : Array[String] = []
+	# Whitelist of item IDs this character will accept in trade. Empty = accepts
+	# anything. Example: Taxman = ["Coin"] — rejects every other item with the
+	# decline line. Data-driven so any future constrained NPC just fills this in.
+@export var on_first_talk_event : EventResource
+	# Optional. Fired by GameController.on_character_met the first time the player
+	# meets this NPC. Leave null for NPCs with no first-meeting reaction.
 @export_subgroup("Speech")
 @export var speech_greeting : String = "Hello"
 @export var speech_goodbye : String = "Goodbye"
@@ -62,9 +69,22 @@ func get_visible_inventory() -> Dictionary:
 func get_greeting() -> String:
 	return speech_greeting
 
+# Returns pending quest dialogue lines for this NPC, in the order the player
+# should walk them. Each entry: { "quest_id": String, "line": String }.
+# Does NOT mark lines as delivered — the popup calls QuestManager.mark_delivered
+# after each line is safely shown. Empty array means the popup falls back to
+# the default greeting (speech_greeting).
+func on_talk() -> Array[Dictionary]:
+	return QuestManager.get_pending_lines_for(id)
+
 #TODO: durf- simplify params to use dictionary pulled from character inventory?
 #kc - consider trade simply emitting data based on each possible comparison operation outcome.
 func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_get: String):
+	# Receiver may restrict what it accepts. Empty list = accepts anything.
+	if not whom.accepts_only.is_empty() and item_give not in whom.accepts_only:
+		Logging.log_warn("Trade rejected: %s — %s" \
+			% [whom.char_name, whom.speech_trade_decline])
+		return false
 	# Check if the values are higher than what is in Character Inventories.
 	if valGive > self.inventory[item_give]:
 		Logging.log_warn("Trade rejected: %s does not have enough %s (has %d, needs %d)." \

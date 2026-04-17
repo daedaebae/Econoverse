@@ -1,6 +1,23 @@
 extends Node
 # TODO: item matching uses string keys ("Coin") — migrate to ItemResource IDs
 # when inventory system is updated. Affects Character, Ledger, PROFESSION_ITEM.
+
+#region PolishRefactor
+# MVP dialogue model: Option 2 — consumed-once.
+# Each active quest contributes at most one dialogue line per NPC
+# (Quest.dialogue_by_npc, keyed by Character.id). The first time the player
+# clicks Talk with that NPC, get_pending_lines_for() returns the line; the
+# popup shows it, then calls mark_delivered(quest_id, npc_id). Subsequent
+# Talks fall back to the NPC's default greeting.
+#
+# FUTURE — Option 3: Stateful-by-trigger.
+# Lines would be tied to quest events (quest_started, quest_progress_50,
+# deadline_approaching, etc). Each event pushes a line onto a per-NPC queue;
+# Talk drains the queue. Taxman could then say different things at quest
+# start, half-paid, and one-day-out. Requires nested dict on Quest:
+#   dialogue_by_npc_by_trigger: { npc_id: { trigger_key: line } }
+# and a per-NPC line queue in QuestManager runtime state.
+#endregion
 #region Explanation
 # connected to quest manager scene for review of it's properties via inspector.
 	# Registered as a .tscn autoload so QuestManager can leverage child nodes
@@ -82,6 +99,7 @@ func activate_quest(quest: Quest) -> void:
 		"resource": quest,
 		"start_day": WorldClock.day,
 		"objectives_progress": objectives_progress,
+		"delivered_dialogue": [],  # npc_ids who have heard this quest's line
 	}
 	Logging.log_info("Quest started: %s" % quest.title)
 	quest_started.emit(quest.id)
@@ -133,8 +151,14 @@ func _matches_target(objective: QuestObjective, data: Dictionary) -> bool:
 	# Wildcards — match any target of the right event type
 	if target == "any_character" or target == "any_item":
 		return true
-	# Exact match against event data
-	return target == data.get("target_id", "")
+	# Exact target match (NPC id, item id, etc.)
+	if target != data.get("target_id", ""):
+		return false
+	# For GIVE/GET objectives, also constrain by item_id when specified.
+	# Prevents e.g. giving Boots to the Taxman from counting toward a Coin tithe.
+	if objective.item_id != "" and objective.item_id != data.get("item_id", ""):
+		return false
+	return true
 
 func _update_progress(quest_id: String, quest: Quest, objective: QuestObjective, quest_data: Dictionary, data: Dictionary) -> void:
 	var progress = quest_data.objectives_progress[objective.id]
@@ -193,6 +217,38 @@ func _on_time_changed(day: int, hour: int, minute: int) -> void:
 		failed_quests.append(quest_id)
 		Logging.log_info("Quest failed: %s — deadline expired." % quest.title)
 		quest_failed.emit(quest_id)
+
+#region Dialogue API
+
+# Returns undelivered quest lines for this NPC across all active quests.
+# Each entry: { "quest_id": String, "line": String }.
+# Does NOT mutate state — caller must invoke mark_delivered() after each line
+# is safely shown, so a crash mid-sequence doesn't silently consume lines.
+func get_pending_lines_for(npc_id: String) -> Array[Dictionary]:
+	var pending: Array[Dictionary] = []
+	for quest_id in active_quests.keys():
+		var quest_data = active_quests[quest_id]
+		var quest: Quest = quest_data.resource
+		if npc_id in quest_data.delivered_dialogue:
+			continue
+		if not quest.dialogue_by_npc.has(npc_id):
+			continue
+		pending.append({
+			"quest_id": quest_id,
+			"line": quest.dialogue_by_npc[npc_id],
+		})
+	return pending
+
+# Marks a single quest line as delivered for (quest, npc). Called by the
+# interaction popup after each line is shown to the player.
+func mark_delivered(quest_id: String, npc_id: String) -> void:
+	if not quest_id in active_quests:
+		return
+	var delivered: Array = active_quests[quest_id].delivered_dialogue
+	if npc_id not in delivered:
+		delivered.append(npc_id)
+
+#endregion
 
 func validate_quest_state() -> void:
 	var issues := 0

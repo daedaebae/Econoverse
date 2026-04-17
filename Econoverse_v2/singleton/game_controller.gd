@@ -155,8 +155,12 @@ func on_trade_complete(trade: Dictionary) -> void:
 	inventory_changed.emit(trade)
 
 func on_character_met(who: Node, whom: Node) -> void:
+	# TODO: unify Character.met bool with player_node.characters_met array —
+	# two sources of truth for first-meeting state. Refactor after MVP.
 	if who == player_node and whom.id not in player_node.characters_met:
 		player_node.characters_met.append(whom.id)
 		Logging.log_info("First meeting: %s met %s" % [who.char_name, whom.char_name])
 		character_met.emit(whom.id)
+		if whom.on_first_talk_event:
+			whom.on_first_talk_event.fire({"npc_id": whom.id})
 #endregion Logic Handlers

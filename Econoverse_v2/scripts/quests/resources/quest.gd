@@ -34,3 +34,8 @@ enum quest_type {TUTORIAL, MAIN_STORY, SURPRISE, TYPICAL}
 # Quest resources.
 @export var completion_event	: EventResource
 @export var failure_event		: EventResource
+
+@export var dialogue_by_npc	: Dictionary = {}
+	# Per-NPC dialogue lines tied to this quest, keyed by Character.id.
+	# Example: { "npc_taxman": "Just the coin. Now." }
+	# Consumed once per (quest, npc) — see PolishRefactor notes in quest_manager.gd.

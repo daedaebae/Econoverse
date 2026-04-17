@@ -241,10 +241,11 @@ offered_item = ""
 wanted_item = "Coin"
 id = "npc_taxman"
 char_name = "Taxman"
+accepts_only = Array[String](["Coin"])
 speech_greeting = "Who's this now..."
 speech_goodbye = "Go on"
 speech_trade_accept = "That's it?"
-speech_trade_decline = "Keep it"
+speech_trade_decline = "Just your Coin. "
 
 [node name="Artisan" parent="Actors/Taxman" index="1" unique_id=326726181]
 texture = ExtResource("10_e3hyu")
