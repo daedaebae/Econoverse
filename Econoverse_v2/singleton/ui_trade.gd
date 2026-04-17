@@ -158,7 +158,7 @@ func _on_button_trade_pressed() -> void:
 		hide()
 		GameController.set_player_interacting(false)
 	else:
-		%LabelDenied.text = "Ye fool! Ye can't trade what ye don't have!"
+		%LabelDenied.text = npc_node.speech_trade_decline
 		%LabelDenied.show()
 		current_give_amount = 0
 		current_get_amount = 0
@@ -182,6 +182,7 @@ func _on_button_plus_get_pressed() -> void:
 
 
 func _on_button_cancel_pressed() -> void:
+	%LabelDenied.hide()
 	hide()
 	sound_hide.play()
 	GameController.set_player_interacting(false)
