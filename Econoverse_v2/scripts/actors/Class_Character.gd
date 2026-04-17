@@ -52,6 +52,16 @@ func get_visible_inventory() -> Dictionary:
 			visible[item] = inventory[item]
 	return visible
 
+# Returns the greeting this character should say when the player interacts.
+# Currently returns speech_greeting directly. Future considerations:
+# - First meeting: a unique introduction line (met == false)
+# - Disposition-based: warmer or colder greetings based on disposition value
+# - Event-driven: one-shot lines after specific events (e.g., tithe paid)
+# - Quest-contextual: references to active or completed quests involving this NPC
+# Subclasses (artisan.gd, player.gd) can override for character-specific logic.
+func get_greeting() -> String:
+	return speech_greeting
+
 #TODO: durf- simplify params to use dictionary pulled from character inventory?
 #kc - consider trade simply emitting data based on each possible comparison operation outcome.
 func trade(whom: Character, valGive: int, item_give: String, valGet: int, item_get: String):

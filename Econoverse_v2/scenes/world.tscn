@@ -234,7 +234,7 @@ process_material = SubResource("ParticleProcessMaterial_e3hyu")
 [node name="Baker" parent="Actors" unique_id=696976295 instance=ExtResource("7_o8fc1")]
 modulate = Color(0.81938946, 0.95567757, 2.3102762e-06, 1)
 z_as_relative = false
-position = Vector2(1231.8237, 606.9856)
+position = Vector2(931, 207)
 script = ExtResource("8_xo05s")
 offered_item = ""
 wanted_item = "Coin"

@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://3ru2w73jcfi0" path="res://scenes/components/ui_ledger.tscn" id="1_uf58v"]
 [ext_resource type="PackedScene" uid="uid://b4nvajmgiohdg" path="res://scenes/ui.tscn" id="2_d50jv"]
+[ext_resource type="PackedScene" uid="uid://dbvyqsmem2357" path="res://scenes/components/interaction_popup.tscn" id="3_d50jv"]
 [ext_resource type="PackedScene" uid="uid://cs7gurkoxmber" path="res://scenes/ui_trade.tscn" id="3_uox16"]
 [ext_resource type="PackedScene" uid="uid://bao1b17crcohq" path="res://scenes/components/pause_screen.tscn" id="4_gcydm"]
 [ext_resource type="Script" uid="uid://c6gn0xd2ay1ib" path="res://scripts/ui_log_window.gd" id="5_cg41t"]
@@ -18,6 +19,9 @@ z_index = 2000
 process_mode = 1
 z_index = 1000
 metadata/_edit_lock_ = true
+
+[node name="InteractionPopup" parent="." unique_id=2124545381 instance=ExtResource("3_d50jv")]
+visible = false
 
 [node name="UI-Trade" parent="." unique_id=1966253834 instance=ExtResource("3_uox16")]
 process_mode = 1
