@@ -21,17 +21,28 @@ extends Control
 @export var panel: Control
 @export var label_prefix: Label
 @export var label_title: Label
+@export var audio_stinger: AudioStreamPlayer
+
+# Music ducks to effectively inaudible during the stinger. -80 dB is Godot's
+# practical silence floor — below -60 is imperceptible, but -80 guarantees it.
+const MUSIC_DUCK_DB := -80.0
+const MUSIC_BUS_NAME := "Music"
 
 # Timing — calibrated slow-and-intentional. Total ~5.6s from trigger to gone.
-const PREFIX_FADE_DURATION	:= 1.0   # "Quest Started" eases in
+const PREFIX_FADE_DURATION	:= 1.1   # "Quest Started" eases in
 const PREFIX_SOLO_HOLD		:= 0.6   # beat of the prefix alone
-const TITLE_FADE_DURATION	:= 1.0   # title joins underneath
-const BOTH_HOLD_DURATION	:= 2.0   # both dwell together
-const FADE_OUT_DURATION		:= 1.0   # both exit together
+const TITLE_FADE_DURATION	:= 1.1   # title joins underneath
+const BOTH_HOLD_DURATION	:= 2.5   # both dwell together
+const FADE_OUT_DURATION		:= 1.5   # both exit together
 
 const PREFIX_TEXT := "Quest Started"
 
 var _active_tween: Tween = null
+var _music_tween: Tween = null
+var _music_bus_idx: int = -1
+# Captured once at _ready so we always restore to the user's configured level,
+# not whatever state the bus was in mid-duck if something interrupts.
+var _music_original_db: float = 0.0
 # FIFO of quest_ids waiting to announce. If several quests start in the same
 # frame (e.g. a chained trigger), each gets its full ceremony in turn rather
 # than clobbering each other.
@@ -42,6 +53,9 @@ func _ready() -> void:
 	visible = false
 	label_prefix.modulate.a = 0.0
 	label_title.modulate.a = 0.0
+	_music_bus_idx = AudioServer.get_bus_index(MUSIC_BUS_NAME)
+	if _music_bus_idx != -1:
+		_music_original_db = AudioServer.get_bus_volume_db(_music_bus_idx)
 	QuestManager.quest_started.connect(_on_quest_started)
 
 func _on_quest_started(quest_id: String) -> void:
@@ -73,6 +87,12 @@ func _play_toast() -> void:
 	label_prefix.modulate.a = 0.0
 	label_title.modulate.a = 0.0
 	visible = true
+	# Audio: stinger fires at the exact moment the visual ceremony begins.
+	# Music ducks in lockstep with the text tween so tuning timing constants
+	# re-syncs everything automatically.
+	if audio_stinger:
+		audio_stinger.play()
+	_duck_music()
 	_active_tween = create_tween()
 	# 1 — prefix fades in alone
 	_active_tween.tween_property(label_prefix, "modulate:a", 1.0, PREFIX_FADE_DURATION) \
@@ -91,3 +111,22 @@ func _play_toast() -> void:
 	_active_tween.parallel().tween_property(label_title, "modulate:a", 0.0, FADE_OUT_DURATION) \
 		.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
 	_active_tween.tween_callback(_play_next)
+
+# Music ducks to silence across PREFIX_FADE_DURATION, stays down while the
+# stinger does its work (solo hold + title fade + both hold), then recovers
+# over FADE_OUT_DURATION. Total ducked window matches the stinger length —
+# if you retune constants, timing stays correct automatically.
+func _duck_music() -> void:
+	if _music_bus_idx == -1:
+		return
+	if _music_tween and _music_tween.is_valid():
+		_music_tween.kill()
+	var silent_hold := PREFIX_SOLO_HOLD + TITLE_FADE_DURATION + BOTH_HOLD_DURATION
+	var start_db: float = AudioServer.get_bus_volume_db(_music_bus_idx)
+	_music_tween = create_tween()
+	_music_tween.tween_method(_set_music_db, start_db, MUSIC_DUCK_DB, PREFIX_FADE_DURATION)
+	_music_tween.tween_interval(silent_hold)
+	_music_tween.tween_method(_set_music_db, MUSIC_DUCK_DB, _music_original_db, FADE_OUT_DURATION)
+
+func _set_music_db(db: float) -> void:
+	AudioServer.set_bus_volume_db(_music_bus_idx, db)

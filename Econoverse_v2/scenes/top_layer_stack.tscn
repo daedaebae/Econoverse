@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bao1b17crcohq" path="res://scenes/components/pause_screen.tscn" id="4_gcydm"]
 [ext_resource type="Script" uid="uid://c6gn0xd2ay1ib" path="res://scripts/ui_log_window.gd" id="5_cg41t"]
 [ext_resource type="PackedScene" uid="uid://dfyh5nefb2m53" path="res://scenes/quest_toast.tscn" id="5_uox16"]
+[ext_resource type="PackedScene" path="res://scenes/components/endgame_screen.tscn" id="7_gcydm"]
+[ext_resource type="Resource" uid="uid://cix65j43y7k3r" path="res://scripts/quests/quest bundles/003 - tithe/GAME_WIN.tres" id="8_awmql"]
+[ext_resource type="Resource" uid="uid://dgtl0selosen1" path="res://scripts/quests/quest bundles/003 - tithe/GAME_LOSE.tres" id="9_278is"]
 
 [node name="TopLayerStack" type="CanvasLayer" unique_id=1074194467]
 process_mode = 3
@@ -37,6 +40,10 @@ z_index = 1003
 
 [node name="PauseScreen" parent="." unique_id=2107745835 instance=ExtResource("4_gcydm")]
 visible = false
+
+[node name="EndgameScreen" parent="." unique_id=1193309793 instance=ExtResource("7_gcydm")]
+win_event = ExtResource("8_awmql")
+lose_event = ExtResource("9_278is")
 
 [node name="Logs Window" type="Window" parent="." unique_id=178428290]
 process_mode = 3
