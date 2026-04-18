@@ -193,6 +193,30 @@ func _connect_quest_triggers() -> void:
 						and quest.id not in failed_quests:
 						activate_quest(quest)
 			)
+		if quest.trigger_fail_event:
+			quest.trigger_fail_event.triggered.connect(
+				func(event_data: Dictionary) -> void:
+					# Only fail if currently active. Silent if the quest hasn't
+					# started yet or already resolved.
+					if quest.id in active_quests:
+						fail_quest(quest.id, "trigger_fail_event fired")
+			)
+
+# Force a quest to fail. Fires failure_event, removes from active, records it.
+# Callable from anywhere — trigger_fail_event routes here, deadline expiry
+# routes here, and debug/test code can call it directly.
+func fail_quest(quest_id: String, reason: String = "") -> void:
+	if quest_id not in active_quests:
+		return
+	var quest_data = active_quests[quest_id]
+	var quest: Quest = quest_data.resource
+	if quest.failure_event:
+		quest.failure_event.fire({"quest_id": quest_id})
+	active_quests.erase(quest_id)
+	failed_quests.append(quest_id)
+	var suffix := (" — %s" % reason) if reason != "" else ""
+	Logging.log_info("Quest failed: %s%s" % [quest.title, suffix])
+	quest_failed.emit(quest_id)
 
 func _on_time_changed(day: int, hour: int, minute: int) -> void:
 	_evaluate_event(QuestObjective.ObjectiveType.ELAPSE, {
@@ -209,14 +233,7 @@ func _on_time_changed(day: int, hour: int, minute: int) -> void:
 		if day - quest_data.start_day >= quest.days_to_complete:
 			expired.append(quest_id)
 	for quest_id in expired:
-		var quest_data = active_quests[quest_id]
-		var quest: Quest = quest_data.resource
-		if quest.failure_event:
-			quest.failure_event.fire({"quest_id": quest_id})
-		active_quests.erase(quest_id)
-		failed_quests.append(quest_id)
-		Logging.log_info("Quest failed: %s — deadline expired." % quest.title)
-		quest_failed.emit(quest_id)
+		fail_quest(quest_id, "deadline expired")
 
 #region Dialogue API
 
@@ -247,6 +264,23 @@ func mark_delivered(quest_id: String, npc_id: String) -> void:
 	var delivered: Array = active_quests[quest_id].delivered_dialogue
 	if npc_id not in delivered:
 		delivered.append(npc_id)
+
+#endregion
+
+#region Debug
+
+# DEBUG: press F10 to force-fail the first active quest. Useful for exercising
+# the failure path (outro tween, GAME_LOSE event) without waiting on deadlines
+# or authoring a trigger_fail_event. Remove or gate behind OS.is_debug_build()
+# before shipping.
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and event.keycode == KEY_F10:
+		if active_quests.is_empty():
+			Logging.log_info("DEBUG: no active quest to fail.")
+			return
+		var quest_id: String = active_quests.keys()[0]
+		Logging.log_info("DEBUG: force-failing quest '%s' via F10." % quest_id)
+		fail_quest(quest_id, "forced by debug input")
 
 #endregion
 

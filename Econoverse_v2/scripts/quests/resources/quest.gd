@@ -26,6 +26,13 @@ enum quest_type {TUTORIAL, MAIN_STORY, SURPRISE, TYPICAL}
 	# The EventResource that causes this quest to activate when fired.
 	# Leave null for quests that auto_start or are activated manually.
 
+@export var trigger_fail_event	: EventResource
+	# Optional. When fired, this quest fails immediately (regardless of
+	# progress or deadline). Parallel to trigger_start_event — events drive
+	# state, the quest itself is agnostic about meaning. Examples: an NPC
+	# offended beyond repair, a cargo crate destroyed, a rival finishes first.
+	# Leave null if the quest can only fail via deadline expiry.
+
 # Claude review: QuestManager.completed_quests and failed_quests store only the
 # quest ID string. Once a quest leaves active_quests, this resource reference is
 # lost. If we need a quest log showing past descriptions/objectives, or want to
