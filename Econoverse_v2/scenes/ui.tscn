@@ -19,6 +19,8 @@
 [ext_resource type="Resource" uid="uid://ce6ptjyb3wdne" path="res://scripts/commodities/resources/strudel.tres" id="14_ycmcx"]
 [ext_resource type="Resource" uid="uid://cgwpkjtyr5vt2" path="res://scripts/commodities/resources/sword.tres" id="15_kupmu"]
 [ext_resource type="Resource" uid="uid://ccqkttfwiq03j" path="res://scripts/commodities/resources/whiskey.tres" id="16_catpy"]
+[ext_resource type="Script" uid="uid://cudiijkt4ecyg" path="res://scenes/v_box_quest_tracker.gd" id="19_rlppe"]
+[ext_resource type="Script" uid="uid://cbntmslvqtet8" path="res://scenes/cluster_quest.gd" id="20_ycmcx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4jx1"]
 bg_color = Color(0, 0, 0, 0.5921569)
@@ -26,6 +28,26 @@ bg_color = Color(0, 0, 0, 0.5921569)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wm3ai"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gdt2y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jkdwc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jkdwc"]
+line_spacing = 1.0
+font = ExtResource("5_8dubc")
+font_size = 10
+outline_size = 1
+outline_color = Color(0.75, 0.75, 0, 0.7294118)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.69411767)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rlppe"]
+line_spacing = 1.0
+font = ExtResource("5_8dubc")
+font_size = 7
+outline_size = 1
+outline_color = Color(0.75, 0.75, 0.75, 0.7294118)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.69411767)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ktti3"]
 line_spacing = 1.0
@@ -711,6 +733,105 @@ Just another bunch of text to put on the screen and see how it is in context wit
 label_settings = ExtResource("7_p7vwb")
 autowrap_mode = 3
 
+[node name="VBoxQuestTracker" type="VBoxContainer" parent="FullScreenArranged/PanelCenter/Notifications and Popups" unique_id=679108740 node_paths=PackedStringArray("cluster_quest_1", "cluster_quest_2", "cluster_quest_3")]
+modulate = Color(1, 1, 1, 0.5882353)
+custom_minimum_size = Vector2(125, 200)
+layout_mode = 0
+offset_left = 490.0
+offset_top = -8.0
+offset_right = 640.0028
+offset_bottom = 192.0
+script = ExtResource("19_rlppe")
+cluster_quest_1 = NodePath("ClusterQuest1")
+cluster_quest_2 = NodePath("ClusterQuest2")
+cluster_quest_3 = NodePath("ClusterQuest3")
+
+[node name="ClusterQuest1" type="VBoxContainer" parent="FullScreenArranged/PanelCenter/Notifications and Popups/VBoxQuestTracker" unique_id=194658608 node_paths=PackedStringArray("label_quest_name", "label_quest_objective")]
+layout_mode = 2
+theme_override_constants/separation = 1
+script = ExtResource("20_ycmcx")
+label_quest_name = NodePath("LabelQuestName")
+label_quest_objective = NodePath("LabelQuestObjective")
+
+[node name="LabelQuestName" type="Label" parent="FullScreenArranged/PanelCenter/Notifications and Popups/VBoxQuestTracker/ClusterQuest1" unique_id=1315528475]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_8dubc")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jkdwc")
+text = "- Quest Name: "
+label_settings = SubResource("LabelSettings_jkdwc")
+autowrap_mode = 3
+
+[node name="LabelQuestObjective" type="Label" parent="FullScreenArranged/PanelCenter/Notifications and Popups/VBoxQuestTracker/ClusterQuest1" unique_id=567048848]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_8dubc")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jkdwc")
+text = "Do this thing - 0001/1000"
+label_settings = SubResource("LabelSettings_rlppe")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ClusterQuest2" type="VBoxContainer" parent="FullScreenArranged/PanelCenter/Notifications and Popups/VBoxQuestTracker" unique_id=305839540 node_paths=PackedStringArray("label_quest_name", "label_quest_objective")]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 1
+script = ExtResource("20_ycmcx")
+label_quest_name = NodePath("LabelQuestName")
+label_quest_objective = NodePath("LabelQuestObjective")
+
+[node name="LabelQuestName" type="Label" parent="FullScreenArranged/PanelCenter/Notifications and Popups/VBoxQuestTracker/ClusterQuest2" unique_id=1541626864]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_8dubc")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jkdwc")
+text = "- Quest Name: "
+label_settings = SubResource("LabelSettings_jkdwc")
+autowrap_mode = 3
+
+[node name="LabelQuestObjective" type="Label" parent="FullScreenArranged/PanelCenter/Notifications and Popups/VBoxQuestTracker/ClusterQuest2" unique_id=1000850776]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_8dubc")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jkdwc")
+text = "Do this thing - 0001/1000"
+label_settings = SubResource("LabelSettings_rlppe")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ClusterQuest3" type="VBoxContainer" parent="FullScreenArranged/PanelCenter/Notifications and Popups/VBoxQuestTracker" unique_id=474728362 node_paths=PackedStringArray("label_quest_name", "label_quest_objective")]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 1
+script = ExtResource("20_ycmcx")
+label_quest_name = NodePath("LabelQuestName")
+label_quest_objective = NodePath("LabelQuestObjective")
+
+[node name="LabelQuestName" type="Label" parent="FullScreenArranged/PanelCenter/Notifications and Popups/VBoxQuestTracker/ClusterQuest3" unique_id=1982405578]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_8dubc")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jkdwc")
+text = "- Quest Name: "
+label_settings = SubResource("LabelSettings_jkdwc")
+autowrap_mode = 3
+
+[node name="LabelQuestObjective" type="Label" parent="FullScreenArranged/PanelCenter/Notifications and Popups/VBoxQuestTracker/ClusterQuest3" unique_id=545870382]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_8dubc")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jkdwc")
+text = "Do this thing - 0001/1000"
+label_settings = SubResource("LabelSettings_rlppe")
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="BoxCenterPRIMARY" type="BoxContainer" parent="FullScreenArranged/PanelCenter" unique_id=1791699176]
 layout_mode = 1
 anchors_preset = 15
@@ -737,6 +858,8 @@ label_settings = SubResource("LabelSettings_ktti3")
 autowrap_mode = 3
 
 [node name="MusicController" parent="FullScreenArranged/PanelCenter" unique_id=989217081 instance=ExtResource("8_ktti3")]
+visible = false
+z_index = 2
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0

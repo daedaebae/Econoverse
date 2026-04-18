@@ -17,6 +17,8 @@ shadow_size = 4
 shadow_color = Color(0, 0, 0, 0.69411767)
 
 [node name="InteractionPopup" type="Control" unique_id=2124545381 node_paths=PackedStringArray("panel", "label_name", "label_greeting", "button_talk", "button_trade", "button_leave")]
+z_index = 1002
+z_as_relative = false
 custom_minimum_size = Vector2(180, 216)
 layout_mode = 3
 anchors_preset = 15
