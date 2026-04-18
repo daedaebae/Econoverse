@@ -14,5 +14,5 @@ _type = 1
 objectives = Array[ExtResource("1_s3x7i")]([ExtResource("3_iqv8o")])
 days_to_complete = 0
 auto_start = true
-completion_event = ExtResource("1_cfyq6")
+on_completion_event = ExtResource("1_cfyq6")
 metadata/_custom_type_script = "uid://bhvdbh5g7r327"

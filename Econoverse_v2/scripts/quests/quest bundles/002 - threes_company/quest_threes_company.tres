@@ -14,5 +14,5 @@ description = "Turns out, there are MORE people around here! They have coins, to
 objectives = Array[ExtResource("2_6rqa4")]([ExtResource("3_6rqa4")])
 days_to_complete = 0
 trigger_start_event = ExtResource("5_rll1r")
-completion_event = ExtResource("1_7dv7l")
+on_completion_event = ExtResource("1_7dv7l")
 metadata/_custom_type_script = "uid://bhvdbh5g7r327"

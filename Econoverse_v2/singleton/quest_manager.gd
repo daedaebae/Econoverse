@@ -175,8 +175,8 @@ func _check_completion(quest_id: String) -> void:
 		if quest_data.objectives_progress[objective.id] < objective.required_quantity:
 			return
 	# All objectives met
-	if quest.completion_event:
-		quest.completion_event.fire({"quest_id": quest_id})
+	if quest.on_completion_event:
+		quest.on_completion_event.fire({"quest_id": quest_id})
 	active_quests.erase(quest_id)
 	completed_quests.append(quest_id)
 	Logging.log_info("Quest completed: %s" % quest.title)
@@ -210,8 +210,8 @@ func fail_quest(quest_id: String, reason: String = "") -> void:
 		return
 	var quest_data = active_quests[quest_id]
 	var quest: Quest = quest_data.resource
-	if quest.failure_event:
-		quest.failure_event.fire({"quest_id": quest_id})
+	if quest.on_failure_event:
+		quest.on_failure_event.fire({"quest_id": quest_id})
 	active_quests.erase(quest_id)
 	failed_quests.append(quest_id)
 	var suffix := (" — %s" % reason) if reason != "" else ""

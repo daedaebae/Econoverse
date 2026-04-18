@@ -747,6 +747,7 @@ cluster_quest_2 = NodePath("ClusterQuest2")
 cluster_quest_3 = NodePath("ClusterQuest3")
 
 [node name="ClusterQuest1" type="VBoxContainer" parent="FullScreenArranged/PanelCenter/Notifications and Popups/VBoxQuestTracker" unique_id=194658608 node_paths=PackedStringArray("label_quest_name", "label_quest_objective")]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 1
 script = ExtResource("20_ycmcx")
@@ -858,7 +859,6 @@ label_settings = SubResource("LabelSettings_ktti3")
 autowrap_mode = 3
 
 [node name="MusicController" parent="FullScreenArranged/PanelCenter" unique_id=989217081 instance=ExtResource("8_ktti3")]
-visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 1

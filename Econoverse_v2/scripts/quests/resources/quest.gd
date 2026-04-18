@@ -39,8 +39,8 @@ enum quest_type {TUTORIAL, MAIN_STORY, SURPRISE, TYPICAL}
 # query details of a finished quest, we'll need to either retain the resource
 # reference in those arrays or maintain a lookup table to resolve IDs back to
 # Quest resources.
-@export var completion_event	: EventResource
-@export var failure_event		: EventResource
+@export var on_completion_event	: EventResource
+@export var on_failure_event		: EventResource
 
 @export var dialogue_by_npc	: Dictionary = {}
 	# Per-NPC dialogue lines tied to this quest, keyed by Character.id.
