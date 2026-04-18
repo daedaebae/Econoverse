@@ -9,5 +9,5 @@ objective_type = 0
 description = "Pay the Taxman your dues."
 target_id = "npc_taxman"
 item_id = "Coin"
-required_quantity = 10000
+required_quantity = 5
 metadata/_custom_type_script = "uid://dopqr21noy5lf"
