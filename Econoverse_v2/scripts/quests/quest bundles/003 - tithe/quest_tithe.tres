@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://cofejt438r77q"]
+
+[ext_resource type="Resource" uid="uid://cix65j43y7k3r" path="res://scripts/quests/quest bundles/003 - tithe/GAME_WIN.tres" id="1_crjqw"]
+[ext_resource type="Script" uid="uid://dopqr21noy5lf" path="res://scripts/quests/resources/quest_objective.gd" id="1_hkk3n"]
+[ext_resource type="Resource" uid="uid://6tlpm0l73k6e" path="res://scripts/quests/quest bundles/003 - tithe/obj_01_tithe.tres" id="2_7dvf4"]
+[ext_resource type="Script" uid="uid://bhvdbh5g7r327" path="res://scripts/quests/resources/quest.gd" id="3_crjqw"]
+[ext_resource type="Resource" uid="uid://gxumrwg5tdn6" path="res://scripts/quests/quest bundles/002 - threes_company/event_threes_company.tres" id="5_4xvg7"]
+[ext_resource type="Resource" uid="uid://dgtl0selosen1" path="res://scripts/quests/quest bundles/003 - tithe/GAME_LOSE.tres" id="6_lose1"]
+
+[resource]
+script = ExtResource("3_crjqw")
+id = "003 - tithe"
+title = "Tithe"
+description = "Word travels fast when coin changes hands. The Realm wants its cut... a tithe, they call it. Fair enough, every market has a toll. But I'd better make sure I'm earning faster than they're taking, or this venture dries up quick. "
+_type = 1
+objectives = Array[ExtResource("1_hkk3n")]([ExtResource("2_7dvf4")])
+trigger_start_event = ExtResource("5_4xvg7")
+on_completion_event = ExtResource("1_crjqw")
+on_failure_event = ExtResource("6_lose1")
+dialogue_by_npc = {
+"npc_taxman": "Just the coin. Now."
+}
+metadata/_custom_type_script = "uid://bhvdbh5g7r327"

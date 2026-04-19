@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EventResource" format=3 uid="uid://d230lbnl7yec1"]
+
+[ext_resource type="Script" uid="uid://d22e1ohktmckk" path="res://scripts/quests/resources/event_resource.gd" id="1_u2vwt"]
+
+[resource]
+script = ExtResource("1_u2vwt")
+id = "event_first_meeting"
+metadata/_custom_type_script = "uid://d22e1ohktmckk"

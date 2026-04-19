@@ -79,7 +79,8 @@ func open_trade(player: Node, npc: Node, item_give: String, item_get: String):
 	_update_labels()
 	show()
 	sound_show.play()
-	
+	GameController.set_player_interacting(true)
+
 #region cycling
 # Allow cycling through items within the UI-Trade menu
 func _on_button_give_prev_pressed() -> void:
@@ -155,8 +156,9 @@ func _on_button_trade_pressed() -> void:
 		# for if trade was successful or declined... or crit? idk
 		sound_hide.play()
 		hide()
+		GameController.set_player_interacting(false)
 	else:
-		%LabelDenied.text = "Ye fool! Ye can't trade what ye don't have!"
+		%LabelDenied.text = npc_node.speech_trade_decline
 		%LabelDenied.show()
 		current_give_amount = 0
 		current_get_amount = 0
@@ -180,8 +182,10 @@ func _on_button_plus_get_pressed() -> void:
 
 
 func _on_button_cancel_pressed() -> void:
+	%LabelDenied.hide()
 	hide()
 	sound_hide.play()
+	GameController.set_player_interacting(false)
 
 
 func _on_button_minus_give_pressed() -> void:

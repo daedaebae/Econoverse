@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://dbvyqsmem2357"]
+
+[ext_resource type="Theme" uid="uid://cb4jx472vkydf" path="res://scenes/themes/ThemeEconographMain.tres" id="1_c5ets"]
+[ext_resource type="Script" uid="uid://114e3gkrcwuy" path="res://scenes/components/interaction_popup.gd" id="2_dhkl3"]
+[ext_resource type="StyleBox" uid="uid://bpj06k16fn21n" path="res://scenes/themes/StyleBoxTexture - scrappy background.tres" id="3_dhkl3"]
+[ext_resource type="FontFile" uid="uid://kpnrwfstcleb" path="res://assets/fonts/EagleLake-Regular.ttf" id="4_dhkl3"]
+[ext_resource type="LabelSettings" uid="uid://b1gpcxkmkutxb" path="res://scenes/themes/TrackerText.tres" id="4_yj1ck"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fe0rx"]
+line_spacing = 1.0
+font = ExtResource("4_dhkl3")
+font_size = 12
+font_color = Color(1, 1, 1, 0.8235294)
+outline_size = 1
+outline_color = Color(0.71, 0.50126, 0.113600016, 0.8627451)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.69411767)
+
+[node name="InteractionPopup" type="Control" unique_id=2124545381 node_paths=PackedStringArray("panel", "label_name", "label_greeting", "button_talk", "button_trade", "button_leave")]
+z_index = 1002
+z_as_relative = false
+custom_minimum_size = Vector2(180, 216)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -459.9987
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("1_c5ets")
+script = ExtResource("2_dhkl3")
+panel = NodePath("PanelContainer")
+label_name = NodePath("PanelContainer/MarginContainer/VBoxContainer/LabelName")
+label_greeting = NodePath("PanelContainer/MarginContainer/VBoxContainer/LabelGreeting")
+button_talk = NodePath("PanelContainer/MarginContainer/VBoxContainer/ButtonTalk")
+button_trade = NodePath("PanelContainer/MarginContainer/VBoxContainer/ButtonTrade")
+button_leave = NodePath("PanelContainer/MarginContainer/VBoxContainer/ButtonLeave")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=485712255]
+custom_minimum_size = Vector2(180, 216)
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 216.0
+theme = ExtResource("1_c5ets")
+theme_override_styles/panel = ExtResource("3_dhkl3")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1282783128]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1541183245]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="LabelName" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=742323571]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Bogus Buchanon"
+label_settings = SubResource("LabelSettings_fe0rx")
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 5
+
+[node name="LabelGreeting" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1770106163]
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+label_settings = ExtResource("4_yj1ck")
+autowrap_mode = 3
+
+[node name="ButtonTalk" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1858216725]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Talk"
+
+[node name="ButtonTrade" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1406447482]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Trade"
+
+[node name="ButtonLeave" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1326414203]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Leave"

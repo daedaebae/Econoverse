@@ -30,12 +30,13 @@ buses/default_bus_layout="uid://yicjv23th881"
 
 Logging="*uid://14ccq2wkrhxl"
 GameController="*res://singleton/game_controller.gd"
+WorldClock="*uid://b5okat4hdsomi"
+QuestManager="*uid://bur6nhktba26l"
+AudioMaster="*res://singleton/audio_master.tscn"
+AudioMasterScript="*res://singleton/audio_master_script.gd"
 UI="*uid://cr681lcqswbv5"
 UITrade="*res://singleton/ui_trade.gd"
 CharacterNode="*res://scripts/actors/Class_Character.gd"
-AudioMaster="*res://singleton/audio_master.tscn"
-AudioMasterScript="*res://singleton/audio_master_script.gd"
-WorldClock="*uid://b5okat4hdsomi"
 
 [display]
 
@@ -59,6 +60,7 @@ enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
 
 folder_colors={
 "res://`_design/": "pink",
+"res://`_project/": "gray",
 "res://assets/": "orange",
 "res://scenes/": "yellow",
 "res://scripts/": "green",
@@ -123,5 +125,6 @@ pause={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+viewport/hdr_2d=true
 anti_aliasing/screen_space_roughness_limiter/enabled=false
 2d/snap/snap_2d_vertices_to_pixel=true

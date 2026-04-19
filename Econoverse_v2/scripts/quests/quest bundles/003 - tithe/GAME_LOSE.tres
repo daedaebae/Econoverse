@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EventResource" format=3 uid="uid://dgtl0selosen1"]
+
+[ext_resource type="Script" uid="uid://d22e1ohktmckk" path="res://scripts/quests/resources/event_resource.gd" id="1_lose"]
+
+[resource]
+script = ExtResource("1_lose")
+id = "GAME_LOSE"
+metadata/_custom_type_script = "uid://d22e1ohktmckk"

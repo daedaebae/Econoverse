@@ -28,7 +28,9 @@ func _input(event: InputEvent) -> void:
 		and event.button_index == MOUSE_BUTTON_LEFT:
 		if GameController.trade_ui_node and GameController.trade_ui_node.visible:
 			return
+		if GameController.interaction_popup_node and GameController.interaction_popup_node.visible:
+			return
 		var mouse_pos = get_global_mouse_position()
 		if global_position.distance_to(mouse_pos) < 20:
 			artisan_clicked.emit(self)
-			get_viewport().set_input_as_handled()    
+			get_viewport().set_input_as_handled()
